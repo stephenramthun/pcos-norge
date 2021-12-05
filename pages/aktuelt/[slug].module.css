@@ -1,0 +1,11 @@
+.Section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    flex: 1;
+    background-color: var(--color-background-primary);
+}
+
+.BreadCrumbs {
+    padding-top: 2rem;
+    background-color: var(--color-background-primary);
+}

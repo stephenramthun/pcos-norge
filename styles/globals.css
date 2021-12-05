@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Noto Sans Display", sans-serif;
+  background-color: var(--color-background-secondary);
 }
 
 a {
@@ -13,4 +13,52 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+p {
+  color: var(--color-text-primary);
+}
+
+:root {
+  /*Colors*/
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #effcff;
+  --color-accent-primary: #157e8c;
+  --color-accent-secondary: #cb2675;
+  --color-text-primary: #003339;
+  --color-interaction-primary: #cb2675;
+
+  /*Text*/
+  --font-family-primary: "Noto Sans Display", sans-serif;
+  --font-size-buttons: 1rem;
+  --font-size-body: 1.125rem;
+  --font-size-title-small: 1.125rem;
+  --font-size-title-medium: 1.5rem;
+  --font-size-title-large: 2rem;
+  --font-size-details: 1rem;
+  --line-height-body: 2rem;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-light: 300;
+
+  /*Layout*/
+  --page-margin: 4rem;
+  --header-height: 110px;
+  --content-max-width: 1500px;
+  --header-z-index: 10000;
+}
+
+@media only screen and (max-width: 800px) {
+  :root {
+    /*Text*/
+    --font-size-buttons: 1rem;
+    --font-size-body: 1.125rem;
+    --font-size-title-medium: 1.5rem;
+    --font-size-title-large: 2rem;
+
+    /*Layout*/
+    --page-margin: 2rem;
+    --header-height: 75px;
+  }
 }

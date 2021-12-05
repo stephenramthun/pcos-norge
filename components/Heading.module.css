@@ -1,0 +1,19 @@
+.Heading {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  padding: 0;
+  margin: 0;
+}
+
+.small {
+  font-size: var(--font-size-title-small);
+}
+
+.medium {
+  font-size: var(--font-size-title-medium);
+}
+
+.large {
+  font-size: var(--font-size-title-large);
+}

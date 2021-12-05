@@ -1,0 +1,61 @@
+.Footer {
+    width: 100%;
+    height: max-content;
+    padding: 4rem 0;
+    display: flex;
+    background: var(--color-text-primary);
+}
+
+.Footer p {
+    font-size: var(--font-size-details);
+    color: var(--color-background-primary);
+}
+
+.Content {
+    display: flex;
+    flex-direction: column;
+}
+
+.Details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.Details > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.Details > div > span {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.Details > div.LinkGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem 3rem;
+}
+
+.Details > div.LinkGrid > a {
+    font-size: var(--font-size-details);
+    color: var(--color-background-primary);
+    font-weight: var(--font-weight-regular);
+    display: flex;
+    justify-content: space-between;
+}
+
+.Details > div.LinkGrid > a > svg {
+    margin-left: 1rem;
+}
+
+.Description {
+    max-width: 300px;
+}
+
+.Logo {
+    margin-bottom: 2rem;
+}

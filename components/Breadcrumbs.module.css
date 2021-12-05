@@ -1,0 +1,15 @@
+.Breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.Breadcrumbs > a {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-details);
+    color: var(--color-text-primary);
+}
+
+.Breadcrumbs > a:hover {
+    text-decoration: underline;
+}

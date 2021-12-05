@@ -1,0 +1,76 @@
+.Hero {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--color-background-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.Hero > * {
+  flex: 1;
+}
+
+.Section {
+  height: max-content;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  background: var(--color-background-primary);
+}
+
+.Section > article {
+  flex: 1;
+  min-width: 300px;
+}
+
+.Section > article > h2 {
+  margin-bottom: 1.5rem;
+}
+
+.Section > article > p {
+  margin-bottom: 1rem;
+}
+
+.Cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.Card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+}
+
+.Card > p:first-of-type {
+  margin-bottom: 0.5rem;
+}
+
+.Card:first-of-type:before,
+.Card:not(:last-of-type):after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-text-primary);
+  left: 0;
+  filter: none !important;
+}
+
+.Card:first-of-type:before {
+  top: 0;
+}
+
+.Card:not(:last-of-type):after {
+  bottom: 0;
+}
+
+.Date {
+  font-size: var(--font-size-details) !important;
+  font-weight: var(--font-weight-regular);
+}

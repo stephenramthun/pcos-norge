@@ -1,0 +1,47 @@
+.Header {
+  --header-horizontal-margin: var(--page-margin);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: var(--color-background-secondary);
+  display: flex;
+  justify-content: center;
+  z-index: var(--header-z-index);
+}
+
+.Content {
+  padding: 0 var(--header-horizontal-margin);
+  width: 100vw;
+  height: var(--header-height);
+  max-width: var(--content-max-width);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.Content > button:first-of-type {
+  margin-right: 5rem;
+}
+
+.MenuButton {
+  position: absolute;
+  right: var(--header-horizontal-margin);
+  top: calc(var(--header-height) / 2);
+  transform: translateY(-50%);
+  z-index: 100;
+  padding: 0 !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .Header {
+    --header-horizontal-margin: calc(var(--page-margin) / 2);
+  }
+  .Content > button:first-of-type {
+    height: 2rem;
+    padding: 0 1rem;
+    font-size: 0.75rem;
+    margin-right: 3.5rem;
+  }
+}

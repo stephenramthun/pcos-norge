@@ -1,0 +1,26 @@
+.Link {
+    color: var(--color-interaction-primary);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    outline: none;
+}
+
+.Link:hover, .Link:focus-visible {
+    filter: brightness(80%);
+    text-decoration: underline;
+}
+
+.Link > svg {
+    align-self: flex-end;
+    margin-left: 0.5rem;
+    transition: transform 0.1s ease-in-out;
+}
+
+.Link:hover > svg,
+.Link:focus-visible > svg {
+    transform: translateX(0.5rem);
+}

@@ -1,0 +1,23 @@
+.Logo {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+}
+
+.Logo.dark > p {
+    color: var(--color-background-primary);
+}
+
+.Logo:hover > p {
+    text-decoration: underline;
+}
+
+.Logo > p {
+    white-space: nowrap;
+    font-weight: var(--font-weight-semibold);
+}
+
+.Logo img {
+    width: max-content;
+}

@@ -1,0 +1,50 @@
+.Button {
+  --button-height: 48px;
+  padding: 0 16px;
+  height: var(--button-height);
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: calc(var(--button-height) / 2);
+  font-size: var(--font-size-buttons);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.0625rem;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all 0.1s ease;
+}
+
+@media only screen and (max-width: 800px) {
+  .Button {
+    letter-spacing: 0;
+  }
+}
+
+.Button.primary {
+  background: var(--color-interaction-primary);
+  color: white;
+}
+
+.Button.secondary {
+  background: none;
+  box-shadow: inset 0 0 0 3px var(--color-interaction-primary);
+  color: var(--color-interaction-primary);
+}
+
+.Button.tertiary {
+  background: none;
+  color: var(--color-interaction-primary);
+}
+
+.Button:active,
+.Button:focus-visible {
+  filter: brightness(80%);
+}
+
+.Button:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-interaction-primary);
+}

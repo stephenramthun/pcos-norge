@@ -1,0 +1,6 @@
+.Content {
+  --padding-horizontal: calc(max((100vw - var(--content-max-width)) / 2, 0px) + var(--page-margin));
+  width: 100vw;
+  padding-left: var(--padding-horizontal);
+  padding-right: var(--padding-horizontal);
+}
