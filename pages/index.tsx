@@ -1,4 +1,5 @@
 import type { NextPage } from "next"
+import Image from "next/image"
 import React from "react"
 
 import styles from "./index.module.css"
@@ -34,7 +35,15 @@ const Home: NextPage<HomeProps> = (props) => (
         <Heading type="h1" size="large">
           {props.hero}
         </Heading>
-        <div />
+        <div className={styles.HeroImageContainer}>
+          <Image
+            src="/hero-image.png"
+            width={600 * 0.5}
+            height={700 * 0.5}
+            layout="responsive"
+            className={styles.HeroImage}
+          />
+        </div>
       </Content>
       <Content className={styles.Section}>
         <article>
