@@ -1,39 +1,50 @@
 .Hero {
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 100vw;
+  height: 100vh;
+  padding-bottom: 2rem;
 }
 
-.Hero > * {
+.HeroText {
   flex: 1;
-}
-
-.HeroImageContainer {
-  --hero-image-width: calc(600px * 0.7);
-  --hero-image-height: calc(700px * 0.7);
-  width: var(--hero-image-width);
-  height: var(--hero-image-height);
-  max-width: max(var(--hero-image-width), 90vw);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.HeroImage {
-  mix-blend-mode: darken;
+.HeroText > h1 {
+  color: var(--color-background-secondary);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1250px) {
   .Hero {
     flex-direction: column;
+    justify-content: center;
     padding-top: 2rem;
+    gap: 1rem;
   }
-  .HeroImageContainer {
-    padding-top: 2rem;
-    width: 300px;
-    height: 350px;
+
+  .HeroText {
+    flex: unset;
+    margin-top: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .Hero {
+    max-height: max(calc(100vh * 0.8), max-content);
+  }
+
+  .Hero > div {
+    min-height: 200px;
+  }
+
+  .HeroImage {
+    min-height: 200px;
   }
 }
 
@@ -45,7 +56,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
-  background: var(--color-background-primary);
+  background: var(--color-background-secondary);
 }
 
 .Section > article {

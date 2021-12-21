@@ -53,7 +53,7 @@ const Article: NextPage<ArticleProps> = (props) => (
         />
       </Content>
       <Content className={styles.Section}>
-        <Heading type="h2" size="medium">
+        <Heading tag="h2" size="medium">
           {props.article.title}
         </Heading>
         <Body suppressHydrationWarning>

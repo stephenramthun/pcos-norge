@@ -25,19 +25,19 @@
 }
 
 .Button.primary {
-  background: var(--color-interaction-primary);
+  background: var(--color-interaction-light);
   color: white;
 }
 
 .Button.secondary {
   background: none;
-  box-shadow: inset 0 0 0 3px var(--color-interaction-primary);
-  color: var(--color-interaction-primary);
+  box-shadow: inset 0 0 0 3px var(--color-interaction-light);
+  color: var(--color-interaction-light);
 }
 
 .Button.tertiary {
   background: none;
-  color: var(--color-interaction-primary);
+  color: var(--color-interaction-light);
 }
 
 .Button:active,
@@ -46,5 +46,5 @@
 }
 
 .Button:focus-visible {
-  box-shadow: 0 0 0 3px var(--color-interaction-primary);
+  box-shadow: 0 0 0 3px var(--color-interaction-light);
 }

@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Noto Sans Display", sans-serif;
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-text-primary);
 }
 
 a {
@@ -23,10 +23,12 @@ p {
   /*Colors*/
   --color-background-primary: #ffffff;
   --color-background-secondary: #effcff;
-  --color-accent-primary: #157e8c;
-  --color-accent-secondary: #cb2675;
+  --color-accent-primary: #116773;
+  --color-accent-secondary: #c96978;
   --color-text-primary: #003339;
-  --color-interaction-primary: #cb2675;
+  --color-text-heading: var(--color-text-primary);
+  --color-interaction-light: #ff9dac;
+  --color-interaction-dark: #c96978;
 
   /*Text*/
   --font-family-primary: "Noto Sans Display", sans-serif;
@@ -34,31 +36,39 @@ p {
   --font-size-body: 1.125rem;
   --font-size-title-small: 1.125rem;
   --font-size-title-medium: 1.5rem;
-  --font-size-title-large: 2rem;
+  --font-size-title-large: 4.5rem;
   --font-size-details: 1rem;
   --line-height-body: 2rem;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-black: 900;
   --font-weight-light: 300;
 
   /*Layout*/
   --page-margin: 4rem;
   --header-height: 110px;
-  --content-max-width: 1500px;
+  --content-max-width: 1220px;
   --header-z-index: 10000;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1250px) {
   :root {
     /*Text*/
     --font-size-buttons: 1rem;
     --font-size-body: 1.125rem;
     --font-size-title-medium: 1.5rem;
-    --font-size-title-large: 2rem;
+    --font-size-title-large: 3rem;
 
     /*Layout*/
     --page-margin: 2rem;
     --header-height: 75px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  :root {
+    /*Text*/
+    --font-size-title-large: 2rem;
   }
 }

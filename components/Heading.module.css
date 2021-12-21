@@ -1,7 +1,7 @@
 .Heading {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
+  color: var(--color-text-heading);
   padding: 0;
   margin: 0;
 }
@@ -16,4 +16,5 @@
 
 .large {
   font-size: var(--font-size-title-large);
+  line-height: calc(var(--font-size-title-large) * 1.25);
 }

@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  background: var(--color-background-secondary);
+  background: var(--color-accent-primary);
   display: flex;
   justify-content: center;
   z-index: var(--header-z-index);
@@ -19,29 +19,99 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  transition: height 0.2s ease-in-out;
 }
 
-.Content > button:first-of-type {
-  margin-right: 5rem;
+.Content.hide {
+  height: 0;
+  overflow: hidden;
 }
 
-.MenuButton {
-  position: absolute;
-  right: var(--header-horizontal-margin);
-  top: calc(var(--header-height) / 2);
-  transform: translateY(-50%);
-  z-index: 100;
-  padding: 0 !important;
+.Nav {
+  display: flex;
+  gap: 2.5rem;
 }
 
-@media only screen and (max-width: 800px) {
-  .Header {
-    --header-horizontal-margin: calc(var(--page-margin) / 2);
+.Nav > a {
+  color: var(--color-background-secondary);
+  font-weight: var(--font-weight-light);
+}
+
+.HamburgerMenu {
+  --translate-x: 25px;
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0 -0.75rem 0 0;
+  position: fixed;
+  top: calc(var(--page-margin) / 2);
+  right: var(--page-margin);
+}
+
+.HamburgerMenu > svg > line {
+  transition: all 0.1s ease;
+  stroke: var(--color-background-secondary);
+}
+
+.HamburgerMenu > svg > line:nth-child(3) {
+  transform-origin: 40px 64px;
+}
+
+.HamburgerMenu.active > svg > line:nth-child(3) {
+  transform: translateX(var(--translate-x)) rotate(45deg);
+}
+
+.HamburgerMenu > svg > line:nth-child(4) {
+  transform-origin: 40px 192px;
+}
+
+.HamburgerMenu.active > svg > line:nth-child(4) {
+  transform: translateX(var(--translate-x)) rotate(-45deg);
+}
+
+.HamburgerMenu.active > svg > line:nth-child(2) {
+  opacity: 0;
+}
+
+@media only screen and (max-width: 750px) {
+  .HamburgerMenu {
+    display: block;
   }
-  .Content > button:first-of-type {
-    height: 2rem;
-    padding: 0 1rem;
-    font-size: 0.75rem;
-    margin-right: 3.5rem;
+
+  .Nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-text-primary);
+    flex-direction: column;
+    padding: var(--page-margin);
+    padding-top: 4.5rem;
+    gap: 2rem;
+    overflow: hidden;
+    transition: all 0.25s ease-out;
+  }
+
+  .Nav > a {
+    transition: all 0.25s ease;
+    font-weight: 600;
+  }
+
+  .Nav.hide > a {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .Nav.show > a {
+    transition-delay: 0.25s;
+    opacity: 1;
+  }
+
+  .Nav.hide {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

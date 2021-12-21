@@ -32,22 +32,33 @@ const Home: NextPage<HomeProps> = (props) => (
     <Header />
     <Main>
       <Content className={styles.Hero}>
-        <Heading type="h1" size="large">
-          {props.hero}
-        </Heading>
-        <div className={styles.HeroImageContainer}>
-          <Image
-            src="/hero-image.png"
-            width={600 * 0.5}
-            height={700 * 0.5}
-            layout="responsive"
-            className={styles.HeroImage}
-          />
+        <div className={styles.HeroText}>
+          <Heading tag="h1" size="large">
+            {props.hero}
+          </Heading>
+          <Link
+            href=""
+            onClick={(event) => {
+              event.preventDefault()
+              document
+                .getElementById("about")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }}
+            arrow="down"
+          >
+            Les mer
+          </Link>
         </div>
+        <Image
+          src="/hero-image.svg"
+          width={400}
+          height={600}
+          className={styles.HeroImage}
+        />
       </Content>
-      <Content className={styles.Section}>
+      <Content className={styles.Section} id="about">
         <article>
-          <Heading type="h2" size="medium">
+          <Heading tag="h2" size="medium">
             Om PCOS
           </Heading>
           <Body>
@@ -61,7 +72,7 @@ const Home: NextPage<HomeProps> = (props) => (
           <Link href="/">Les mer</Link>
         </article>
         <article>
-          <Heading type="h2" size="medium">
+          <Heading tag="h2" size="medium">
             Støtt oss
           </Heading>
           <Body>
@@ -77,7 +88,7 @@ const Home: NextPage<HomeProps> = (props) => (
       </Content>
       <Content className={styles.Section}>
         <article>
-          <Heading type="h2" size="medium">
+          <Heading tag="h2" size="medium">
             Aktuelt
           </Heading>
           <div className={styles.Cards}>
@@ -86,7 +97,7 @@ const Home: NextPage<HomeProps> = (props) => (
                 <Body suppressHydrationWarning className={styles.Date}>
                   {new Date(it.published).toLocaleDateString()}
                 </Body>
-                <Heading type="h3" size="small">
+                <Heading tag="h3" size="small">
                   {it.title}
                 </Heading>
                 <Body>{it.ingress}</Body>

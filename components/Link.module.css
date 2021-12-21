@@ -1,5 +1,5 @@
 .Link {
-    color: var(--color-interaction-primary);
+    color: var(--color-interaction-light);
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
     display: flex;
@@ -7,6 +7,8 @@
     flex-wrap: nowrap;
     white-space: nowrap;
     outline: none;
+    transition: filter 0.1s ease-in-out;
+    width: max-content;
 }
 
 .Link:hover, .Link:focus-visible {
@@ -20,7 +22,12 @@
     transition: transform 0.1s ease-in-out;
 }
 
-.Link:hover > svg,
-.Link:focus-visible > svg {
+.Link.right:hover > svg,
+.Link.right:focus-visible > svg {
     transform: translateX(0.5rem);
+}
+
+.Link.down:hover > svg,
+.Link.down:focus-visible > svg {
+    transform: translateY(0.25rem);
 }

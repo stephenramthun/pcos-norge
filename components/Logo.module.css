@@ -1,4 +1,5 @@
 .Logo {
+    --font-size: 24px;
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -6,7 +7,7 @@
 }
 
 .Logo.dark > p {
-    color: var(--color-background-primary);
+    color: var(--color-background-secondary);
 }
 
 .Logo:hover > p {
@@ -16,8 +17,20 @@
 .Logo > p {
     white-space: nowrap;
     font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size);
 }
 
 .Logo img {
-    width: max-content;
+    width: 40px;
+    flex: 1;
+}
+
+@media only screen and (max-width: 750px) {
+    .Logo {
+        --font-size: 18px;
+    }
+
+    .Logo img {
+        width: 30px;
+    }
 }
