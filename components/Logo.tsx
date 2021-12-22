@@ -8,8 +8,6 @@ import logo from "../public/logo.svg"
 import logoInverted from "../public/logo-inverted.svg"
 import * as classNames from "classnames"
 
-console.log(logoInverted)
-
 interface LogoProps
   extends Omit<React.HTMLAttributes<HTMLAnchorElement>, "children"> {
   background?: "light" | "dark"

@@ -91,11 +91,11 @@
     padding-top: 4.5rem;
     gap: 2rem;
     overflow: hidden;
-    transition: all 0.25s ease-out;
+    transition: all 0.2s ease-out;
   }
 
   .Nav > a {
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     font-weight: 600;
   }
 
@@ -105,7 +105,7 @@
   }
 
   .Nav.show > a {
-    transition-delay: 0.25s;
+    transition-delay: 0.2s;
     opacity: 1;
   }
 

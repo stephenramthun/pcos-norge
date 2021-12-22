@@ -1,4 +1,4 @@
-import type { NextPage } from "next"
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import Image from "next/image"
 import React from "react"
 
@@ -112,8 +112,10 @@ const Home: NextPage<HomeProps> = (props) => (
   </PageContainer>
 )
 
-Home.getInitialProps = async (context): Promise<HomeProps> =>
-  await client.fetch(`
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<HomeProps>
+> => {
+  const props = await client.fetch(`
     { 
       "hero": *[_type == "hero"][0].text,
       "articles": *[_type == "article"] | order(published desc) {
@@ -124,5 +126,10 @@ Home.getInitialProps = async (context): Promise<HomeProps> =>
       }
     }
   `)
+
+  return {
+    props: props,
+  }
+}
 
 export default Home

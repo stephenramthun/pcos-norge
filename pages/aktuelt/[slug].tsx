@@ -1,4 +1,10 @@
-import type { GetServerSideProps, NextPage } from "next"
+import type {
+  GetStaticPaths,
+  GetStaticPathsResult,
+  GetStaticProps,
+  GetStaticPropsResult,
+  NextPage,
+} from "next"
 // @ts-ignore
 import BlockContent from "@sanity/block-content-to-react"
 
@@ -66,7 +72,9 @@ const Article: NextPage<ArticleProps> = (props) => (
   </PageContainer>
 )
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}): Promise<GetStaticPropsResult<ArticleProps>> => {
   const article = await client.fetch(
     `
     *[_type == "article" && slug.current == $slug][0] {
@@ -87,5 +95,16 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     },
   }
 }
+
+export const getStaticPaths: GetStaticPaths =
+  async (): Promise<GetStaticPathsResult> => {
+    const paths = await client.fetch<Array<string>>(
+      `*[_type == "article" && defined(slug.current)][].slug.current`,
+    )
+    return {
+      paths: paths.map((slug) => ({ params: { slug } })),
+      fallback: false,
+    }
+  }
 
 export default Article
