@@ -49,12 +49,7 @@ const Home: NextPage<HomeProps> = (props) => (
             Les mer
           </Link>
         </div>
-        <Image
-          src="/hero-image.svg"
-          width={400}
-          height={600}
-          className={styles.HeroImage}
-        />
+        <img src="/hero-image.svg" className={styles.HeroImage} />
       </Content>
       <Content className={styles.Section} id="about">
         <article>
