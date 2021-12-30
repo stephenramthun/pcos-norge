@@ -58,7 +58,7 @@
 
   .HeroImage {
     min-height: 200px;
-    max-height: max-content;
+    max-height: min(500px, 80vw);
     max-width: min(500px, calc(100vw - var(--padding-horizontal)));
     flex: unset;
   }

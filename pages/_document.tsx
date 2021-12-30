@@ -22,6 +22,7 @@ class FontsDocument extends Document {
           <script
             src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
             type="text/javascript"
+            defer
           />
         </Head>
         <body>

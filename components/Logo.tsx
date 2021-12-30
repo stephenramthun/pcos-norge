@@ -22,7 +22,12 @@ export const Logo: React.VFC<LogoProps> = ({
     href="/"
     className={classNames(styles.Logo, styles[background], className)}
   >
-    <img alt="" src={background === "light" ? logo.src : logoInverted.src} />
+    <img
+      width={40}
+      height={25}
+      alt=""
+      src={background === "light" ? logo.src : logoInverted.src}
+    />
     <Body>PCOS Norge</Body>
   </a>
 )

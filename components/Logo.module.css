@@ -22,6 +22,7 @@
 
 .Logo img {
     width: 40px;
+    max-width: 40px;
     flex: 1;
 }
 
