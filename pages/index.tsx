@@ -99,7 +99,7 @@ const Home: NextPage<HomeProps> = (props) => (
                   {it.title}
                 </Heading>
                 <Body>{it.ingress}</Body>
-                <Link href={`/aktuelt/${it.slug}`}>Les mer</Link>
+                <Link href={`/aktuelt/${it.slug}.html`}>Les mer</Link>
               </article>
             ))}
           </div>

@@ -36,3 +36,6 @@ yarn-error.log*
 # vercel
 .vercel
 /.idea/
+/firestore-debug.log
+/ui-debug.log
+/.firebase/hosting.b3V0.cache
