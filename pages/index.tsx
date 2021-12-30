@@ -1,5 +1,4 @@
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import Image from "next/image"
 import React from "react"
 
 import styles from "./index.module.css"
@@ -49,7 +48,11 @@ const Home: NextPage<HomeProps> = (props) => (
             Les mer
           </Link>
         </div>
-        <img src="/hero-image.svg" className={styles.HeroImage} />
+        <img
+          alt="Kvinne som sitter smilende med beina i kryss"
+          src="/hero-image.svg"
+          className={styles.HeroImage}
+        />
       </Content>
       <Content className={styles.Section} id="about">
         <article>

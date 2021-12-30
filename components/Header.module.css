@@ -13,18 +13,12 @@
 .Content {
   padding: 0 var(--header-horizontal-margin);
   width: 100vw;
-  height: var(--header-height);
   max-width: var(--content-max-width);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  transition: height 0.2s ease-in-out;
-}
-
-.Content.hide {
-  height: 0;
-  overflow: hidden;
+  height: var(--header-height);
 }
 
 .Nav {
@@ -44,7 +38,7 @@
   border: none;
   padding: 0.25rem 0.5rem;
   margin: 0 -0.75rem 0 0;
-  position: fixed;
+  position: absolute;
   top: calc(var(--page-margin) / 2);
   right: var(--page-margin);
 }

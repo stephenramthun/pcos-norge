@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import styles from "./Header.module.css"
 import { Logo } from "./Logo"
@@ -37,28 +37,11 @@ const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
 }
 
 export const Header = () => {
-  const [show, setShow] = useState(true)
   const [showNav, setShowNav] = useState(false)
-
-  useEffect(() => {
-    let previousScrollY = window.scrollY
-    const onScroll = (event: Event) => {
-      if (window.scrollY < previousScrollY || window.scrollY <= 0) {
-        setShow(true)
-      } else {
-        setShow(false)
-      }
-      previousScrollY = window.scrollY
-    }
-    document.addEventListener("scroll", onScroll)
-    return () => {
-      document.removeEventListener("scroll", onScroll)
-    }
-  }, [])
 
   return (
     <header id="header" className={classNames(styles.Header)}>
-      <div className={classNames(styles.Content, !show && styles.hide)}>
+      <div className={classNames(styles.Content)}>
         <Logo />
         <nav
           className={classNames(

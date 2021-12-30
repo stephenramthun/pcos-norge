@@ -2,7 +2,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document"
 
 const notoSans = (
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;600;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600;700;900&display=swap"
     rel="stylesheet"
   />
 )
