@@ -28,6 +28,7 @@ const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
         className,
         open && styles.active,
       )}
+      aria-label="Menu"
       onClick={toggleOpen}
       {...buttonProps}
     >
