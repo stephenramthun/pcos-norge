@@ -25,7 +25,7 @@ interface HomeProps {
   }[]
 }
 
-const Home: NextPage<HomeProps> = (props) => (
+const Home: NextPage<HomeProps> = ({ hero, articles }) => (
   <PageContainer>
     <Head />
     <Header />
@@ -33,7 +33,7 @@ const Home: NextPage<HomeProps> = (props) => (
       <Content className={styles.Hero}>
         <div className={styles.HeroText}>
           <Heading tag="h1" size="large">
-            {props.hero}
+            {hero}
           </Heading>
           <Link
             href=""
@@ -92,7 +92,7 @@ const Home: NextPage<HomeProps> = (props) => (
             Aktuelt
           </Heading>
           <div className={styles.Cards}>
-            {props.articles.map((it) => (
+            {articles.map((it) => (
               <article key={it.slug} className={styles.Card}>
                 <Body suppressHydrationWarning className={styles.Date}>
                   {new Date(it.published).toLocaleDateString()}

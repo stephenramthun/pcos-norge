@@ -1,16 +1,9 @@
 import Document, { Head, Html, Main, NextScript } from "next/document"
 
-const notoSans = (
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600;700;900&display=swap"
-    rel="stylesheet"
-  />
-)
-
-class FontsDocument extends Document {
+class SiteDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="no">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
@@ -18,7 +11,10 @@ class FontsDocument extends Document {
             href="https://fonts.gstatic.com"
             crossOrigin="true"
           />
-          {notoSans}
+          <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600;700;900&display=swap"
+            rel="stylesheet"
+          />
           <script
             src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
             type="text/javascript"
@@ -34,4 +30,4 @@ class FontsDocument extends Document {
   }
 }
 
-export default FontsDocument
+export default SiteDocument
