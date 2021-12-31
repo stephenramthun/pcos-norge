@@ -14,6 +14,7 @@ import { Footer } from "../components/Footer"
 import { Head } from "../components/Head"
 import { PageContainer } from "../components/PageContainer"
 import { Main } from "../components/Main"
+import { Hero } from "../modules/frontPage/Hero"
 
 interface HomeProps {
   hero: string
@@ -30,32 +31,7 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => (
     <Head />
     <Header />
     <Main>
-      <Content className={styles.Hero}>
-        <div className={styles.HeroText}>
-          <Heading tag="h1" size="large">
-            {hero}
-          </Heading>
-          <Link
-            href=""
-            onClick={(event) => {
-              event.preventDefault()
-              document
-                .getElementById("about")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }}
-            arrow="down"
-          >
-            Les mer
-          </Link>
-        </div>
-        <img
-          alt="Kvinne som sitter smilende med beina i kryss"
-          src="/hero-image.svg"
-          width={500}
-          height={500}
-          className={styles.HeroImage}
-        />
-      </Content>
+      <Hero text={hero} />
       <Content className={styles.Section} id="about">
         <article>
           <Heading tag="h2" size="medium">
