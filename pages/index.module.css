@@ -9,6 +9,13 @@
   background: var(--color-background-secondary);
 }
 
+@media only screen and (max-width: 750px) {
+  .Section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
 .Section > article {
   flex: 1;
   min-width: 300px;

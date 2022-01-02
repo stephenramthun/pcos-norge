@@ -6,6 +6,12 @@
     background: var(--color-text-primary);
 }
 
+@media only screen and (max-width: 750px) {
+    .Footer {
+        padding: 3rem 0;
+    }
+}
+
 .Footer p {
     font-size: var(--font-size-details);
     color: var(--color-background-primary);

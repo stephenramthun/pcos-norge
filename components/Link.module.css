@@ -11,11 +11,6 @@
     width: max-content;
 }
 
-.Link:hover, .Link:focus-visible {
-    filter: brightness(80%);
-    text-decoration: underline;
-}
-
 .Link > svg {
     align-self: flex-end;
     margin-left: 0.5rem;
