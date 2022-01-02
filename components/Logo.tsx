@@ -1,33 +1,15 @@
 import React from "react"
 
-import { Body } from "./Body"
-
 import styles from "./Logo.module.css"
 
 import logo from "../public/logo.svg"
-import logoInverted from "../public/logo-inverted.svg"
 import * as classNames from "classnames"
 
 interface LogoProps
-  extends Omit<React.HTMLAttributes<HTMLAnchorElement>, "children"> {
-  background?: "light" | "dark"
-}
+  extends Omit<React.HTMLAttributes<HTMLAnchorElement>, "children"> {}
 
-export const Logo: React.VFC<LogoProps> = ({
-  className,
-  background = "dark",
-  ...anchorProps
-}) => (
-  <a
-    href="/"
-    className={classNames(styles.Logo, styles[background], className)}
-  >
-    <img
-      width={40}
-      height={25}
-      alt=""
-      src={background === "light" ? logo.src : logoInverted.src}
-    />
-    <Body>PCOS Norge</Body>
+export const Logo: React.VFC<LogoProps> = ({ className, ...anchorProps }) => (
+  <a href="/" className={classNames(styles.Logo, className)}>
+    <img width={133} height={25} alt="Logo PCOS Norge" src={logo.src} />
   </a>
 )

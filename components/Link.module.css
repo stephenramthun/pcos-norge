@@ -1,5 +1,5 @@
 .Link {
-    color: var(--color-interaction-light);
+    color: var(--color-brand-light-red);
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
     display: flex;

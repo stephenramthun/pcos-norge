@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Noto Sans Display", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   background-color: var(--color-text-primary);
 }
 
@@ -21,17 +21,25 @@ p {
 
 :root {
   /*Colors*/
+  --color-brand-dark-teal: #003339;
+  --color-brand-teal: #116773;
+  --color-brand-extra-light-teal: #effcff;
+  --color-brand-orange: #feb17c;
+  --color-brand-light-red: #c96978;
+  --color-brand-dark-red: #6b283e;
+
   --color-background-primary: #ffffff;
   --color-background-secondary: #effcff;
   --color-accent-primary: #116773;
   --color-accent-secondary: #c96978;
-  --color-text-primary: #003339;
+  --color-text-primary: var(--color-brand-dark-teal);
   --color-text-heading: var(--color-text-primary);
   --color-interaction-light: #ff9dac;
   --color-interaction-dark: #c96978;
 
+
   /*Text*/
-  --font-family-primary: "Noto Sans Display", sans-serif;
+  --font-family-primary: "IBM Plex Sans", sans-serif;
   --font-size-buttons: 1rem;
   --font-size-body: 1.125rem;
   --font-size-title-small: 1.125rem;
@@ -70,5 +78,8 @@ p {
   :root {
     /*Text*/
     --font-size-title-large: 2rem;
+
+    /*Layout*/
+    --page-margin: 1.5rem;
   }
 }

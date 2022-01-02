@@ -1,37 +1,19 @@
 .Logo {
-    --font-size: 24px;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 0.5rem;
+  --font-size: 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
 }
 
-.Logo.dark > p {
-    color: var(--color-background-secondary);
-}
-
-.Logo:hover > p {
-    text-decoration: underline;
-}
-
-.Logo > p {
-    white-space: nowrap;
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size);
-}
-
-.Logo img {
-    width: 40px;
-    max-width: 40px;
-    flex: 1;
+.Logo > img {
+  width: 175px;
+  height: 33px;
 }
 
 @media only screen and (max-width: 750px) {
-    .Logo {
-        --font-size: 18px;
-    }
-
-    .Logo img {
-        width: 30px;
-    }
+  .Logo > img {
+    width: 133px;
+    height: 25px;
+  }
 }
