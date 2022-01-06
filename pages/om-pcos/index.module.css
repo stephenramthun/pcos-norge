@@ -35,4 +35,5 @@
     position: absolute;
     background: none !important;
     top: var(--header-height);
+    padding-top: 0 !important;
 }
