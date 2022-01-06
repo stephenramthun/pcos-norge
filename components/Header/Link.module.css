@@ -18,14 +18,17 @@
   height: 2px;
   width: 100%;
   background: var(--color-accent-secondary);
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
   transition: opacity 100ms;
   opacity: 0;
 }
 
 .Link.active:before,
-.Link:hover:before,
-.Link:focus-visible:before {
-    opacity: 1;
+.Link:hover:before {
+  opacity: 1;
+}
+
+.Link:focus-visible {
+    outline: var(--color-brand-light-red) solid 2px;
 }

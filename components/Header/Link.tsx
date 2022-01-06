@@ -17,7 +17,6 @@ export const Link: React.FC<LinkProps> = ({
   ...linkProps
 }) => {
   const { pathname } = useRouter()
-  console.log(pathname, linkProps.href)
   return (
     <a
       className={classNames(
