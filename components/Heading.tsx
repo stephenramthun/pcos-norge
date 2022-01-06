@@ -5,7 +5,7 @@ import styles from "./Heading.module.css"
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-  size: "small" | "medium" | "large"
+  size: "small" | "medium" | "medium-large" | "large"
 }
 
 export const Heading: React.FC<HeadingProps> = ({

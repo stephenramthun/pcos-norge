@@ -1,0 +1,31 @@
+.Link {
+  position: relative;
+  color: var(--color-background-secondary);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-body);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  outline: none;
+  transition: filter 0.1s ease-in-out;
+  width: max-content;
+}
+
+.Link:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--color-accent-secondary);
+  bottom: -2px;
+  left: 0;
+  transition: opacity 100ms;
+  opacity: 0;
+}
+
+.Link.active:before,
+.Link:hover:before,
+.Link:focus-visible:before {
+    opacity: 1;
+}

@@ -6,7 +6,7 @@
 
 .Breadcrumbs > a {
     font-weight: var(--font-weight-regular);
-    font-size: var(--font-size-details);
+    font-size: var(--font-size-body);
     color: var(--color-text-primary);
 }
 

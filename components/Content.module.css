@@ -1,6 +1,16 @@
 .Content {
-  --padding-horizontal: calc(max((100vw - var(--content-max-width)) / 2, 0px) + var(--page-margin));
-  width: 100vw;
-  padding-left: var(--padding-horizontal);
-  padding-right: var(--padding-horizontal);
+  height: max-content;
+  width: 100%;
+  padding: 3rem var(--padding-horizontal);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  background: var(--color-background-secondary);
+}
+
+@media only screen and (max-width: 750px) {
+  .Content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }

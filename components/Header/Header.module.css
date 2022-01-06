@@ -1,7 +1,3 @@
-.Header.start > .Content {
-  height: var(--header-height);
-}
-
 .Header {
   --header-horizontal-margin: var(--page-margin);
   position: fixed;
@@ -13,6 +9,14 @@
   z-index: var(--header-z-index);
   transition: transform 300ms ease;
   background: var(--color-brand-teal)
+}
+
+.Header.transparent {
+  background: transparent;
+}
+
+.Header.transparent .Nav > a {
+  color: var(--color-text-primary);
 }
 
 .Header.down {
@@ -27,34 +31,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  height: calc(var(--header-height) * 0.8);
+  height: var(--header-height);
   transition: height 100ms;
 }
 
 .Nav {
   display: flex;
   gap: 2.5rem;
-}
-
-.Nav > a {
-  position: relative;
-  color: var(--color-background-secondary);
-  font-weight: var(--font-weight-light);
-}
-
-.Nav > a:before {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: var(--color-accent-secondary);
-  bottom: -2px;
-  left: 0;
-  transition: opacity 200ms;
-}
-
-.Nav > a:hover:before, .Nav >:focus-visible:before {
-  opacity: 0;
 }
 
 @media only screen and (max-width: 750px) {
@@ -76,6 +59,10 @@
   .Nav > a {
     transition: all 0.2s ease;
     font-weight: 600;
+  }
+
+  .Header.transparent .Nav > a {
+    color: var(--color-brand-extra-light-teal);
   }
 
   .Nav.hide > a {

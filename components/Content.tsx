@@ -1,7 +1,7 @@
 import React from "react"
+import classNames from "classnames"
 
 import styles from "./Content.module.css"
-import classNames from "classnames"
 
 interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
   as?: keyof HTMLElementTagNameMap

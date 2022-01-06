@@ -3,6 +3,7 @@ import classNames from "classnames"
 
 import styles from "./Breadcrumbs.module.css"
 import { CaretRight } from "phosphor-react"
+import { Link } from "./Header/Link"
 
 type LinkObject = {
   href: string
@@ -22,7 +23,7 @@ export const Breadcrumbs: React.VFC<BreadcrumbsProps> = ({
   <div className={classNames(styles.Breadcrumbs, className)}>
     {links.map((link, i) => (
       <React.Fragment key={i}>
-        <a href={link.href}>{link.label}</a>
+        <Link href={link.href}>{link.label}</Link>
         {i !== links.length - 1 && <CaretRight />}
       </React.Fragment>
     ))}

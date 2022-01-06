@@ -4,7 +4,7 @@ import classNames from "classnames"
 import styles from "./Header.module.css"
 
 import { Logo } from "../Logo"
-import { Link } from "../Link"
+import { Link } from "./Link"
 import { HamburgerMenu } from "./HamburgerMenu"
 import { useOnScroll } from "../../hooks/useOnScroll"
 
@@ -29,7 +29,15 @@ const useScrollState = (): ScrollState => {
   return state
 }
 
-export const Header = () => {
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: "transparent" | "opaque"
+}
+
+export const Header: React.VFC<HeaderProps> = ({
+  variant = "opaque",
+  className,
+  ...headerProps
+}) => {
   const [showNav, setShowNav] = useState(false)
 
   const scrollState = useScrollState()
@@ -37,28 +45,25 @@ export const Header = () => {
   return (
     <header
       id="header"
-      className={classNames(styles.Header, styles[scrollState])}
+      className={classNames(
+        styles.Header,
+        styles[scrollState],
+        styles[variant],
+        className,
+      )}
     >
       <div className={classNames(styles.Content)}>
-        <Logo />
+        <Logo variant={variant === "transparent" ? "dark" : "light"} />
         <nav
           className={classNames(
             styles.Nav,
             showNav ? styles.show : styles.hide,
           )}
         >
-          <Link href="" arrow={undefined}>
-            Om PCOS
-          </Link>
-          <Link href="" arrow={undefined}>
-            Om oss
-          </Link>
-          <Link href="" arrow={undefined}>
-            Aktuelt
-          </Link>
-          <Link href="" arrow={undefined}>
-            Bli medlem
-          </Link>
+          <Link href="/om-pcos">Om PCOS</Link>
+          <Link href="/om-oss">Om oss</Link>
+          <Link href="/aktuelt">Aktuelt</Link>
+          <Link href="/bli-medlem">Bli medlem</Link>
         </nav>
         <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
       </div>

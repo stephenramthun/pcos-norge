@@ -14,6 +14,10 @@
   font-size: var(--font-size-title-medium);
 }
 
+.medium-large {
+  font-size: var(--font-size-title-medium-large);
+}
+
 .large {
   font-size: var(--font-size-title-large);
   line-height: calc(var(--font-size-title-large) * 1.25);
