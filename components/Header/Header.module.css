@@ -7,8 +7,9 @@
   display: flex;
   justify-content: center;
   z-index: var(--header-z-index);
-  transition: transform 300ms ease;
-  background: var(--color-brand-teal)
+  transition: transform 300ms ease, background 100ms ease 300ms,
+    filter 100ms ease 300ms;
+  background: var(--color-brand-teal);
 }
 
 .Header.transparent {
@@ -19,8 +20,44 @@
   color: var(--color-text-primary);
 }
 
+.Header.start {
+  transition: background 100ms ease;
+}
+
+.Header.start > div > a {
+    transition: filter 100ms ease;
+}
+
+.Header > div > a {
+    transition: filter 100ms ease 300ms;
+}
+
+.Header.up > div > a,
+.Header.down > div > a {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(867%)
+    hue-rotate(150deg) brightness(88%) contrast(101%);
+}
+
+.Header.up,
+.Header.down {
+  background: var(--color-brand-extra-light-teal);
+}
+
 .Header.down {
   transform: translateY(-100%);
+}
+
+.Header.up .Nav > a,
+.Header.down .Nav > a {
+  color: var(--color-text-primary);
+}
+
+.Header .Nav > a {
+  transition: color 100ms ease 300ms;
+}
+
+.Header.start .Nav > a {
+  transition: color 100ms ease;
 }
 
 .Content {
