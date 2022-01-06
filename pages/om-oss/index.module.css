@@ -1,0 +1,47 @@
+.Section {
+  background: var(--color-brand-extra-light-teal);
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.Section > article {
+  max-width: 750px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.HeroText {
+  position: relative;
+  display: flex;
+  background: var(--color-brand-extra-light-teal);
+  padding-left: var(--padding-horizontal);
+  padding-right: var(--padding-horizontal);
+  width: 100vw;
+}
+
+.HeroText > h1 {
+  position: relative;
+  background: var(--color-brand-teal);
+  color: var(--color-brand-extra-light-teal);
+  padding: 4rem;
+  width: max-content;
+  max-width: 900px;
+  margin-top: -10rem;
+}
+
+.Breadcrumbs {
+  position: absolute;
+  background: none !important;
+  top: var(--header-height);
+  padding-top: 0 !important;
+}
+
+.PersonCards {
+  width: 100%;
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}

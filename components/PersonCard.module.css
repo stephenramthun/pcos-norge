@@ -1,0 +1,53 @@
+.PersonCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+  width: max-content;
+}
+
+.PersonCard > * {
+  margin: 0;
+}
+
+.PersonCard > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.PersonCard > p {
+  width: 100%;
+}
+
+.PersonCard > p:first-of-type {
+  font-size: var(--font-size-details);
+  margin-bottom: 0.5rem;
+}
+
+.PersonCard > p:nth-of-type(2) {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 0.5rem;
+}
+
+.Link {
+  position: relative;
+  margin-right: auto;
+  color: var(--color-brand-teal);
+}
+
+.Link:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--color-brand-light-red);
+  bottom: -1px;
+  transition: opacity 100ms;
+}
+
+.Link:hover:before {
+  opacity: 0;
+}
