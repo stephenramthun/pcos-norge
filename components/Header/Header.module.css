@@ -1,66 +1,29 @@
 .Header {
   --header-horizontal-margin: var(--page-margin);
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100vw;
   display: flex;
   justify-content: center;
   z-index: var(--header-z-index);
-  transition: transform 300ms ease, background 100ms ease 300ms,
-    filter 100ms ease 300ms;
   background: var(--color-brand-teal);
 }
 
-.Header.transparent {
-  background: transparent;
-}
-
-.Header.transparent .Nav > a {
-  color: var(--color-text-primary);
-}
-
-.Header.start {
-  transition: background 100ms ease;
-}
-
-.Header.start > div > a {
-    transition: filter 100ms ease;
-}
-
-.Header > div > a {
-    transition: filter 100ms ease 300ms;
-}
-
-.Header.up > div > a,
-.Header.down > div > a {
-  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(867%)
-    hue-rotate(150deg) brightness(88%) contrast(101%);
-}
-
-.Header.up,
-.Header.down {
+.Header.light {
   background: var(--color-brand-extra-light-teal);
 }
 
-.Header.down {
-  transform: translateY(-100%);
-}
-
-.Header.up .Nav > a,
-.Header.down .Nav > a {
+.Header.light .Nav > a {
   color: var(--color-text-primary);
 }
 
-.Header .Nav > a {
-  transition: color 100ms ease 300ms;
-}
-
-.Header.start .Nav > a {
-  transition: color 100ms ease;
+.Logo {
+  z-index: calc(var(--header-z-index) + 1);
 }
 
 .Content {
+  position: relative;
   padding: 0 var(--header-horizontal-margin);
   width: 100vw;
   max-width: var(--content-max-width);
@@ -79,22 +42,26 @@
 
 @media only screen and (max-width: 750px) {
   .Nav {
-    position: fixed;
+    position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100vw;
-    height: 100vh;
-    background: var(--color-text-primary);
+    background: var(--color-brand-dark-teal);
     flex-direction: column;
     padding: var(--page-margin);
-    padding-top: 4.5rem;
+    padding-bottom: 3rem;
+    padding-top: calc(var(--header-height) + 3rem);
     gap: 2rem;
     overflow: hidden;
-    transition: all 0.2s ease-out;
+    transition: all 300ms ease-in-out;
+  }
+
+  .Header.light .Nav {
+    background: var(--color-brand-extra-light-teal);
   }
 
   .Nav > a {
-    transition: all 0.2s ease;
+    transition: all 300ms ease;
     font-weight: 600;
   }
 
@@ -108,13 +75,13 @@
   }
 
   .Nav.show > a {
-    transition-delay: 0.2s;
+    transition-delay: 300ms;
     opacity: 1;
   }
 
   .Nav.hide {
-    width: 0;
-    padding-left: 0;
-    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transform: translateY(-100%);
   }
 }

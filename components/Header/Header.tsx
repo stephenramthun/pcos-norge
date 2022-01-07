@@ -6,54 +6,28 @@ import styles from "./Header.module.css"
 import { Logo } from "../Logo"
 import { Link } from "./Link"
 import { HamburgerMenu } from "./HamburgerMenu"
-import { useOnScroll } from "../../hooks/useOnScroll"
-
-type ScrollState = "start" | "down" | "up"
-
-const useScrollState = (): ScrollState => {
-  const [state, setState] = useState<ScrollState>("start")
-
-  useOnScroll({
-    delay: 100,
-    callback: (current, previous) => {
-      if (current <= 0) {
-        setState("start")
-      } else if (current > previous) {
-        setState("down")
-      } else {
-        setState("up")
-      }
-    },
-  })
-
-  return state
-}
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: "transparent" | "opaque"
+  variant?: "light" | "dark"
 }
 
 export const Header: React.VFC<HeaderProps> = ({
-  variant = "opaque",
+  variant = "dark",
   className,
   ...headerProps
 }) => {
   const [showNav, setShowNav] = useState(false)
 
-  const scrollState = useScrollState()
-
   return (
     <header
       id="header"
-      className={classNames(
-        styles.Header,
-        styles[scrollState],
-        styles[variant],
-        className,
-      )}
+      className={classNames(styles.Header, styles[variant], className)}
     >
       <div className={classNames(styles.Content)}>
-        <Logo variant={variant === "transparent" ? "dark" : "light"} />
+        <Logo
+          variant={variant === "light" ? "dark" : "light"}
+          className={styles.Logo}
+        />
         <nav
           className={classNames(
             styles.Nav,
@@ -65,7 +39,10 @@ export const Header: React.VFC<HeaderProps> = ({
           <Link href="/aktuelt">Aktuelt</Link>
           <Link href="/bli-medlem">Bli medlem</Link>
         </nav>
-        <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
+        <HamburgerMenu
+          variant={variant === "light" ? "dark" : "light"}
+          onClick={() => setShowNav((prevState) => !prevState)}
+        />
       </div>
     </header>
   )

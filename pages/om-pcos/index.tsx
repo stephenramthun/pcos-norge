@@ -17,8 +17,8 @@ const OmPcos: NextPage = () => {
   return (
     <PageContainer>
       <Head />
+      <Header variant="light" />
       <HeroImage />
-      <Header variant="transparent" />
       <Content className={styles.Breadcrumbs}>
         <Breadcrumbs
           links={[
