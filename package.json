@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sanity": "npm run --prefix ./studio start"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",

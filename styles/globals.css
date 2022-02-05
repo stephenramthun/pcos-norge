@@ -42,11 +42,11 @@ p {
   --font-family-primary: "IBM Plex Sans", sans-serif;
   --font-size-buttons: 1rem;
   --font-size-body: 1.125rem;
-  --font-size-title-small: 1.125rem;
-  --font-size-title-medium: 1.5rem;
+  --font-size-title-small: 1.5rem;
+  --font-size-title-medium: 2.5rem;
   --font-size-title-medium-large: 3rem;
-  --font-size-title-large: 4.5rem;
-  --font-size-details: 0.8rem;
+  --font-size-title-large: 4rem;
+  --font-size-details: 1rem;
   --line-height-body: 2rem;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
@@ -59,7 +59,7 @@ p {
   --header-height: 110px;
   --content-max-width: 1220px;
   --header-z-index: 10000;
-  --padding-horizontal: calc(max((100vw - var(--content-max-width)) / 2, 0px) + var(--page-margin));
+  --padding-horizontal: calc(max((100vw - var(--content-max-width)) / 2, var(--page-margin)));
 }
 
 @media only screen and (max-width: 1250px) {

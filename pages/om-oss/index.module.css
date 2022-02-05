@@ -28,14 +28,6 @@
   padding: 4rem;
   width: max-content;
   max-width: 900px;
-  margin-top: -10rem;
-}
-
-.Breadcrumbs {
-  position: absolute;
-  background: none !important;
-  top: var(--header-height);
-  padding-top: 0 !important;
 }
 
 .PersonCards {

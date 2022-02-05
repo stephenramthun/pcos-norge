@@ -9,7 +9,3 @@
     font-size: var(--font-size-body);
     color: var(--color-text-primary);
 }
-
-.Breadcrumbs > a:hover {
-    text-decoration: underline;
-}

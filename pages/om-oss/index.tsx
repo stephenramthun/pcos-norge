@@ -6,7 +6,6 @@ import styles from "./index.module.css"
 import { PageContainer } from "../../components/PageContainer"
 import { Header } from "../../components/Header"
 import { Head } from "../../components/Head"
-import { HeroImage } from "../../components/HeroImage"
 import { Content } from "../../components/Content"
 import { Body } from "../../components/Body"
 import { Heading } from "../../components/Heading"
@@ -18,7 +17,6 @@ const OmPcos: NextPage = () => {
   return (
     <PageContainer>
       <Head />
-      <HeroImage />
       <Header variant="light" />
       <Content className={styles.Breadcrumbs}>
         <Breadcrumbs

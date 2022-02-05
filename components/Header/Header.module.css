@@ -8,6 +8,8 @@
   justify-content: center;
   z-index: var(--header-z-index);
   background: var(--color-brand-teal);
+  padding-left: var(--header-horizontal-margin);
+  padding-right: var(--header-horizontal-margin);
 }
 
 .Header.light {
@@ -24,7 +26,6 @@
 
 .Content {
   position: relative;
-  padding: 0 var(--header-horizontal-margin);
   width: 100vw;
   max-width: var(--content-max-width);
   display: flex;

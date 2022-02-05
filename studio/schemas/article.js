@@ -9,11 +9,6 @@ export const article = {
       type: "string",
     },
     {
-      name: "ingress",
-      title: "Ingress",
-      type: "string",
-    },
-    {
       name: "body",
       title: "Body",
       type: "blockContent",
@@ -31,6 +26,11 @@ export const article = {
       name: "published",
       title: "Published",
       type: "datetime",
+    },
+    {
+      name: "image",
+      title: "Image",
+      type: "image",
     },
   ],
 }

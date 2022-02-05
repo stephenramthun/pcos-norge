@@ -28,13 +28,6 @@ export const Hero: React.VFC<HeroProps> = ({ text }) => {
           <ArrowDown weight="bold" />
         </button>
       </div>
-      <img
-        alt="Kvinne som sitter smilende med beina i kryss"
-        src="/hero-image.svg"
-        width={500}
-        height={500}
-        className={styles.HeroImage}
-      />
     </Content>
   )
 }

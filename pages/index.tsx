@@ -21,8 +21,8 @@ interface HomeProps {
   articles: {
     slug: string
     title: string
-    ingress: string
     published: string
+    imageUrl: string
   }[]
 }
 
@@ -70,13 +70,13 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => (
           <div className={styles.Cards}>
             {articles.map((it) => (
               <article key={it.slug} className={styles.Card}>
+                <img alt="" src={`${it.imageUrl}?h=400`} />
                 <Body suppressHydrationWarning className={styles.Date}>
                   {new Date(it.published).toLocaleDateString()}
                 </Body>
                 <Heading tag="h3" size="small">
                   {it.title}
                 </Heading>
-                <Body>{it.ingress}</Body>
                 <Link href={`/aktuelt/${it.slug}`}>Les mer</Link>
               </article>
             ))}
@@ -96,8 +96,8 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       "hero": *[_type == "hero"][0].text,
       "articles": *[_type == "article"] | order(published desc) {
         title,
-        ingress,
         "slug": slug.current,
+        "imageUrl": image.asset->url,
         published
       }
     }
