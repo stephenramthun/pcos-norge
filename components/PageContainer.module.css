@@ -1,5 +1,7 @@
 .PageContainer {
     min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
     padding: 0;
     display: flex;
     flex-direction: column;
