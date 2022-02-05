@@ -1,8 +1,10 @@
-import styles from "./Hero.module.css"
-import { Heading } from "../../components/Heading"
-import { Content } from "../../components/Content"
 import React from "react"
 import { ArrowDown } from "phosphor-react"
+
+import { Heading } from "@components/Heading"
+import { Content } from "@components/Content"
+
+import styles from "./Hero.module.css"
 
 interface HeroProps {
   text: string

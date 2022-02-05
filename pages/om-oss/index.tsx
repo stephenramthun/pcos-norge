@@ -1,17 +1,17 @@
 import React from "react"
 import { NextPage } from "next"
 
-import styles from "./index.module.css"
+import { Head } from "@components/Head"
+import { Body } from "@components/Body"
+import { Header } from "@components/Header"
+import { Footer } from "@components/Footer"
+import { Content } from "@components/Content"
+import { Heading } from "@components/Heading"
+import { PersonCard } from "@components/PersonCard"
+import { Breadcrumbs } from "@components/Breadcrumbs"
+import { PageContainer } from "@components/PageContainer"
 
-import { PageContainer } from "../../components/PageContainer"
-import { Header } from "../../components/Header"
-import { Head } from "../../components/Head"
-import { Content } from "../../components/Content"
-import { Body } from "../../components/Body"
-import { Heading } from "../../components/Heading"
-import { Footer } from "../../components/Footer"
-import { Breadcrumbs } from "../../components/Breadcrumbs"
-import { PersonCard } from "../../components/PersonCard"
+import styles from "./index.module.css"
 
 const OmPcos: NextPage = () => {
   return (

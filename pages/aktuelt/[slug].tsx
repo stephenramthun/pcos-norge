@@ -10,17 +10,17 @@ import BlockContent from "@sanity/block-content-to-react"
 
 import { client } from "../../config/sanity"
 
-import styles from "./[slug].module.css"
+import { Body } from "@components/Body"
+import { Head } from "@components/Head"
+import { Main } from "@components/Main"
+import { Footer } from "@components/Footer"
+import { Header } from "@components/Header"
+import { Content } from "@components/Content"
+import { Heading } from "@components/Heading"
+import { Breadcrumbs } from "@components/Breadcrumbs"
+import { PageContainer } from "@components/PageContainer"
 
-import { PageContainer } from "../../components/PageContainer"
-import { Head } from "../../components/Head"
-import { Main } from "../../components/Main"
-import { Footer } from "../../components/Footer"
-import { Header } from "../../components/Header"
-import { Content } from "../../components/Content"
-import { Heading } from "../../components/Heading"
-import { Body } from "../../components/Body"
-import { Breadcrumbs } from "../../components/Breadcrumbs"
+import styles from "./[slug].module.css"
 
 const serializers = {
   types: {

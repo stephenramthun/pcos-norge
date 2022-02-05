@@ -1,20 +1,21 @@
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import React from "react"
 
-import styles from "./index.module.css"
-
 import { client } from "../config/sanity"
 
-import { Header } from "../components/Header"
-import { Heading } from "../components/Heading"
-import { Content } from "../components/Content"
-import { Body } from "../components/Body"
-import { Link } from "../components/Link"
-import { Footer } from "../components/Footer"
-import { Head } from "../components/Head"
-import { PageContainer } from "../components/PageContainer"
-import { Main } from "../components/Main"
-import { Hero } from "../modules/frontPage/Hero"
+import { Hero } from "@modules/frontPage"
+
+import { Body } from "@components/Body"
+import { Link } from "@components/Link"
+import { Head } from "@components/Head"
+import { Main } from "@components/Main"
+import { Header } from "@components/Header"
+import { Footer } from "@components/Footer"
+import { Heading } from "@components/Heading"
+import { Content } from "@components/Content"
+import { PageContainer } from "@components/PageContainer"
+
+import styles from "./index.module.css"
 
 interface HomeProps {
   hero: string
