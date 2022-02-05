@@ -3,7 +3,7 @@
     height: max-content;
     padding: 4rem 0;
     display: flex;
-    background: var(--color-text-primary);
+    background: var(--color-brand-dark-teal);
 }
 
 @media only screen and (max-width: 750px) {
@@ -20,7 +20,7 @@
 .Content {
     display: flex;
     flex-direction: column;
-    background: transparent;
+    background: var(--color-brand-dark-teal) !important;
 }
 
 .Details {
