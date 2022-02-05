@@ -1,17 +1,13 @@
 .SlideMenu {
-    --slide-menu-width: 400px;
     position: fixed;
-    top: 0;
-    right: 0;
     z-index: 99;
     transform: translateX(100%);
     transition: all 0.2s ease-in-out;
-    width: var(--slide-menu-width);
+    width: 100vw;
 }
 
 .SlideMenu > ul {
     list-style: none;
-    padding: 8rem var(--page-margin);
     margin: 0;
     background: var(--color-text-primary);
     height: 100vh;
@@ -38,10 +34,4 @@
 
 .Link > svg {
     align-self: center;
-}
-
-@media only screen and (max-width: 800px) {
-    .SlideMenu {
-        --slide-menu-width: 100vw;
-    }
 }

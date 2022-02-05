@@ -47,6 +47,8 @@
     top: 0;
     left: 0;
     width: 100vw;
+    margin-left: calc(var(--page-margin) * -1);
+    margin-right: calc(var(--page-margin) * -1);
     background: var(--color-brand-dark-teal);
     flex-direction: column;
     padding: var(--page-margin);
