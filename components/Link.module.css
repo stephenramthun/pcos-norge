@@ -1,5 +1,6 @@
 .Link {
-    color: var(--color-brand-light-red);
+    position: relative;
+    color: var(--color-brand-teal);
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
     display: flex;
@@ -11,15 +12,29 @@
     width: max-content;
 }
 
+.Link:before {
+    content: "";
+    height: 2px;
+    background: var(--color-brand-light-red);
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    left: 0;
+}
+
 .Link > svg {
     align-self: flex-end;
-    margin-left: 0.5rem;
+    margin-left: 0.25rem;
     transition: transform 0.1s ease-in-out;
+}
+
+.Link:focus-visible {
+    outline: var(--outline);
 }
 
 .Link.right:hover > svg,
 .Link.right:focus-visible > svg {
-    transform: translateX(0.5rem);
+    transform: translateX(0.25rem);
 }
 
 .Link.down:hover > svg,

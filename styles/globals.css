@@ -35,6 +35,8 @@ p {
   --color-text-primary: var(--color-brand-dark-teal);
   --color-text-heading: var(--color-text-primary);
 
+  --outline: 2px solid var(--color-brand-light-red);
+
   /*Text*/
   --font-family-primary: "IBM Plex Sans", sans-serif;
   --font-size-buttons: 1rem;

@@ -30,5 +30,5 @@
 }
 
 .Link:focus-visible {
-    outline: var(--color-brand-light-red) solid 2px;
+    outline: var(--outline);
 }
