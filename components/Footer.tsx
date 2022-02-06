@@ -12,7 +12,7 @@ export const Footer = () => (
     <Content className={styles.Content}>
       <div className={styles.Details}>
         <div>
-          <Logo className={styles.Logo} />
+          <Logo variant="light" className={styles.Logo} />
           <span>
             <Body>Epost:</Body>
             <Body>post@pcosnorge.no</Body>
