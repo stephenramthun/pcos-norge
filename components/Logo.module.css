@@ -4,6 +4,11 @@
   align-items: center;
   flex-wrap: nowrap;
   gap: 0.5rem;
+  width: max-content;
+}
+
+.Logo:focus-visible {
+  outline: var(--outline);
 }
 
 .Logo > img {

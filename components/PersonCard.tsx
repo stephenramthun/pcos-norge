@@ -1,12 +1,11 @@
 import React, { HTMLAttributes } from "react"
 import classNames from "classnames"
 
-import styles from "./PersonCard.module.css"
 import { Link } from "./Link"
 
-import avatar from "../public/avatar.svg"
+import styles from "./PersonCard.module.css"
 
-console.log(avatar)
+import avatar from "@public/avatar.svg"
 
 type PersonCardProps = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   name: string
