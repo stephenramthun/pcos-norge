@@ -25,18 +25,15 @@ p {
   --color-brand-teal: #116773;
   --color-brand-extra-light-teal: #effcff;
   --color-brand-orange: #feb17c;
-  --color-brand-light-red: #c96978;
+  --color-brand-light-red: #E54961;
   --color-brand-dark-red: #6b283e;
 
   --color-background-primary: #ffffff;
   --color-background-secondary: #effcff;
   --color-accent-primary: #116773;
-  --color-accent-secondary: #c96978;
+  --color-accent-secondary: var(--color-brand-light-red);
   --color-text-primary: var(--color-brand-dark-teal);
   --color-text-heading: var(--color-text-primary);
-  --color-interaction-light: #ff9dac;
-  --color-interaction-dark: #c96978;
-
 
   /*Text*/
   --font-family-primary: "IBM Plex Sans", sans-serif;

@@ -1,14 +1,12 @@
 import React, { HTMLAttributes, useState } from "react"
 import classNames from "classnames"
-import styles from "./HamburgerMenu.module.css"
 import { List } from "phosphor-react"
 
-type HamburgerMenuProps = Childless<HTMLAttributes<HTMLButtonElement>> & {
-  variant?: "light" | "dark"
-}
+import styles from "./HamburgerMenu.module.css"
+
+type HamburgerMenuProps = Childless<HTMLAttributes<HTMLButtonElement>> & {}
 
 export const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
-  variant = "light",
   className,
   onClick,
   ...buttonProps
@@ -24,7 +22,6 @@ export const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
     <button
       className={classNames(
         styles.HamburgerMenu,
-        styles[variant],
         open && styles.active,
         className,
       )}

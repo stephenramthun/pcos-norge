@@ -13,13 +13,6 @@
 
 .HamburgerMenu > svg > line {
   transition: all 0.1s ease;
-}
-
-.HamburgerMenu.light > svg > line {
-  stroke: var(--color-brand-extra-light-teal);
-}
-
-.HamburgerMenu.dark > svg > line {
   stroke: var(--color-brand-dark-teal);
 }
 

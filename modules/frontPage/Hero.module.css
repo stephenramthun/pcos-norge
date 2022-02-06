@@ -1,5 +1,5 @@
 .Hero {
-    background-color: var(--color-accent-primary);
+    background-color: var(--color-brand-extra-light-teal);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,11 +13,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.5rem;
-}
-
-.HeroText > h1 {
-    color: var(--color-background-secondary);
+    gap: 2rem;
 }
 
 @media only screen and (max-width: 1250px) {
@@ -43,43 +39,4 @@
         height: max-content;
         margin: 0;
     }
-}
-
-.ScrollButton {
-    background: none;
-    border: none;
-    width: max-content;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: var(--font-size-body);
-    font-family: inherit;
-    color: var(--color-background-secondary);
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    cursor: pointer;
-}
-
-.ScrollButton:before {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    background: var(--color-accent-secondary);
-    bottom: -2px;
-    left: 0;
-    transition: opacity 200ms;
-}
-
-.ScrollButton > svg {
-    transition: transform 200ms;
-}
-
-.ScrollButton:hover > svg {
-    transform: translateY(5px);
-}
-
-.ScrollButton:hover:before {
-    opacity: 0;
 }

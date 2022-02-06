@@ -1,7 +1,22 @@
-import React from 'react';
+import React from "react"
+import classNames from "classnames"
 
-export const LinkButton = () => {
+import styles from "./LinkButton.module.css"
+
+interface LinkButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export const LinkButton: React.FC<LinkButtonProps> = ({
+  children,
+  className,
+  ...buttonProps
+}) => {
   return (
-    <div/>
-  );
-};
+    <button
+      className={classNames(styles.LinkButton, className)}
+      {...buttonProps}
+    >
+      {children}
+    </button>
+  )
+}

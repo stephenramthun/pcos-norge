@@ -3,24 +3,12 @@ import classNames from "classnames"
 
 import styles from "./Logo.module.css"
 
-import logo from "../public/logo.svg"
-import logoDark from "../public/logo-dark.svg"
+import logo from "../public/logo-dark.svg"
 
-type LogoProps = Omit<React.HTMLAttributes<HTMLAnchorElement>, "children"> & {
-  variant?: "light" | "dark"
-}
+type LogoProps = Omit<React.HTMLAttributes<HTMLAnchorElement>, "children"> & {}
 
-export const Logo: React.VFC<LogoProps> = ({
-  variant = "light",
-  className,
-  ...anchorProps
-}) => (
+export const Logo: React.VFC<LogoProps> = ({ className, ...anchorProps }) => (
   <a href="/" className={classNames(styles.Logo, className)}>
-    <img
-      width={133}
-      height={25}
-      alt="Logo PCOS Norge"
-      src={variant === "light" ? logo.src : logoDark.src}
-    />
+    <img width={133} height={25} alt="Logo PCOS Norge" src={logo.src} />
   </a>
 )

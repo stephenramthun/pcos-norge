@@ -7,27 +7,18 @@ import { Logo } from "../Logo"
 import { Link } from "./Link"
 import { HamburgerMenu } from "./HamburgerMenu"
 
-interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: "light" | "dark"
-}
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
 export const Header: React.VFC<HeaderProps> = ({
-  variant = "dark",
   className,
   ...headerProps
 }) => {
   const [showNav, setShowNav] = useState(false)
 
   return (
-    <header
-      id="header"
-      className={classNames(styles.Header, styles[variant], className)}
-    >
+    <header id="header" className={classNames(styles.Header, className)}>
       <div className={classNames(styles.Content)}>
-        <Logo
-          variant={variant === "light" ? "dark" : "light"}
-          className={styles.Logo}
-        />
+        <Logo className={styles.Logo} />
         <nav
           className={classNames(
             styles.Nav,
@@ -39,10 +30,7 @@ export const Header: React.VFC<HeaderProps> = ({
           <Link href="/aktuelt">Aktuelt</Link>
           <Link href="/bli-medlem">Bli medlem</Link>
         </nav>
-        <HamburgerMenu
-          variant={variant === "light" ? "dark" : "light"}
-          onClick={() => setShowNav((prevState) => !prevState)}
-        />
+        <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
       </div>
     </header>
   )
