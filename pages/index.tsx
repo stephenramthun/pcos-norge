@@ -13,6 +13,7 @@ import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
 import { Heading } from "@components/Heading"
 import { Content } from "@components/Content"
+import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 
 import styles from "./index.module.css"
@@ -70,16 +71,13 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => (
           </Heading>
           <div className={styles.Cards}>
             {articles.map((it) => (
-              <article key={it.slug} className={styles.Card}>
-                <img alt="" src={`${it.imageUrl}?h=400`} />
-                <Body suppressHydrationWarning className={styles.Date}>
-                  {new Date(it.published).toLocaleDateString()}
-                </Body>
-                <Heading tag="h3" size="small">
-                  {it.title}
-                </Heading>
-                <Link href={`/aktuelt/${it.slug}`}>Les mer</Link>
-              </article>
+              <ArticleCard
+                key={it.slug}
+                slug={it.slug}
+                title={it.title}
+                imageUrl={it.imageUrl}
+                published={new Date(it.published)}
+              />
             ))}
           </div>
         </article>

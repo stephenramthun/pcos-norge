@@ -1,0 +1,17 @@
+.ArticleCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ArticleCard > img {
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+.Date {
+    font-size: var(--font-size-details) !important;
+    font-weight: var(--font-weight-regular);
+}

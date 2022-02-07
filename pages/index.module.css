@@ -16,24 +16,17 @@
 }
 
 .Cards {
-  height: 600px;
   display: flex;
-  overflow-x: scroll;
   gap: 5rem;
+  width: 100vw;
+  overflow-x: scroll;
+  margin-left: calc(var(--page-margin) * -1);
+  padding-left: var(--page-margin);
+  padding-bottom: 1rem;
 }
 
-.Card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 400px;
-  max-height: 400px;
-}
-
-.Date {
-  font-size: var(--font-size-details) !important;
-  font-weight: var(--font-weight-regular);
+.Cards > a:last-of-type {
+  padding-right: var(--page-margin);
 }
 
 @media only screen and (max-width: 750px) {

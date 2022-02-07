@@ -1,0 +1,11 @@
+.Section {
+    background: var(--color-brand-extra-light-teal);
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.CardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
