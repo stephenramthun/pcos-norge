@@ -10,14 +10,14 @@ import { Heading } from "@components/Heading"
 import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
 
-import styles from "./index.module.css"
+import styles from "./omPcos.module.css"
 
 const OmPcos: NextPage = () => {
   return (
     <PageContainer>
       <Head />
       <Header />
-      <Content className={styles.Breadcrumbs}>
+      <Content>
         <Breadcrumbs
           links={[
             { label: "Forside", href: "/" },
