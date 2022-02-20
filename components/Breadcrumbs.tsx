@@ -1,9 +1,10 @@
 import React from "react"
 import classNames from "classnames"
+import { CaretRight } from "phosphor-react"
+
+import { Link } from "./Header/Link"
 
 import styles from "./Breadcrumbs.module.css"
-import { CaretRight } from "phosphor-react"
-import { Link } from "./Header/Link"
 
 type LinkObject = {
   href: string
