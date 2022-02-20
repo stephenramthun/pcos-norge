@@ -10,7 +10,7 @@
     "sanity": "npm run --prefix ./studio start"
   },
   "dependencies": {
-    "@sanity/block-content-to-react": "^3.0.0",
+    "@portabletext/react": "^1.0.3",
     "@sanity/client": "^2.21.0",
     "classnames": "^2.2.6",
     "next": "^11.1.3",

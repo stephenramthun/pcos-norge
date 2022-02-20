@@ -9,9 +9,14 @@ export const article = {
       type: "string",
     },
     {
+      name: "ingress",
+      title: "Ingress",
+      type: "string",
+    },
+    {
       name: "body",
       title: "Body",
-      type: "blockContent",
+      type: "richText",
     },
     {
       name: "slug",
@@ -26,6 +31,7 @@ export const article = {
       name: "published",
       title: "Published",
       type: "datetime",
+      initialValue: new Date().toISOString(),
     },
     {
       name: "image",

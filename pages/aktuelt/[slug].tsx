@@ -5,8 +5,9 @@ import type {
   GetStaticPropsResult,
   NextPage,
 } from "next"
-// @ts-ignore
-import BlockContent from "@sanity/block-content-to-react"
+import type { PortableTextBlock } from "@portabletext/types"
+
+import { PortableText } from "@portabletext/react"
 
 import { client } from "../../config/sanity"
 
@@ -36,41 +37,43 @@ interface ArticleProps {
   article: {
     title: string
     published: string
-    body: object[]
+    body: Array<PortableTextBlock>
     slug: string
   }
 }
 
-const Article: NextPage<ArticleProps> = (props) => (
-  <PageContainer>
-    <Head />
-    <Header />
-    <Main>
-      <Content className={styles.BreadCrumbs}>
-        <Breadcrumbs
-          links={[
-            { href: "/", label: "Hjem" },
-            { href: "/aktuelt", label: "Aktuelt" },
-            {
-              href: `/aktuelt/${props.article.slug}`,
-              label: props.article.title,
-            },
-          ]}
-        />
-      </Content>
-      <Content className={styles.Section}>
-        <Heading tag="h2" size="medium">
-          {props.article.title}
-        </Heading>
-        <Body suppressHydrationWarning>
-          {new Date(props.article.published).toLocaleDateString()}
-        </Body>
-        <BlockContent blocks={props.article.body} serializers={serializers} />
-      </Content>
-    </Main>
-    <Footer />
-  </PageContainer>
-)
+const Article: NextPage<ArticleProps> = (props) => {
+  return (
+    <PageContainer>
+      <Head />
+      <Header />
+      <Main>
+        <Content className={styles.BreadCrumbs}>
+          <Breadcrumbs
+            links={[
+              { href: "/", label: "Hjem" },
+              { href: "/aktuelt", label: "Aktuelt" },
+              {
+                href: `/aktuelt/${props.article.slug}`,
+                label: props.article.title,
+              },
+            ]}
+          />
+        </Content>
+        <Content className={styles.Section}>
+          <Heading tag="h2" size="medium">
+            {props.article.title}
+          </Heading>
+          <Body suppressHydrationWarning>
+            {new Date(props.article.published).toLocaleDateString()}
+          </Body>
+          <PortableText value={props.article.body} />
+        </Content>
+      </Main>
+      <Footer />
+    </PageContainer>
+  )
+}
 
 export const getStaticProps: GetStaticProps = async ({
   params,
