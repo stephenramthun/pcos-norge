@@ -27,6 +27,8 @@ p {
   --color-brand-orange: #feb17c;
   --color-brand-light-red: #E54961;
   --color-brand-dark-red: #6b283e;
+  --color-brand-blue: #0c145c;
+  --color-brand-green: #69C9AA;
 
   --color-background-primary: #ffffff;
   --color-background-secondary: #effcff;
@@ -59,6 +61,7 @@ p {
   --content-max-width: 1220px;
   --header-z-index: 10000;
   --padding-horizontal: calc(max((100vw - var(--content-max-width)) / 2, var(--page-margin)));
+  --text-max-width: 750px;
 }
 
 @media only screen and (max-width: 1250px) {

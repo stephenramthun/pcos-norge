@@ -2,8 +2,36 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.Heading {
+    margin-bottom: 1.5rem;
+}
+
+.Published {
+    margin-bottom: 4rem;
 }
 
 .BreadCrumbs {
     padding-top: 2rem;
+}
+
+.ArticleContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+}
+
+.Image {
+    width: 100% !important;
+    margin-bottom: 4rem;
+}
+
+.Text {
+    max-width: var(--text-max-width);
+    align-self: flex-end;
 }

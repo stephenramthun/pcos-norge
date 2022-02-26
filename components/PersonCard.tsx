@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react"
 import classNames from "classnames"
 
-import { Link } from "./Link"
+import { ArrowLink } from "./ArrowLink"
 
 import styles from "./PersonCard.module.css"
 
@@ -27,9 +27,9 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
     <p>{capacity}</p>
     <p>{name}</p>
     {link && (
-      <Link href={link} arrow="right" className={styles.Link}>
+      <ArrowLink href={link} arrow="right" className={styles.Link}>
         Les mer
-      </Link>
+      </ArrowLink>
     )}
   </div>
 )

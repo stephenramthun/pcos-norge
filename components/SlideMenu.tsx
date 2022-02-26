@@ -2,7 +2,7 @@ import React from "react"
 
 import styles from "./SlideMenu.module.css"
 import * as classNames from "classnames"
-import { Link } from "./Link"
+import { ArrowLink } from "./ArrowLink"
 
 interface SlideMenu
   extends Omit<React.HTMLAttributes<HTMLElement>, "children"> {
@@ -20,24 +20,24 @@ export const SlideMenu: React.VFC<SlideMenu> = ({
   >
     <ul>
       <li>
-        <Link className={styles.Link} href="/">
+        <ArrowLink className={styles.Link} href="/">
           Om PCOS
-        </Link>
+        </ArrowLink>
       </li>
       <li>
-        <Link className={styles.Link} href="/">
+        <ArrowLink className={styles.Link} href="/">
           Om oss
-        </Link>
+        </ArrowLink>
       </li>
       <li>
-        <Link className={styles.Link} href="/">
+        <ArrowLink className={styles.Link} href="/">
           Aktuelt
-        </Link>
+        </ArrowLink>
       </li>
       <li>
-        <Link className={styles.Link} href="/">
+        <ArrowLink className={styles.Link} href="/">
           Bli medlem
-        </Link>
+        </ArrowLink>
       </li>
     </ul>
   </nav>

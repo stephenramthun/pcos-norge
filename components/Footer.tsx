@@ -1,11 +1,11 @@
 import React from "react"
+import Link from "next/link"
 
 import styles from "./Footer.module.css"
 
-import { Content } from "./Content"
 import { Logo } from "./Logo"
 import { Body } from "./Body"
-import { Link } from "./Link"
+import { Content } from "./Content"
 
 export const Footer = () => (
   <footer className={styles.Footer}>
@@ -24,17 +24,16 @@ export const Footer = () => (
         </div>
         <div className={styles.LinkGrid}>
           <Link href="/om-oss">Om oss</Link>
-          <Link href="/støtt-oss">Støtt oss</Link>
           <Link href="/personvern">Personvern</Link>
-          <Link href="/personvern">Bli medlem</Link>
-          <Link href="/personvern">Presse</Link>
-          <Link href="/personvern">Aktuelt</Link>
+          <Link href="/presse">Presse</Link>
+          <Link href="/aktuelt">Aktuelt</Link>
         </div>
         <div className={styles.Description}>
           <Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
-            parturient pellentesque platea vulputate sed ut pellentesque
-            pulvinar.
+            PCOS Norge skal jobbe for mer synlighet, normalisering og
+            oppmerksomhet rundt diagnosen blant folk flest og i media. Vi skal
+            bidra til å enkelt tilgjengeliggjøre oppdatert og forskningsbasert
+            informasjon om syndromet og sørge for bedre kunnskap i helsevesenet.
           </Body>
         </div>
       </div>

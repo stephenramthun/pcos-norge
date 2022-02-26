@@ -6,7 +6,7 @@ import { client } from "../config/sanity"
 import { Hero } from "@modules/frontPage"
 
 import { Body } from "@components/Body"
-import { Link } from "@components/Link"
+import { ArrowLink } from "@components/ArrowLink"
 import { Head } from "@components/Head"
 import { Main } from "@components/Main"
 import { Header } from "@components/Header"
@@ -47,11 +47,11 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => (
             quam nisi. Auctor posuere facilisis neque, scelerisque ac habitant.
             Aliquam praesent pellentesque in et sem vel interdum.
           </Body>
-          <Link href="/">Les mer</Link>
+          <ArrowLink href="/">Les mer</ArrowLink>
         </article>
         <article>
           <Heading tag="h2" size="medium">
-            Støtt oss
+            Om foreningen
           </Heading>
           <Body>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
@@ -61,7 +61,7 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => (
             quam nisi. Auctor posuere facilisis neque, scelerisque ac habitant.
             Aliquam praesent pellentesque in et sem vel interdum.
           </Body>
-          <Link href="/">Bli medlem</Link>
+          <ArrowLink href="/">Les mer</ArrowLink>
         </article>
       </Content>
       <Content className={styles.Section}>

@@ -1,5 +1,5 @@
 import React from "react"
-import { NextPage } from "next"
+import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 
 import { Head } from "@components/Head"
 import { Body } from "@components/Body"
@@ -11,8 +11,15 @@ import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
 
 import styles from "./omPcos.module.css"
+import { client } from "../../config/sanity"
+import { PortableTextBlock } from "@portabletext/types"
 
-const OmPcos: NextPage = () => {
+interface OmPcosProps {
+  body: Array<PortableTextBlock>
+}
+
+const OmPcos: NextPage<OmPcosProps> = ({ body }) => {
+  console.log(body)
   return (
     <PageContainer>
       <Head />
@@ -91,6 +98,20 @@ const OmPcos: NextPage = () => {
       <Footer />
     </PageContainer>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<OmPcosProps>
+> => {
+  const props = await client.fetch(`
+    { 
+      "body": *[_type == "omPcos"][0].body
+    }
+  `)
+
+  return {
+    props: props,
+  }
 }
 
 export default OmPcos

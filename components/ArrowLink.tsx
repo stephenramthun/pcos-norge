@@ -2,16 +2,16 @@ import React from "react"
 import classNames from "classnames"
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "phosphor-react"
 
-import styles from "./Link.module.css"
+import styles from "./ArrowLink.module.css"
 
 type Direction = "up" | "right" | "down" | "left"
 
-interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
+interface ArrowLinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
   href: string
   arrow?: Direction
 }
 
-export const Link: React.FC<LinkProps> = ({
+export const ArrowLink: React.FC<ArrowLinkProps> = ({
   className,
   children,
   arrow = "right",
@@ -33,7 +33,7 @@ export const Link: React.FC<LinkProps> = ({
           return <ArrowDown weight="bold" size={size} />
         case "left":
           return <ArrowLeft weight="bold" size={size} />
-        case undefined:
+        default:
           return null
       }
     })()}
