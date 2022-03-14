@@ -21,8 +21,8 @@ p {
 
 :root {
   /*Colors*/
-  --color-brand-dark-teal: #2F5061;
-  --color-brand-teal: #2F5061;
+  --color-brand-dark-teal: #1e505f;
+  --color-brand-teal: #2f7e95;
   --color-brand-extra-light-teal: #effcff;
   --color-brand-orange: #feb17c;
   --color-brand-light-red: #E54961;
@@ -37,7 +37,7 @@ p {
   --color-text-primary: var(--color-brand-dark-teal);
   --color-text-heading: var(--color-text-primary);
 
-  --outline: 2px solid var(--color-brand-light-red);
+  --outline: 2px solid var(--color-brand-teal);
 
   /*Text*/
   --font-family-primary: "IBM Plex Sans", sans-serif;
@@ -49,6 +49,7 @@ p {
   --font-size-title-large: 4rem;
   --font-size-details: 1rem;
   --line-height-body: 2rem;
+  --line-height-details: 1.75rem;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;

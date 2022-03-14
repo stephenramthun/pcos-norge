@@ -1,0 +1,22 @@
+.ReferenceLinkSummary {
+    color: var(--color-brand-light-red);
+    font-size: var(--font-size-details);
+    line-height: var(--line-height-details);
+    width: max-content;
+}
+
+.ReferenceLinkSummary > ol {
+    padding: 0;
+    margin: 0 0 0 2rem;
+}
+
+.ReferenceLinkSummary a {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.ReferenceLinkSummary a:focus {
+    outline: none;
+    outline: var(--outline);
+}

@@ -1,8 +1,8 @@
 import React from "react"
 import classNames from "classnames"
+import { useRouter } from "next/router"
 
 import styles from "./Link.module.css"
-import { useRouter } from "next/router"
 
 const isActive = (pathname: string, href: string): boolean => {
   return pathname.split("/").pop() === href.split("/").pop()

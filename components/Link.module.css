@@ -1,0 +1,12 @@
+.Link {
+    color: var(--color-brand-light-red);
+    text-decoration: underline;
+}
+
+.Link:hover, .Link:focus-visible {
+    text-decoration: none;
+}
+
+.Link:visited {
+    color: var(--color-brand-dark-red);
+}

@@ -1,25 +1,71 @@
 import React from "react"
-import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
+import classNames from "classnames"
+import { PortableText, PortableTextReactComponents } from "@portabletext/react"
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
+import type { PortableTextBlock } from "@portabletext/types"
 
 import { Head } from "@components/Head"
 import { Body } from "@components/Body"
+import { Link } from "@components/Link"
 import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
 import { Content } from "@components/Content"
 import { Heading } from "@components/Heading"
 import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
+import {
+  useReferenceLinks,
+  UseReferenceLinksResult,
+} from "@hooks/useReferenceLinks"
+
+import { client } from "../../config/sanity"
 
 import styles from "./omPcos.module.css"
-import { client } from "../../config/sanity"
-import { PortableTextBlock } from "@portabletext/types"
+import { ReferenceLinkSummary } from "@components/ReferenceLinkSummary"
+
+const getPortableTextComponents = (
+  referenceLinks: UseReferenceLinksResult,
+): Partial<PortableTextReactComponents> => ({
+  block: {
+    h1: ({ children }) => (
+      <div className={styles.HeroText}>
+        <Heading size="medium-large" tag="h1">
+          {children}
+        </Heading>
+      </div>
+    ),
+    h2: ({ children }) => (
+      <Heading className={styles.Content} tag="h2" size="small">
+        {children}
+      </Heading>
+    ),
+    normal: ({ children }) => (
+      <Body className={classNames(styles.Content, styles.Body)}>
+        {children}
+      </Body>
+    ),
+  },
+  marks: {
+    link: ({ children, value }) => {
+      return <Link href={value.href}>{children}</Link>
+    },
+    referenceLink: ({ children, value }) => {
+      return (
+        <a href={`#${value._key}`} className={styles.Link}>
+          <sup>[{referenceLinks[value._key]?.index}]</sup>
+        </a>
+      )
+    },
+  },
+})
 
 interface OmPcosProps {
   body: Array<PortableTextBlock>
 }
 
 const OmPcos: NextPage<OmPcosProps> = ({ body }) => {
-  console.log(body)
+  const referenceLinks = useReferenceLinks(body)
+
   return (
     <PageContainer>
       <Head />
@@ -32,68 +78,15 @@ const OmPcos: NextPage<OmPcosProps> = ({ body }) => {
           ]}
         />
       </Content>
-      <div className={styles.HeroText}>
-        <Heading size="medium-large" tag="h1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Heading>
-      </div>
-      <Content className={styles.Section}>
-        <article>
-          <Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et
-            sagittis metus. Vestibulum efficitur consequat ipsum, vitae
-            efficitur sapien elementum ut. Nullam in nulla in felis ullamcorper
-            cursus. Quisque iaculis ultricies massa et viverra. Orci varius
-            natoque penatibus et magnis dis parturient montes, nascetur
-            ridiculus mus. Cras vel velit nisl. Duis bibendum aliquam sem quis
-            posuere.
-          </Body>
-          <Body>
-            Pellentesque vel tortor condimentum, feugiat nulla vel, faucibus
-            neque. Cras quis lectus elit. Donec vitae tincidunt risus.
-            Pellentesque felis sapien, semper sit amet eros faucibus, aliquet
-            ultricies est. Donec mi erat, convallis at accumsan nec, lobortis
-            non dolor. Morbi non feugiat est, sit amet pulvinar ipsum. Proin leo
-            odio, tincidunt at lectus eget, tincidunt posuere purus. Orci varius
-            natoque penatibus et magnis dis parturient montes, nascetur
-            ridiculus mus. Proin bibendum ut mi ac pharetra. Etiam facilisis sem
-            vitae malesuada sagittis. Vestibulum suscipit sit amet augue sed
-            iaculis. Ut sit amet dui quis dui semper tempus efficitur ultrices
-            leo. Suspendisse potenti. Maecenas quis venenatis quam.
-          </Body>
-          <Body>
-            Praesent placerat egestas pretium. Donec sodales luctus est, eu
-            molestie tortor molestie vel. Nam faucibus felis vel urna iaculis
-            ultrices a in erat. In ut massa at ex mattis tempus. Vivamus
-            hendrerit ex mauris, quis varius sem pulvinar in. Mauris consequat,
-            ligula ac finibus dictum, diam orci bibendum justo, vitae eleifend
-            justo turpis a elit. Nunc blandit vestibulum gravida. Sed id mi et
-            dui interdum facilisis. In congue luctus risus in eleifend. Nullam
-            ultrices nulla sed consequat sagittis. Vestibulum molestie pretium
-            nisi, ut tincidunt ligula semper non. Quisque tempus euismod dui,
-            non sollicitudin tortor aliquet eu.
-          </Body>
-          <Body>
-            Mauris et metus eget arcu elementum ullamcorper. Donec rutrum
-            lacinia ex et pretium. Nunc ullamcorper velit vitae fringilla
-            facilisis. Nunc nisi ipsum, commodo mollis leo nec, fermentum
-            pulvinar augue. Etiam nec mauris non neque posuere semper quis vel
-            sem. Sed ac nibh dignissim, euismod arcu non, tincidunt lacus. Nulla
-            felis mauris, condimentum eget tristique eget, sagittis nec neque.
-          </Body>
-          <Body>
-            Cras ut sem orci. Vivamus ultricies nisl massa, sed mollis libero
-            vehicula sit amet. Maecenas nec fringilla nibh. Pellentesque id ante
-            ut lectus tristique dictum id a nisi. Suspendisse dignissim nunc nec
-            dolor sagittis, at luctus mi iaculis. Curabitur tempor ligula in
-            ante mattis blandit. Integer a tristique sem. Nam gravida ipsum
-            ante, eget rhoncus neque ultricies ut. Cras aliquam nunc elit, vel
-            mattis quam aliquet a. Etiam a mattis lectus. Phasellus bibendum,
-            sem sit amet faucibus venenatis, neque massa ullamcorper velit, sit
-            amet auctor ipsum nisi ut arcu. Phasellus ultrices neque at erat
-            blandit auctor. Etiam maximus porttitor neque id pharetra.
-          </Body>
-        </article>
+      <Content className={styles.ArticleContent}>
+        <PortableText
+          value={body}
+          components={getPortableTextComponents(referenceLinks)}
+        />
+        <ReferenceLinkSummary
+          links={referenceLinks}
+          className={styles.LinkSummary}
+        />
       </Content>
       <Footer />
     </PageContainer>
