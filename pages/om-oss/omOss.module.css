@@ -1,7 +1,6 @@
 .Section {
   background: var(--color-brand-extra-light-teal);
   flex-direction: column;
-  align-items: flex-end;
 }
 
 .Section > article {
@@ -15,9 +14,6 @@
 .HeroText {
   position: relative;
   display: flex;
-  background: var(--color-brand-extra-light-teal);
-  padding-left: var(--padding-horizontal);
-  padding-right: var(--padding-horizontal);
   width: 100vw;
 }
 

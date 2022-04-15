@@ -49,7 +49,7 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => {
               quam nisi. Auctor posuere facilisis neque, scelerisque ac
               habitant. Aliquam praesent pellentesque in et sem vel interdum.
             </Body>
-            <ArrowLink href="/">Les mer</ArrowLink>
+            <ArrowLink href="/om-pcos">Les mer</ArrowLink>
           </article>
           <article>
             <Heading tag="h2" size="medium">
@@ -63,7 +63,7 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => {
               quam nisi. Auctor posuere facilisis neque, scelerisque ac
               habitant. Aliquam praesent pellentesque in et sem vel interdum.
             </Body>
-            <ArrowLink href="/">Les mer</ArrowLink>
+            <ArrowLink href="/om-oss">Les mer</ArrowLink>
           </article>
         </Content>
         <Content className={styles.Section}>

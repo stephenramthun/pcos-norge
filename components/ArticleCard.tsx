@@ -43,8 +43,12 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
           {title}
         </Heading>
         <ArrowLink href={`/aktuelt/${slug}`}>Les mer</ArrowLink>
-        <a href={`/aktuelt/${slug}`} className={styles.CardLink}>
-          slug
+        <a
+          href={`/aktuelt/${slug}`}
+          className={styles.CardLink}
+          aria-label={slug}
+        >
+          .
         </a>
       </article>
     </div>

@@ -1,5 +1,6 @@
 import React from "react"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
+import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 import { Head } from "@components/Head"
 import { Body } from "@components/Body"
@@ -20,7 +21,7 @@ interface AktueltProps {
     slug: string
     title: string
     published: string
-    imageUrl: string
+    image: SanityImageObject
   }[]
 }
 
@@ -61,7 +62,7 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles }) => {
             key={it.slug}
             slug={it.slug}
             title={it.title}
-            imageUrl={it.imageUrl}
+            image={it.image}
             published={new Date(it.published)}
           />
         ))}
@@ -79,7 +80,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       "articles": *[_type == "article"] | order(published desc) {
         title,
         "slug": slug.current,
-        "imageUrl": image.asset->url,
+        image,
         published
       }
     }

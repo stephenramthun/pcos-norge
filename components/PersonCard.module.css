@@ -10,44 +10,31 @@
   margin: 0;
 }
 
-.PersonCard > img {
+.PersonCard > span {
+  margin-bottom: 1rem !important;
+}
+
+.PersonCard img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  margin-bottom: 1rem;
 }
 
-.PersonCard > p {
+.Details {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.PersonCard > p:first-of-type {
-  font-size: var(--font-size-details);
-  margin-bottom: 0.5rem;
-}
-
-.PersonCard > p:nth-of-type(2) {
+.Name {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-semibold);
+  margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
-.Link {
-  position: relative;
-  margin-right: auto;
-  color: var(--color-brand-teal);
-}
-
-.Link:before {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: var(--color-brand-light-red);
-  bottom: -1px;
-  transition: opacity 100ms;
-}
-
-.Link:hover:before {
-  opacity: 0;
+.Capacity {
+  font-size: var(--font-size-details);
+  margin: 0 0 1rem;
 }

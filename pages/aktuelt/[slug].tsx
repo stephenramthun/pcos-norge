@@ -49,12 +49,11 @@ interface ArticleProps {
 const Article: NextPage<ArticleProps> = (props) => {
   const imageProps = useNextSanityImage(client, props.article.image)
 
-  console.log(imageProps)
   return (
     <PageContainer>
       <Head />
       <Header />
-      <Content className={styles.BreadCrumbs}>
+      <Content>
         <Breadcrumbs
           links={[
             { href: "/", label: "Hjem" },
