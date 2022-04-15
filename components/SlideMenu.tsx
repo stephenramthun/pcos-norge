@@ -15,7 +15,11 @@ export const SlideMenu: React.VFC<SlideMenu> = ({
   ...navProps
 }) => (
   <nav
-    className={classNames(styles.SlideMenu, expanded && styles.expanded)}
+    className={classNames(
+      styles.SlideMenu,
+      expanded && styles.expanded,
+      className,
+    )}
     {...navProps}
   >
     <ul>

@@ -13,6 +13,7 @@ import { Content } from "@components/Content"
 import { Heading } from "@components/Heading"
 import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
+import { ReferenceLinkSummary } from "@components/ReferenceLinkSummary"
 import {
   useReferenceLinks,
   UseReferenceLinksResult,
@@ -21,7 +22,6 @@ import {
 import { client } from "../../config/sanity"
 
 import styles from "./omPcos.module.css"
-import { ReferenceLinkSummary } from "@components/ReferenceLinkSummary"
 
 const getPortableTextComponents = (
   referenceLinks: UseReferenceLinksResult,
@@ -49,7 +49,7 @@ const getPortableTextComponents = (
     link: ({ children, value }) => {
       return <Link href={value.href}>{children}</Link>
     },
-    referenceLink: ({ children, value }) => {
+    referenceLink: ({ value }) => {
       return (
         <a href={`#${value._key}`} className={styles.Link}>
           <sup>[{referenceLinks[value._key]?.index}]</sup>

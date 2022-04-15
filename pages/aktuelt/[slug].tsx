@@ -1,3 +1,8 @@
+import Image from "next/image"
+import { useNextSanityImage } from "next-sanity-image"
+import { PortableText, PortableTextReactComponents } from "@portabletext/react"
+import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import type { PortableTextBlock } from "@portabletext/types"
 import type {
   GetStaticPaths,
   GetStaticPathsResult,
@@ -5,9 +10,6 @@ import type {
   GetStaticPropsResult,
   NextPage,
 } from "next"
-import type { PortableTextBlock } from "@portabletext/types"
-
-import { PortableText, PortableTextReactComponents } from "@portabletext/react"
 
 import { client } from "../../config/sanity"
 
@@ -40,11 +42,14 @@ interface ArticleProps {
     published: string
     body: Array<PortableTextBlock>
     slug: string
-    imageUrl: string
+    image: SanityImageObject
   }
 }
 
 const Article: NextPage<ArticleProps> = (props) => {
+  const imageProps = useNextSanityImage(client, props.article.image)
+
+  console.log(imageProps)
   return (
     <PageContainer>
       <Head />
@@ -68,11 +73,9 @@ const Article: NextPage<ArticleProps> = (props) => {
         <Body className={styles.Published} suppressHydrationWarning>
           {new Date(props.article.published).toLocaleDateString()}
         </Body>
-        <img
-          className={styles.Image}
-          alt=""
-          src={`${props.article.imageUrl}`}
-        />
+        <div className={styles.ImageContainer}>
+          <Image {...imageProps} alt="" layout="responsive" />
+        </div>
         <div className={styles.ArticleContent}>
           <PortableText
             value={props.article.body}
@@ -94,7 +97,7 @@ export const getStaticProps: GetStaticProps = async ({
       title,
       body,
       published,
-      "imageUrl": image.asset->url
+      image
     }
   `,
     { slug: params?.slug },

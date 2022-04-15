@@ -16,7 +16,11 @@ export const Header: React.VFC<HeaderProps> = ({
   const [showNav, setShowNav] = useState(false)
 
   return (
-    <header id="header" className={classNames(styles.Header, className)}>
+    <header
+      id="header"
+      className={classNames(styles.Header, className)}
+      {...headerProps}
+    >
       <div className={classNames(styles.Content)}>
         <Logo className={styles.Logo} />
         <nav

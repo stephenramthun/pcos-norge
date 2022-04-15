@@ -1,29 +1,41 @@
 import React from "react"
+import Image from "next/image"
+import { useNextSanityImage } from "next-sanity-image"
+import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 import { Body } from "@components/Body"
 import { Heading } from "@components/Heading"
 import { ArrowLink } from "@components/ArrowLink"
+
+import { client } from "../config/sanity"
 
 import styles from "./ArticleCard.module.css"
 
 interface ArticleCardProps extends React.AnchorHTMLAttributes<HTMLDivElement> {
   slug: string
   title: string
-  imageUrl: string
+  image: SanityImageObject
   published: Date
 }
 
 export const ArticleCard: React.VFC<ArticleCardProps> = ({
   slug,
   title,
-  imageUrl,
+  image,
   published,
   ...divProps
 }) => {
+  const imageProps = useNextSanityImage(client, image, {
+    imageBuilder: (imageUrlBuilder, options) =>
+      imageUrlBuilder.width(options.width || 400).quality(100),
+  })
+
   return (
     <div {...divProps}>
       <article key={slug} className={styles.ArticleCard}>
-        <img alt="" src={`${imageUrl}?h=400`} />
+        <div className={styles.ImageContainer}>
+          <Image {...imageProps} alt="" layout="intrinsic" unoptimized />
+        </div>
         <Body suppressHydrationWarning className={styles.Date}>
           {new Date(published).toLocaleDateString()}
         </Body>
@@ -31,7 +43,9 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
           {title}
         </Heading>
         <ArrowLink href={`/aktuelt/${slug}`}>Les mer</ArrowLink>
-        <a href={`/aktuelt/${slug}`} className={styles.CardLink} />
+        <a href={`/aktuelt/${slug}`} className={styles.CardLink}>
+          slug
+        </a>
       </article>
     </div>
   )

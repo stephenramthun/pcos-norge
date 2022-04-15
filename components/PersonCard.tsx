@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from "react"
 import classNames from "classnames"
+import Image from "next/image"
 
 import { ArrowLink } from "./ArrowLink"
 
@@ -22,8 +23,8 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
   className,
   ...divProps
 }) => (
-  <div className={classNames(styles.PersonCard)} {...divProps}>
-    <img alt={`${name}, ${capacity}`} src={imageSrc ?? avatar.src} />
+  <div className={classNames(styles.PersonCard, className)} {...divProps}>
+    <Image alt={`${name}, ${capacity}`} src={imageSrc ?? avatar.src} />
     <p>{capacity}</p>
     <p>{name}</p>
     {link && (

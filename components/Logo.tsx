@@ -1,5 +1,7 @@
 import React from "react"
 import classNames from "classnames"
+import Link from "next/link"
+import Image from "next/image"
 
 import styles from "./Logo.module.css"
 
@@ -15,12 +17,14 @@ export const Logo: React.VFC<LogoProps> = ({
   className,
   ...anchorProps
 }) => (
-  <a href="/" className={classNames(styles.Logo, className)}>
-    <img
-      width={133}
-      height={25}
-      alt="Logo PCOS Norge"
-      src={variant === "light" ? logoLight.src : logoDark.src}
-    />
-  </a>
+  <Link href="/">
+    <a className={classNames(styles.Logo, className)} {...anchorProps}>
+      <Image
+        width={133}
+        height={25}
+        alt="Logo PCOS Norge"
+        src={variant === "light" ? logoLight.src : logoDark.src}
+      />
+    </a>
+  </Link>
 )

@@ -7,7 +7,7 @@ import { Logo } from "./Logo"
 import { Body } from "./Body"
 import { Content } from "./Content"
 
-export const Footer = () => (
+export const Footer: React.VFC = () => (
   <footer className={styles.Footer}>
     <Content className={styles.Content}>
       <div className={styles.Details}>

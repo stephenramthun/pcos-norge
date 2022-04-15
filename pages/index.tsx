@@ -1,5 +1,6 @@
-import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import React from "react"
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
+import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 import { client } from "../config/sanity"
 
@@ -24,68 +25,70 @@ interface HomeProps {
     slug: string
     title: string
     published: string
-    imageUrl: string
+    image: SanityImageObject
   }[]
 }
 
-const Home: NextPage<HomeProps> = ({ hero, articles }) => (
-  <PageContainer>
-    <Head />
-    <Header />
-    <Main>
-      <Hero text={hero} />
-      <Content className={styles.Section} id="about">
-        <article>
-          <Heading tag="h2" size="medium">
-            Om PCOS
-          </Heading>
-          <Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
-            parturient pellentesque platea vulputate sed ut pellentesque
-            pulvinar. Rutrum facilisis in tellus nulla a eget pulvinar risus
-            amet. Semper nisi, diam odio sollicitudin. Sagittis, quis enim sed
-            quam nisi. Auctor posuere facilisis neque, scelerisque ac habitant.
-            Aliquam praesent pellentesque in et sem vel interdum.
-          </Body>
-          <ArrowLink href="/">Les mer</ArrowLink>
-        </article>
-        <article>
-          <Heading tag="h2" size="medium">
-            Om foreningen
-          </Heading>
-          <Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
-            parturient pellentesque platea vulputate sed ut pellentesque
-            pulvinar. Rutrum facilisis in tellus nulla a eget pulvinar risus
-            amet. Semper nisi, diam odio sollicitudin. Sagittis, quis enim sed
-            quam nisi. Auctor posuere facilisis neque, scelerisque ac habitant.
-            Aliquam praesent pellentesque in et sem vel interdum.
-          </Body>
-          <ArrowLink href="/">Les mer</ArrowLink>
-        </article>
-      </Content>
-      <Content className={styles.Section}>
-        <article>
-          <Heading tag="h2" size="medium">
-            Aktuelt
-          </Heading>
-          <div className={styles.Cards}>
-            {articles.map((it) => (
-              <ArticleCard
-                key={it.slug}
-                slug={it.slug}
-                title={it.title}
-                imageUrl={it.imageUrl}
-                published={new Date(it.published)}
-              />
-            ))}
-          </div>
-        </article>
-      </Content>
-    </Main>
-    <Footer />
-  </PageContainer>
-)
+const Home: NextPage<HomeProps> = ({ hero, articles }) => {
+  return (
+    <PageContainer>
+      <Head />
+      <Header />
+      <Main>
+        <Hero text={hero} />
+        <Content className={styles.Section} id="about">
+          <article>
+            <Heading tag="h2" size="medium">
+              Om PCOS
+            </Heading>
+            <Body>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
+              parturient pellentesque platea vulputate sed ut pellentesque
+              pulvinar. Rutrum facilisis in tellus nulla a eget pulvinar risus
+              amet. Semper nisi, diam odio sollicitudin. Sagittis, quis enim sed
+              quam nisi. Auctor posuere facilisis neque, scelerisque ac
+              habitant. Aliquam praesent pellentesque in et sem vel interdum.
+            </Body>
+            <ArrowLink href="/">Les mer</ArrowLink>
+          </article>
+          <article>
+            <Heading tag="h2" size="medium">
+              Om foreningen
+            </Heading>
+            <Body>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
+              parturient pellentesque platea vulputate sed ut pellentesque
+              pulvinar. Rutrum facilisis in tellus nulla a eget pulvinar risus
+              amet. Semper nisi, diam odio sollicitudin. Sagittis, quis enim sed
+              quam nisi. Auctor posuere facilisis neque, scelerisque ac
+              habitant. Aliquam praesent pellentesque in et sem vel interdum.
+            </Body>
+            <ArrowLink href="/">Les mer</ArrowLink>
+          </article>
+        </Content>
+        <Content className={styles.Section}>
+          <article>
+            <Heading tag="h2" size="medium">
+              Aktuelt
+            </Heading>
+            <div className={styles.Cards}>
+              {articles.map((it) => (
+                <ArticleCard
+                  key={it.slug}
+                  slug={it.slug}
+                  title={it.title}
+                  image={it.image}
+                  published={new Date(it.published)}
+                />
+              ))}
+            </div>
+          </article>
+        </Content>
+      </Main>
+      <Footer />
+    </PageContainer>
+  )
+}
 
 export const getStaticProps: GetStaticProps = async (): Promise<
   GetStaticPropsResult<HomeProps>
@@ -96,7 +99,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       "articles": *[_type == "article"] | order(published desc) {
         title,
         "slug": slug.current,
-        "imageUrl": image.asset->url,
+        image,
         published
       }
     }

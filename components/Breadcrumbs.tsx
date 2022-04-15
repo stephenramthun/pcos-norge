@@ -21,7 +21,7 @@ export const Breadcrumbs: React.VFC<BreadcrumbsProps> = ({
   links,
   ...divProps
 }) => (
-  <div className={classNames(styles.Breadcrumbs, className)}>
+  <div className={classNames(styles.Breadcrumbs, className)} {...divProps}>
     {links.map((link, i) => (
       <React.Fragment key={i}>
         <Link href={link.href}>{link.label}</Link>

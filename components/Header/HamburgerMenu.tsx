@@ -4,7 +4,8 @@ import { List } from "phosphor-react"
 
 import styles from "./HamburgerMenu.module.css"
 
-type HamburgerMenuProps = Childless<HTMLAttributes<HTMLButtonElement>> & {}
+interface HamburgerMenuProps
+  extends Childless<HTMLAttributes<HTMLButtonElement>> {}
 
 export const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
   className,
@@ -13,7 +14,7 @@ export const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
 }) => {
   const [open, setOpen] = useState(false)
 
-  const toggleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const toggleOpen = (event: React.MouseEvent<HTMLButtonElement>): void => {
     setOpen((prevState) => !prevState)
     onClick?.(event)
   }
