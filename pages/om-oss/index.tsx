@@ -46,7 +46,7 @@ const OmPcos: NextPage<OmPcosProps> = ({ body, people }) => {
       </Content>
       <Content className={styles.Section}>
         <Heading size="medium-large" tag="h1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Om oss
         </Heading>
         <article>
           <PortableText value={body} components={portableTextComponents} />
