@@ -42,26 +42,25 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => {
               Om PCOS
             </Heading>
             <Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
-              parturient pellentesque platea vulputate sed ut pellentesque
-              pulvinar. Rutrum facilisis in tellus nulla a eget pulvinar risus
-              amet. Semper nisi, diam odio sollicitudin. Sagittis, quis enim sed
-              quam nisi. Auctor posuere facilisis neque, scelerisque ac
-              habitant. Aliquam praesent pellentesque in et sem vel interdum.
+              Polycystisk ovariesyndrom (PCOS) er den vanligste endokrine
+              forstyrrelsen hos kvinner. Tilstanden rammer 10-15% av alle
+              kvinner og kan gi mange helseproblemer som følge av den hormonelle
+              ubalansen. Kvinner med PCOS kan ha et bredt symptombilde som følge
+              av høye androgennivåer, og syndromet kan påvirke det endokrine,
+              metabolsk, reproduktive og emosjonelle ved kvinnen.
             </Body>
             <ArrowLink href="/om-pcos">Les mer</ArrowLink>
           </article>
           <article>
             <Heading tag="h2" size="medium">
-              Om foreningen
+              Om oss
             </Heading>
             <Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
-              parturient pellentesque platea vulputate sed ut pellentesque
-              pulvinar. Rutrum facilisis in tellus nulla a eget pulvinar risus
-              amet. Semper nisi, diam odio sollicitudin. Sagittis, quis enim sed
-              quam nisi. Auctor posuere facilisis neque, scelerisque ac
-              habitant. Aliquam praesent pellentesque in et sem vel interdum.
+              PCOS Norge skal jobbe for mer synlighet, normalisering og
+              oppmerksomhet rundt diagnosen blant folk flest og i media. Vi skal
+              bidra til å enkelt tilgjengeliggjøre oppdatert og forskningsbasert
+              informasjon om syndromet og sørge for bedre kunnskap i
+              helsevesenet.
             </Body>
             <ArrowLink href="/om-oss">Les mer</ArrowLink>
           </article>
