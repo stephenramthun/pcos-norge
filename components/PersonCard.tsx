@@ -8,10 +8,12 @@ import { client } from "../config/sanity"
 
 import styles from "./PersonCard.module.css"
 
+import avatar from "../public/avatar.svg"
+
 type PersonCardProps = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   name: string
   capacity: string
-  image: SanityImageObject
+  image?: Maybe<SanityImageObject>
 }
 
 export const PersonCard: React.VFC<PersonCardProps> = ({
@@ -21,7 +23,7 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
   className,
   ...divProps
 }) => {
-  const imageProps = useNextSanityImage(client, image, {
+  const imageProps = useNextSanityImage(client, image ?? (avatar as string), {
     imageBuilder: (imageUrlBuilder, options) =>
       imageUrlBuilder.width(options.width || 400).quality(100),
   })
@@ -33,6 +35,9 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
         alt={`${name}, ${capacity}`}
         height={200}
         width={200}
+        src={imageProps?.src || avatar.src}
+        loader={imageProps?.loader || (({ src }) => src)}
+        unoptimized
       />
       <span className={styles.Details}>
         <p className={styles.Capacity}>{capacity}</p>

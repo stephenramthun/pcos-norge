@@ -12,6 +12,9 @@ export const person = {
       name: "picture",
       title: "Picture",
       type: "image",
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: "email",

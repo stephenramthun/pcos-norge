@@ -24,6 +24,8 @@ export const Logo: React.VFC<LogoProps> = ({
         height={25}
         alt="Logo PCOS Norge"
         src={variant === "light" ? logoLight.src : logoDark.src}
+        loader={({ src }) => src}
+        unoptimized
       />
     </a>
   </Link>
