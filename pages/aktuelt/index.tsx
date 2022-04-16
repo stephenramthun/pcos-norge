@@ -3,7 +3,6 @@ import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 import { Head } from "@components/Head"
-import { Body } from "@components/Body"
 import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
 import { Content } from "@components/Content"
@@ -43,19 +42,6 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles }) => {
           Aktuelt
         </Heading>
       </Content>
-      <Content>
-        <article>
-          <Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et
-            sagittis metus. Vestibulum efficitur consequat ipsum, vitae
-            efficitur sapien elementum ut. Nullam in nulla in felis ullamcorper
-            cursus. Quisque iaculis ultricies massa et viverra. Orci varius
-            natoque penatibus et magnis dis parturient montes, nascetur
-            ridiculus mus. Cras vel velit nisl. Duis bibendum aliquam sem quis
-            posuere.
-          </Body>
-        </article>
-      </Content>
       <Content className={styles.CardGrid}>
         {articles.map((it) => (
           <ArticleCard
@@ -64,6 +50,7 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles }) => {
             title={it.title}
             image={it.image}
             published={new Date(it.published)}
+            className={styles.Card}
           />
         ))}
       </Content>

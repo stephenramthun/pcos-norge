@@ -1,11 +1,36 @@
 .Section {
-    background: var(--color-brand-extra-light-teal);
-    flex-direction: column;
-    align-items: flex-end;
+  background: var(--color-brand-extra-light-teal);
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .CardGrid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  --cards-per-row: 3;
+  --gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(var(--cards-per-row), 1fr);
+  gap: 3rem;
 }
+
+.Card {
+  --gap-offset: calc(var(--gap) * (var(--cards-per-row) - 1));
+
+  max-width: calc(
+    (var(--content-max-width) - var(--gap-offset)) / var(--cards-per-row)
+  );
+}
+
+@media only screen and (max-width: 750px) {
+  .CardGrid {
+    --cards-per-row: 2;
+  }
+}
+
+
+
+@media only screen and (max-width: 450px) {
+  .CardGrid {
+    --cards-per-row: 1;
+  }
+}
+

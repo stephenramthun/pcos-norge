@@ -1,4 +1,5 @@
 import React from "react"
+import classNames from "classnames"
 import Image from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
 import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
@@ -11,7 +12,7 @@ import { client } from "../config/sanity"
 
 import styles from "./ArticleCard.module.css"
 
-interface ArticleCardProps extends React.AnchorHTMLAttributes<HTMLDivElement> {
+interface ArticleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   slug: string
   title: string
   image: SanityImageObject
@@ -23,6 +24,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
   title,
   image,
   published,
+  className,
   ...divProps
 }) => {
   const imageProps = useNextSanityImage(client, image, {
@@ -31,7 +33,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
   })
 
   return (
-    <div {...divProps}>
+    <div {...divProps} className={classNames(styles.Container, className)}>
       <article key={slug} className={styles.ArticleCard}>
         <div className={styles.ImageContainer}>
           <Image {...imageProps} alt="" layout="intrinsic" unoptimized />
