@@ -8,6 +8,7 @@
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
     font-family: var(--font-family-primary);
+    cursor: pointer;
 }
 
 .LinkButton:hover,

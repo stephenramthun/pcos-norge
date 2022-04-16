@@ -4,19 +4,16 @@ import classNames from "classnames"
 import styles from "./LinkButton.module.css"
 
 interface LinkButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {}
 
 export const LinkButton: React.FC<LinkButtonProps> = ({
   children,
   className,
-  ...buttonProps
+  ...anchorProps
 }) => {
   return (
-    <button
-      className={classNames(styles.LinkButton, className)}
-      {...buttonProps}
-    >
+    <a className={classNames(styles.LinkButton, className)} {...anchorProps}>
       {children}
-    </button>
+    </a>
   )
 }
