@@ -1,5 +1,4 @@
 import React from "react"
-import Link from "next/link"
 
 import styles from "./Footer.module.css"
 
@@ -21,12 +20,6 @@ export const Footer: React.VFC = () => (
             <Body>Org.nr:</Body>
             <Body>927 818 906</Body>
           </span>
-        </div>
-        <div className={styles.LinkGrid}>
-          <Link href="/om-oss">Om oss</Link>
-          <Link href="/personvern">Personvern</Link>
-          <Link href="/presse">Presse</Link>
-          <Link href="/aktuelt">Aktuelt</Link>
         </div>
         <div className={styles.Description}>
           <Body>
