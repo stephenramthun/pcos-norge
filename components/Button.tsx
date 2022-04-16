@@ -3,7 +3,7 @@ import classNames from "classnames"
 
 import styles from "./Button.module.css"
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "tertiary"
 }
 

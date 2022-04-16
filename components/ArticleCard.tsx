@@ -8,7 +8,7 @@ import { Body } from "@components/Body"
 import { Heading } from "@components/Heading"
 import { ArrowLink } from "@components/ArrowLink"
 
-import { client } from "../config/sanity"
+import { client } from "../io/sanity"
 
 import styles from "./ArticleCard.module.css"
 
@@ -49,6 +49,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
           href={`/aktuelt/${slug}`}
           className={styles.CardLink}
           aria-label={slug}
+          tabIndex={-1}
         >
           .
         </a>

@@ -1,30 +1,45 @@
-import React from "react"
+import React, { useState } from "react"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 import { Head } from "@components/Head"
 import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
+import { Button } from "@components/Button"
 import { Content } from "@components/Content"
 import { Heading } from "@components/Heading"
 import { Breadcrumbs } from "@components/Breadcrumbs"
 import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 
-import { client } from "../../config/sanity"
+import { fetchArticles } from "../../io/sanity"
 
 import styles from "./aktuelt.module.css"
 
+const articlesPerFetch = 6
+
 interface AktueltProps {
-  articles: {
-    slug: string
-    title: string
-    published: string
-    image: SanityImageObject
-  }[]
+  articles: Array<Article>
+  remainingArticles: number
 }
 
-const Aktuelt: NextPage<AktueltProps> = ({ articles }) => {
+const Aktuelt: NextPage<AktueltProps> = ({ articles, remainingArticles }) => {
+  const [state, setState] = useState<AktueltProps>({
+    articles,
+    remainingArticles,
+  })
+
+  const fetchMoreArticles = async (): Promise<void> => {
+    const { articles, remainingArticles } = await fetchArticles({
+      from: state.articles.length,
+      count: articlesPerFetch,
+    })
+
+    setState((prevState) => ({
+      articles: [...prevState.articles, ...articles],
+      remainingArticles,
+    }))
+  }
+
   return (
     <PageContainer>
       <Head />
@@ -43,7 +58,7 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles }) => {
         </Heading>
       </Content>
       <Content className={styles.CardGrid}>
-        {articles.map((it) => (
+        {state.articles.map((it) => (
           <ArticleCard
             key={it.slug}
             slug={it.slug}
@@ -54,6 +69,14 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles }) => {
           />
         ))}
       </Content>
+      {state.remainingArticles > 0 && (
+        <Content className={styles.FetchMoreContainer}>
+          <Button onClick={fetchMoreArticles}>
+            Hent {Math.min(state.remainingArticles, articlesPerFetch)} flere
+            saker
+          </Button>
+        </Content>
+      )}
       <Footer />
     </PageContainer>
   )
@@ -62,19 +85,13 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles }) => {
 export const getStaticProps: GetStaticProps = async (): Promise<
   GetStaticPropsResult<AktueltProps>
 > => {
-  const props = await client.fetch(`
-    { 
-      "articles": *[_type == "article"] | order(published desc) {
-        title,
-        "slug": slug.current,
-        image,
-        published
-      }
-    }
-  `)
+  const props = await fetchArticles({
+    from: 0,
+    count: articlesPerFetch,
+  })
 
   return {
-    props: props,
+    props,
   }
 }
 

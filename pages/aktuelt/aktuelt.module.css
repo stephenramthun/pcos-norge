@@ -26,11 +26,13 @@
   }
 }
 
-
-
 @media only screen and (max-width: 450px) {
   .CardGrid {
     --cards-per-row: 1;
   }
 }
 
+.FetchMoreContainer {
+  padding-top: 0;
+  justify-content: center;
+}

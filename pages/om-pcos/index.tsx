@@ -13,7 +13,7 @@ import { ReferenceLinkSummary } from "@components/ReferenceLinkSummary"
 import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
 import { useReferenceLinks } from "@hooks/useReferenceLinks"
 
-import { client } from "../../config/sanity"
+import { client } from "../../io/sanity"
 
 import styles from "./omPcos.module.css"
 

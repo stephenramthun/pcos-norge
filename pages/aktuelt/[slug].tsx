@@ -11,7 +11,7 @@ import type {
   NextPage,
 } from "next"
 
-import { client } from "../../config/sanity"
+import { client } from "../../io/sanity"
 
 import { Body } from "@components/Body"
 import { Head } from "@components/Head"

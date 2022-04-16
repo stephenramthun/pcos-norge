@@ -14,7 +14,7 @@ import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
 import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
 
-import { client } from "../../config/sanity"
+import { client } from "../../io/sanity"
 
 import styles from "./omOss.module.css"
 

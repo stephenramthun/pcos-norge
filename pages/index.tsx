@@ -2,7 +2,7 @@ import React from "react"
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
-import { client } from "../config/sanity"
+import { client } from "../io/sanity"
 
 import { Hero } from "@modules/frontPage"
 
