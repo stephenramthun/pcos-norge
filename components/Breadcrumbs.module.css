@@ -1,11 +1,19 @@
 .Breadcrumbs {
+    --gap: 0.5rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: var(--gap);
 }
 
-.Breadcrumbs > a {
+.Breadcrumbs a {
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-body);
     color: var(--color-text-primary);
+}
+
+.Breadcrumbs span {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
 }

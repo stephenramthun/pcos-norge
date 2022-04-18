@@ -24,8 +24,10 @@ export const Breadcrumbs: React.VFC<BreadcrumbsProps> = ({
   <div className={classNames(styles.Breadcrumbs, className)} {...divProps}>
     {links.map((link, i) => (
       <React.Fragment key={i}>
-        <Link href={link.href}>{link.label}</Link>
-        {i !== links.length - 1 && <CaretRight />}
+        <span>
+          <Link href={link.href}>{link.label}</Link>
+          {i !== links.length - 1 && <CaretRight />}
+        </span>
       </React.Fragment>
     ))}
   </div>

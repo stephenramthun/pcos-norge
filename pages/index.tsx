@@ -1,6 +1,5 @@
 import React from "react"
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 import { client } from "../io/sanity"
 
@@ -21,12 +20,7 @@ import styles from "./index.module.css"
 
 interface HomeProps {
   hero: string
-  articles: {
-    slug: string
-    title: string
-    published: string
-    image: SanityImageObject
-  }[]
+  articles: Array<Article>
 }
 
 const Home: NextPage<HomeProps> = ({ hero, articles }) => {
