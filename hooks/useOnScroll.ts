@@ -7,7 +7,7 @@ type UseOnScrollOptions = {
   delay?: number
 }
 
-const getScrollY = () => {
+const getScrollY = (): number => {
   if (typeof window !== "undefined") {
     return window.scrollY
   } else {
@@ -23,7 +23,7 @@ export const useOnScroll = ({
   const ticking = useRef(false)
 
   useEffect(() => {
-    const eventHandler = (event: Event) => {
+    const eventHandler = (): void => {
       lastVerticalScrollPosition.current = getScrollY()
 
       if (!ticking.current) {
@@ -44,5 +44,5 @@ export const useOnScroll = ({
     return () => {
       document.removeEventListener("scroll", eventHandler)
     }
-  }, [])
+  }, [callback, delay])
 }
