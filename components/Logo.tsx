@@ -16,17 +16,19 @@ export const Logo: React.VFC<LogoProps> = ({
   variant = "dark",
   className,
   ...anchorProps
-}) => (
-  <Link href="/">
-    <a className={classNames(styles.Logo, className)} {...anchorProps}>
-      <Image
-        width={133}
-        height={25}
-        alt="Logo PCOS Norge"
-        src={variant === "light" ? logoLight.src : logoDark.src}
-        loader={({ src }) => src}
-        unoptimized
-      />
-    </a>
-  </Link>
-)
+}) => {
+  return (
+    <Link href="/">
+      <a className={classNames(styles.Logo, className)} {...anchorProps}>
+        <Image
+          alt="Logo PCOS Norge"
+          src={variant === "light" ? logoLight.src : logoDark.src}
+          loader={({ src }) => src}
+          layout="fill"
+          className={styles.Image}
+          unoptimized
+        />
+      </a>
+    </Link>
+  )
+}
