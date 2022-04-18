@@ -39,7 +39,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
           <Image {...imageProps} alt="" layout="intrinsic" unoptimized />
         </div>
         <Body suppressHydrationWarning className={styles.Date}>
-          {new Date(published).toLocaleDateString()}
+          {published.toLocaleDateString()}
         </Body>
         <Heading tag="h3" size="small">
           {title}
