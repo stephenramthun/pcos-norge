@@ -5,4 +5,5 @@ module.exports = {
     loader: "custom",
     domains: ["cdn.sanity.io"],
   },
+  productionBrowserSourceMaps: true,
 }

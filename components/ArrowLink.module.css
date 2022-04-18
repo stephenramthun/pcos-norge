@@ -1,6 +1,6 @@
 .Link {
     position: relative;
-    color: var(--color-brand-teal);
+    color: var(--color-brand-dark-teal);
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
     display: flex;
