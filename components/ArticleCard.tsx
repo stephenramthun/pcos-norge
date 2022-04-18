@@ -11,6 +11,7 @@ import { ArrowLink } from "@components/ArrowLink"
 import { client } from "../io/sanity"
 
 import styles from "./ArticleCard.module.css"
+import { useLocaleDateString } from "@hooks/useLocaleDateString"
 
 interface ArticleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   slug: string
@@ -32,14 +33,16 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
       imageUrlBuilder.width(options.width || 400).quality(100),
   })
 
+  const date = useLocaleDateString(published)
+
   return (
     <div {...divProps} className={classNames(styles.Container, className)}>
       <article key={slug} className={styles.ArticleCard}>
         <div className={styles.ImageContainer}>
-          <Image {...imageProps} alt="" layout="intrinsic" unoptimized />
+          <Image {...imageProps} alt="" unoptimized />
         </div>
         <Body suppressHydrationWarning className={styles.Date}>
-          {published.toLocaleDateString()}
+          {date}
         </Body>
         <Heading tag="h3" size="small">
           {title}

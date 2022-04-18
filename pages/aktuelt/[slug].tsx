@@ -24,6 +24,7 @@ import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
 
 import styles from "./[slug].module.css"
+import { useLocaleDateString } from "@hooks/useLocaleDateString"
 
 const articleComponents: Partial<PortableTextReactComponents> = {
   types: {
@@ -49,6 +50,8 @@ interface ArticleProps {
 const Article: NextPage<ArticleProps> = (props) => {
   const imageProps = useNextSanityImage(client, props.article.image)
 
+  const date = useLocaleDateString(new Date(props.article.published))
+
   return (
     <PageContainer>
       <Head />
@@ -69,8 +72,8 @@ const Article: NextPage<ArticleProps> = (props) => {
         <Heading className={styles.Heading} tag="h2" size="medium">
           {props.article.title}
         </Heading>
-        <Body className={styles.Published} suppressHydrationWarning>
-          {new Date(props.article.published).toLocaleDateString()}
+        <Body suppressHydrationWarning className={styles.Published}>
+          {date}
         </Body>
         <div className={styles.ImageContainer}>
           <Image {...imageProps} alt="" layout="responsive" />
