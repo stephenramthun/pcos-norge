@@ -38,12 +38,7 @@
     outline: var(--outline);
 }
 
-.Link.right:hover > svg,
-.Link.right:focus-visible > svg {
+.Link:hover > svg,
+.Link:focus-visible > svg {
     transform: translateX(0.25rem);
-}
-
-.Link.down:hover > svg,
-.Link.down:focus-visible > svg {
-    transform: translateY(0.25rem);
 }
