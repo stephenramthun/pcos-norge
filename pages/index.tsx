@@ -71,13 +71,14 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => {
               Aktuelt
             </Heading>
             <div className={styles.Cards}>
-              {articles.map((it) => (
+              {[...articles, ...articles].map((it, i) => (
                 <ArticleCard
-                  key={it.slug}
+                  key={it.slug + i}
                   slug={it.slug}
                   title={it.title}
                   image={it.image}
                   published={new Date(it.published)}
+                  className={styles.Card}
                 />
               ))}
             </div>

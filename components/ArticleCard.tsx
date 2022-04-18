@@ -50,9 +50,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
           className={styles.CardLink}
           aria-label={slug}
           tabIndex={-1}
-        >
-          .
-        </a>
+        />
       </article>
     </div>
   )
