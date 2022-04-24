@@ -1,11 +1,10 @@
 import React from "react"
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
+import { PortableTextBlock } from "@portabletext/types"
 
 import { client } from "../io/sanity"
 
 import { Hero } from "@modules/frontPage"
-
-import { Body } from "@components/Body"
 import { Head } from "@components/Head"
 import { Main } from "@components/Main"
 import { Header } from "@components/Header"
@@ -15,15 +14,19 @@ import { Content } from "@components/Content"
 import { ArrowLink } from "@components/ArrowLink"
 import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
+import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
 
 import styles from "./index.module.css"
+import { PortableText } from "@portabletext/react"
 
 interface HomeProps {
   hero: string
   articles: Array<Article>
+  omOss: PortableTextBlock
+  omPcos: PortableTextBlock
 }
 
-const Home: NextPage<HomeProps> = ({ hero, articles }) => {
+const Home: NextPage<HomeProps> = ({ hero, articles, omOss, omPcos }) => {
   return (
     <PageContainer>
       <Head />
@@ -35,27 +38,20 @@ const Home: NextPage<HomeProps> = ({ hero, articles }) => {
             <Heading tag="h2" size="medium">
               Om PCOS
             </Heading>
-            <Body>
-              Polycystisk ovariesyndrom (PCOS) er den vanligste endokrine
-              forstyrrelsen hos kvinner. Tilstanden rammer 10-15% av alle
-              kvinner og kan gi mange helseproblemer som følge av den hormonelle
-              ubalansen. Kvinner med PCOS kan ha et bredt symptombilde som følge
-              av høye androgennivåer, og syndromet kan påvirke det endokrine,
-              metabolsk, reproduktive og emosjonelle ved kvinnen.
-            </Body>
+            <PortableText
+              value={omPcos}
+              components={usePortableTextComponents([omPcos])}
+            />
             <ArrowLink href="/om-pcos">Les mer</ArrowLink>
           </article>
           <article>
             <Heading tag="h2" size="medium">
               Om oss
             </Heading>
-            <Body>
-              PCOS Norge skal jobbe for mer synlighet, normalisering og
-              oppmerksomhet rundt diagnosen blant folk flest og i media. Vi skal
-              bidra til å enkelt tilgjengeliggjøre oppdatert og forskningsbasert
-              informasjon om syndromet og sørge for bedre kunnskap i
-              helsevesenet.
-            </Body>
+            <PortableText
+              value={omOss}
+              components={usePortableTextComponents([omOss])}
+            />
             <ArrowLink href="/om-oss">Les mer</ArrowLink>
           </article>
         </Content>
@@ -95,7 +91,9 @@ export const getStaticProps: GetStaticProps = async (): Promise<
         "slug": slug.current,
         image,
         published
-      }
+      },
+      "omOss": *[_type == "omOss"][0].body[0],
+      "omPcos": *[_type == "omPcos"][0].body[1]
     }
   `)
 
