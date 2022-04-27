@@ -36,13 +36,13 @@ const Home: NextPage<HomeProps> = ({ hero, articles, omOss, omPcos }) => {
         <Content className={styles.Section} id="about">
           <article>
             <Heading tag="h2" size="medium">
-              Om PCOS
+              Hva er PCOS
             </Heading>
             <PortableText
               value={omPcos}
               components={usePortableTextComponents([omPcos])}
             />
-            <ArrowLink href="/om-pcos">Les mer</ArrowLink>
+            <ArrowLink href="/hva-er-pcos">Les mer</ArrowLink>
           </article>
           <article>
             <Heading tag="h2" size="medium">

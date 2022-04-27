@@ -28,3 +28,14 @@
 .Link:focus-visible, .Link:focus {
     outline: var(--outline);
 }
+
+.List {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body);
+    margin: 0 0 2rem;
+}
+
+.List > li {
+    max-width: var(--text-max-width);
+    line-height: var(--line-height-body);
+}

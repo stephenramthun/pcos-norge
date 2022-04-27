@@ -16,23 +16,37 @@ export const usePortableTextComponents = (
   const referenceLinks = useReferenceLinks(body)
   return {
     block: {
-      h1: ({ children }) => (
-        <div className={styles.HeroText}>
-          <Heading size="medium-large" tag="h1">
+      h1: ({ children }) => {
+        return (
+          <div className={styles.HeroText}>
+            <Heading size="medium-large" tag="h1">
+              {children}
+            </Heading>
+          </div>
+        )
+      },
+      h2: ({ children }) => {
+        return (
+          <Heading className={styles.Content} tag="h2" size="small">
             {children}
           </Heading>
-        </div>
-      ),
-      h2: ({ children }) => (
-        <Heading className={styles.Content} tag="h2" size="small">
-          {children}
-        </Heading>
-      ),
-      normal: ({ children }) => (
-        <Body className={classNames(styles.Content, styles.Body)}>
-          {children}
-        </Body>
-      ),
+        )
+      },
+      normal: ({ children }) => {
+        return (
+          <Body className={classNames(styles.Content, styles.Body)}>
+            {children}
+          </Body>
+        )
+      },
+    },
+    list: {
+      bullet: ({ children }) => {
+        return <ul className={styles.List}>{children}</ul>
+      },
+      number: ({ children }) => {
+        return <ol className={styles.List}>{children}</ol>
+      },
     },
     marks: {
       link: ({ children, value }) => {

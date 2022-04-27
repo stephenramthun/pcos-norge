@@ -17,7 +17,7 @@ export const Hero: React.VFC<HeroProps> = ({ text }) => {
         <Heading tag="h1" size="large">
           {text}
         </Heading>
-        <LinkButton href="/om-pcos">Les mer</LinkButton>
+        <LinkButton href="/hva-er-pcos">Les mer</LinkButton>
       </div>
     </Content>
   )

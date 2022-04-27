@@ -25,7 +25,7 @@ export const SlideMenu: React.VFC<SlideMenu> = ({
     <ul>
       <li>
         <ArrowLink className={styles.Link} href="/">
-          Om PCOS
+          Hva er PCOS
         </ArrowLink>
       </li>
       <li>

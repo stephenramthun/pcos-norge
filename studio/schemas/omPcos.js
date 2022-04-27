@@ -1,6 +1,6 @@
 export const omPcos = {
   name: "omPcos",
-  title: "Om PCOS",
+  title: "Hva er PCOS",
   type: "document",
   fields: [
     {

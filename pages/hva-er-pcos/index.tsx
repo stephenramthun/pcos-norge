@@ -15,13 +15,13 @@ import { useReferenceLinks } from "@hooks/useReferenceLinks"
 
 import { client } from "../../io/sanity"
 
-import styles from "./omPcos.module.css"
+import styles from "./hvaErPcos.module.css"
 
-interface OmPcosProps {
+interface HvaErPcosProps {
   body: Array<PortableTextBlock>
 }
 
-const OmPcos: NextPage<OmPcosProps> = ({ body }) => {
+const HvaErPcos: NextPage<HvaErPcosProps> = ({ body }) => {
   const referenceLinks = useReferenceLinks(body)
   const portableTextComponents = usePortableTextComponents(body)
 
@@ -33,16 +33,13 @@ const OmPcos: NextPage<OmPcosProps> = ({ body }) => {
         <Breadcrumbs
           links={[
             { label: "Forside", href: "/" },
-            { label: "Om PCOS", href: "/om-pcos" },
+            { label: "Hva er PCOS", href: "/hva-er-pcos" },
           ]}
         />
       </Content>
       <Content className={styles.ArticleContent}>
         <PortableText value={body} components={portableTextComponents} />
-        <ReferenceLinkSummary
-          links={referenceLinks}
-          className={styles.LinkSummary}
-        />
+        <ReferenceLinkSummary links={referenceLinks} />
       </Content>
       <Footer />
     </PageContainer>
@@ -50,7 +47,7 @@ const OmPcos: NextPage<OmPcosProps> = ({ body }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<OmPcosProps>
+  GetStaticPropsResult<HvaErPcosProps>
 > => {
   const props = await client.fetch(`
     { 
@@ -63,4 +60,4 @@ export const getStaticProps: GetStaticProps = async (): Promise<
   }
 }
 
-export default OmPcos
+export default HvaErPcos

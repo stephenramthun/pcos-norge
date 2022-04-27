@@ -29,7 +29,7 @@ export const Header: React.VFC<HeaderProps> = ({
             showNav ? styles.show : styles.hide,
           )}
         >
-          <Link href="/om-pcos">Om PCOS</Link>
+          <Link href="/hva-er-pcos">Hva er PCOS</Link>
           <Link href="/om-oss">Om oss</Link>
           <Link href="/aktuelt">Aktuelt</Link>
         </nav>

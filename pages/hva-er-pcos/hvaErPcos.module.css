@@ -2,7 +2,3 @@
     flex-direction: column;
     gap: 1rem;
 }
-
-.LinkSummary {
-    align-self: flex-end;
-}
