@@ -1,41 +1,43 @@
 .HeroText {
-    position: relative;
-    display: flex;
-    background: var(--color-brand-extra-light-teal);
-    width: 100%;
-    margin-bottom: 3rem;
+  position: relative;
+  display: flex;
+  background: var(--color-brand-extra-light-teal);
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
 .HeroText > h1 {
-    position: relative;
-    width: max-content;
-    max-width: 900px;
+  position: relative;
+  width: max-content;
+  max-width: 900px;
 }
 
 .Content {
-    max-width: var(--text-max-width);
-    width: 100%;
+  max-width: var(--text-max-width);
+  width: 100%;
 }
 
 .Body {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .Link {
-    color: var(--color-brand-light-red);
+  color: var(--color-brand-light-red);
 }
 
-.Link:focus-visible, .Link:focus {
-    outline: var(--outline);
+.Link:focus-visible,
+.Link:focus {
+  outline: var(--outline);
 }
 
 .List {
-    color: var(--color-text-primary);
-    font-size: var(--font-size-body);
-    margin: 0 0 2rem;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  margin: 0 0 2rem;
+  max-width: var(--text-max-width);
+  width: 100%;
 }
 
 .List > li {
-    max-width: var(--text-max-width);
-    line-height: var(--line-height-body);
+  line-height: var(--line-height-body);
 }
