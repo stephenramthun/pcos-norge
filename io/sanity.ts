@@ -31,7 +31,8 @@ export const fetchArticles = ({
           title,
           "slug": slug.current,
           image,
-          published
+          published,
+          ingress
         },
       "remainingArticles": count(*[_type == "article"][${end + 1}..-1])
     }

@@ -65,6 +65,7 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles, remainingArticles }) => {
             title={it.title}
             image={it.image}
             published={new Date(it.published)}
+            ingress={it.ingress}
             className={styles.Card}
           />
         ))}
