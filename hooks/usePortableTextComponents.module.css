@@ -41,3 +41,8 @@
 .List > li {
   line-height: var(--line-height-body);
 }
+
+.Ingress {
+  margin-top: 2rem;
+  font-weight: var(--font-weight-bold);
+}

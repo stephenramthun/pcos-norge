@@ -1,3 +1,4 @@
+type PortableTextBlock = import("@portabletext/types").PortableTextBlock
 type SanityImageObject =
   import("@sanity/image-url/lib/types/types").SanityImageObject
 
@@ -11,5 +12,7 @@ declare type Article = {
   slug: string
   title: string
   published: string
+  ingress?: string
   image: SanityImageObject
+  body: Array<PortableTextBlock>
 }

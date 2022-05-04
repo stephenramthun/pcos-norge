@@ -21,7 +21,7 @@ import { PortableText } from "@portabletext/react"
 
 interface HomeProps {
   hero: string
-  articles: Array<Article>
+  articles: Array<Omit<Article, "body">>
   omOss: PortableTextBlock
   omPcos: PortableTextBlock
 }
@@ -68,6 +68,7 @@ const Home: NextPage<HomeProps> = ({ hero, articles, omOss, omPcos }) => {
                   title={it.title}
                   image={it.image}
                   published={new Date(it.published)}
+                  ingress={it.ingress}
                   className={styles.Card}
                 />
               ))}
@@ -90,7 +91,8 @@ export const getStaticProps: GetStaticProps = async (): Promise<
         title,
         "slug": slug.current,
         image,
-        published
+        published,
+        ingress
       },
       "omOss": *[_type == "omOss"][0].body[0],
       "omPcos": *[_type == "omPcos"][0].body[1]

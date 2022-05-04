@@ -6,6 +6,13 @@ export const richText = {
     {
       type: "block",
       marks: {
+        decorators: [
+          {
+            title: "Ingress",
+            value: "ingress",
+            blockEditor: { icon: () => "Ing" },
+          },
+        ],
         annotations: [
           {
             title: "Link",

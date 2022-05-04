@@ -7,17 +7,18 @@ import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
 import { Body } from "@components/Body"
 import { Heading } from "@components/Heading"
 import { ArrowLink } from "@components/ArrowLink"
+import { useLocaleDateString } from "@hooks/useLocaleDateString"
 
 import { client } from "../io/sanity"
 
 import styles from "./ArticleCard.module.css"
-import { useLocaleDateString } from "@hooks/useLocaleDateString"
 
 interface ArticleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   slug: string
   title: string
   image: SanityImageObject
   published: Date
+  ingress?: string
 }
 
 export const ArticleCard: React.VFC<ArticleCardProps> = ({
@@ -25,6 +26,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
   title,
   image,
   published,
+  ingress,
   className,
   ...divProps
 }) => {
@@ -47,6 +49,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
         <Heading tag="h3" size="small">
           {title}
         </Heading>
+        <Body>{ingress}</Body>
         <ArrowLink href={`/aktuelt/${slug}`}>Les mer</ArrowLink>
         <a
           href={`/aktuelt/${slug}`}

@@ -1,8 +1,6 @@
 import Image from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
-import { PortableText, PortableTextReactComponents } from "@portabletext/react"
-import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
-import type { PortableTextBlock } from "@portabletext/types"
+import { PortableText } from "@portabletext/react"
 import type {
   GetStaticPaths,
   GetStaticPathsResult,
@@ -19,36 +17,21 @@ import { Footer } from "@components/Footer"
 import { Header } from "@components/Header"
 import { Content } from "@components/Content"
 import { Heading } from "@components/Heading"
-import { FactBox } from "@components/FactBox"
 import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
+import { useLocaleDateString } from "@hooks/useLocaleDateString"
+import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
 
 import styles from "./[slug].module.css"
-import { useLocaleDateString } from "@hooks/useLocaleDateString"
-
-const articleComponents: Partial<PortableTextReactComponents> = {
-  types: {
-    factBox: ({ value }) => {
-      return <FactBox facts={value.facts} />
-    },
-  },
-  block: {
-    normal: ({ children }) => <Body className={styles.Text}>{children}</Body>,
-  },
-}
 
 interface ArticleProps {
-  article: {
-    title: string
-    published: string
-    body: Array<PortableTextBlock>
-    slug: string
-    image: SanityImageObject
-  }
+  article: Article
 }
 
 const Article: NextPage<ArticleProps> = (props) => {
   const imageProps = useNextSanityImage(client, props.article.image)
+
+  const components = usePortableTextComponents(props.article.body)
 
   const date = useLocaleDateString(new Date(props.article.published))
 
@@ -79,10 +62,8 @@ const Article: NextPage<ArticleProps> = (props) => {
           <Image {...imageProps} alt="" layout="responsive" />
         </div>
         <div className={styles.ArticleContent}>
-          <PortableText
-            value={props.article.body}
-            components={articleComponents}
-          />
+          {props.article.ingress && <Body>{props.article.ingress}</Body>}
+          <PortableText value={props.article.body} components={components} />
         </div>
       </Content>
       <Footer />

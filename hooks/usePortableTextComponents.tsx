@@ -7,6 +7,7 @@ import { useReferenceLinks } from "@hooks/useReferenceLinks"
 import { Heading } from "@components/Heading"
 import { Body } from "@components/Body"
 import { Link } from "@components/Link"
+import { FactBox } from "@components/FactBox"
 
 import styles from "./usePortableTextComponents.module.css"
 
@@ -15,6 +16,11 @@ export const usePortableTextComponents = (
 ): Partial<PortableTextReactComponents> => {
   const referenceLinks = useReferenceLinks(body)
   return {
+    types: {
+      factBox: ({ value }) => {
+        return <FactBox facts={value.facts} />
+      },
+    },
     block: {
       h1: ({ children }) => {
         return (
@@ -49,6 +55,9 @@ export const usePortableTextComponents = (
       },
     },
     marks: {
+      ingress: ({ children }) => {
+        return <Body className={styles.Ingress}>{children}</Body>
+      },
       link: ({ children, value }) => {
         return <Link href={value.href}>{children}</Link>
       },
