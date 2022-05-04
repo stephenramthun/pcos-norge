@@ -12,6 +12,10 @@ export const richText = {
             value: "ingress",
             blockEditor: { icon: () => "Ing" },
           },
+          {
+            title: "Strong",
+            value: "strong",
+          },
         ],
         annotations: [
           {
