@@ -46,3 +46,13 @@
   margin-top: 2rem;
   font-weight: var(--font-weight-bold);
 }
+
+.ImageContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.ImageContainer > span {
+  position: unset;
+}

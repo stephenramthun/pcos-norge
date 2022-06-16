@@ -1,5 +1,3 @@
-import Image from "next/image"
-import { useNextSanityImage } from "next-sanity-image"
 import { PortableText } from "@portabletext/react"
 import type {
   GetStaticPaths,
@@ -29,10 +27,7 @@ interface ArticleProps {
 }
 
 const Article: NextPage<ArticleProps> = (props) => {
-  const imageProps = useNextSanityImage(client, props.article.image)
-
   const components = usePortableTextComponents(props.article.body)
-
   const date = useLocaleDateString(new Date(props.article.published))
 
   return (
@@ -58,9 +53,6 @@ const Article: NextPage<ArticleProps> = (props) => {
         <Body suppressHydrationWarning className={styles.Published}>
           {date}
         </Body>
-        <div className={styles.ImageContainer}>
-          <Image {...imageProps} alt="" layout="responsive" />
-        </div>
         <div className={styles.ArticleContent}>
           {props.article.ingress && <Body>{props.article.ingress}</Body>}
           <PortableText value={props.article.body} components={components} />

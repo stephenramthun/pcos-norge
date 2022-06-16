@@ -1,7 +1,12 @@
 import React from "react"
+import Image from "next/image"
 import classNames from "classnames"
+import { useNextSanityImage } from "next-sanity-image"
 import { PortableTextBlock } from "@portabletext/types"
-import { PortableTextReactComponents } from "@portabletext/react"
+import {
+  PortableTextReactComponents,
+  PortableTextTypeComponentProps,
+} from "@portabletext/react"
 
 import { useReferenceLinks } from "@hooks/useReferenceLinks"
 import { Heading } from "@components/Heading"
@@ -9,7 +14,21 @@ import { Body } from "@components/Body"
 import { Link } from "@components/Link"
 import { FactBox } from "@components/FactBox"
 
+import { client } from "../io/sanity"
+
 import styles from "./usePortableTextComponents.module.css"
+
+const ImageComponent: React.VFC<
+  PortableTextTypeComponentProps<SanityImageObject>
+> = ({ value }) => {
+  const imageProps = useNextSanityImage(client, value.asset._ref)
+
+  return (
+    <div className={styles.ImageContainer}>
+      <Image {...imageProps} alt="" layout="responsive" />
+    </div>
+  )
+}
 
 export const usePortableTextComponents = (
   body: Array<PortableTextBlock>,
@@ -17,6 +36,7 @@ export const usePortableTextComponents = (
   const referenceLinks = useReferenceLinks(body)
   return {
     types: {
+      image: ImageComponent,
       factBox: ({ value }) => {
         return <FactBox facts={value.facts} />
       },
