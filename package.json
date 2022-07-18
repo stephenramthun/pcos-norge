@@ -7,7 +7,8 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "sanity": "npm run --prefix ./studio start"
+    "sanity": "npm run --prefix ./studio start",
+    "sanity-deploy": "npm run --prefix ./studio deploy"
   },
   "dependencies": {
     "@portabletext/react": "^1.0.4",
