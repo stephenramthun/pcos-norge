@@ -6,10 +6,10 @@ type PaginationOptions = {
 }
 
 export const client = sanityClient({
-  projectId: "7bmjnb8i",
-  dataset: "production",
-  apiVersion: "2021-10-12",
-  useCdn: true,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
+  apiVersion: "2022-07-20",
+  useCdn: process.env.NODE_ENV === "production",
 })
 
 type FetchArticlesResult = {

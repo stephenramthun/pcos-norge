@@ -12,6 +12,7 @@ import { pageLink } from "./pageLink"
 import { callToAction } from "./callToAction"
 import { imageAsset } from "./imageAsset"
 import { blockContent } from "./blockContent"
+import { people } from "./people"
 
 export default createSchema({
   name: "schema",
@@ -27,5 +28,6 @@ export default createSchema({
     callToAction,
     imageAsset,
     blockContent,
+    people,
   ]),
 })

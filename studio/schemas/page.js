@@ -20,6 +20,7 @@ export const page = {
         { type: "imageAsset" },
         { type: "factBox" },
         { type: "bodyText" },
+        { type: "people" },
       ],
     },
     {
