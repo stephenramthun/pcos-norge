@@ -1,12 +1,15 @@
+import React from "react"
+import { ListBullets } from "phosphor-react"
+
 export const factBox = {
   name: "factBox",
-  title: "Fact box",
+  title: "Faktaboks",
   type: "object",
   fields: [
     {
       type: "array",
       name: "facts",
-      title: "Facts",
+      title: "Fakta",
       of: [
         {
           type: "fact",
@@ -14,4 +17,16 @@ export const factBox = {
       ],
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: "Faktaboks",
+        media: (
+          <span>
+            <ListBullets />
+          </span>
+        ),
+      }
+    },
+  },
 }

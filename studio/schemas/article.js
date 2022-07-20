@@ -1,42 +1,50 @@
 export const article = {
   name: "article",
-  title: "Article",
+  title: "Artikkel",
   type: "document",
   fields: [
     {
       name: "title",
-      title: "Title",
+      title: "Tittel",
       type: "string",
+      validation: (Rule) => Rule.required(),
+      description: "En kort tittel",
     },
     {
       name: "ingress",
       title: "Ingress",
       type: "string",
+      validation: (Rule) => Rule.required(),
+      description: "En kort ingress",
     },
     {
       name: "body",
-      title: "Body",
-      type: "richText",
+      title: "Innhold",
+      type: "blockContent",
     },
     {
       name: "slug",
-      title: "Slug",
+      title: "ID",
       type: "slug",
       options: {
-        source: "title",
-        maxLength: 96,
+        initialValue: "title",
+        readOnly: true,
       },
+      description: "Autogenerert ID som brukes for lenking til artikkelen",
     },
     {
       name: "published",
-      title: "Published",
+      title: "Publisert",
       type: "datetime",
       initialValue: new Date().toISOString(),
+      description:
+        "Publiseringstidspunkt for artikkelen som vises på nettsiden. Merk at artikkelen publiseres umiddelbart uavhengig av tidspunktet som oppgis.",
     },
     {
       name: "image",
-      title: "Image",
-      type: "image",
+      title: "Bilde",
+      type: "imageAsset",
+      description: "Bilde som vises i lenker til artikkelen",
     },
   ],
 }

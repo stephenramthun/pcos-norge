@@ -1,8 +1,14 @@
-export const richText = {
-  title: "Rich text",
-  name: "richText",
+export const blockContent = {
+  name: "blockContent",
+  title: "Innhold",
   type: "array",
   of: [
+    {
+      type: "imageAsset",
+    },
+    {
+      type: "factBox",
+    },
     {
       type: "block",
       marks: {
@@ -60,12 +66,6 @@ export const richText = {
           },
         ],
       },
-    },
-    {
-      type: "image",
-    },
-    {
-      type: "factBox",
     },
   ],
 }

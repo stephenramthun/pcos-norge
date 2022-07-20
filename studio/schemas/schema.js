@@ -3,12 +3,15 @@ import schemaTypes from "all:part:@sanity/base/schema-type"
 
 import { hero } from "./hero"
 import { fact } from "./fact"
-import { omOss } from "./omOss"
-import { omPcos } from "./omPcos"
 import { person } from "./person"
 import { article } from "./article"
 import { factBox } from "./factBox"
-import { richText } from "./richText"
+import { bodyText } from "./bodyText"
+import { page } from "./page"
+import { pageLink } from "./pageLink"
+import { callToAction } from "./callToAction"
+import { imageAsset } from "./imageAsset"
+import { blockContent } from "./blockContent"
 
 export default createSchema({
   name: "schema",
@@ -17,9 +20,12 @@ export default createSchema({
     article,
     fact,
     factBox,
-    richText,
-    omPcos,
-    omOss,
+    bodyText,
     person,
+    page,
+    pageLink,
+    callToAction,
+    imageAsset,
+    blockContent,
   ]),
 })

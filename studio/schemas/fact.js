@@ -1,17 +1,37 @@
+import React from "react"
+import { Question } from "phosphor-react"
+
 export const fact = {
   type: "object",
   name: "fact",
-  title: "Fact",
+  title: "Fakta",
   fields: [
     {
       type: "string",
       name: "question",
-      title: "Question",
+      title: "Spørsmål",
     },
     {
       type: "string",
       name: "answer",
-      title: "Answer",
+      title: "Svar",
     },
   ],
+  preview: {
+    select: {
+      title: "question",
+      subtitle: "answer",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title: title,
+        subtitle: subtitle,
+        media: (
+          <span>
+            <Question />
+          </span>
+        ),
+      }
+    },
+  },
 }
