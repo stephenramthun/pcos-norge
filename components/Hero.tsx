@@ -4,7 +4,7 @@ import { Heading } from "@components/Heading"
 import { Content } from "@components/Content"
 import { LinkButton } from "@components/LinkButton"
 
-import styles from "./Hero.module.css"
+import styles from "components/Hero.module.css"
 
 interface HeroProps {
   text: string
