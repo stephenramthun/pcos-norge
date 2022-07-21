@@ -8,9 +8,8 @@ export const imageAsset = {
       name: "alt",
       title: "Alt",
       validation: (Rule) =>
-        Rule.required().error(
-          "Alle bilder må ha en beskrivende tekst for brukere som bruker skjermleser",
-        ),
+        Rule.required().error("Alle bilder må ha en beskrivende tekst"),
+      codegen: { required: true },
     },
   ],
 }

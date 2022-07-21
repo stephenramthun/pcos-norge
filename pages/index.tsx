@@ -1,59 +1,65 @@
 import React from "react"
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { PortableTextBlock } from "@portabletext/types"
+import { PortableText } from "@portabletext/react"
 
-import { client } from "../io/sanity"
-
-import { Hero } from "@modules/frontPage"
+import { client } from "io/sanity"
 import { Head } from "@components/Head"
 import { Main } from "@components/Main"
 import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
 import { Heading } from "@components/Heading"
 import { Content } from "@components/Content"
-import { ArrowLink } from "@components/ArrowLink"
 import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
 
 import styles from "./index.module.css"
-import { PortableText } from "@portabletext/react"
 
-interface HomeProps {
-  hero: string
-  articles: Array<Omit<Article, "body">>
-  omOss: PortableTextBlock
-  omPcos: PortableTextBlock
+type Page = {
+  id: string
+  title: string
+  elements: Array<PortableTextBlock>
 }
 
-const Home: NextPage<HomeProps> = ({ hero, articles, omOss, omPcos }) => {
+interface HomeProps {
+  articles: Array<Omit<Article, "body">>
+  content: Page
+}
+
+const Home: NextPage<HomeProps> = ({ articles, content }) => {
+  console.log(content)
+
   return (
     <PageContainer>
       <Head />
       <Header />
       <Main>
-        <Hero text={hero} />
         <Content className={styles.Section} id="about">
-          <article>
-            <Heading tag="h2" size="medium">
-              Hva er PCOS
-            </Heading>
-            <PortableText
-              value={omPcos}
-              components={usePortableTextComponents([omPcos])}
-            />
-            <ArrowLink href="/hva-er-pcos">Les mer</ArrowLink>
-          </article>
-          <article>
-            <Heading tag="h2" size="medium">
-              Om oss
-            </Heading>
-            <PortableText
-              value={omOss}
-              components={usePortableTextComponents([omOss])}
-            />
-            <ArrowLink href="/om-oss">Les mer</ArrowLink>
-          </article>
+          <PortableText
+            value={content.elements}
+            components={usePortableTextComponents(content.elements)}
+          />
+          {/*<article>*/}
+          {/*  <Heading tag="h2" size="medium">*/}
+          {/*    Hva er PCOS*/}
+          {/*  </Heading>*/}
+          {/*  <PortableText*/}
+          {/*    value={omPcos}*/}
+          {/*    components={usePortableTextComponents([omPcos])}*/}
+          {/*  />*/}
+          {/*  <ArrowLink href="/hva-er-pcos">Les mer</ArrowLink>*/}
+          {/*</article>*/}
+          {/*<article>*/}
+          {/*  <Heading tag="h2" size="medium">*/}
+          {/*    Om oss*/}
+          {/*  </Heading>*/}
+          {/*  <PortableText*/}
+          {/*    value={omOss}*/}
+          {/*    components={usePortableTextComponents([omOss])}*/}
+          {/*  />*/}
+          {/*  <ArrowLink href="/om-oss">Les mer</ArrowLink>*/}
+          {/*</article>*/}
         </Content>
         <Content className={styles.Section}>
           <article>
@@ -86,7 +92,6 @@ export const getStaticProps: GetStaticProps = async (): Promise<
 > => {
   const props = await client.fetch(`
     { 
-      "hero": *[_type == "hero"][0].text,
       "articles": *[_type == "article"] | order(published desc) {
         title,
         "slug": slug.current,
@@ -94,8 +99,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
         published,
         ingress
       },
-      "omOss": *[_type == "omOss"][0].body[0],
-      "omPcos": *[_type == "omPcos"][0].body[1]
+      "content": *[_type == "page" && id.current == "forsiden"][0]
     }
   `)
 

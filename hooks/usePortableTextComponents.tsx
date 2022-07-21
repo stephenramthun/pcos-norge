@@ -14,9 +14,10 @@ import { Body } from "@components/Body"
 import { Link } from "@components/Link"
 import { FactBox } from "@components/FactBox"
 
-import { client } from "../io/sanity"
+import { client } from "io/sanity"
 
 import styles from "./usePortableTextComponents.module.css"
+import { Hero } from "@components/Hero"
 
 const ImageComponent: React.VFC<
   PortableTextTypeComponentProps<SanityImageObject>
@@ -39,6 +40,9 @@ export const usePortableTextComponents = (
       image: ImageComponent,
       factBox: ({ value }) => {
         return <FactBox facts={value.facts} />
+      },
+      hero: ({ value }) => {
+        return <Hero text={value.text} />
       },
     },
     block: {

@@ -8,6 +8,7 @@ export const article = {
       title: "Tittel",
       type: "string",
       validation: (Rule) => Rule.required(),
+      codegen: { required: true },
       description: "En kort tittel",
     },
     {
@@ -15,6 +16,7 @@ export const article = {
       title: "Ingress",
       type: "string",
       validation: (Rule) => Rule.required(),
+      codegen: { required: true },
       description: "En kort ingress",
     },
     {

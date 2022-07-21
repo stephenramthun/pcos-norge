@@ -5,12 +5,14 @@ export const person = {
   fields: [
     {
       name: "name",
-      title: "Name",
+      title: "Navn",
       type: "string",
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
     {
       name: "picture",
-      title: "Picture",
+      title: "Bilde",
       type: "image",
       options: {
         hotspot: true,
@@ -18,13 +20,15 @@ export const person = {
     },
     {
       name: "email",
-      title: "Email",
+      title: "Epost",
       type: "email",
     },
     {
       name: "role",
-      title: "Role",
+      title: "Rolle",
       type: "string",
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
   ],
 }
