@@ -11,7 +11,7 @@ import { Breadcrumbs } from "@components/Breadcrumbs"
 import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 
-import { fetchArticles } from "../../io/sanity"
+import { fetchArticles } from "io/sanity"
 
 import styles from "./aktuelt.module.css"
 
@@ -47,7 +47,7 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles, remainingArticles }) => {
       <Content>
         <Breadcrumbs
           links={[
-            { label: "Forside", href: "/" },
+            { label: "Hjem", href: "/" },
             { label: "Aktuelt", href: "/aktuelt" },
           ]}
         />
@@ -56,19 +56,19 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles, remainingArticles }) => {
         <Heading size="medium-large" tag="h1">
           Aktuelt
         </Heading>
-      </Content>
-      <Content className={styles.CardGrid}>
-        {state.articles.map((it) => (
-          <ArticleCard
-            key={it.slug}
-            slug={it.slug}
-            title={it.title}
-            image={it.image}
-            published={new Date(it.published)}
-            ingress={it.ingress}
-            className={styles.Card}
-          />
-        ))}
+        <div className={styles.CardGrid}>
+          {state.articles.map((it) => (
+            <ArticleCard
+              key={it.slug}
+              slug={it.slug}
+              title={it.title}
+              image={it.image}
+              published={new Date(it.published)}
+              ingress={it.ingress}
+              className={styles.Card}
+            />
+          ))}
+        </div>
       </Content>
       {state.remainingArticles > 0 && (
         <Content className={styles.FetchMoreContainer}>
