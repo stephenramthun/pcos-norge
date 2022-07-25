@@ -1,41 +1,31 @@
 import React from "react"
-import Image from "next/image"
-import { useNextSanityImage } from "next-sanity-image"
 import { PortableTextBlock } from "@portabletext/types"
-import {
-  PortableTextReactComponents,
-  PortableTextTypeComponentProps,
-} from "@portabletext/react"
+import { PortableTextReactComponents } from "@portabletext/react"
 
-import { useReferenceLinks } from "@hooks/useReferenceLinks"
-import { Heading } from "@components/Heading"
 import { Body } from "@components/Body"
 import { Link } from "@components/Link"
+import { Image } from "@components/Image"
+import { Heading } from "@components/Heading"
 import { FactBox } from "@components/FactBox"
-import { client } from "io/sanity"
+import { useReferenceLinks } from "@hooks/useReferenceLinks"
+
+import { ImageAsset } from "types/schema"
 
 import styles from "./usePortableTextComponents.module.css"
 
-const ImageComponent: React.VFC<
-  PortableTextTypeComponentProps<SanityImageObject>
-> = ({ value }) => {
-  const imageProps = useNextSanityImage(client, value.asset._ref)
-
-  return (
-    <div className={styles.ImageContainer}>
-      <Image {...imageProps} alt="" layout="responsive" />
-    </div>
-  )
+type ComponentProps<T> = {
+  value: T
 }
 
 export const usePortableTextComponents = (
   body: Array<PortableTextBlock>,
 ): Partial<PortableTextReactComponents> => {
   const referenceLinks = useReferenceLinks(body)
-  console.log("ref", body)
   return {
     types: {
-      image: ImageComponent,
+      imageAsset: ({ value }: ComponentProps<ImageAsset>) => {
+        return <Image asset={value.asset} alt={value.alt} />
+      },
       factBox: ({ value }) => {
         return <FactBox facts={value.facts} />
       },

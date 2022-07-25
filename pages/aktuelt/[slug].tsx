@@ -7,7 +7,7 @@ import type {
   NextPage,
 } from "next"
 
-import { client } from "../../io/sanity"
+import { client } from "io/sanity"
 
 import { Body } from "@components/Body"
 import { Head } from "@components/Head"
@@ -54,7 +54,9 @@ const Article: NextPage<ArticleProps> = (props) => {
           {date}
         </Body>
         <div className={styles.ArticleContent}>
-          {props.article.ingress && <Body>{props.article.ingress}</Body>}
+          {props.article.ingress && (
+            <Body suppressHydrationWarning>{props.article.ingress}</Body>
+          )}
           <PortableText value={props.article.body} components={components} />
         </div>
       </Content>

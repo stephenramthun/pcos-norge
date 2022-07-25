@@ -4,9 +4,8 @@ import { client } from "io/sanity"
 import { useNextSanityImage } from "next-sanity-image"
 
 import { ImageAsset } from "types/schema"
-import { Content } from "@components/Content"
 
-interface ImageProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ImageProps {
   asset: ImageAsset["asset"]
   alt: ImageAsset["alt"]
   layout?: NextImageProps["layout"]
@@ -15,14 +14,9 @@ interface ImageProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Image: React.FC<ImageProps> = ({
   asset,
   alt,
-  layout = "intrinsic",
-  ...divProps
+  layout = "responsive",
 }) => {
   const imageProps = useNextSanityImage(client, asset._ref)
 
-  return (
-    <Content {...divProps}>
-      <NextImage {...imageProps} alt={alt} layout={layout} />
-    </Content>
-  )
+  return <NextImage {...imageProps} alt={alt} layout={layout} />
 }

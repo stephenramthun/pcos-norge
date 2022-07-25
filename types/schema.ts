@@ -180,7 +180,7 @@ export type People = {
    *
    *
    */
-  people?: Array<Person>
+  people: Array<Person>
 }
 
 export type FactBox = {

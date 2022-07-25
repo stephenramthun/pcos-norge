@@ -11,6 +11,8 @@ export const people = {
       name: "people",
       title: "Personer",
       of: [{ type: "person" }],
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
   ],
   preview: {
