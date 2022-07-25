@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "phosphor-react"
 
 export const pageLink = {
-  title: "Page Link",
+  title: "Sidelenke",
   name: "pageLink",
   type: "object",
   fields: [

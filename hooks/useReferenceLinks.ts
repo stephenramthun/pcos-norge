@@ -23,16 +23,16 @@ export type UseReferenceLinksResult = {
 
 const isReferenceLink = (
   markDef?: PortableTextMarkDefinition,
-): markDef is ReferenceLinkMarkDef => typeof markDef?.href === "string"
+): markDef is ReferenceLinkMarkDef => markDef?._type === "referenceLink"
 
 export const useReferenceLinks = (
-  body: Array<PortableTextBlock>,
+  elements: Array<PortableTextBlock>,
 ): UseReferenceLinksResult => {
   return useMemo(() => {
     const data: UseReferenceLinksResult = {}
 
-    const blocksWithReferenceLinks = body.filter(
-      (it) => it.markDefs?.length ?? 0 > 0,
+    const blocksWithReferenceLinks = elements.filter(
+      (it) => it.markDefs?.filter(isReferenceLink).length ?? 0 > 0,
     )
 
     let linkCount = 0
@@ -54,5 +54,5 @@ export const useReferenceLinks = (
     }
 
     return data
-  }, [])
+  }, [elements])
 }

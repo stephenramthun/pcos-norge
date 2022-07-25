@@ -3,31 +3,33 @@ import schemaTypes from "all:part:@sanity/base/schema-type"
 
 import { hero } from "./hero"
 import { fact } from "./fact"
+import { page } from "./page"
 import { person } from "./person"
+import { people } from "./people"
 import { article } from "./article"
 import { factBox } from "./factBox"
 import { bodyText } from "./bodyText"
-import { page } from "./page"
 import { pageLink } from "./pageLink"
-import { callToAction } from "./callToAction"
+import { pageLinks } from "./pageLinks"
 import { imageAsset } from "./imageAsset"
+import { callToAction } from "./callToAction"
 import { blockContent } from "./blockContent"
-import { people } from "./people"
 
 export default createSchema({
   name: "schema",
   types: schemaTypes.concat([
     hero,
-    article,
     fact,
-    factBox,
-    bodyText,
-    person,
     page,
-    pageLink,
-    callToAction,
-    imageAsset,
-    blockContent,
+    person,
     people,
+    factBox,
+    article,
+    bodyText,
+    pageLink,
+    pageLinks,
+    imageAsset,
+    callToAction,
+    blockContent,
   ]),
 })

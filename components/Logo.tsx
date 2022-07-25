@@ -27,6 +27,7 @@ export const Logo: React.VFC<LogoProps> = ({
           layout="fill"
           className={styles.Image}
           unoptimized
+          priority
         />
       </a>
     </Link>

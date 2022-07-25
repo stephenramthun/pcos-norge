@@ -44,7 +44,6 @@
 
 .Ingress {
   margin-top: 2rem;
-  font-weight: var(--font-weight-bold);
 }
 
 .ImageContainer {
@@ -55,4 +54,21 @@
 
 .ImageContainer > span {
   position: unset;
+}
+
+.Section {
+  max-width: 100vw;
+}
+
+.Section > article {
+  flex: 1;
+  min-width: 300px;
+}
+
+.Section > article > h2 {
+  margin-bottom: 1.5rem;
+}
+
+.Section > article > p {
+  margin-bottom: 1rem;
 }

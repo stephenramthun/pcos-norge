@@ -17,12 +17,14 @@ export const page = {
       title: "Elementer",
       of: [
         { type: "hero" },
-        { type: "pageLink" },
+        { type: "pageLinks" },
         { type: "imageAsset" },
         { type: "factBox" },
         { type: "bodyText" },
         { type: "people" },
       ],
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
     {
       name: "id",

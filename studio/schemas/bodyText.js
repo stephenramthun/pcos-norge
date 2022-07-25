@@ -10,6 +10,8 @@ export const bodyText = {
       name: "content",
       title: "Innhold",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
   ],
   preview: {

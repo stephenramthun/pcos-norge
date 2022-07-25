@@ -1,13 +1,13 @@
 import type {
-  SanityReference,
   SanityAsset,
-  SanityImage,
-  SanityFile,
-  SanityGeoPoint,
   SanityBlock,
   SanityDocument,
+  SanityFile,
+  SanityGeoPoint,
+  SanityImage,
   SanityImageCrop,
   SanityImageHotspot,
+  SanityReference,
 } from "sanity-codegen"
 
 export type {
@@ -20,6 +20,36 @@ export type {
   SanityDocument,
   SanityImageCrop,
   SanityImageHotspot,
+}
+
+/**
+ * Side
+ *
+ *
+ */
+export interface Page extends SanityDocument {
+  _type: "page"
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title: string
+
+  /**
+   * Elementer — `array`
+   *
+   *
+   */
+  elements: Array<Hero | PageLinks | ImageAsset | FactBox | BodyText | People>
+
+  /**
+   * ID — `slug`
+   *
+   *
+   */
+  id: { _type: "id"; current: string }
 }
 
 /**
@@ -73,36 +103,6 @@ export interface Article extends SanityDocument {
   image?: ImageAsset
 }
 
-/**
- * Side
- *
- *
- */
-export interface Page extends SanityDocument {
-  _type: "page"
-
-  /**
-   * Tittel — `string`
-   *
-   *
-   */
-  title: string
-
-  /**
-   * Elementer — `array`
-   *
-   *
-   */
-  elements?: Array<Hero | PageLink | ImageAsset | FactBox | BodyText | People>
-
-  /**
-   * ID — `slug`
-   *
-   *
-   */
-  id: { _type: "id"; current: string }
-}
-
 export type Hero = {
   _type: "hero"
   /**
@@ -137,6 +137,52 @@ export type Fact = {
   answer?: string
 }
 
+export type Person = {
+  _type: "person"
+  /**
+   * Navn — `string`
+   *
+   *
+   */
+  name: string
+
+  /**
+   * Bilde — `image`
+   *
+   *
+   */
+  picture?: {
+    _type: "picture"
+    asset: SanityAsset
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
+
+  /**
+   * Epost — `email`
+   *
+   *
+   */
+  email?: Email
+
+  /**
+   * Rolle — `string`
+   *
+   *
+   */
+  role: string
+}
+
+export type People = {
+  _type: "people"
+  /**
+   * Personer — `array`
+   *
+   *
+   */
+  people?: Array<Person>
+}
+
 export type FactBox = {
   _type: "factBox"
   /**
@@ -154,43 +200,7 @@ export type BodyText = {
    *
    *
    */
-  content?: BlockContent
-}
-
-export type Person = {
-  _type: "person"
-  /**
-   * Name — `string`
-   *
-   *
-   */
-  name: string
-
-  /**
-   * Picture — `image`
-   *
-   *
-   */
-  picture?: {
-    _type: "picture"
-    asset: SanityAsset
-    crop?: SanityImageCrop
-    hotspot?: SanityImageHotspot
-  }
-
-  /**
-   * Email — `email`
-   *
-   *
-   */
-  email?: Email
-
-  /**
-   * Role — `string`
-   *
-   *
-   */
-  role: string
+  content: BlockContent
 }
 
 export type PageLink = {
@@ -217,6 +227,30 @@ export type PageLink = {
   callToAction?: CallToAction
 }
 
+export type PageLinks = {
+  _type: "pageLinks"
+  /**
+   * Lenker — `array`
+   *
+   *
+   */
+  links: Array<PageLink>
+}
+
+export type ImageAsset = {
+  _type: "imageAsset"
+  asset: SanityAsset
+  crop?: SanityImageCrop
+  hotspot?: SanityImageHotspot
+
+  /**
+   * Alt — `string`
+   *
+   *
+   */
+  alt: string
+}
+
 export type CallToAction = {
   _type: "callToAction"
   /**
@@ -234,33 +268,9 @@ export type CallToAction = {
   url?: string
 }
 
-export type ImageAsset = {
-  _type: "imageAsset"
-  asset: SanityAsset
-  crop?: SanityImageCrop
-  hotspot?: SanityImageHotspot
-
-  /**
-   * Alt — `string`
-   *
-   *
-   */
-  alt: string
-}
-
 export type BlockContent = Array<ImageAsset | FactBox | SanityBlock>
 
-export type People = {
-  _type: "people"
-  /**
-   * Personer — `array`
-   *
-   *
-   */
-  people?: Array<Person>
-}
-
-export type Documents = Article | Page
+export type Documents = Page | Article
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but

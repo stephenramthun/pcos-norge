@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
-import { client } from "../io/sanity"
+import { client } from "io/sanity"
 
 import styles from "./PersonCard.module.css"
 

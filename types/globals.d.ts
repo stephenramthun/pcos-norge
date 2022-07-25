@@ -16,3 +16,7 @@ declare type Article = {
   image: SanityImageObject
   body: Array<PortableTextBlock>
 }
+
+declare type SanityObject = {
+  _type: string
+}
