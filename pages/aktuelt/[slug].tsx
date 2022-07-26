@@ -19,11 +19,12 @@ import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
 import { useLocaleDateString } from "@hooks/useLocaleDateString"
 import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
+import { Article as ArticleObject } from "types/schema"
 
 import styles from "./[slug].module.css"
 
 interface ArticleProps {
-  article: Article
+  article: ArticleObject
 }
 
 const Article: NextPage<ArticleProps> = (props) => {

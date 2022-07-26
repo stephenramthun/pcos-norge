@@ -12,7 +12,7 @@ import { Content } from "@components/Content"
 import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 import { usePageComponents } from "@hooks/usePageComponents"
-import { Page } from "types/schema"
+import { Article, Page } from "types/schema"
 
 import styles from "./index.module.css"
 
@@ -36,8 +36,8 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
             <div className={styles.Cards}>
               {articles.map((it) => (
                 <ArticleCard
-                  key={it.slug}
-                  slug={it.slug}
+                  key={it.slug.current}
+                  slug={it.slug.current}
                   title={it.title}
                   image={it.image}
                   published={new Date(it.published)}
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     { 
       "articles": *[_type == "article"] | order(published desc) {
         title,
-        "slug": slug.current,
+        slug,
         image,
         published,
         ingress

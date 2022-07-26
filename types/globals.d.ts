@@ -8,15 +8,6 @@ declare type Childless<T> = Omit<T, "children">
 
 declare type Maybe<T> = T | null
 
-declare type Article = {
-  slug: string
-  title: string
-  published: string
-  ingress?: string
-  image: SanityImageObject
-  body: Array<PortableTextBlock>
-}
-
 declare type SanityObject = {
   _type: string
 }

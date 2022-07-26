@@ -1,4 +1,5 @@
 import sanityClient from "@sanity/client"
+import { Article } from "types/schema"
 
 type PaginationOptions = {
   from: number
@@ -29,7 +30,7 @@ export const fetchArticles = ({
         *[_type == "article"][${start}..${end}] |
         order(published desc) {
           title,
-          "slug": slug.current,
+          slug,
           image,
           published,
           ingress

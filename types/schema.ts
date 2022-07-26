@@ -79,28 +79,28 @@ export interface Article extends SanityDocument {
    *
    *
    */
-  body?: BlockContent
+  body: BlockContent
 
   /**
    * ID — `slug`
    *
    * Autogenerert ID som brukes for lenking til artikkelen
    */
-  slug?: { _type: "slug"; current: string }
+  slug: { _type: "slug"; current: string }
 
   /**
    * Publisert — `datetime`
    *
    * Publiseringstidspunkt for artikkelen som vises på nettsiden. Merk at artikkelen publiseres umiddelbart uavhengig av tidspunktet som oppgis.
    */
-  published?: string
+  published: string
 
   /**
    * Bilde — `imageAsset`
    *
    * Bilde som vises i lenker til artikkelen
    */
-  image?: ImageAsset
+  image: ImageAsset
 }
 
 export type Hero = {

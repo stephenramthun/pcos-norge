@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@components/Breadcrumbs"
 import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 
+import { Article } from "types/schema"
 import { fetchArticles } from "io/sanity"
 
 import styles from "./aktuelt.module.css"
@@ -59,8 +60,8 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles, remainingArticles }) => {
         <div className={styles.CardGrid}>
           {state.articles.map((it) => (
             <ArticleCard
-              key={it.slug}
-              slug={it.slug}
+              key={it.slug.current}
+              slug={it.slug.current}
               title={it.title}
               image={it.image}
               published={new Date(it.published)}

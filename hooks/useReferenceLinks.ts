@@ -3,6 +3,7 @@ import {
   PortableTextBlock,
   PortableTextMarkDefinition,
 } from "@portabletext/types"
+import { BlockContent } from "types/schema"
 
 type ReferenceLinkMarkDef = {
   href: string
@@ -26,14 +27,14 @@ const isReferenceLink = (
 ): markDef is ReferenceLinkMarkDef => markDef?._type === "referenceLink"
 
 export const useReferenceLinks = (
-  elements: Array<PortableTextBlock>,
+  elements: BlockContent | Array<PortableTextBlock>,
 ): UseReferenceLinksResult => {
   return useMemo(() => {
     const data: UseReferenceLinksResult = {}
 
-    const blocksWithReferenceLinks = elements.filter(
-      (it) => it.markDefs?.filter(isReferenceLink).length ?? 0 > 0,
-    )
+    const blocksWithReferenceLinks = (
+      elements as Array<PortableTextBlock>
+    ).filter((it) => it.markDefs?.filter(isReferenceLink).length ?? 0 > 0)
 
     let linkCount = 0
 

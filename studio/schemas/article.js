@@ -23,6 +23,8 @@ export const article = {
       name: "body",
       title: "Innhold",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
     {
       name: "slug",
@@ -33,6 +35,8 @@ export const article = {
         readOnly: true,
       },
       description: "Autogenerert ID som brukes for lenking til artikkelen",
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
     {
       name: "published",
@@ -41,12 +45,17 @@ export const article = {
       initialValue: new Date().toISOString(),
       description:
         "Publiseringstidspunkt for artikkelen som vises på nettsiden. Merk at artikkelen publiseres umiddelbart uavhengig av tidspunktet som oppgis.",
+      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
     },
     {
       name: "image",
       title: "Bilde",
       type: "imageAsset",
       description: "Bilde som vises i lenker til artikkelen",
+      validation: (Rule) =>
+        Rule.required().error("Alle artikler må ha et bilde."),
+      codegen: { required: true },
     },
   ],
 }

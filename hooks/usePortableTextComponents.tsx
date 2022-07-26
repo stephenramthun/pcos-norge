@@ -9,7 +9,7 @@ import { Heading } from "@components/Heading"
 import { FactBox } from "@components/FactBox"
 import { useReferenceLinks } from "@hooks/useReferenceLinks"
 
-import { ImageAsset } from "types/schema"
+import { BlockContent, ImageAsset } from "types/schema"
 
 import styles from "./usePortableTextComponents.module.css"
 
@@ -18,7 +18,7 @@ type ComponentProps<T> = {
 }
 
 export const usePortableTextComponents = (
-  body: Array<PortableTextBlock>,
+  body: BlockContent | Array<PortableTextBlock>,
 ): Partial<PortableTextReactComponents> => {
   const referenceLinks = useReferenceLinks(body)
   return {

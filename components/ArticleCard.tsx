@@ -2,21 +2,21 @@ import React from "react"
 import classNames from "classnames"
 import Image from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
-import type { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 import { Body } from "@components/Body"
 import { Heading } from "@components/Heading"
 import { ArrowLink } from "@components/ArrowLink"
 import { useLocaleDateString } from "@hooks/useLocaleDateString"
 
-import { client } from "../io/sanity"
+import { client } from "io/sanity"
+import { ImageAsset } from "types/schema"
 
 import styles from "./ArticleCard.module.css"
 
 interface ArticleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   slug: string
   title: string
-  image: SanityImageObject
+  image: ImageAsset
   published: Date
   ingress?: string
 }
