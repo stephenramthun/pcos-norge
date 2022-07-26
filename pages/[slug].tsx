@@ -17,7 +17,7 @@ import { ReferenceLinkSummary } from "@components/ReferenceLinkSummary"
 import { usePageComponents } from "@hooks/usePageComponents"
 import { useReferenceLinks } from "@hooks/useReferenceLinks"
 
-import { client } from "io/sanity"
+import { getClient } from "io/sanity/client"
 import { isBodyText } from "types/guards"
 import { PortableTextBlock } from "@portabletext/types"
 
@@ -62,7 +62,7 @@ const Page: NextPage<PageProps> = ({ title, elements, id }) => {
 export const getStaticProps: GetStaticProps = async ({
   params,
 }): Promise<GetStaticPropsResult<PageProps>> => {
-  const page = await client.fetch(
+  const page = await getClient().fetch(
     `
     *[_type == "page" && id.current == $slug][0] {
       title,
@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps = async ({
 
 export const getStaticPaths: GetStaticPaths =
   async (): Promise<GetStaticPathsResult> => {
-    const paths = await client.fetch<Array<string>>(
+    const paths = await getClient().fetch<Array<string>>(
       `*[_type == "page" && id != "forsiden"][].id.current`,
     )
 

@@ -11,3 +11,9 @@ declare type Maybe<T> = T | null
 declare type SanityObject = {
   _type: string
 }
+
+declare type PreviewProps = {
+  query: string
+  preview: boolean
+  queryParams?: { slug?: string | Array<string> }
+}

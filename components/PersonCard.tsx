@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
-import { client } from "io/sanity"
+import { getClient } from "io/sanity/client"
 
 import styles from "./PersonCard.module.css"
 
@@ -23,10 +23,14 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
   className,
   ...divProps
 }) => {
-  const imageProps = useNextSanityImage(client, image ?? (avatar as string), {
-    imageBuilder: (imageUrlBuilder, options) =>
-      imageUrlBuilder.width(options.width || 400).quality(100),
-  })
+  const imageProps = useNextSanityImage(
+    getClient(),
+    image ?? (avatar as string),
+    {
+      imageBuilder: (imageUrlBuilder, options) =>
+        imageUrlBuilder.width(options.width || 400).quality(100),
+    },
+  )
 
   return (
     <div className={classNames(styles.PersonCard, className)} {...divProps}>

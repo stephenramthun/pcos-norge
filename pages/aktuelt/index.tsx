@@ -12,7 +12,8 @@ import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 
 import { Article } from "types/schema"
-import { fetchArticles } from "io/sanity"
+import { fetchArticles } from "io/sanity/client"
+import { usePreviewSubscription } from "io/sanity/preview"
 
 import styles from "./aktuelt.module.css"
 
@@ -23,16 +24,25 @@ interface AktueltProps {
   remainingArticles: number
 }
 
-const Aktuelt: NextPage<AktueltProps> = ({ articles, remainingArticles }) => {
-  const [state, setState] = useState<AktueltProps>({
-    articles,
-    remainingArticles,
+const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
+  articles,
+  remainingArticles,
+  query,
+  preview,
+}) => {
+  const { data: previewData } = usePreviewSubscription(query, {
+    params: {},
+    initialData: { articles, remainingArticles },
+    enabled: preview,
   })
+
+  const [state, setState] = useState<AktueltProps>(previewData)
 
   const fetchMoreArticles = async (): Promise<void> => {
     const { articles, remainingArticles } = await fetchArticles({
       from: state.articles.length,
       count: articlesPerFetch,
+      preview,
     })
 
     setState((prevState) => ({
@@ -84,16 +94,20 @@ const Aktuelt: NextPage<AktueltProps> = ({ articles, remainingArticles }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<AktueltProps>
-> => {
+export const getStaticProps: GetStaticProps = async ({
+  preview = false,
+}): Promise<GetStaticPropsResult<AktueltProps & { preview: boolean }>> => {
   const props = await fetchArticles({
     from: 0,
     count: articlesPerFetch,
+    preview,
   })
 
   return {
-    props,
+    props: {
+      ...props,
+      preview,
+    },
   }
 }
 

@@ -8,8 +8,8 @@ import { Heading } from "@components/Heading"
 import { ArrowLink } from "@components/ArrowLink"
 import { useLocaleDateString } from "@hooks/useLocaleDateString"
 
-import { client } from "io/sanity"
 import { ImageAsset } from "types/schema"
+import { getClient } from "io/sanity/client"
 
 import styles from "./ArticleCard.module.css"
 
@@ -30,7 +30,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
   className,
   ...divProps
 }) => {
-  const imageProps = useNextSanityImage(client, image, {
+  const imageProps = useNextSanityImage(getClient(), image, {
     imageBuilder: (imageUrlBuilder, options) =>
       imageUrlBuilder.width(options.width || 400).quality(100),
   })

@@ -1,3 +1,4 @@
+import groq from "groq"
 import { PortableText } from "@portabletext/react"
 import type {
   GetStaticPaths,
@@ -6,8 +7,9 @@ import type {
   GetStaticPropsResult,
   NextPage,
 } from "next"
+import { SanityDocument } from "sanity-codegen"
 
-import { client } from "io/sanity"
+import { getClient } from "io/sanity/client"
 
 import { Body } from "@components/Body"
 import { Head } from "@components/Head"
@@ -20,16 +22,49 @@ import { PageContainer } from "@components/PageContainer"
 import { useLocaleDateString } from "@hooks/useLocaleDateString"
 import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
 import { Article as ArticleObject } from "types/schema"
+import { usePreviewSubscription } from "io/sanity/preview"
 
 import styles from "./[slug].module.css"
+
+const filterDataToSingleItem = <T extends SanityDocument>(
+  data: T | Array<T>,
+  preview: boolean,
+): T => {
+  if (!Array.isArray(data)) {
+    return data
+  }
+
+  if (data.length === 1) {
+    return data[0]
+  }
+
+  if (preview) {
+    return data.find((item) => item._id.startsWith(`drafts.`)) || data[0]
+  }
+
+  return data[0]
+}
 
 interface ArticleProps {
   article: ArticleObject
 }
 
-const Article: NextPage<ArticleProps> = (props) => {
-  const components = usePortableTextComponents(props.article.body)
-  const date = useLocaleDateString(new Date(props.article.published))
+const Article: NextPage<ArticleProps & PreviewProps> = ({
+  article,
+  query,
+  queryParams,
+  preview,
+}) => {
+  const { data: previewData } = usePreviewSubscription(query, {
+    params: queryParams ?? {},
+    initialData: article,
+    enabled: preview,
+  })
+
+  const data = filterDataToSingleItem(previewData, preview)
+
+  const components = usePortableTextComponents(data.body)
+  const date = useLocaleDateString(new Date(data.published))
 
   return (
     <PageContainer>
@@ -41,24 +76,22 @@ const Article: NextPage<ArticleProps> = (props) => {
             { href: "/", label: "Hjem" },
             { href: "/aktuelt", label: "Aktuelt" },
             {
-              href: `/aktuelt/${props.article.slug}`,
-              label: props.article.title,
+              href: `/aktuelt/${data.slug}`,
+              label: data.title,
             },
           ]}
         />
       </Content>
       <Content className={styles.Section}>
         <Heading className={styles.Heading} tag="h2" size="medium">
-          {props.article.title}
+          {data.title}
         </Heading>
         <Body suppressHydrationWarning className={styles.Published}>
           {date}
         </Body>
         <div className={styles.ArticleContent}>
-          {props.article.ingress && (
-            <Body suppressHydrationWarning>{props.article.ingress}</Body>
-          )}
-          <PortableText value={props.article.body} components={components} />
+          {data.ingress && <Body suppressHydrationWarning>{data.ingress}</Body>}
+          <PortableText value={data.body} components={components} />
         </div>
       </Content>
       <Footer />
@@ -68,32 +101,33 @@ const Article: NextPage<ArticleProps> = (props) => {
 
 export const getStaticProps: GetStaticProps = async ({
   params,
-}): Promise<GetStaticPropsResult<ArticleProps>> => {
-  const article = await client.fetch(
-    `
-    *[_type == "article" && slug.current == $slug][0] {
+  preview = false,
+}): Promise<GetStaticPropsResult<ArticleProps & PreviewProps>> => {
+  const query = groq`
+    *[_type == "article" && slug.current == $slug] {
       title,
       body,
       published,
       image
     }
-  `,
-    { slug: params?.slug },
-  )
+  `
+  const queryParams = { slug: params?.slug }
+  const data = await getClient(preview).fetch(query, queryParams)
+  const article = filterDataToSingleItem(data, preview)
 
   return {
     props: {
-      article: {
-        ...article,
-        slug: params?.slug,
-      },
+      article,
+      preview,
+      query,
+      queryParams,
     },
   }
 }
 
 export const getStaticPaths: GetStaticPaths =
   async (): Promise<GetStaticPathsResult> => {
-    const paths = await client.fetch<Array<string>>(
+    const paths = await getClient().fetch<Array<string>>(
       `*[_type == "article" && defined(slug.current)][].slug.current`,
     )
     return {

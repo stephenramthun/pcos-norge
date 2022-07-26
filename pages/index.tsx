@@ -2,7 +2,7 @@ import React from "react"
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { PortableText } from "@portabletext/react"
 
-import { client } from "io/sanity"
+import { getClient } from "io/sanity/client"
 import { Head } from "@components/Head"
 import { Main } from "@components/Main"
 import { Header } from "@components/Header"
@@ -57,7 +57,7 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
 export const getStaticProps: GetStaticProps = async (): Promise<
   GetStaticPropsResult<HomeProps>
 > => {
-  const props = await client.fetch(`
+  const props = await getClient().fetch(`
     { 
       "articles": *[_type == "article"] | order(published desc) {
         title,

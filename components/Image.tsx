@@ -1,9 +1,9 @@
 import React from "react"
 import NextImage, { ImageProps as NextImageProps } from "next/image"
-import { client } from "io/sanity"
 import { useNextSanityImage } from "next-sanity-image"
 
 import { ImageAsset } from "types/schema"
+import { getClient } from "io/sanity/client"
 
 interface ImageProps {
   asset: ImageAsset["asset"]
@@ -16,7 +16,7 @@ export const Image: React.FC<ImageProps> = ({
   alt,
   layout = "responsive",
 }) => {
-  const imageProps = useNextSanityImage(client, asset._ref)
+  const imageProps = useNextSanityImage(getClient(), asset._ref)
 
   return <NextImage {...imageProps} alt={alt} layout={layout} />
 }
