@@ -18,13 +18,13 @@ import { blockContent } from "./blockContent"
 export default createSchema({
   name: "schema",
   types: schemaTypes.concat([
+    page,
+    article,
     hero,
     fact,
-    page,
     person,
     people,
     factBox,
-    article,
     bodyText,
     pageLink,
     pageLinks,

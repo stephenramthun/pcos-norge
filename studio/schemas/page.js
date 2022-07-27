@@ -1,20 +1,20 @@
 export const page = {
-  title: "Side",
   name: "page",
+  title: "Side",
   type: "document",
   fields: [
     {
-      type: "string",
       name: "title",
       title: "Tittel",
+      type: "string",
       validation: (Rule) =>
         Rule.required().error("Alle sider må ha en sidetittel"),
       codegen: { required: true },
     },
     {
-      type: "array",
       name: "elements",
       title: "Elementer",
+      type: "array",
       of: [
         { type: "hero" },
         { type: "pageLinks" },
