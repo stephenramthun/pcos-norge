@@ -1,6 +1,6 @@
 const previewSecret = process.env.SANITY_STUDIO_PREVIEW_SECRET
 
-const remoteUrl = `https://pcos-norge.vercel.app/aktuelt`
+const remoteUrl = `https://pcosnorge.no/aktuelt`
 const localUrl = `http://localhost:3000`
 
 export default function resolveProductionUrl(document) {
