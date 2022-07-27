@@ -1,9 +1,6 @@
 const previewSecret = process.env.SANITY_STUDIO_PREVIEW_SECRET
 
-console.log(previewSecret)
-
-// Replace `remoteUrl` with your deployed Next.js site
-const remoteUrl = `https://pcosnorge.no/aktuelt`
+const remoteUrl = `https://pcos-norge.vercel.app/aktuelt`
 const localUrl = `http://localhost:3000`
 
 export default function resolveProductionUrl(document) {
