@@ -113,6 +113,9 @@ export const getStaticProps: GetStaticProps = async ({
   `
   const queryParams = { slug: params?.slug }
   const data = await getClient(preview).fetch(query, queryParams)
+
+  if (!data) return { notFound: true }
+
   const article = filterDataToSingleItem(data, preview)
 
   return {
