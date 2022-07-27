@@ -120,7 +120,10 @@ export const getStaticProps: GetStaticProps = async ({
 
   return {
     props: {
-      article,
+      article: {
+        ...article,
+        slug: params?.slug,
+      },
       preview,
       query,
       queryParams,
