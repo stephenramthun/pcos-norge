@@ -1,30 +1,45 @@
 .FactBox {
-    margin: 0;
-    padding: 2rem;
-    background: var(--color-brand-green);
-    list-style: none;
-    max-width: max-content;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  --accent-color: var(--color-brand-green);
+  --border-radius: 4px;
+  position: relative;
+  margin: 0;
+  padding: 1rem 1rem 1rem 2.5rem;
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--accent-color);
+  border-radius: var(--border-radius);
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+  gap: 1rem;
+}
+
+.FactBox:before {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100%;
+  background: var(--accent-color);
 }
 
 .FactBox > li {
-    display: flex;
-    /*justify-content: space-between;*/
-    flex-wrap: wrap;
+  display: flex;
+  /*justify-content: space-between;*/
+  flex-wrap: wrap;
 }
 
 .FactBox > li > p {
-    white-space: normal !important;
-    color: #151515;
+  white-space: normal !important;
+  font-size: var(--font-size-details);
 }
 
 .FactBox > li > p:first-of-type {
-    font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
 }
 
 .FactBox > li > p:last-of-type {
-    margin-left: 1rem;
-    /*text-align: right;*/
+  margin-left: 1rem;
+  /*text-align: right;*/
 }
