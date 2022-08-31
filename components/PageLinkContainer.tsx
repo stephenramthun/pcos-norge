@@ -1,10 +1,12 @@
-import styles from "@hooks/usePortableTextComponents.module.css"
-import { Heading } from "@components/Heading"
-import { Body } from "@components/Body"
-import { ArrowLink } from "@components/ArrowLink"
-import { Content } from "@components/Content"
 import React from "react"
+
+import { Body } from "@components/Body"
+import { Content } from "@components/Content"
+import { Heading } from "@components/Heading"
+import { ArrowLink } from "@components/ArrowLink"
 import { PageLink } from "types/schema"
+
+import styles from "@hooks/usePortableTextComponents.module.css"
 
 interface PageLinkContainerProps {
   links: Array<PageLink>
