@@ -31,10 +31,9 @@ export const article = {
       title: "ID",
       type: "slug",
       options: {
-        initialValue: "title",
-        readOnly: true,
+        source: "title",
       },
-      description: "Autogenerert ID som brukes for lenking til artikkelen",
+      description: "ID som brukes for lenking til artikkelen",
       validation: (Rule) => Rule.required(),
       codegen: { required: true },
     },
