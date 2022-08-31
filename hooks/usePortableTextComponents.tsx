@@ -65,7 +65,7 @@ export const usePortableTextComponents = (
     },
     marks: {
       ingress: ({ children }) => {
-        return <Body className={styles.Ingress}>{children}</Body>
+        return <span className={styles.Ingress}>{children}</span>
       },
       link: ({ children, value }) => {
         return <Link href={value.href}>{children}</Link>
