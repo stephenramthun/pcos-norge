@@ -2,7 +2,7 @@ import React from "react"
 import { PortableTextReactComponents } from "@portabletext/react"
 
 import { Hero } from "@components/Hero"
-import { Image } from "@components/Image"
+import { SanityImage } from "@components/SanityImage"
 import { Content } from "@components/Content"
 import { PeopleContainer } from "@components/PeopleContainer"
 import { PageLinkContainer } from "@components/PageLinkContainer"
@@ -26,7 +26,7 @@ export const usePageComponents = (): Partial<PortableTextReactComponents> => {
       imageAsset: ({ value }: ComponentProps<ImageAsset>) => {
         return (
           <Content>
-            <Image asset={value.asset} alt={value.alt} />
+            <SanityImage asset={value.asset} alt={value.alt} />
           </Content>
         )
       },

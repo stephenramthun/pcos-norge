@@ -4,7 +4,7 @@ import { PortableTextReactComponents } from "@portabletext/react"
 
 import { Body } from "@components/Body"
 import { Link } from "@components/Link"
-import { Image } from "@components/Image"
+import { SanityImage } from "@components/SanityImage"
 import { Heading } from "@components/Heading"
 import { FactBox } from "@components/FactBox"
 import { useReferenceLinks } from "@hooks/useReferenceLinks"
@@ -24,7 +24,13 @@ export const usePortableTextComponents = (
   return {
     types: {
       imageAsset: ({ value }: ComponentProps<ImageAsset>) => {
-        return <Image asset={value.asset} alt={value.alt} />
+        return (
+          <SanityImage
+            className={styles.Image}
+            asset={value.asset}
+            alt={value.alt}
+          />
+        )
       },
       factBox: ({ value }) => {
         return <FactBox facts={value.facts} />
