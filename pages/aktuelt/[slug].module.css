@@ -1,38 +1,44 @@
 .Section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .Heading {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .Published {
-    margin-bottom: 4rem;
+  margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 750px) {
+  .Published {
+    margin-bottom: 2rem;
+  }
 }
 
 .ImageContainer {
-    position: relative;
-    width: 100%;
-    margin-bottom: 4rem;
+  position: relative;
+  width: 100%;
+  margin-bottom: 4rem;
 }
 
 .ImageContainer > span {
-    position: unset;
+  position: unset;
 }
 
 .ArticleContent {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
 }
 
 .Text {
-    max-width: var(--text-max-width);
-    align-self: center;
+  max-width: var(--text-max-width);
+  align-self: center;
 }

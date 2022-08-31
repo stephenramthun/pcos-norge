@@ -1,20 +1,7 @@
-.HeroText {
-  position: relative;
-  display: flex;
-  background: var(--color-brand-extra-light-teal);
-  width: 100%;
-  margin-bottom: 3rem;
-}
-
-.HeroText > h1 {
-  position: relative;
-  width: max-content;
-  max-width: 900px;
-}
-
-.Content {
-  max-width: var(--text-max-width);
-  width: 100%;
+@media screen and (min-width: 750px) {
+  .Image {
+    margin-bottom: 32px !important;
+  }
 }
 
 .Body {
@@ -44,16 +31,6 @@
 
 .Ingress {
   margin-top: 2rem;
-}
-
-.ImageContainer {
-  position: relative;
-  width: 100%;
-  margin-bottom: 4rem;
-}
-
-.ImageContainer > span {
-  position: unset;
 }
 
 .Section {
