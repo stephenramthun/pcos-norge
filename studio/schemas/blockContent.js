@@ -22,6 +22,10 @@ export const blockContent = {
             title: "Strong",
             value: "strong",
           },
+          {
+            title: "Emphasis",
+            value: "em",
+          },
         ],
         annotations: [
           {
