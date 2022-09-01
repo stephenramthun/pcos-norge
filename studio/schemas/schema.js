@@ -14,6 +14,7 @@ import { pageLinks } from "./pageLinks"
 import { imageAsset } from "./imageAsset"
 import { callToAction } from "./callToAction"
 import { blockContent } from "./blockContent"
+import { navigationLinks } from "./navigationLinks"
 
 export default createSchema({
   name: "schema",
@@ -31,5 +32,6 @@ export default createSchema({
     imageAsset,
     callToAction,
     blockContent,
+    navigationLinks,
   ]),
 })

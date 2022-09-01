@@ -84,7 +84,7 @@ export interface Article extends SanityDocument {
   /**
    * ID — `slug`
    *
-   * Autogenerert ID som brukes for lenking til artikkelen
+   * ID som brukes for lenking til artikkelen
    */
   slug: { _type: "slug"; current: string }
 
@@ -101,6 +101,13 @@ export interface Article extends SanityDocument {
    * Bilde som vises i lenker til artikkelen
    */
   image: ImageAsset
+
+  /**
+   * Lenker — `navigationLinks`
+   *
+   * Referanser til artikler det skal lenkes til i bunnen av artikkelen, typisk hvis denne artikkelen er en del av en artikkelserie
+   */
+  pageLinks?: NavigationLinks
 }
 
 export type Hero = {
@@ -269,6 +276,23 @@ export type CallToAction = {
 }
 
 export type BlockContent = Array<ImageAsset | FactBox | SanityBlock>
+
+export type NavigationLinks = {
+  _type: "navigationLinks"
+  /**
+   * Venstrelenke — `reference`
+   *
+   *
+   */
+  leftLink?: SanityReference<Article>
+
+  /**
+   * Høyrelenke — `reference`
+   *
+   *
+   */
+  rightLink?: SanityReference<Article>
+}
 
 export type Documents = Page | Article
 

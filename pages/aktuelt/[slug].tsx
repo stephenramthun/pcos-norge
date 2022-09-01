@@ -17,6 +17,7 @@ import { Footer } from "@components/Footer"
 import { Header } from "@components/Header"
 import { Content } from "@components/Content"
 import { Heading } from "@components/Heading"
+import { PageLinks } from "@components/PageLinks"
 import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
 import { useLocaleDateString } from "@hooks/useLocaleDateString"
@@ -83,7 +84,7 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
         />
       </Content>
       <Content className={styles.Section}>
-        <Heading className={styles.Heading} tag="h2" size="medium">
+        <Heading className={styles.Heading} tag="h1" size="medium">
           {data.title}
         </Heading>
         <Body suppressHydrationWarning className={styles.Published}>
@@ -93,6 +94,12 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
           {data.ingress && <Body suppressHydrationWarning>{data.ingress}</Body>}
           <PortableText value={data.body} components={components} />
         </div>
+        {(data.pageLinks?.leftLink || data.pageLinks?.rightLink) && (
+          <PageLinks
+            left={data.pageLinks.leftLink as unknown as ArticleLink}
+            right={data.pageLinks.rightLink as unknown as ArticleLink}
+          />
+        )}
       </Content>
       <Footer />
     </PageContainer>
@@ -108,7 +115,17 @@ export const getStaticProps: GetStaticProps = async ({
       title,
       body,
       published,
-      image
+      image,
+      pageLinks {
+        leftLink->{
+          "slug": slug.current,
+          title
+        },
+        rightLink->{
+          "slug": slug.current,
+          title
+        }
+      }
     }
   `
   const queryParams = { slug: params?.slug }

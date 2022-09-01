@@ -1,0 +1,24 @@
+.PageLinks {
+  margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: var(--font-size-body);
+}
+
+@media screen and (min-width: 750px) {
+  .PageLinks {
+    margin-top: 4rem;
+  }
+}
+
+.LeftLink {
+  justify-self: flex-start;
+  flex: 1;
+}
+
+.RightLink {
+  text-align: right;
+  justify-self: flex-end;
+  flex: 1;
+}
