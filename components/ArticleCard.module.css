@@ -2,6 +2,20 @@
   position: relative;
 }
 
+@media screen and (max-width: 400px) {
+  .Container {
+    max-width: 200px !important;
+    min-width: 200px !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Container {
+    max-width: 300px !important;
+    min-width: 300px !important;
+  }
+}
+
 .ArticleCard {
   position: relative;
   width: 100%;
