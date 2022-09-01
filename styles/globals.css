@@ -30,6 +30,8 @@ p {
   --color-brand-blue: #0c145c;
   --color-brand-green: #69c9aa;
 
+  --semantic-color-disabled: #878c8c;
+
   --color-background-primary: #ffffff;
   --color-background-secondary: #effcff;
   --color-accent-primary: #116773;
