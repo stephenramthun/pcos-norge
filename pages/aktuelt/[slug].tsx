@@ -69,7 +69,14 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
 
   return (
     <PageContainer>
-      <Head />
+      <Head>
+        <meta property="og:title" content={data.title} />
+        <meta property="og:description" content={data.ingress} />
+        <meta
+          property="og:image"
+          content={(data.image as unknown as { url: string })?.url}
+        />
+      </Head>
       <Header />
       <Content>
         <Breadcrumbs
@@ -115,7 +122,7 @@ export const getStaticProps: GetStaticProps = async ({
       title,
       body,
       published,
-      image,
+      "image": image.asset->,
       pageLinks {
         leftLink->{
           "slug": slug.current,
