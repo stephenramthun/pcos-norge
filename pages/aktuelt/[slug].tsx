@@ -82,11 +82,29 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
           content={data.ingress}
           key="description"
         />
-        <meta
-          property="og:image"
-          content={(data.image as unknown as { url: string })?.url}
-          key="image"
-        />
+        {data.metadata?.image && (
+          <>
+            <meta
+              property="og:image"
+              content={(data.metadata.image as unknown as MetadataImage)?.url}
+              key="image"
+            />
+            <meta
+              property="og:image:width"
+              content={`${
+                (data.metadata.image as unknown as MetadataImage).metadata
+                  .dimensions.width
+              }`}
+            />
+            <meta
+              property="og:image:height"
+              content={`${
+                (data.metadata.image as unknown as MetadataImage).metadata
+                  .dimensions.height
+              }`}
+            />
+          </>
+        )}
         <meta property="og:type" content="article" key="type" />
         <meta property="og:url" content={useCanonicalUrl()} key="url" />
       </Head>
@@ -145,7 +163,12 @@ export const getStaticProps: GetStaticProps = async ({
           "slug": slug.current,
           title
         }
-      }
+      },
+      metadata {
+        title,
+        description,
+        "image": image.asset->,
+      },
     }
   `
   const queryParams = { slug: params?.slug }

@@ -15,6 +15,7 @@ import { imageAsset } from "./imageAsset"
 import { callToAction } from "./callToAction"
 import { blockContent } from "./blockContent"
 import { navigationLinks } from "./navigationLinks"
+import { openGraphMetaData } from "./openGraphMetaData"
 
 export default createSchema({
   name: "schema",
@@ -33,5 +34,6 @@ export default createSchema({
     callToAction,
     blockContent,
     navigationLinks,
+    openGraphMetaData,
   ]),
 })

@@ -22,3 +22,13 @@ declare type PreviewProps = {
   preview: boolean
   queryParams?: { slug?: string | Array<string> }
 }
+
+declare type MetadataImage = {
+  url: string
+  metadata: {
+    dimensions: {
+      width: number
+      height: number
+    }
+  }
+}

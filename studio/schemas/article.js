@@ -63,5 +63,10 @@ export const article = {
       description:
         "Referanser til artikler det skal lenkes til i bunnen av artikkelen, typisk hvis denne artikkelen er en del av en artikkelserie",
     },
+    {
+      name: "metadata",
+      title: "Metadata",
+      type: "openGraphMetaData",
+    },
   ],
 }

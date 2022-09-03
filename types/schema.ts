@@ -108,6 +108,13 @@ export interface Article extends SanityDocument {
    * Referanser til artikler det skal lenkes til i bunnen av artikkelen, typisk hvis denne artikkelen er en del av en artikkelserie
    */
   pageLinks?: NavigationLinks
+
+  /**
+   * Metadata — `openGraphMetaData`
+   *
+   *
+   */
+  metadata?: OpenGraphMetaData
 }
 
 export type Hero = {
@@ -255,7 +262,7 @@ export type ImageAsset = {
    *
    *
    */
-  alt: string
+  alt?: string
 }
 
 export type CallToAction = {
@@ -292,6 +299,30 @@ export type NavigationLinks = {
    *
    */
   rightLink?: SanityReference<Article>
+}
+
+export type OpenGraphMetaData = {
+  _type: "openGraphMetaData"
+  /**
+   * Tittel — `string`
+   *
+   * En kort tittel
+   */
+  title: string
+
+  /**
+   * Beskrivelse — `string`
+   *
+   * En kort beskrivelse av innholdet i lenka
+   */
+  description: string
+
+  /**
+   * Bilde — `imageAsset`
+   *
+   * Bilde som vises i lenke-previewen av siden. Bør være 1200 x 630 piklser i størrelse.
+   */
+  image: ImageAsset
 }
 
 export type Documents = Page | Article
