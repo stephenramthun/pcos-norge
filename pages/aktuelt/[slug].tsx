@@ -73,19 +73,21 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
   const components = usePortableTextComponents(data.body)
   const date = useLocaleDateString(new Date(data.published))
 
-  console.log(useCanonicalUrl())
-
   return (
     <PageContainer>
       <Head>
-        <meta property="og:title" content={data.title} key="title" />
-        <meta
-          property="og:description"
-          content={data.ingress}
-          key="description"
-        />
-        {data.metadata?.image && (
+        {data.metadata && (
           <>
+            <meta
+              property="og:title"
+              content={data.metadata.title}
+              key="title"
+            />
+            <meta
+              property="og:description"
+              content={data.metadata.description}
+              key="description"
+            />
             <meta
               property="og:image"
               content={(data.metadata.image as unknown as MetadataImage)?.url}
