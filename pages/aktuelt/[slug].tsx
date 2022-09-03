@@ -7,6 +7,7 @@ import type {
   GetStaticPropsResult,
   NextPage,
 } from "next"
+import { useRouter } from "next/router"
 import { SanityDocument } from "sanity-codegen"
 
 import { getClient } from "io/sanity/client"
@@ -46,6 +47,11 @@ const filterDataToSingleItem = <T extends SanityDocument>(
   return data[0]
 }
 
+const useCanonicalUrl = (): string => {
+  const router = useRouter()
+  return "https://www.pcosnorge.no" + router.pathname
+}
+
 interface ArticleProps {
   article: ArticleObject
 }
@@ -70,12 +76,19 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
   return (
     <PageContainer>
       <Head>
-        <meta property="og:title" content={data.title} />
-        <meta property="og:description" content={data.ingress} />
+        <meta property="og:title" content={data.title} key="title" />
+        <meta
+          property="og:description"
+          content={data.ingress}
+          key="description"
+        />
         <meta
           property="og:image"
           content={(data.image as unknown as { url: string })?.url}
+          key="image"
         />
+        <meta property="og:type" content="article" key="type" />
+        <meta property="og:url" content={useCanonicalUrl()} key="url" />
       </Head>
       <Header />
       <Content>
