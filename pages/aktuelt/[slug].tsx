@@ -49,7 +49,7 @@ const filterDataToSingleItem = <T extends SanityDocument>(
 
 const useCanonicalUrl = (): string => {
   const router = useRouter()
-  return "https://www.pcosnorge.no" + router.pathname
+  return "https://www.pcosnorge.no" + router.asPath
 }
 
 interface ArticleProps {
@@ -72,6 +72,8 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
 
   const components = usePortableTextComponents(data.body)
   const date = useLocaleDateString(new Date(data.published))
+
+  console.log(useCanonicalUrl())
 
   return (
     <PageContainer>
