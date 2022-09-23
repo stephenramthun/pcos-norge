@@ -1,10 +1,8 @@
-import { ClientConfig } from "next-sanity"
-
 const throwConfigError = (message: string): never => {
   throw Error(message)
 }
 
-export const config: ClientConfig = {
+export const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
   projectId:
     process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ??
