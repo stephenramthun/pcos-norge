@@ -1,0 +1,42 @@
+.loader {
+  --loader-circle-size: 5px;
+  position: relative;
+  width: calc(var(--loader-circle-size) * 5);
+  display: flex;
+  gap: 5px;
+}
+
+.loader div {
+  width: 5px;
+  height: 5px;
+  background: var(--override-background-color, white);
+  border-radius: 50%;
+  animation-name: jump;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  transition: background-color 0.1s ease;
+}
+
+.loader div:nth-of-type(2) {
+  animation-delay: 100ms;
+}
+
+.loader div:nth-of-type(3) {
+  animation-delay: 200ms;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  15% {
+    transform: translateY(-4px) scaleY(1.5);
+    animation-timing-function: ease-in;
+  }
+
+  30% {
+    transform: translateY(0);
+  }
+}

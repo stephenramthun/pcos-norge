@@ -4,7 +4,6 @@ import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { Head } from "@components/Head"
 import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
-import { Button } from "@components/Button"
 import { Content } from "@components/Content"
 import { Heading } from "@components/Heading"
 import { Breadcrumbs } from "@components/Breadcrumbs"
@@ -16,6 +15,7 @@ import { fetchArticles } from "io/sanity/client"
 import { usePreviewSubscription } from "io/sanity/preview"
 
 import styles from "./aktuelt.module.css"
+import { FetchButton } from "@components/FetchButton"
 
 const articlesPerFetch = 6
 
@@ -83,10 +83,10 @@ const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
       </Content>
       {state.remainingArticles > 0 && (
         <Content className={styles.FetchMoreContainer}>
-          <Button onClick={fetchMoreArticles}>
+          <FetchButton onFetch={fetchMoreArticles}>
             Hent {Math.min(state.remainingArticles, articlesPerFetch)} flere
             saker
-          </Button>
+          </FetchButton>
         </Content>
       )}
       <Footer />

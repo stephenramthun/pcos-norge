@@ -1,0 +1,9 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.button:hover {
+  --override-background-color: var(--color-brand-light-red);
+}
