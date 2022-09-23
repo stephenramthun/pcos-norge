@@ -9,6 +9,7 @@ import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
 import { Heading } from "@components/Heading"
 import { Content } from "@components/Content"
+import { ArrowLink } from "@components/ArrowLink"
 import { ArticleCard } from "@components/ArticleCard"
 import { PageContainer } from "@components/PageContainer"
 import { usePageComponents } from "@hooks/usePageComponents"
@@ -45,6 +46,9 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
                   className={styles.Card}
                 />
               ))}
+              <div>
+                <ArrowLink href="aktuelt">Se flere saker</ArrowLink>
+              </div>
             </div>
           </article>
         </Content>
@@ -59,7 +63,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
 > => {
   const props = await getClient().fetch(`
     { 
-      "articles": *[_type == "article"] | order(published desc) {
+      "articles": *[_type == "article"] | order(published desc)[0..5] {
         title,
         slug,
         image,

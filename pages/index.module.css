@@ -21,6 +21,7 @@
   width: 100vw;
   margin-left: calc(var(--padding-horizontal) * -1);
   padding-left: var(--padding-horizontal);
+  padding-right: var(--padding-horizontal);
   overflow-x: scroll;
   padding-bottom: 1rem;
 }
