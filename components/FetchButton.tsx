@@ -8,7 +8,7 @@ import styles from "./FetchButton.module.css"
 
 interface FetchButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
-  onFetch: () => Promise<Response>
+  onFetch: () => Promise<Response | void>
 }
 
 export const FetchButton: React.FC<FetchButtonProps> = ({
