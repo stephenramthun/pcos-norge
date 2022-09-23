@@ -29,7 +29,7 @@ export const ReferenceLinkSummary: React.VFC<ReferenceLinkSummaryProps> = ({
 }) => {
   return (
     <aside
-      className={classNames(styles.ReferenceLinkSummary, className)}
+      className={classNames(styles.container, className)}
       {...elementProps}
     >
       <ol>

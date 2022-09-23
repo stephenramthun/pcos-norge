@@ -13,8 +13,8 @@ interface HeroProps extends React.HTMLAttributes<HTMLElement> {
 
 export const Hero: React.VFC<HeroProps> = ({ text, className }) => {
   return (
-    <Content className={classNames(styles.Hero, className)}>
-      <div className={styles.HeroText}>
+    <Content className={classNames(styles.container, className)}>
+      <div className={styles.text}>
         <Heading tag="h1" size="large">
           {text}
         </Heading>

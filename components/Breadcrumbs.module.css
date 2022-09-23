@@ -1,4 +1,4 @@
-.Breadcrumbs {
+.container {
     --gap: 0.5rem;
     display: flex;
     align-items: center;
@@ -6,13 +6,13 @@
     gap: var(--gap);
 }
 
-.Breadcrumbs a {
+.container a {
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-body);
     color: var(--color-text-primary);
 }
 
-.Breadcrumbs span {
+.container span {
     display: flex;
     align-items: center;
     gap: var(--gap);

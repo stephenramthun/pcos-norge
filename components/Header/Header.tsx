@@ -18,14 +18,14 @@ export const Header: React.VFC<HeaderProps> = ({
   return (
     <header
       id="header"
-      className={classNames(styles.Header, className)}
+      className={classNames(styles.header, className)}
       {...headerProps}
     >
-      <div className={classNames(styles.Content)}>
-        <Logo className={styles.Logo} />
+      <div className={classNames(styles.content)}>
+        <Logo className={styles.logo} />
         <nav
           className={classNames(
-            styles.Nav,
+            styles.nav,
             showNav ? styles.show : styles.hide,
           )}
         >

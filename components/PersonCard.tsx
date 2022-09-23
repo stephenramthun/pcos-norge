@@ -33,7 +33,7 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
   )
 
   return (
-    <div className={classNames(styles.PersonCard, className)} {...divProps}>
+    <div className={classNames(styles.card, className)} {...divProps}>
       <Image
         {...imageProps}
         alt={`${name}, ${capacity}`}
@@ -43,9 +43,9 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
         loader={imageProps?.loader || (({ src }) => src)}
         unoptimized
       />
-      <span className={styles.Details}>
-        <p className={styles.Capacity}>{capacity}</p>
-        <p className={styles.Name}>{name}</p>
+      <span className={styles.details}>
+        <p className={styles.capacity}>{capacity}</p>
+        <p className={styles.name}>{name}</p>
       </span>
     </div>
   )

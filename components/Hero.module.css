@@ -1,4 +1,4 @@
-.Hero {
+.container {
     background-color: var(--color-brand-extra-light-teal);
     display: flex;
     align-items: center;
@@ -8,7 +8,7 @@
     padding-bottom: 8rem;
 }
 
-.HeroText {
+.text {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,12 +17,12 @@
 }
 
 @media only screen and (max-width: 1250px) {
-    .Hero {
+    .container {
         flex-direction: column;
         gap: 0;
     }
 
-    .HeroText {
+    .text {
         flex: unset;
         margin-top: 3.5rem;
         max-width: 800px;
@@ -30,12 +30,12 @@
 }
 
 @media only screen and (max-width: 750px) {
-    .Hero {
+    .container {
         height: max-content;
         min-height: unset;
     }
 
-    .HeroText {
+    .text {
         height: max-content;
         margin: 0;
     }

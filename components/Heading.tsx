@@ -18,7 +18,7 @@ export const Heading: React.FC<HeadingProps> = ({
   React.createElement(
     tag,
     {
-      className: classNames(styles.Heading, styles[size], className),
+      className: classNames(styles.heading, styles[size], className),
       ...headingProps,
     },
     children,

@@ -1,4 +1,4 @@
-.Footer {
+.container {
     width: 100%;
     height: max-content;
     padding: 4rem 0;
@@ -7,17 +7,17 @@
 }
 
 @media only screen and (max-width: 750px) {
-    .Footer {
+    .container {
         padding: 3rem 0;
     }
 }
 
-.Footer p {
+.container p {
     font-size: var(--font-size-details);
     color: var(--color-background-primary);
 }
 
-.Content {
+.content {
     display: flex;
     flex-direction: column;
     background: var(--color-brand-dark-teal) !important;
@@ -25,7 +25,7 @@
     padding-bottom: 0;
 }
 
-.Details {
+.details {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -33,46 +33,20 @@
     flex-wrap: wrap;
 }
 
-.Details > div {
+.details > div {
     display: flex;
     flex-direction: column;
 }
 
-.Details > div > span {
+.details > div > span {
     display: flex;
     gap: 1.25rem;
 }
 
-.Details > div.LinkGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 0.5rem 3rem;
-}
-
-.Details > div.LinkGrid > a {
-    font-size: var(--font-size-details);
-    color: var(--color-background-primary);
-    font-weight: var(--font-weight-regular);
-    display: flex;
-    justify-content: space-between;
-}
-
-.Details > div.LinkGrid > a:hover {
-    text-decoration: underline;
-}
-
-.Details > div.LinkGrid > a:before {
-    background: none;
-}
-
-.Details > div.LinkGrid > a > svg {
-    margin-left: 1rem;
-}
-
-.Description {
+.description {
     max-width: 600px;
 }
 
-.Logo {
+.logo {
     margin-bottom: 2rem;
 }

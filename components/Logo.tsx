@@ -19,13 +19,13 @@ export const Logo: React.VFC<LogoProps> = ({
 }) => {
   return (
     <Link href="/">
-      <a className={classNames(styles.Logo, className)} {...anchorProps}>
+      <a className={classNames(styles.container, className)} {...anchorProps}>
         <Image
           alt="Logo PCOS Norge"
           src={variant === "light" ? logoLight.src : logoDark.src}
           loader={({ src }) => src}
           layout="fill"
-          className={styles.Image}
+          className={styles.image}
           unoptimized
           priority
         />

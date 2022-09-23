@@ -14,7 +14,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...buttonProps
 }) => (
   <button
-    className={classNames(styles.Button, styles[variant], className)}
+    className={classNames(styles.button, styles[variant], className)}
     {...buttonProps}
   >
     {children}

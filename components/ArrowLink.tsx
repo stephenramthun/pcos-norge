@@ -13,7 +13,7 @@ export const ArrowLink: React.FC<ArrowLinkProps> = ({
   children,
   ...linkProps
 }) => (
-  <a className={classNames(styles.Link, className)} {...linkProps}>
+  <a className={classNames(styles.link, className)} {...linkProps}>
     {children}
     <ArrowRight weight="bold" size={24} />
   </a>

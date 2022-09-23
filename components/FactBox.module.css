@@ -1,4 +1,4 @@
-.FactBox {
+.list {
   --accent-color: var(--color-brand-green);
   --border-radius: 4px;
   position: relative;
@@ -13,7 +13,7 @@
   gap: 1rem;
 }
 
-.FactBox:before {
+.list:before {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
   content: "";
   position: absolute;
@@ -24,22 +24,22 @@
   background: var(--accent-color);
 }
 
-.FactBox > li {
+.list > li {
   display: flex;
   /*justify-content: space-between;*/
   flex-wrap: wrap;
 }
 
-.FactBox > li > p {
+.list > li > p {
   white-space: normal !important;
   font-size: var(--font-size-details);
 }
 
-.FactBox > li > p:first-of-type {
+.list > li > p:first-of-type {
   font-weight: var(--font-weight-semibold);
 }
 
-.FactBox > li > p:last-of-type {
+.list > li > p:last-of-type {
   margin-left: 1rem;
   /*text-align: right;*/
 }

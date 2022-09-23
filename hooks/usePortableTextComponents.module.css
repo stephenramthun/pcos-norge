@@ -1,17 +1,17 @@
-.Body {
+.body {
   margin-bottom: 2rem;
 }
 
-.Link {
+.link {
   color: var(--color-brand-light-red);
 }
 
-.Link:focus-visible,
-.Link:focus {
+.link:focus-visible,
+.link:focus {
   outline: var(--outline);
 }
 
-.List {
+.list {
   color: var(--color-text-primary);
   font-size: var(--font-size-body);
   margin: 0 0 2rem;
@@ -19,27 +19,27 @@
   width: 100%;
 }
 
-.List > li {
+.list > li {
   line-height: var(--line-height-body);
 }
 
-.Ingress {
+.ingress {
   margin-top: 2rem;
 }
 
-.Section {
+.section {
   max-width: 100vw;
 }
 
-.Section > article {
+.section > article {
   flex: 1;
   min-width: 300px;
 }
 
-.Section > article > h2 {
+.section > article > h2 {
   margin-bottom: 1.5rem;
 }
 
-.Section > article > p {
+.section > article > p {
   margin-bottom: 1rem;
 }

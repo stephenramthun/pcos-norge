@@ -1,4 +1,4 @@
-.Content {
+.content {
   height: max-content;
   width: 100%;
   padding: 3rem var(--padding-horizontal);
@@ -9,7 +9,7 @@
 }
 
 @media only screen and (max-width: 750px) {
-  .Content {
+  .content {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }

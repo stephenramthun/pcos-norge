@@ -21,11 +21,7 @@ export const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
 
   return (
     <button
-      className={classNames(
-        styles.HamburgerMenu,
-        open && styles.active,
-        className,
-      )}
+      className={classNames(styles.button, open && styles.active, className)}
       aria-label="Menu"
       onClick={toggleOpen}
       {...buttonProps}

@@ -1,4 +1,4 @@
-.LinkButton {
+.button {
     background: var(--color-brand-light-red);
     color: var(--color-brand-extra-light-teal);
     outline: none;
@@ -11,14 +11,14 @@
     cursor: pointer;
 }
 
-.LinkButton:hover,
-.LinkButton:focus-visible {
+.button:hover,
+.button:focus-visible {
     color: var(--color-brand-light-red);
     background: var(--color-brand-extra-light-teal);
     box-shadow: 0 0 0 3px var(--color-brand-light-red);
 }
 
-.LinkButton:active {
+.button:active {
     color: var(--color-brand-extra-light-teal);
     background: var(--color-brand-dark-red);
     box-shadow: none;

@@ -1,4 +1,4 @@
-.Link {
+.link {
     position: relative;
     color: var(--color-brand-dark-teal);
     font-size: var(--font-size-body);
@@ -12,7 +12,7 @@
     width: max-content;
 }
 
-.Link:before {
+.link:before {
     content: "";
     height: 2px;
     background: var(--color-brand-light-red);
@@ -23,22 +23,22 @@
     transition: opacity 100ms;
 }
 
-.Link:hover:before,
-.Link:focus-visible:before {
+.link:hover:before,
+.link:focus-visible:before {
     opacity: 0;
 }
 
-.Link > svg {
+.link > svg {
     align-self: flex-end;
     margin-left: 0.25rem;
     transition: transform 0.1s ease-in-out;
 }
 
-.Link:focus-visible {
+.link:focus-visible {
     outline: var(--outline);
 }
 
-.Link:hover > svg,
-.Link:focus-visible > svg {
+.link:hover > svg,
+.link:focus-visible > svg {
     transform: translateX(0.25rem);
 }

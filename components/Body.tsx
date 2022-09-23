@@ -11,7 +11,7 @@ export const Body: React.FC<BodyProps> = ({
   ...paragraphProps
 }) => {
   return (
-    <p className={classNames(styles.Body, className)} {...paragraphProps}>
+    <p className={classNames(styles.text, className)} {...paragraphProps}>
       {children}
     </p>
   )

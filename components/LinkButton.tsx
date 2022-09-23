@@ -12,7 +12,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
   ...anchorProps
 }) => {
   return (
-    <a className={classNames(styles.LinkButton, className)} {...anchorProps}>
+    <a className={classNames(styles.button, className)} {...anchorProps}>
       {children}
     </a>
   )

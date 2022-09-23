@@ -57,22 +57,22 @@ export const usePortableTextComponents = (
     },
     list: {
       bullet: ({ children }) => {
-        return <ul className={styles.List}>{children}</ul>
+        return <ul className={styles.list}>{children}</ul>
       },
       number: ({ children }) => {
-        return <ol className={styles.List}>{children}</ol>
+        return <ol className={styles.list}>{children}</ol>
       },
     },
     marks: {
       ingress: ({ children }) => {
-        return <span className={styles.Ingress}>{children}</span>
+        return <span className={styles.ingress}>{children}</span>
       },
       link: ({ children, value }) => {
         return <Link href={value.href}>{children}</Link>
       },
       referenceLink: ({ value }) => {
         return (
-          <a href={`#${value._key}`} className={styles.Link}>
+          <a href={`#${value._key}`} className={styles.link}>
             <sup>[{referenceLinks[value._key]?.index}]</sup>
           </a>
         )

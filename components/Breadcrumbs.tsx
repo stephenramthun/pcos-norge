@@ -2,7 +2,7 @@ import React from "react"
 import classNames from "classnames"
 import { CaretRight } from "phosphor-react"
 
-import { Link } from "./Header/Link"
+import { Link } from "./Header"
 
 import styles from "./Breadcrumbs.module.css"
 
@@ -21,7 +21,7 @@ export const Breadcrumbs: React.VFC<BreadcrumbsProps> = ({
   links,
   ...divProps
 }) => (
-  <div className={classNames(styles.Breadcrumbs, className)} {...divProps}>
+  <div className={classNames(styles.container, className)} {...divProps}>
     {links.map((link, i) => (
       <React.Fragment key={i}>
         <span>

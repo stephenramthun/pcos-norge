@@ -1,16 +1,16 @@
-.BlockContentContainer {
+.container {
   gap: var(--block-s);
   flex-direction: column;
 }
 
-.BlockContentContainer > h1 {
+.container > h1 {
   margin-bottom: var(--block-l);
 }
 
-.BlockContentContainer > h2 {
+.container > h2 {
   margin-top: var(--block-l);
 }
 
-.BlockContentContainer > ul {
+.container > ul {
   margin-bottom: var(--block-s);
 }

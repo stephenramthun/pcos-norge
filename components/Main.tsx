@@ -10,7 +10,7 @@ export const Main: React.FC<MainProps> = ({
   children,
   ...elementProps
 }) => (
-  <main className={classNames(styles.Main, className)} {...elementProps}>
+  <main className={classNames(styles.container, className)} {...elementProps}>
     {children}
   </main>
 )

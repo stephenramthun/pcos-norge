@@ -21,7 +21,7 @@ export const FactBox: VFC<FactBoxProps> = ({
   ...ulProps
 }) => {
   return (
-    <ul className={classNames(styles.FactBox, className)} {...ulProps}>
+    <ul className={classNames(styles.list, className)} {...ulProps}>
       {facts.map((fact, i) => (
         <li key={i}>
           <Body>{fact.question}:</Body>

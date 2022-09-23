@@ -21,7 +21,7 @@ export const Link: React.FC<LinkProps> = ({
   return (
     <a
       className={classNames(
-        styles.Link,
+        styles.link,
         isActive(asPath, linkProps.href) && styles.active,
         className,
       )}

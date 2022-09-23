@@ -16,7 +16,7 @@ export const BlockContentContainer: React.FC<BlockContentContainerProps> = ({
 }) => {
   const components = usePortableTextComponents(blocks)
   return (
-    <Content className={styles.BlockContentContainer}>
+    <Content className={styles.container}>
       <PortableText value={blocks} components={components} />
     </Content>
   )

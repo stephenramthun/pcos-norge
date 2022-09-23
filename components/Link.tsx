@@ -16,7 +16,7 @@ export const Link: React.FC<LinkProps> = ({
   return (
     <a
       className={classNames(
-        styles.Link,
+        styles.link,
         disabled && styles.disabled,
         className,
       )}

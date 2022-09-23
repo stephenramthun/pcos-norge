@@ -6,12 +6,12 @@ import { Logo } from "./Logo"
 import { Body } from "./Body"
 import { Content } from "./Content"
 
-export const Footer: React.VFC = () => (
-  <footer className={styles.Footer}>
-    <Content className={styles.Content}>
-      <div className={styles.Details}>
+export const Footer: React.FC = () => (
+  <footer className={styles.container}>
+    <Content className={styles.content}>
+      <div className={styles.details}>
         <div>
-          <Logo variant="light" className={styles.Logo} />
+          <Logo variant="light" className={styles.logo} />
           <span>
             <Body>Epost:</Body>
             <Body>post@pcosnorge.no</Body>
@@ -21,7 +21,7 @@ export const Footer: React.VFC = () => (
             <Body>927 818 906</Body>
           </span>
         </div>
-        <div className={styles.Description}>
+        <div className={styles.description}>
           <Body>
             PCOS Norge skal jobbe for mer synlighet, normalisering og
             oppmerksomhet rundt diagnosen blant folk flest og i media. Vi skal

@@ -1,17 +1,17 @@
-.Link {
+.link {
     color: var(--color-brand-light-red);
     text-decoration: underline;
 }
 
-.Link:not(.disabled):hover, .Link:not(.disabled):focus-visible {
+.link:not(.disabled):hover, .link:not(.disabled):focus-visible {
     text-decoration: none;
 }
 
-.Link:visited {
+.link:visited {
     color: var(--color-brand-dark-red);
 }
 
-.Link.disabled {
+.link.disabled {
     color: var(--semantic-color-disabled);
     text-decoration: none;
 }

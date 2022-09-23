@@ -1,4 +1,4 @@
-.ReferenceLinkSummary {
+.container {
   position: relative;
   color: var(--color-brand-light-red);
   font-size: var(--font-size-details);
@@ -7,12 +7,12 @@
   max-width: 100%;
 }
 
-.ReferenceLinkSummary > ol {
+.container > ol {
   padding: 0;
   margin: 0 0 0 2rem;
 }
 
-.ReferenceLinkSummary a {
+.container a {
   display: flex;
   align-items: center;
   white-space: nowrap;
@@ -20,12 +20,12 @@
   max-width: 100%;
 }
 
-.ReferenceLinkSummary a:focus {
+.container a:focus {
   outline: none;
   outline: var(--outline);
 }
 
-.ReferenceLinkSummary a > div {
+.container a > div {
   text-overflow: ellipsis;
   overflow: hidden;
 }

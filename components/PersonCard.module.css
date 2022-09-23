@@ -1,4 +1,4 @@
-.PersonCard {
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,35 +6,35 @@
   width: max-content;
 }
 
-.PersonCard > * {
+.card > * {
   margin: 0;
 }
 
-.PersonCard > span {
+.card > span {
   margin-bottom: 1rem !important;
 }
 
-.PersonCard img {
+.card img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
 }
 
-.Details {
+.details {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.Name {
+.name {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-semibold);
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
-.Capacity {
+.capacity {
   font-size: var(--font-size-details);
   margin: 0 0 1rem;
 }

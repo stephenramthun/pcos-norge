@@ -10,7 +10,7 @@ interface PeopleProps {
 
 export const PeopleContainer: React.FC<PeopleProps> = ({ people }) => {
   return (
-    <div className={styles.PeopleContainer}>
+    <div className={styles.container}>
       {people.map((it, i) => (
         <PersonCard
           key={i}

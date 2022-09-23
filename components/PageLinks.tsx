@@ -11,16 +11,16 @@ interface PageLinksProps {
 
 export const PageLinks: React.FC<PageLinksProps> = ({ left, right }) => {
   return (
-    <div className={styles.PageLinks}>
+    <div className={styles.container}>
       {left ? (
-        <Link className={styles.LeftLink} href={left.slug}>
+        <Link className={styles.left} href={left.slug}>
           {"<<"} {left.title}
         </Link>
       ) : (
         <span />
       )}
       {right ? (
-        <Link className={styles.RightLink} href={right.slug}>
+        <Link className={styles.right} href={right.slug}>
           {right.title} {">>"}
         </Link>
       ) : (

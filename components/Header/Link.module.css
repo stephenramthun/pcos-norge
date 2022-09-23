@@ -1,4 +1,4 @@
-.Link {
+.link {
   position: relative;
   color: var(--color-background-secondary);
   font-weight: var(--font-weight-light);
@@ -12,7 +12,7 @@
   width: max-content;
 }
 
-.Link:before {
+.link:before {
   content: "";
   position: absolute;
   height: 2px;
@@ -24,11 +24,11 @@
   opacity: 0;
 }
 
-.Link.active:before,
-.Link:hover:before {
+.link.active:before,
+.link:hover:before {
   opacity: 1;
 }
 
-.Link:focus-visible {
+.link:focus-visible {
     outline: var(--outline);
 }

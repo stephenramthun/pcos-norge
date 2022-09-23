@@ -16,13 +16,13 @@ export const PageLinkContainer: React.FC<PageLinkContainerProps> = ({
   links,
 }) => {
   return (
-    <Content className={styles.Section}>
+    <Content className={styles.section}>
       {links.map((it, i) => (
         <article key={i}>
           <Heading tag="h2" size="medium">
             {it.title}
           </Heading>
-          <Body className={styles.Body}>{it.ingress}</Body>
+          <Body className={styles.body}>{it.ingress}</Body>
           {it.callToAction && (
             <ArrowLink href={`/${it.callToAction.url}`}>
               {it.callToAction.linkText}

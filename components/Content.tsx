@@ -15,6 +15,6 @@ export const Content: React.FC<ContentProps> = ({
 }) =>
   React.createElement(
     as,
-    { className: classNames(styles.Content, className), ...divProps },
+    { className: classNames(styles.content, className), ...divProps },
     children,
   )

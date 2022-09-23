@@ -38,12 +38,12 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
   const date = useLocaleDateString(published)
 
   return (
-    <div {...divProps} className={classNames(styles.Container, className)}>
-      <article key={slug} className={styles.ArticleCard}>
-        <div className={styles.ImageContainer}>
+    <div {...divProps} className={classNames(styles.container, className)}>
+      <article key={slug} className={styles.article}>
+        <div className={styles.imageContainer}>
           <Image {...imageProps} alt="" unoptimized />
         </div>
-        <Body suppressHydrationWarning className={styles.Date}>
+        <Body suppressHydrationWarning className={styles.date}>
           {date}
         </Body>
         <Heading tag="h3" size="small">
@@ -53,7 +53,7 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
         <ArrowLink href={`/aktuelt/${slug}`}>Les mer</ArrowLink>
         <a
           href={`/aktuelt/${slug}`}
-          className={styles.CardLink}
+          className={styles.cardLink}
           aria-label={slug}
           tabIndex={-1}
         />
