@@ -38,8 +38,8 @@ export const fetchArticles = async ({
   const query = groq`
     {
       "articles": 
-        *[_type == "article"][${start}..${end}] |
-        order(published desc) {
+        *[_type == "article"] |
+        order(published desc)[${start}..${end}] {
           title,
           slug,
           image,
