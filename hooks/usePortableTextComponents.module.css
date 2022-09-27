@@ -43,3 +43,9 @@
 .section > article > p {
   margin-bottom: 1rem;
 }
+
+.imageText {
+  margin-top: 8px;
+  font-style: italic;
+  font-size: var(--font-size-details);
+}

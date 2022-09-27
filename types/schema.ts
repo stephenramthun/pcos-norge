@@ -5,13 +5,21 @@ import type {
   SanityFile,
   SanityGeoPoint,
   SanityImage,
+  SanityImageAsset,
   SanityImageCrop,
+  SanityImageDimensions,
   SanityImageHotspot,
+  SanityImageMetadata,
+  SanityImagePalette,
+  SanityImagePaletteSwatch,
+  SanityKeyed,
+  SanityKeyedReference,
   SanityReference,
 } from "sanity-codegen"
 
 export type {
   SanityReference,
+  SanityKeyedReference,
   SanityAsset,
   SanityImage,
   SanityFile,
@@ -20,6 +28,12 @@ export type {
   SanityDocument,
   SanityImageCrop,
   SanityImageHotspot,
+  SanityKeyed,
+  SanityImageAsset,
+  SanityImageMetadata,
+  SanityImageDimensions,
+  SanityImagePalette,
+  SanityImagePaletteSwatch,
 }
 
 /**
@@ -42,7 +56,14 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  elements: Array<Hero | PageLinks | ImageAsset | FactBox | BodyText | People>
+  elements: Array<
+    | SanityKeyed<Hero>
+    | SanityKeyed<PageLinks>
+    | SanityKeyed<ImageAsset>
+    | SanityKeyed<FactBox>
+    | SanityKeyed<BodyText>
+    | SanityKeyed<People>
+  >
 
   /**
    * ID — `slug`
@@ -166,8 +187,8 @@ export type Person = {
    *
    */
   picture?: {
-    _type: "picture"
-    asset: SanityAsset
+    _type: "image"
+    asset: SanityReference<SanityImageAsset>
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -194,7 +215,7 @@ export type People = {
    *
    *
    */
-  people: Array<Person>
+  people: Array<SanityKeyed<Person>>
 }
 
 export type FactBox = {
@@ -204,7 +225,7 @@ export type FactBox = {
    *
    *
    */
-  facts?: Array<Fact>
+  facts?: Array<SanityKeyed<Fact>>
 }
 
 export type BodyText = {
@@ -248,12 +269,12 @@ export type PageLinks = {
    *
    *
    */
-  links: Array<PageLink>
+  links: Array<SanityKeyed<PageLink>>
 }
 
 export type ImageAsset = {
   _type: "imageAsset"
-  asset: SanityAsset
+  asset: SanityReference<SanityImageAsset>
   crop?: SanityImageCrop
   hotspot?: SanityImageHotspot
 
@@ -263,6 +284,13 @@ export type ImageAsset = {
    *
    */
   alt?: string
+
+  /**
+   * Bildetekst — `string`
+   *
+   *
+   */
+  text?: string
 }
 
 export type CallToAction = {
@@ -282,7 +310,9 @@ export type CallToAction = {
   url?: string
 }
 
-export type BlockContent = Array<ImageAsset | FactBox | SanityBlock>
+export type BlockContent = Array<
+  SanityKeyed<ImageAsset> | SanityKeyed<FactBox> | SanityKeyed<SanityBlock>
+>
 
 export type NavigationLinks = {
   _type: "navigationLinks"
@@ -331,8 +361,5 @@ export type Documents = Page | Article
  * This interface is a stub. It was referenced in your sanity schema but
  * the definition was not actually found. Future versions of
  * sanity-codegen will let you type this explicity.
- *
- * Interface merging may help for the time being:
- * https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-interfaces
  */
-interface Email {}
+type Email = any

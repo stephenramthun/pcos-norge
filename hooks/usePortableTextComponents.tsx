@@ -25,11 +25,16 @@ export const usePortableTextComponents = (
     types: {
       imageAsset: ({ value }: ComponentProps<ImageAsset>) => {
         return (
-          <SanityImage
-            className={styles.Image}
-            asset={value.asset}
-            alt={value.alt}
-          />
+          <span>
+            <SanityImage
+              className={styles.Image}
+              asset={value.asset}
+              alt={value.alt}
+            />
+            {value.text && (
+              <Body className={styles.imageText}>{value.text}</Body>
+            )}
+          </span>
         )
       },
       factBox: ({ value }) => {

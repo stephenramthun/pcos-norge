@@ -8,5 +8,10 @@ export const imageAsset = {
       name: "alt",
       title: "Alt",
     },
+    {
+      type: "string",
+      name: "text",
+      title: "Bildetekst",
+    },
   ],
 }
