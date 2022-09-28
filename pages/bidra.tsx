@@ -11,6 +11,8 @@ import { Breadcrumbs } from "@components/Breadcrumbs"
 import { Body } from "@components/Body"
 import { Heading } from "@components/Heading"
 
+import styles from "./bidra.module.css"
+
 const Bidra: NextPage = () => {
   return (
     <PageContainer>
@@ -26,7 +28,7 @@ const Bidra: NextPage = () => {
         />
       </Content>
 
-      <Main>
+      <Main className={styles.main}>
         <Content>
           <Heading tag="h1" size="medium-large">
             Vi trenger din hjelp
