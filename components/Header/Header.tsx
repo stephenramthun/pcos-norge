@@ -32,6 +32,7 @@ export const Header: React.VFC<HeaderProps> = ({
           <Link href="/hva-er-pcos">Hva er PCOS</Link>
           <Link href="/om-oss">Om oss</Link>
           <Link href="/aktuelt">Aktuelt</Link>
+          <Link href="/bidra">Bidra</Link>
         </nav>
         <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
       </div>

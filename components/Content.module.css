@@ -1,6 +1,6 @@
 .content {
   height: max-content;
-  width: 100%;
+  width: 100vw;
   padding: 3rem var(--padding-horizontal);
   display: flex;
   flex-wrap: wrap;

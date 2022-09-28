@@ -19,6 +19,12 @@ p {
   color: var(--color-text-primary);
 }
 
+mark {
+  background: transparent;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-light-red);
+}
+
 :root {
   /*Colors*/
   --color-brand-dark-teal: #1e505f;
