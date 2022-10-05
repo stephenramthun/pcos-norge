@@ -1,52 +1,55 @@
 .container {
-    width: 100%;
-    height: max-content;
-    padding: 4rem 0;
-    display: flex;
-    background: var(--color-brand-dark-teal);
+  width: 100%;
+  height: max-content;
+  padding: 4rem 0;
+  display: flex;
+  background: var(--color-brand-dark-teal);
 }
 
 @media only screen and (max-width: 750px) {
-    .container {
-        padding: 3rem 0;
-    }
+  .container {
+    padding: 3rem 0;
+  }
 }
 
-.container p {
-    font-size: var(--font-size-details);
-    color: var(--color-background-primary);
+.container p,
+.container a {
+  font-size: var(--font-size-details) !important;
+  color: var(--color-background-primary) !important;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    background: var(--color-brand-dark-teal) !important;
-    padding-top: 0;
-    padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-brand-dark-teal) !important;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .details {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .details > div {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .details > div > span {
-    display: flex;
-    gap: 1.25rem;
+  display: flex;
+  gap: 24px;
+  height: 32px;
+  align-items: center;
 }
 
 .description {
-    max-width: 600px;
+  max-width: 600px;
 }
 
 .logo {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }

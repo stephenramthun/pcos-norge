@@ -1,19 +1,25 @@
 .container {
-    --gap: 0.5rem;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--gap);
+  --gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--gap);
 }
 
-.container a {
-    font-weight: var(--font-weight-regular);
-    font-size: var(--font-size-body);
-    color: var(--color-text-primary);
+.container a,
+.container p {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  line-height: var(--font-size-body);
+}
+
+.container svg polyline {
+  stroke: var(--color-text-primary);
 }
 
 .container span {
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
 }

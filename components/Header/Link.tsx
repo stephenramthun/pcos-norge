@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import styles from "./Link.module.css"
 
 const isActive = (pathname: string, href: string): boolean => {
-  return pathname.split("/").pop() === href.split("/").pop()
+  return decodeURI(pathname).split("/").pop() === href.split("/").pop()
 }
 
 interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
