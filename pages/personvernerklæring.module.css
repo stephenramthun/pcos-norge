@@ -1,0 +1,40 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content h3 {
+  margin-top: 32px;
+  font-size: var(--font-size-body);
+  margin-bottom: 16px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list > li {
+  margin-bottom: 64px;
+}
+
+.list ul {
+  padding: 0;
+  margin-top: 32px;
+}
+
+.list ul > p {
+  margin-bottom: 8px;
+}
+
+.list ul li {
+  margin-left: 32px;
+}
+
+.list li::marker {
+  font-family: var(--font-family-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-title-small);
+  font-weight: var(--font-weight-bold);
+}

@@ -5,6 +5,7 @@ import styles from "./Footer.module.css"
 import { Logo } from "./Logo"
 import { Body } from "./Body"
 import { Content } from "./Content"
+import { Link } from "@components/Link"
 
 export const Footer: React.FC = () => (
   <footer className={styles.container}>
@@ -19,6 +20,9 @@ export const Footer: React.FC = () => (
           <span>
             <Body>Org.nr:</Body>
             <Body>927 818 906</Body>
+          </span>
+          <span>
+            <Link href="/personvernerklæring">Personvernerklæring</Link>
           </span>
         </div>
         <div className={styles.description}>
