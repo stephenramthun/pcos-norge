@@ -33,6 +33,7 @@ export const Header: React.VFC<HeaderProps> = ({
           <Link href="/om-oss">Om oss</Link>
           <Link href="/aktuelt">Aktuelt</Link>
           <Link href="/bidra">Bidra</Link>
+          <Link href="/bli-medlem">Bli medlem</Link>
         </nav>
         <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
       </div>

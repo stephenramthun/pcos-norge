@@ -1,6 +1,7 @@
 .button {
   --button-height: 48px;
   height: var(--button-height);
+  width: max-content;
   display: flex;
   align-items: center;
   outline: none;

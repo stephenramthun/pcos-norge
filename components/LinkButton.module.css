@@ -9,6 +9,7 @@
     font-weight: var(--font-weight-semibold);
     font-family: var(--font-family-primary);
     cursor: pointer;
+    width: max-content;
 }
 
 .button:hover,

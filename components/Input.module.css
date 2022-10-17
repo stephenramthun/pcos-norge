@@ -1,0 +1,18 @@
+.label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-details);
+}
+
+.input {
+    max-width: 72ch;
+    border-radius: 4px;
+    border: 1px solid var(--color-text-primary);
+    background: none;
+    padding: 4px 8px;
+    font-size: var(--font-size-body);
+    color: inherit;
+    font-family: inherit;
+}
