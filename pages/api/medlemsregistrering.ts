@@ -1,4 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next"
+import { persistMemberRegistration } from "io/prisma/client"
+
+type FormRequestBody = {
+  givenName: string
+  familyName: string
+  email: string
+  postalCode: string
+  address: string
+  city: string
+  recaptchaToken: string
+}
 
 type RecaptchaResponseBody = {
   success: boolean
@@ -69,12 +80,14 @@ export default async function medlemsregistrering(
     return res.status(400).end()
   }
 
+  const body = req.body as FormRequestBody
+
   const response: RecaptchaResponseBody = await fetchRecaptchaScore(
-    req.body.recaptchaToken,
+    body.recaptchaToken,
   )
 
   if (isValid(response)) {
-    // Save to db
+    persistMemberRegistration(body)
     return res.redirect(303, "/").end()
   } else {
     // Show error message to client

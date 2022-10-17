@@ -13,6 +13,8 @@ import { Heading } from "@components/Heading"
 import { Body } from "@components/Body"
 import { Input } from "@components/Input"
 import { Button } from "@components/Button"
+import { Checkbox } from "@components/Checkbox"
+import { Link } from "@components/Link"
 
 import styles from "./bliMedlem.module.css"
 
@@ -128,6 +130,19 @@ const BliMedlem: NextPage = () => {
                 autoComplete="on"
                 name="city"
                 required
+              />
+            </section>
+            <section className={styles.termsAndConditions}>
+              <Checkbox
+                label={
+                  <span>
+                    Jeg bekrefter å ha lest og forstått PCOS Norges{" "}
+                    <Link href="/personvernerklæring" target="_blank">
+                      personvernerklæring
+                    </Link>{" "}
+                    og godkjenner alt innhold.
+                  </span>
+                }
               />
             </section>
             <Button>Meld meg inn</Button>

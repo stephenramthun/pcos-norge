@@ -28,3 +28,7 @@
 .addressDetails > * {
     flex: 1;
 }
+
+.termsAndConditions {
+    margin-top: 32px;
+}
