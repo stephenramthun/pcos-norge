@@ -7,7 +7,7 @@
 }
 
 .input {
-    max-width: 72ch;
+    max-width: min(72ch, 100%);
     border-radius: 4px;
     border: 1px solid var(--color-text-primary);
     background: none;

@@ -138,6 +138,36 @@ export interface Article extends SanityDocument {
   metadata?: OpenGraphMetaData
 }
 
+/**
+ * Bilde
+ *
+ *
+ */
+export interface ImageDocument extends SanityDocument {
+  _type: "imageDocument"
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title: string
+
+  /**
+   * Bildefil — `imageAsset`
+   *
+   *
+   */
+  imageAsset: ImageAsset
+
+  /**
+   * ID — `slug`
+   *
+   *
+   */
+  id: { _type: "id"; current: string }
+}
+
 export type Hero = {
   _type: "hero"
   /**
@@ -355,7 +385,7 @@ export type OpenGraphMetaData = {
   image: ImageAsset
 }
 
-export type Documents = Page | Article
+export type Documents = Page | Article | ImageDocument
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
