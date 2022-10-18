@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { persistMemberRegistration } from "io/prisma/client"
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime"
 
 type FormRequestBody = {
   givenName: string
@@ -75,7 +76,7 @@ function isValid(body: RecaptchaResponseBody): boolean {
 export default async function medlemsregistrering(
   req: NextApiRequest,
   res: NextApiResponse,
-): Promise<NextApiResponse> {
+): Promise<NextApiResponse | void> {
   if (!validateRequestBody(req.body)) {
     return res.status(400).end()
   }
@@ -86,11 +87,22 @@ export default async function medlemsregistrering(
     body.recaptchaToken,
   )
 
-  if (isValid(response)) {
-    persistMemberRegistration(body)
-    return res.redirect(303, "/").end()
-  } else {
-    // Show error message to client
+  if (!isValid(response)) {
     return res.status(400).end()
+  }
+
+  try {
+    await persistMemberRegistration(body)
+    return res.redirect(303, "/").end()
+  } catch (error) {
+    const prismaError = error as PrismaClientKnownRequestError
+    switch (prismaError.code) {
+      case "P2002": {
+        return res.status(409).end()
+      }
+      default: {
+        return res.status(400).end()
+      }
+    }
   }
 }

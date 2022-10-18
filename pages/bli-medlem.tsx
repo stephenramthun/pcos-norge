@@ -140,9 +140,10 @@ const BliMedlem: NextPage = () => {
                     <Link href="/personvernerklæring" target="_blank">
                       personvernerklæring
                     </Link>{" "}
-                    og godkjenner alt innhold.
+                    og godkjenner innholdet i den.
                   </span>
                 }
+                required
               />
             </section>
             <Button>Meld meg inn</Button>
