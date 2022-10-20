@@ -88,7 +88,7 @@ export default async function medlemsregistrering(
   )
 
   if (!isValid(response)) {
-    return res.status(400).end()
+    return res.status(400).json({ message: "User input not valid" })
   }
 
   try {
@@ -102,7 +102,7 @@ export default async function medlemsregistrering(
       }
       default: {
         console.error(error)
-        return res.status(400).end()
+        return res.status(400).json(error)
       }
     }
   }
