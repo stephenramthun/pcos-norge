@@ -7,7 +7,7 @@
 .pitch {
     height: max-content;
     display: flex;
-    gap: 2rem;
+    gap: 64px;
 }
 
 .pitch > * {
@@ -70,4 +70,13 @@
 
 .termsAndConditions {
     margin-top: 32px;
+}
+
+.button {
+    display: flex;
+    gap: 8px;
+}
+
+.button:hover {
+    gap: 24px;
 }

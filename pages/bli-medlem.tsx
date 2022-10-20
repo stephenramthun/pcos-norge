@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react"
+import React, { FormEvent, useState } from "react"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { SanityImageAsset } from "sanity-codegen"
 
@@ -19,8 +19,10 @@ import { Input } from "@components/Input"
 import { Button } from "@components/Button"
 import { Checkbox } from "@components/Checkbox"
 import { Link } from "@components/Link"
+import { Recaptcha } from "@components/Recaptcha"
 
 import styles from "./bliMedlem.module.css"
+import { ArrowRight } from "phosphor-react"
 
 const getValue = (form: HTMLFormElement, name: string): string => {
   const value = (form.elements.namedItem(name) as HTMLInputElement | null)
@@ -59,6 +61,10 @@ interface BliMedlemProps {
 }
 
 const BliMedlem: NextPage<BliMedlemProps> = (props) => {
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
+
+  console.log(recaptchaToken)
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
     submitMemberRegistration(event.target as HTMLFormElement)
@@ -66,13 +72,7 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
 
   return (
     <PageContainer>
-      <Head>
-        <script
-          src="https://www.google.com/recaptcha/api.js"
-          async
-          defer
-        ></script>
-      </Head>
+      <Head />
       <Header />
 
       <Content>
@@ -93,14 +93,19 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
           <section className={styles.pitch}>
             <div className={styles.textContainer}>
               <Body>
-                Her skal det komme en tekst som beskriver fordelene med å være
-                medlem i PCOS Norge. Det skal også komme frem hvor mye
-                årskontingenten er, sikkert 200kr eller noe sånt.
+                Det er på tide at PCOS blir tatt på alvor i helsevesenet. Som
+                medlem i PCOS Norge støtter du oss i vårt arbeid for mer
+                synlighet, normalisering og økt oppmerksomhet rundt diagnosen og
+                bedre kunnskap om PCOS i helsevesenet. Du er velkommen til å
+                melde seg inn som medlem hos oss uavhengig om du har sykdommen,
+                kjenner noen som har den eller bare ønsker å støtte en viktig og
+                god sak.
               </Body>
               <Body>
-                Her skal det komme en tekst som beskriver fordelene med å være
-                medlem i PCOS Norge. Det skal også komme frem hvor mye
-                årskontingenten er, sikkert 200kr eller noe sånt.
+                Vi er en nyoppstartet organisasjon og jobber for tiden med å
+                kunne tilby våre medlemmer eksklusive medlemsfordeler. Meld deg
+                på nyhetsbrevet vårt så får du vite når vi lanserer nye
+                fordeler.
               </Body>
             </div>
             <div>
@@ -184,7 +189,10 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
                   required
                 />
               </section>
-              <Button>Meld meg inn</Button>
+              <Recaptcha callback={setRecaptchaToken} />
+              <Button className={styles.button}>
+                Meld meg inn <ArrowRight size={24} weight="bold" />
+              </Button>
             </form>
           </section>
         </Content>
