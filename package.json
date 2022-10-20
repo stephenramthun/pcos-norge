@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "npx prisma migrate deploy",
     "start": "next start",
     "lint": "next lint",
     "sanity": "npm run --prefix ./studio start",
