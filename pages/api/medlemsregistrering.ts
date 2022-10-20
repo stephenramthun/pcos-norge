@@ -84,7 +84,9 @@ export default async function medlemsregistrering(
   )
 
   if (!isValid(response)) {
-    return res.status(400).json({ message: "User input not valid" })
+    return res
+      .status(400)
+      .json({ message: "Recaptcha not valid. User is most likely a bot 🤖." })
   }
 
   try {
