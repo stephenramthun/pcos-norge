@@ -16,8 +16,6 @@ type RecaptchaResponseBody = {
   success: boolean
   challenge_ts: string
   hostname: string
-  score: number
-  action: string
 }
 
 function validateGivenName(body: NextApiRequest["body"]): boolean {
@@ -68,9 +66,7 @@ function fetchRecaptchaScore(
 }
 
 function isValid(body: RecaptchaResponseBody): boolean {
-  return (
-    body.success && body.score > 0.5 && body.action === "registrerMedlemskap"
-  )
+  return body.success
 }
 
 export default async function medlemsregistrering(
