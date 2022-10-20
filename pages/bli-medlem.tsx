@@ -35,7 +35,10 @@ const getValue = (form: HTMLFormElement, name: string): string => {
   return value
 }
 
-const submitMemberRegistration = (form: HTMLFormElement): Promise<Response> => {
+const submitMemberRegistration = (
+  form: HTMLFormElement,
+  recaptchaToken: string,
+): Promise<Response> => {
   return fetch("/api/medlemsregistrering", {
     method: "POST",
     headers: {
@@ -49,6 +52,7 @@ const submitMemberRegistration = (form: HTMLFormElement): Promise<Response> => {
       address: getValue(form, "address"),
       postalCode: getValue(form, "postalCode"),
       city: getValue(form, "city"),
+      recaptchaToken: recaptchaToken,
     }),
   })
 }
@@ -67,7 +71,9 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
-    submitMemberRegistration(event.target as HTMLFormElement)
+    if (recaptchaToken) {
+      submitMemberRegistration(event.target as HTMLFormElement, recaptchaToken)
+    }
   }
 
   return (
