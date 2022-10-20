@@ -101,6 +101,7 @@ export default async function medlemsregistrering(
         return res.status(409).end()
       }
       default: {
+        console.error(error)
         return res.status(400).end()
       }
     }
