@@ -9,7 +9,7 @@ export const Head: React.FC<HeadProps> = ({ children }) => (
   <NextHead>
     <title>PCOS Norge</title>
     <meta name="description" content="Den norske PCOS-foreningen" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     {children}
   </NextHead>
 )
