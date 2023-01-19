@@ -7,7 +7,10 @@ import vippsIcon from "@public/log_in_with_vipps_pill_250_NO@2x.png"
 
 export const MemberRegistrationButton: React.FC = () => {
   return (
-    <button className={styles.button} onClick={() => signIn("vipps")}>
+    <button
+      className={styles.button}
+      onClick={() => signIn("vipps", { callbackUrl: "/min-side" })}
+    >
       <Image
         src={vippsIcon.src}
         alt=""

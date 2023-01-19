@@ -27,6 +27,7 @@ const mergeUserInfo = (
     session.user.postalCode = user.postalCode
     session.user.region = user.region
     session.user.createdAt = user.createdAt
+    session.user.phoneNumber = user.phoneNumber
   }
 }
 
@@ -37,6 +38,11 @@ export const authOptions: AuthOptions = {
     async session({ session, user }) {
       mergeUserInfo(session, user)
       return session
+    },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/")) return `${baseUrl}${url}`
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
     },
   },
 }

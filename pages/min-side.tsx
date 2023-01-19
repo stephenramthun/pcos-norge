@@ -1,5 +1,6 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { NextPage } from "next"
+import { signOut } from "next-auth/react"
 
 import { Head } from "@components/Head"
 import { Header } from "@components/Header"
@@ -7,39 +8,16 @@ import { Content } from "@components/Content"
 import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
 import { Main } from "@components/Main"
+import { Body } from "@components/Body"
 import { Footer } from "@components/Footer"
 import { Heading } from "@components/Heading"
-import { useSession } from "next-auth/react"
+import { useUserInfo } from "@hooks/useUserInfo"
+import { Button } from "@components/Button"
 
-type UserInfo = {
-  name: string
-  streetAddress: string
-  postalCode: string
-  region: string
-  email: string
-  phoneNumber: string
-}
-
-const useUserInfo = (): UserInfo => {
-  return useMemo(() => {
-    fetch("/api/medlemskap")
-    return {
-      name: "",
-      email: "",
-      streetAddress: "",
-      region: "",
-      postalCode: "",
-      phoneNumber: "",
-    }
-  }, [])
-}
+import styles from "./min-side.module.css"
 
 const MinSide: NextPage = () => {
   const userInfo = useUserInfo()
-  console.log(userInfo)
-
-  const { data } = useSession()
-  console.log(data)
 
   return (
     <PageContainer>
@@ -56,10 +34,42 @@ const MinSide: NextPage = () => {
       </Content>
 
       <Main>
-        <Content>
+        <Content className={styles.content}>
           <Heading tag="h1" size="medium-large">
             Min side
           </Heading>
+          {userInfo && (
+            <>
+              <div className={styles.grid}>
+                <Body>Navn</Body>
+                <Body>{userInfo.name}</Body>
+                <Body>Adresse</Body>
+                <span className={styles.flexColumn}>
+                  <Body>{userInfo.streetAddress}</Body>
+                  <Body>
+                    {userInfo.postalCode} {userInfo.region}
+                  </Body>
+                </span>
+                <Body>Epost</Body>
+                <Body>{userInfo.email}</Body>
+              </div>
+              <hr />
+              <div className={styles.grid}>
+                <Body>Medlem siden</Body>
+                <Body>
+                  {new Intl.DateTimeFormat("nb-NO").format(
+                    new Date(userInfo.createdAt),
+                  )}
+                </Body>
+              </div>
+              <span className={styles.buttons}>
+                <Button onClick={() => signOut({ callbackUrl: "/" })}>
+                  Logg ut
+                </Button>
+                <Button variant="secondary">Avslutt medlemskap</Button>
+              </span>
+            </>
+          )}
         </Content>
       </Main>
 

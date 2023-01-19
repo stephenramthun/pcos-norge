@@ -23,15 +23,22 @@
   }
 }
 
-.button.primary {
+.button.primary,
+.button.secondary:hover,
+.button.secondary:focus-visible {
   background: var(--color-brand-light-red);
   color: var(--color-brand-extra-light-teal);
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-brand-light-red);
 }
 
 .button.secondary {
   color: var(--color-brand-light-red);
   background: var(--color-brand-extra-light-teal);
-  box-shadow: 0 0 0 3px var(--color-brand-light-red);
+  box-shadow: inset 0 0 0 3px var(--color-brand-light-red);
 }
 
 .button.tertiary {
@@ -46,7 +53,9 @@
   box-shadow: 0 0 0 3px var(--color-brand-light-red);
 }
 
-.button.primary:active {
+.button.primary:active,
+.button.secondary:active,
+.button.tertiary:active {
   color: var(--color-brand-extra-light-teal);
   background: var(--color-brand-dark-red);
   box-shadow: none;
