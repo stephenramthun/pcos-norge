@@ -1,7 +1,7 @@
 import type { Member } from "@prisma/client"
 import { Prisma, PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient()
+export const prisma = new PrismaClient()
 
 export function persistMemberRegistration(
   input: Prisma.MemberCreateInput,

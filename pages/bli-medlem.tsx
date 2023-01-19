@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from "react"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { SanityImageAsset } from "sanity-codegen"
+import { ArrowRight } from "phosphor-react"
 
 import { ImageDocument } from "types/schema"
 import { getClient } from "io/sanity/client"
@@ -22,7 +23,8 @@ import { Link } from "@components/Link"
 import { Recaptcha } from "@components/Recaptcha"
 
 import styles from "./bliMedlem.module.css"
-import { ArrowRight } from "phosphor-react"
+import { MemberRegistrationButton } from "@components/MemberRegistrationButton"
+import { useSession } from "next-auth/react"
 
 const getValue = (form: HTMLFormElement, name: string): string => {
   const value = (form.elements.namedItem(name) as HTMLInputElement | null)
@@ -65,9 +67,10 @@ interface BliMedlemProps {
 }
 
 const BliMedlem: NextPage<BliMedlemProps> = (props) => {
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
+  const { data } = useSession()
 
-  console.log(recaptchaToken)
+  console.log(data)
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
@@ -121,6 +124,10 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
                 layout="intrinsic"
               />
             </div>
+          </section>
+
+          <section>
+            <MemberRegistrationButton />
           </section>
 
           <section className={styles.formContainer}>

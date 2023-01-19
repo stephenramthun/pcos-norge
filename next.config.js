@@ -9,4 +9,9 @@ module.exports = withAxiom({
     domains: ["cdn.sanity.io"],
   },
   productionBrowserSourceMaps: true,
+  webpack: (config) => {
+    config.experiments = config.experiments || {}
+    config.experiments.topLevelAwait = true
+    return config
+  },
 })

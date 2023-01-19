@@ -1,82 +1,82 @@
 .content {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 .pitch {
-    height: max-content;
-    display: flex;
-    gap: 64px;
+  height: max-content;
+  display: flex;
+  gap: 64px;
 }
 
 .pitch > * {
-    flex: 1;
+  flex: 1;
 }
 
 .pitch .textContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 @media only screen and (max-width: 750px) {
-    .pitch {
-        flex-direction: column;
-    }
+  .pitch {
+    flex-direction: column;
+  }
 }
 
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
 }
 
 .form button {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .addressDetails {
-    width: 100%;
-    display: flex;
-    gap: 16px;
+  width: 100%;
+  display: flex;
+  gap: 16px;
 }
 
 .addressDetails > *:first-of-type {
-    max-width: 200px;
+  max-width: 200px;
 }
 
 .addressDetails > * {
-    flex: 1;
+  flex: 1;
 }
 
 @media only screen and (max-width: 750px) {
-    .addressDetails {
-        flex-direction: column;
-    }
+  .addressDetails {
+    flex-direction: column;
+  }
 
-    .addressDetails > *:first-of-type {
-        max-width: unset;
-    }
+  .addressDetails > *:first-of-type {
+    max-width: unset;
+  }
 }
 
 .termsAndConditions {
-    margin-top: 32px;
+  margin-top: 32px;
 }
 
 .button {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .button:hover {
-    gap: 24px;
+  gap: 24px;
 }
