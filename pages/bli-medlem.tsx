@@ -24,7 +24,6 @@ import { Recaptcha } from "@components/Recaptcha"
 
 import styles from "./bliMedlem.module.css"
 import { MemberRegistrationButton } from "@components/MemberRegistrationButton"
-import { useSession } from "next-auth/react"
 
 const getValue = (form: HTMLFormElement, name: string): string => {
   const value = (form.elements.namedItem(name) as HTMLInputElement | null)
@@ -67,9 +66,6 @@ interface BliMedlemProps {
 }
 
 const BliMedlem: NextPage<BliMedlemProps> = (props) => {
-  const { data } = useSession()
-
-  console.log(data)
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {

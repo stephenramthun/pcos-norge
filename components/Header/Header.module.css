@@ -37,6 +37,11 @@
   gap: 2.5rem;
 }
 
+.link {
+  display: flex;
+  gap: 4px;
+}
+
 @media only screen and (max-width: 750px) {
   .nav {
     position: absolute;

@@ -6,6 +6,8 @@ import styles from "./Header.module.css"
 import { Logo } from "../Logo"
 import { Link } from "./Link"
 import { HamburgerMenu } from "./HamburgerMenu"
+import { useSession } from "next-auth/react"
+import { UserCircle } from "phosphor-react"
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -14,6 +16,7 @@ export const Header: React.VFC<HeaderProps> = ({
   ...headerProps
 }) => {
   const [showNav, setShowNav] = useState(false)
+  const { status } = useSession()
 
   return (
     <header
@@ -29,11 +32,24 @@ export const Header: React.VFC<HeaderProps> = ({
             showNav ? styles.show : styles.hide,
           )}
         >
-          <Link href="/hva-er-pcos">Hva er PCOS</Link>
-          <Link href="/om-oss">Om oss</Link>
-          <Link href="/aktuelt">Aktuelt</Link>
-          <Link href="/bidra">Bidra</Link>
-          <Link href="/bli-medlem">Bli medlem</Link>
+          {status !== "loading" && (
+            <>
+              <Link href="/hva-er-pcos">Hva er PCOS</Link>
+              <Link href="/om-oss">Om oss</Link>
+              <Link href="/aktuelt">Aktuelt</Link>
+              <Link href="/bidra">Bidra</Link>
+              {status === "unauthenticated" && (
+                <Link href="/bli-medlem" className={styles.link}>
+                  Bli medlem
+                </Link>
+              )}
+              {status === "authenticated" && (
+                <Link href="/min-side" className={styles.link}>
+                  Min side <UserCircle size={24} />
+                </Link>
+              )}
+            </>
+          )}
         </nav>
         <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
       </div>
