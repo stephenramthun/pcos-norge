@@ -10,10 +10,12 @@ import logoDark from "../public/logo-dark.svg"
 
 type LogoProps = Omit<React.HTMLAttributes<HTMLAnchorElement>, "children"> & {
   variant?: "light" | "dark"
+  priority?: boolean
 }
 
 export const Logo: React.VFC<LogoProps> = ({
   variant = "dark",
+  priority = true,
   className,
   ...anchorProps
 }) => {
@@ -27,7 +29,7 @@ export const Logo: React.VFC<LogoProps> = ({
           layout="fill"
           className={styles.image}
           unoptimized
-          priority
+          priority={priority}
         />
       </a>
     </Link>

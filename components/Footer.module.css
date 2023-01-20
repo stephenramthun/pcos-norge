@@ -15,7 +15,7 @@
 .container p,
 .container a {
   font-size: var(--font-size-details) !important;
-  color: var(--color-background-primary) !important;
+  color: var(--semantic-color-background-primary) !important;
 }
 
 .content {

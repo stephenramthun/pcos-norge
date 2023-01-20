@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "IBM Plex Sans", sans-serif;
-  background-color: var(--color-background-secondary);
+  background-color: var(--semantic-color-background-primary);
 }
 
 a {
@@ -16,36 +16,30 @@ a {
 }
 
 p {
-  color: var(--color-text-primary);
+  color: var(--semantic-color-text-primary);
 }
 
 mark {
   background: transparent;
   font-weight: var(--font-weight-bold);
-  color: var(--color-brand-light-red);
+  color: var(--semantic-color-interaction-primary);
 }
 
 :root {
-  /*Colors*/
+  /*Brand colors*/
   --color-brand-dark-teal: #1e505f;
-  --color-brand-teal: #2f7e95;
-  --color-brand-extra-light-teal: #effcff;
-  --color-brand-orange: #feb17c;
-  --color-brand-light-red: #d72c59;
+  --color-brand-light-teal: #effcff;
+  --color-brand-pink: #ef0073;
+  --color-brand-grey: #121e25;
   --color-brand-dark-red: #6b283e;
-  --color-brand-blue: #0c145c;
-  --color-brand-green: #69c9aa;
 
+  /*Semantid colors*/
+  --semantic-color-text-primary: var(--color-brand-grey);
+  --semantic-color-text-primary-inverse: var(--color-brand-light-teal);
+  --semantic-color-background-primary: var(--color-brand-light-teal);
+  --semantic-color-interaction-primary: var(--color-brand-pink);
   --semantic-color-disabled: #878c8c;
-
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #effcff;
-  --color-accent-primary: #116773;
-  --color-accent-secondary: var(--color-brand-light-red);
-  --color-text-primary: var(--color-brand-dark-teal);
-  --color-text-heading: var(--color-text-primary);
-
-  --outline: 2px solid var(--color-brand-teal);
+  --semantic-color-interaction-outline: 2px solid var(--color-brand-dark-teal);
 
   /*Text*/
   --font-family-primary: "IBM Plex Sans", sans-serif;
@@ -56,13 +50,13 @@ mark {
   --font-size-title-medium-large: 3rem;
   --font-size-title-large: 4rem;
   --font-size-details: 1rem;
-  --line-height-body: 2rem;
-  --line-height-details: 1.75rem;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-black: 900;
   --font-weight-light: 300;
+  --line-height-body: 2rem;
+  --line-height-details: 1.75rem;
 
   /*Layout*/
   --page-margin: 4rem;
@@ -73,10 +67,10 @@ mark {
     max((100vw - var(--content-max-width)) / 2, var(--page-margin))
   );
   --text-max-width: 750px;
-  --block-l: 2rem;
-  --block-m: 1.5rem;
-  --block-s: 1rem;
-  --block-xs: 0.5rem;
+  --block-l: 32px;
+  --block-m: 24px;
+  --block-s: 16px;
+  --block-xs: 8px;
 }
 
 @media only screen and (max-width: 1250px) {

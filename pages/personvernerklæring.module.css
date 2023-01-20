@@ -34,7 +34,7 @@
 
 .list li::marker {
   font-family: var(--font-family-primary);
-  color: var(--color-text-primary);
+  color: var(--semantic-color-text-primary);
   font-size: var(--font-size-title-small);
   font-weight: var(--font-weight-bold);
 }

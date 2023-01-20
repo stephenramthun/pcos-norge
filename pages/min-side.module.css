@@ -7,7 +7,7 @@
     height: 1px;
     width: 100%;
     border: none;
-    background: var(--color-text-primary);
+    background: var(--semantic-color-text-primary);
     margin: 0;
 }
 

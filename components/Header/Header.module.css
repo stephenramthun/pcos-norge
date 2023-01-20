@@ -7,13 +7,13 @@
   display: flex;
   justify-content: center;
   z-index: var(--header-z-index);
-  background: var(--color-brand-extra-light-teal);
+  background: var(--semantic-color-background-primary);
   padding-left: var(--header-horizontal-margin);
   padding-right: var(--header-horizontal-margin);
 }
 
 .header .nav > a {
-  color: var(--color-text-primary);
+  color: var(--semantic-color-text-primary);
 }
 
 .logo {
@@ -50,7 +50,7 @@
     width: 100vw;
     margin-left: calc(var(--page-margin) * -1);
     margin-right: calc(var(--page-margin) * -1);
-    background: var(--color-brand-extra-light-teal);
+    background: var(--semantic-color-background-primary);
     flex-direction: column;
     padding: var(--page-margin);
     padding-bottom: 3rem;

@@ -12,7 +12,7 @@ export const Footer: React.FC = () => (
     <Content className={styles.content}>
       <div className={styles.details}>
         <div>
-          <Logo variant="light" className={styles.logo} />
+          <Logo variant="light" className={styles.logo} priority={false} />
           <span>
             <Body>Epost:</Body>
             <Body>post@pcosnorge.no</Body>

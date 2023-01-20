@@ -13,7 +13,7 @@
 
 .button > svg > line {
   transition: all 0.2s ease;
-  stroke: var(--color-brand-dark-teal);
+  stroke: var(--semantic-color-text-primary);
 }
 
 .button > svg > line:nth-child(3) {
