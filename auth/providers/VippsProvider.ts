@@ -1,5 +1,6 @@
 import { Provider } from "next-auth/providers"
 import { nanoid } from "nanoid"
+import { VippsConfig } from "@config/vipps"
 
 type VippsUserInfo = {
   address: {
@@ -22,42 +23,31 @@ type VippsUserInfo = {
   sub: string
 }
 
-export const requireValue = (key: string): string => {
-  return (
-    process.env[key] ??
-    (() => {
-      throw Error(`Missing environment variable: ${key}`)
-    })()
-  )
-}
-
 export const VippsProvider: Provider = {
   id: "vipps",
   name: "Vipps",
   type: "oauth",
-  clientId: requireValue("VIPPS_CLIENT_ID"),
-  clientSecret: requireValue("VIPPS_CLIENT_SECRET"),
-  wellKnown: requireValue("VIPPS_WELL_KNOWN_URI"),
+  clientId: VippsConfig.clientId,
+  clientSecret: VippsConfig.clientSecret,
+  wellKnown: VippsConfig.wellKnown,
   authorization: {
     params: {
-      client_id: requireValue("VIPPS_CLIENT_ID"),
+      client_id: VippsConfig.clientId,
       scope: "openid name phoneNumber address birthDate email",
       state: nanoid(),
       response_type: "code",
-      redirect_uri: requireValue("VIPPS_REDIRECT_URI"),
+      redirect_uri: VippsConfig.redirectUri,
     },
   },
   idToken: true,
   checks: ["state"],
   userinfo: {
-    url: requireValue("VIPPS_USERINFO_ENDPOINT"),
+    url: VippsConfig.userInfoEndpoint,
     async request(context) {
-      const response = await fetch(requireValue("VIPPS_USERINFO_ENDPOINT"), {
+      const response = await fetch(VippsConfig.userInfoEndpoint, {
         headers: {
           Authorization: `Bearer ${context.tokens.access_token}`,
-          "Merchant-Serial-Number": requireValue(
-            "VIPPS_MERCHANT_SERIAL_NUMBER",
-          ),
+          "Merchant-Serial-Number": VippsConfig.merchantSerialNumber,
         },
       })
       const body: VippsUserInfo = await response.json()

@@ -10,6 +10,7 @@
   outline: none;
   transition: filter 0.1s ease-in-out;
   width: max-content;
+  height: max-content;
 }
 
 .link:before {

@@ -1,13 +1,15 @@
 import React, { useState } from "react"
 import classNames from "classnames"
-
-import styles from "./Header.module.css"
-
-import { Logo } from "../Logo"
-import { Link } from "./Link"
-import { HamburgerMenu } from "./HamburgerMenu"
+import NextLink from "next/link"
 import { useSession } from "next-auth/react"
 import { UserCircle } from "phosphor-react"
+
+import { Logo } from "@components/Logo"
+import { Button } from "@components/Button"
+import { Link } from "./Link"
+import { HamburgerMenu } from "./HamburgerMenu"
+
+import styles from "./Header.module.css"
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -39,9 +41,9 @@ export const Header: React.VFC<HeaderProps> = ({
               <Link href="/aktuelt">Aktuelt</Link>
               <Link href="/bidra">Bidra</Link>
               {status === "unauthenticated" && (
-                <Link href="/bli-medlem" className={styles.link}>
-                  Bli medlem
-                </Link>
+                <NextLink href="/bli-medlem">
+                  <Button role="link">Bli medlem</Button>
+                </NextLink>
               )}
               {status === "authenticated" && (
                 <Link href="/min-side" className={styles.link}>

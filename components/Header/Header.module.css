@@ -35,6 +35,7 @@
 .nav {
   display: flex;
   gap: 2.5rem;
+  align-items: center;
 }
 
 .link {
@@ -52,6 +53,7 @@
     margin-right: calc(var(--page-margin) * -1);
     background: var(--semantic-color-background-primary);
     flex-direction: column;
+    align-items: flex-end;
     padding: var(--page-margin);
     padding-bottom: 3rem;
     padding-top: calc(var(--header-height) + 2rem);

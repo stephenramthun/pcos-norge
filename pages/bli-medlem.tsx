@@ -1,4 +1,5 @@
 import React from "react"
+import { signIn } from "next-auth/react"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { SanityImageAsset } from "sanity-codegen"
 
@@ -20,7 +21,6 @@ import { Checkbox } from "@components/Checkbox"
 import { Link } from "@components/Link"
 
 import styles from "./bliMedlem.module.css"
-import { signIn } from "next-auth/react"
 
 interface BliMedlemProps {
   image: Omit<ImageDocument, "imageAsset"> & {
@@ -107,7 +107,7 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
             <form
               onSubmit={(event) => {
                 event.preventDefault()
-                signIn("vipps", { callbackUrl: "/registrer-medlemskap" })
+                signIn("vipps", { callbackUrl: "/api/registrer-medlemskap" })
               }}
             >
               <Checkbox
