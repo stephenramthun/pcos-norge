@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { unstable_getServerSession } from "next-auth"
-import { authOptions } from "../auth/[...nextauth]"
+import { authOptions } from "./auth/[...nextauth]"
 import { AgreementService } from "@io/vipps/AgreementService"
 
 export default async function registrerMedlemskap(
@@ -10,7 +10,13 @@ export default async function registrerMedlemskap(
   const session = await unstable_getServerSession(req, res, authOptions)
 
   if (session) {
-    const { vippsConfirmationUrl } = await AgreementService.newAgreement()
+    const { vippsConfirmationUrl, agreementId } =
+      await AgreementService.newAgreement()
+
+    console.log(session)
+
+    // TODO: Save agreementId to db
+    console.log(agreementId)
 
     res.redirect(vippsConfirmationUrl).end()
   } else {
