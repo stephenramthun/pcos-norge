@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import dayjs, { ManipulateType } from "dayjs"
 import { NextPage } from "next"
 import { signOut } from "next-auth/react"
+import { useRouter } from "next/router"
 
 import { Head } from "@components/Head"
 import { Header } from "@components/Header"
@@ -17,6 +18,10 @@ import { useUserInfo } from "@hooks/useUserInfo"
 
 import styles from "./min-side.module.css"
 
+type MinSideData = {
+  agreements: Agreement[]
+}
+
 const getRenewalDate = (agreement: Agreement): string => {
   return dayjs(agreement.start)
     .add(
@@ -24,10 +29,6 @@ const getRenewalDate = (agreement: Agreement): string => {
       agreement.interval.unit.toLowerCase() as ManipulateType,
     )
     .format("DD.MM.YYYY")
-}
-
-type MinSideData = {
-  agreements: Agreement[]
 }
 
 const useData = (): MinSideData | null => {
@@ -44,12 +45,12 @@ const useData = (): MinSideData | null => {
 
 const MinSide: NextPage = () => {
   const data = useData()
+  const router = useRouter()
+  const userInfo = useUserInfo()
 
   const activeAgreement = data?.agreements.find(
     (agreement) => agreement.status === "ACTIVE",
   )
-
-  const userInfo = useUserInfo()
 
   return (
     <PageContainer>
@@ -87,14 +88,15 @@ const MinSide: NextPage = () => {
               </div>
               <hr />
               <div className={styles.grid}>
-                {activeAgreement && (
-                  <>
-                    <Body>Medlemskapsstatus</Body>
+                <>
+                  <Body>Medlemskapsstatus</Body>
+                  {activeAgreement && (
                     <Body>
                       Aktiv, fornyes {getRenewalDate(activeAgreement)}
                     </Body>
-                  </>
-                )}
+                  )}
+                  {!activeAgreement && <Body>Inaktiv</Body>}
+                </>
                 <Body>Medlem siden</Body>
                 <Body>
                   {new Intl.DateTimeFormat("nb-NO").format(
@@ -103,10 +105,30 @@ const MinSide: NextPage = () => {
                 </Body>
               </div>
               <span className={styles.buttons}>
+                {!activeAgreement && (
+                  <Button
+                    onClick={() => {
+                      router.push("/api/medlemskap/registrer")
+                    }}
+                  >
+                    Forny medlemskap
+                  </Button>
+                )}
                 <Button onClick={() => signOut({ callbackUrl: "/" })}>
                   Logg ut
                 </Button>
-                <Button variant="secondary">Avslutt medlemskap</Button>
+                {activeAgreement && (
+                  <Button
+                    variant="secondary"
+                    onClick={() =>
+                      router.push(
+                        `/api/medlemskap/avslutt?agreementId=${activeAgreement.id}`,
+                      )
+                    }
+                  >
+                    Avslutt medlemskap
+                  </Button>
+                )}
               </span>
             </>
           )}

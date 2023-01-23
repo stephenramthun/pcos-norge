@@ -13,7 +13,6 @@ const agreements = async (userId: string): Promise<Agreement[]> => {
     .map(AgreementService.getAgreement)
 
   return await Promise.allSettled(remoteAgreements).then((values) => {
-    console.log(values.map((it) => (it as any).value.interval))
     return values
       .map((it) => (it as PromiseFulfilledResult<any>).value)
       .filter((it) => it !== undefined && it !== null)

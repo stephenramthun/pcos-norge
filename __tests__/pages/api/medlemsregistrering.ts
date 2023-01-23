@@ -1,4 +1,4 @@
-// import fetchMock from "jest-fetch-mock"
+import "jest-fetch-mock"
 // import { createMocks } from "node-mocks-http"
 // import { clearMembers } from "__mocks__/io/prisma/client"
 //

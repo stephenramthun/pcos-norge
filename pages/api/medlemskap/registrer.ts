@@ -20,12 +20,10 @@ export default async function registrer(
     if (agreement) {
       res.redirect(vippsConfirmationUrl).end()
     } else {
-      // TODO: Show error message
-      res.end()
+      const message = encodeURIComponent("Kunne ikke tegne medlemskap")
+      res.redirect(`/feil?status=500&message=${message}`).end()
     }
   } else {
-    // TODO: Vis feilside til brukeren.
-    // Dette steget bør ikke feile med mindre bruker valgte å avbryte registrering i Vipps
-    res.send({ content: "Feil" })
+    res.redirect(`/feil?status=401`).end()
   }
 }
