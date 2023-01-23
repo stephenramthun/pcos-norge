@@ -8,6 +8,10 @@ type NewAgreementResponse = {
   chargeId: string | null
 }
 
+type Agreement = {
+  status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
+}
+
 export const AgreementService = {
   async newAgreement(): Promise<NewAgreementResponse> {
     const { access_token } = await AccessTokenService.fetchAccessToken()
@@ -45,24 +49,21 @@ export const AgreementService = {
     return res
   },
 
-  async getAgreements() {
-    const url = new URL(VippsConfig.recurringPaymentEndpoint)
-    const params = new URLSearchParams({
-      status: "ACTIVE",
-      createdAfter: "0",
-    })
-    url.search = params.toString()
-
+  async getAgreement(id: string): Promise<Agreement> {
     const { access_token } = await AccessTokenService.fetchAccessToken()
-    const response = await fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${access_token}`,
-        "Ocp-Apim-Subscription-Key": VippsConfig.subscriptionKey,
-        "Merchant-Serial-Number": VippsConfig.merchantSerialNumber,
+    const response = await fetch(
+      `${VippsConfig.recurringPaymentEndpoint}/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`,
+          "Ocp-Apim-Subscription-Key": VippsConfig.subscriptionKey,
+          "Merchant-Serial-Number": VippsConfig.merchantSerialNumber,
+        },
       },
-    })
+    )
 
-    console.log(await response.json())
+    return await response.json()
   },
 }

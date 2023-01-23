@@ -1,22 +1,54 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import dayjs, { ManipulateType } from "dayjs"
 import { NextPage } from "next"
 import { signOut } from "next-auth/react"
 
 import { Head } from "@components/Head"
 import { Header } from "@components/Header"
 import { Content } from "@components/Content"
-import { Breadcrumbs } from "@components/Breadcrumbs"
 import { PageContainer } from "@components/PageContainer"
+import { Breadcrumbs } from "@components/Breadcrumbs"
+import { Heading } from "@components/Heading"
+import { Footer } from "@components/Footer"
+import { Button } from "@components/Button"
 import { Main } from "@components/Main"
 import { Body } from "@components/Body"
-import { Footer } from "@components/Footer"
-import { Heading } from "@components/Heading"
 import { useUserInfo } from "@hooks/useUserInfo"
-import { Button } from "@components/Button"
 
 import styles from "./min-side.module.css"
 
+const getRenewalDate = (agreement: Agreement): string => {
+  return dayjs(agreement.start)
+    .add(
+      agreement.interval.count,
+      agreement.interval.unit.toLowerCase() as ManipulateType,
+    )
+    .format("DD.MM.YYYY")
+}
+
+type MinSideData = {
+  agreements: Agreement[]
+}
+
+const useData = (): MinSideData | null => {
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    fetch("/api/min-side/data", { method: "GET" })
+      .then((res) => res.json())
+      .then(setData)
+  }, [])
+
+  return data
+}
+
 const MinSide: NextPage = () => {
+  const data = useData()
+
+  const activeAgreement = data?.agreements.find(
+    (agreement) => agreement.status === "ACTIVE",
+  )
+
   const userInfo = useUserInfo()
 
   return (
@@ -55,6 +87,14 @@ const MinSide: NextPage = () => {
               </div>
               <hr />
               <div className={styles.grid}>
+                {activeAgreement && (
+                  <>
+                    <Body>Medlemskapsstatus</Body>
+                    <Body>
+                      Aktiv, fornyes {getRenewalDate(activeAgreement)}
+                    </Body>
+                  </>
+                )}
                 <Body>Medlem siden</Body>
                 <Body>
                   {new Intl.DateTimeFormat("nb-NO").format(

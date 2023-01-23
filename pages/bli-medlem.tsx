@@ -107,7 +107,7 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
             <form
               onSubmit={(event) => {
                 event.preventDefault()
-                signIn("vipps", { callbackUrl: "/api/registrer-medlemskap" })
+                signIn("vipps", { callbackUrl: "/api/medlemskap/registrer" })
               }}
             >
               <Checkbox

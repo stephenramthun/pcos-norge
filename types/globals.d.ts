@@ -32,3 +32,23 @@ declare type MetadataImage = {
     }
   }
 }
+
+type User = {
+  id: string
+  name: string
+  email: string
+  streetAddress: string
+  postalCode: string
+  region: string
+  createdAt: Date
+  phoneNumber: string
+}
+
+type Agreement = {
+  id: string
+  status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
+  start: string | null
+  pricing: { currency: "NOK"; amount: number }
+  productName: string
+  interval: { unit: "YEAR"; count: number }
+}

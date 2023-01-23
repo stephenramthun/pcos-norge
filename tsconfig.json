@@ -21,7 +21,7 @@
       "@public/*": ["public/*"],
       "@config/*": ["config/*"],
       "@io/*": ["io/*"],
-      "@auth/*": ["auth/*"]
+      "@auth/*": ["auth/*"],
     },
     "incremental": true
   },

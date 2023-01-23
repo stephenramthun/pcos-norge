@@ -1,10 +1,10 @@
-import { VippsConfig } from "@config/vipps"
+import { VippsConfig } from "config/vipps"
 
 type Seconds = string
 type UnixDate = string
 type JWT = string
 
-type AccessTokenResponse = {
+export type AccessTokenResponse = {
   token_type: "Bearer"
   expires_in: Seconds
   ext_epires_in: Seconds
@@ -14,8 +14,13 @@ type AccessTokenResponse = {
   access_token: JWT
 }
 
-export const AccessTokenService = {
-  async fetchAccessToken(): Promise<AccessTokenResponse> {
+export class AccessTokenService {
+  static cache: AccessTokenResponse | null = null
+
+  static async fetchAccessToken(): Promise<AccessTokenResponse> {
+    if (this.cache && !this.hasExpired(this.cache)) {
+      return this.cache
+    }
     const response = await fetch(VippsConfig.accessTokenEndpoint, {
       method: "POST",
       headers: {
@@ -25,7 +30,14 @@ export const AccessTokenService = {
         "Merchant-Serial-Number": VippsConfig.merchantSerialNumber,
       },
     })
+    const data = await response.json()
+    this.cache = data
+    return data
+  }
 
-    return response.json()
-  },
+  static hasExpired(tokenResponse: AccessTokenResponse): boolean {
+    return (
+      new Date().getTime() - new Date(tokenResponse.expires_on).getTime() > 0
+    )
+  }
 }

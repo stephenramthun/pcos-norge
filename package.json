@@ -11,9 +11,10 @@
     "sanity": "npm run --prefix ./studio start",
     "sanity-deploy": "npm run --prefix ./studio deploy",
     "sanity-codegen": "npx sanity-codegen",
-    "dev-db": "cockroach start-single-node --insecure --store=type=mem,size=0.25 --advertise-addr=localhost",
+    "dev-db": "cockroach start-single-node --insecure --store=type=mem,size=0.25 --cache=0.25 --advertise-addr=localhost",
     "db-migrate-prod": "npx prisma migrate deploy",
-    "db-migrate-dev": "npx prisma migrate dev"
+    "db-migrate-dev": "npx prisma migrate dev",
+    "test": "npx jest"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.5",
@@ -23,6 +24,7 @@
     "@sanity/image-url": "^1.0.1",
     "classnames": "^2.3.2",
     "cookie": "^0.5.0",
+    "dayjs": "^1.11.7",
     "nanoid": "^4.0.0",
     "next": "^12.3.1",
     "next-auth": "^4.18.8",
