@@ -16,10 +16,15 @@ export const getAgreementsForUser = async (
   return result.agreements as unknown as Agreement[]
 }
 
-export const hasActiveAgreement = async (userId: string): Promise<boolean> => {
+export const hasActiveOrPendingAgreement = async (
+  userId: string,
+): Promise<boolean> => {
   const agreements = await getAgreementsForUser(userId)
   return (
-    agreements.find((agreement) => agreement.status === "ACTIVE") !== undefined
+    agreements.find(
+      (agreement) =>
+        agreement.status === "ACTIVE" || agreement.status === "PENDING",
+    ) !== undefined
   )
 }
 

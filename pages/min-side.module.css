@@ -30,3 +30,17 @@
     flex-direction: column;
     gap: 32px;
 }
+
+.registerDialog {
+    border: 2px solid var(--semantic-color-interaction-primary);
+    border-radius: 6px;
+    padding: 24px;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.registerDialog .bold {
+    font-weight: var(--font-weight-bold);
+}

@@ -1,10 +1,11 @@
-import NextAuth, { AuthOptions, Session, User } from "next-auth"
+import NextAuth, { AuthOptions, User } from "next-auth"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { VippsProvider } from "@auth/providers/VippsProvider"
 import { prisma } from "@io/prisma/client"
 
 type AdditionalFields = {
   id: string
+  givenName: string
   streetAddress: string
   postalCode: string
   region: string
@@ -12,9 +13,6 @@ type AdditionalFields = {
   createdAt: string
 }
 
-type VippsSession = Session & {
-  user: Session["user"] & Partial<AdditionalFields>
-}
 type VippsUser = User & AdditionalFields
 
 const mergeUserInfo = (
@@ -23,6 +21,7 @@ const mergeUserInfo = (
 ): void => {
   if (session.user) {
     session.user.id = user.id
+    session.user.givenName = user.givenName
     session.user.streetAddress = user.streetAddress
     session.user.postalCode = user.postalCode
     session.user.region = user.region

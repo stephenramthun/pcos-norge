@@ -3,7 +3,10 @@ import { unstable_getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
-import { hasActiveAgreement, insertAgreement } from "io/prisma/dao/agreement"
+import {
+  hasActiveOrPendingAgreement,
+  insertAgreement,
+} from "io/prisma/dao/agreement"
 import { isUser } from "types/guards"
 
 export default async function registrer(
@@ -16,7 +19,7 @@ export default async function registrer(
     return res.redirect(`/feil?status=401`).end()
   }
 
-  if (await hasActiveAgreement(session.user.id)) {
+  if (await hasActiveOrPendingAgreement(session.user.id)) {
     return res.redirect("/min-side").end()
   }
 

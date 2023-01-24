@@ -1,3 +1,5 @@
+type Session = import("next-auth").Session
+
 type PortableTextBlock = import("@portabletext/types").PortableTextBlock
 type SanityImageObject =
   import("@sanity/image-url/lib/types/types").SanityImageObject
@@ -36,6 +38,7 @@ declare type MetadataImage = {
 type User = {
   id: string
   name: string
+  givenName: string
   email: string
   streetAddress: string
   postalCode: string
@@ -48,7 +51,9 @@ type Agreement = {
   id: string
   status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
   start: string | null
-  pricing: { currency: "NOK"; amount: number }
-  productName: string
-  interval: { unit: "YEAR"; count: number }
+  stop: string | null
+}
+
+type VippsSession = Session & {
+  user: Session["user"] & Partial<AdditionalFields>
 }
