@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 import { SessionProvider } from "next-auth/react"
 import { Session } from "next-auth"
 
-import "../styles/globals.css"
+import "./globals.css"
 
 type Props = AppProps & {
   pageProps: AppProps["pageProps"] & { session: Session }

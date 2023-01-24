@@ -22,8 +22,10 @@ import { Button } from "components/Button"
 import { Main } from "components/Main"
 import { Body } from "components/Body"
 import { isUser } from "types/guards"
+import { useAsyncPolling } from "hooks/useAsyncPolling"
 
 import styles from "./min-side.module.css"
+import { MinSideService } from "@io/api/minSideService"
 
 const Unauthorized: React.FC = () => {
   return (
@@ -41,34 +43,47 @@ const Unauthorized: React.FC = () => {
   )
 }
 
-const getRenewalDate = (agreement: Agreement): string => {
-  return dayjs(agreement.start).add(1, "year").format("DD.MM.YYYY")
-}
-
-type MinSideData = {
-  pendingAgreement?: Agreement
-  activeAgreement?: Agreement
-}
-
-const useData = (): MinSideData | null => {
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    fetch("/api/min-side/data", { method: "GET" })
-      .then((res) => res.json())
-      .then(setData)
-  }, [])
-
-  return data
+const fetchData = (): Promise<MinSideData> => {
+  return fetch("/api/min-side/data", { method: "GET" }).then((res) =>
+    res.json(),
+  )
 }
 
 interface AuthorizedProps {
   user: Session["user"]
+  initialData: MinSideData
 }
 
-const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
-  const data = useData()
+const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
+  const [data, setData] = useState<MinSideData>(initialData)
+
+  useEffect(() => {
+    fetchData().then(setData)
+  }, [])
+
   const router = useRouter()
+
+  useAsyncPolling(
+    async () => {
+      if (data?.pendingAgreement) {
+        await fetch("/api/medlemskap/oppdater", {
+          method: "POST",
+          body: JSON.stringify({ agreementId: data.pendingAgreement.id }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.updated) {
+              fetchData().then(setData)
+            }
+          })
+      }
+    },
+    {
+      delay: 3000,
+      interval: 2000,
+      active: data ? data.pendingAgreement !== null : undefined,
+    },
+  )
 
   if (!isUser(user) || !data) {
     return null
@@ -116,7 +131,10 @@ const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
         <>
           <Body>Medlemskapsstatus</Body>
           {activeAgreement && (
-            <Body>Aktiv, fornyes {getRenewalDate(activeAgreement)}</Body>
+            <Body>
+              Aktiv, fornyes{" "}
+              {dayjs(activeAgreement.start).add(1, "year").format("DD.MM.YYYY")}
+            </Body>
           )}
           {!hasActiveOrPendingAgreement && <Body>Inaktiv</Body>}
           {pendingAgreement && <Body>Venter</Body>}
@@ -145,7 +163,11 @@ const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
   )
 }
 
-const MinSide: NextPage = () => {
+interface MinSideProps {
+  initialData: MinSideData
+}
+
+const MinSide: NextPage<MinSideProps> = ({ initialData }) => {
   const { data: session } = useSession()
 
   return (
@@ -163,7 +185,9 @@ const MinSide: NextPage = () => {
       </Content>
 
       <Main>
-        {session && <Authorized user={session.user} />}
+        {session && (
+          <Authorized user={session.user} initialData={initialData} />
+        )}
         {!session && <Unauthorized />}
       </Main>
 
@@ -174,6 +198,7 @@ const MinSide: NextPage = () => {
 
 type ServerSideProps = GetServerSidePropsResult<{
   session: VippsSession | null
+  initialData: MinSideData
 }>
 
 export async function getServerSideProps(
@@ -189,9 +214,15 @@ export async function getServerSideProps(
     return {
       props: {
         session: null,
+        initialData: {
+          pendingAgreement: null,
+          activeAgreement: null,
+        },
       },
     }
   }
+
+  const initialData = await MinSideService.getData(session.user.id)
 
   return {
     props: {
@@ -203,6 +234,7 @@ export async function getServerSideProps(
           createdAt: dayjs(session.user.createdAt).format("YYYY-MM-DD"),
         },
       },
+      initialData,
     },
   }
 }

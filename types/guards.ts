@@ -22,3 +22,10 @@ export const isUser = (user: any): user is User => {
     typeof user.region === "string"
   )
 }
+
+export const isAgreement = (agreement: any): agreement is Agreement => {
+  return (
+    typeof agreement.status === "string" &&
+    ["ACTIVE", "PENDING", "EXPIRED", "STOPPED"].includes(agreement.status)
+  )
+}

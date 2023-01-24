@@ -3,7 +3,7 @@ import { unstable_getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth]"
 import { isUser } from "types/guards"
-import { getAgreementsForUser } from "io/prisma/dao/agreement"
+import { MinSideService } from "@io/api/minSideService"
 
 export default async function data(
   req: NextApiRequest,
@@ -15,14 +15,6 @@ export default async function data(
     return res.status(401).end()
   }
 
-  const agreements = await getAgreementsForUser(session.user.id)
-
-  res.send({
-    pendingAgreement:
-      agreements.find(({ status }) => status === "PENDING") !== undefined,
-    activeAgreement:
-      agreements.find(({ status }) => status === "ACTIVE") !== undefined,
-    agreementStatus: "PENDING",
-  })
+  res.send(await MinSideService.getData(session.user.id))
   return res.end()
 }

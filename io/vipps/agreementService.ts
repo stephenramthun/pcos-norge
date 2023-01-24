@@ -10,6 +10,8 @@ type NewAgreementResponse = {
 
 type Agreement = {
   status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
+  start?: string
+  stop?: string
 }
 
 type AgreementBody = {
@@ -66,7 +68,7 @@ export const AgreementService = {
     return await response.json()
   },
 
-  async getAgreement(id: string): Promise<Agreement> {
+  async getAgreement(id: string): Promise<Agreement | Response> {
     const { access_token } = await AccessTokenService.fetchAccessToken()
     const response = await fetch(
       `${VippsConfig.recurringPaymentEndpoint}/${id}`,

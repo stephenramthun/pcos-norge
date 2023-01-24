@@ -46,6 +46,18 @@ export const insertAgreement = async (
   })
 }
 
+export const updateAgreement = async (
+  id: string,
+  status: AgreementStatus,
+  start?: string,
+  stop?: string,
+): Promise<Agreement> => {
+  return prisma.agreement.update({
+    where: { id },
+    data: { status, start, stop },
+  })
+}
+
 export const deleteAgreement = async (id: string): Promise<Agreement> => {
   return prisma.agreement.delete({ where: { id } })
 }

@@ -3,37 +3,32 @@ import { unstable_getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
-import { getAgreementsForUser } from "io/prisma/dao/agreement"
 import { isUser } from "types/guards"
+import { deleteAgreement } from "@io/prisma/dao/agreement"
 
 export default async function avslutt(
   req: NextApiRequest,
   res: NextApiResponse,
-): Promise<void> {
+): Promise<NextApiResponse> {
   const session = await unstable_getServerSession(req, res, authOptions)
 
   if (!session || !isUser(session.user)) {
-    res.status(401).end()
-    return
+    return res.status(401).end()
   }
 
-  const id = req.query.agreementId
+  const id = req.query.agreementId as string
 
-  const agreements = await getAgreementsForUser(session.user.id)
-  const agreement = agreements.find((it) => it.id === id)
-
-  if (!agreement) {
-    res.redirect("/feil").end()
-    return
-  }
-
-  console.log("Avslutter medlemskap med id", agreement.id)
-  const status = await AgreementService.stopAgreement(agreement.id)
+  const status = await AgreementService.stopAgreement(id)
 
   if (status >= 400) {
-    res.redirect(`/feil?status=${status}`).end()
-    return
+    return res.redirect(`/feil?status=${status}`).end()
   }
 
-  res.status(status).redirect("/min-side?status=STOPPED")
+  const agreement = await deleteAgreement(id)
+
+  if (!agreement) {
+    return res.redirect("/feil")
+  }
+
+  return res.status(status).redirect("/min-side")
 }
