@@ -48,6 +48,8 @@ const MinSide: NextPage = () => {
   const router = useRouter()
   const userInfo = useUserInfo()
 
+  console.log(router.query)
+
   const activeAgreement = data?.agreements.find(
     (agreement) => agreement.status === "ACTIVE",
   )

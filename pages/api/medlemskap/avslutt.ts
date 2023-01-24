@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { unstable_getServerSession } from "next-auth"
+
 import { authOptions } from "../auth/[...nextauth]"
-import { AgreementService } from "@io/vipps/AgreementService"
-import { getAgreementsForUser } from "@io/prisma/dao/agreement"
-import { isUser } from "../../../types/guards"
+import { AgreementService } from "io/vipps/agreementService"
+import { getAgreementsForUser } from "io/prisma/dao/agreement"
+import { isUser } from "types/guards"
 
 export default async function avslutt(
   req: NextApiRequest,

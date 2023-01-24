@@ -1,6 +1,6 @@
 import { VippsConfig } from "config/vipps"
 import { HeadersBuilder } from "io/vipps/headersBuilder"
-import { AccessTokenService } from "io/vipps/AccessTokenService"
+import { AccessTokenService } from "io/vipps/accessTokenService"
 
 type NewAgreementResponse = {
   vippsConfirmationUrl: string

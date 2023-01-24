@@ -62,7 +62,18 @@ model VerificationToken {
 }
 
 model Agreement {
-  id     String          @id
-  user   User            @relation(references: [id], fields: [userId])
-  userId String
+  id        String          @id
+  user      User            @relation(references: [id], fields: [userId])
+  userId    String
+  status    AgreementStatus
+  start     String?
+  stop      String?
+  createdAt DateTime        @default(now())
+}
+
+enum AgreementStatus {
+  ACTIVE
+  PENDING
+  EXPIRED
+  STOPPED
 }

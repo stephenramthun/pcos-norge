@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 import {
   AccessTokenResponse,
   AccessTokenService,
-} from "io/vipps/AccessTokenService"
+} from "io/vipps/accessTokenService"
 
 const tokenResponse = (
   overrides?: Partial<AccessTokenResponse>,

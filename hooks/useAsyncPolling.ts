@@ -3,16 +3,18 @@ import { useCallback, useEffect, useRef } from "react"
 type UsePollingOptions = {
   delay?: number
   interval?: number
+  active?: boolean
 }
 
 const defaultUsePollingOptions: UsePollingOptions = {
   delay: 3000,
   interval: 2000,
+  active: true,
 }
 
 export const useAsyncPolling = (
   fn: () => Promise<void>,
-  { delay, interval }: UsePollingOptions = defaultUsePollingOptions,
+  { delay, interval, active }: UsePollingOptions = defaultUsePollingOptions,
 ): void => {
   const timeout = useRef<number>()
 
@@ -22,10 +24,12 @@ export const useAsyncPolling = (
   }, [fn, interval])
 
   useEffect(() => {
-    const initial = window.setTimeout(callback, delay)
-    return () => {
-      window.clearTimeout(initial)
-      window.clearTimeout(timeout.current)
+    if (active) {
+      const initial = window.setTimeout(callback, delay)
+      return () => {
+        window.clearTimeout(initial)
+        window.clearTimeout(timeout.current)
+      }
     }
-  }, [timeout, callback, delay])
+  }, [timeout, callback, delay, active])
 }
