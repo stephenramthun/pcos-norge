@@ -27,7 +27,7 @@
   gap: 32px;
 }
 
-.content > div {
+.info {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -35,16 +35,22 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .content > div {
+  .info {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
 }
 
 .logoContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .socials {

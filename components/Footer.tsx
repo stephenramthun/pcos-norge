@@ -22,7 +22,7 @@ export const Footer: React.FC = () => (
           </Link>
         </div>
       </div>
-      <div>
+      <div className={styles.info}>
         <article className={styles.details}>
           <div className={styles.grid}>
             <Body>Epost:</Body>
