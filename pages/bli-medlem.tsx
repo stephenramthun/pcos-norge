@@ -63,9 +63,7 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
               </Body>
               <Body>
                 Vi er en nyoppstartet organisasjon og jobber for tiden med å
-                kunne tilby våre medlemmer eksklusive medlemsfordeler. Meld deg
-                på nyhetsbrevet vårt så får du vite når vi lanserer nye
-                fordeler.
+                kunne tilby våre medlemmer eksklusive medlemsfordeler.
               </Body>
               <ul className={styles.list}>
                 <Body>Derfor bør du bli medlem</Body>
