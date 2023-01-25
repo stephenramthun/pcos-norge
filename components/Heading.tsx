@@ -4,7 +4,7 @@ import classNames from "classnames"
 import styles from "./Heading.module.css"
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+  tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p"
   size: "small" | "medium" | "medium-large" | "large"
 }
 

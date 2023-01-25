@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import dayjs from "dayjs"
 import {
   GetServerSidePropsContext,
@@ -23,9 +23,10 @@ import { Main } from "components/Main"
 import { Body } from "components/Body"
 import { isUser } from "types/guards"
 import { useAsyncPolling } from "hooks/useAsyncPolling"
+import { MinSideService } from "io/api/minSideService"
 
 import styles from "./min-side.module.css"
-import { MinSideService } from "@io/api/minSideService"
+import { Loader } from "@components/Loader"
 
 const Unauthorized: React.FC = () => {
   return (
@@ -55,35 +56,33 @@ interface AuthorizedProps {
 }
 
 const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
+  const router = useRouter()
   const [data, setData] = useState<MinSideData>(initialData)
 
   useEffect(() => {
     fetchData().then(setData)
   }, [])
 
-  const router = useRouter()
-
-  useAsyncPolling(
-    async () => {
-      if (data?.pendingAgreement) {
-        await fetch("/api/medlemskap/oppdater", {
-          method: "POST",
-          body: JSON.stringify({ agreementId: data.pendingAgreement.id }),
+  const updateData = useCallback(async () => {
+    if (data?.pendingAgreement) {
+      await fetch("/api/medlemskap/oppdater", {
+        method: "POST",
+        body: JSON.stringify({ agreementId: data.pendingAgreement.id }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.updated) {
+            fetchData().then(setData)
+          }
         })
-          .then((res) => res.json())
-          .then((res) => {
-            if (res.updated) {
-              fetchData().then(setData)
-            }
-          })
-      }
-    },
-    {
-      delay: 3000,
-      interval: 2000,
-      active: data ? data.pendingAgreement !== null : undefined,
-    },
-  )
+    }
+  }, [data])
+
+  useAsyncPolling(updateData, {
+    delay: 3000,
+    interval: 2000,
+    active: data ? data.pendingAgreement !== null : undefined,
+  })
 
   if (!isUser(user) || !data) {
     return null
@@ -110,6 +109,19 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
           />
         </article>
       )}
+      {!initialData.activeAgreement && initialData.pendingAgreement && (
+        <article className={styles.gratitudeDialog}>
+          <Heading tag="p" size="medium-large">
+            Velkommen, {user.givenName}! 🎉
+          </Heading>
+          <Body>Tusen takk for tilliten!</Body>
+          <Body>
+            Med ditt bidrag hjelper du oss i vårt arbeid for økt oppmerksomhet
+            rundt diagnosen og å bedre helsetilbudet for mennesker med PCOS i
+            Norge.
+          </Body>
+        </article>
+      )}
       <Heading tag="h1" size="medium-large">
         Min side
       </Heading>
@@ -130,14 +142,14 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
       <div className={styles.grid}>
         <>
           <Body>Medlemskapsstatus</Body>
-          {activeAgreement && (
+          {!hasActiveOrPendingAgreement && <Body>Inaktiv</Body>}
+          {!pendingAgreement && activeAgreement && (
             <Body>
               Aktiv, fornyes{" "}
               {dayjs(activeAgreement.start).add(1, "year").format("DD.MM.YYYY")}
             </Body>
           )}
-          {!hasActiveOrPendingAgreement && <Body>Inaktiv</Body>}
-          {pendingAgreement && <Body>Venter</Body>}
+          {pendingAgreement && !activeAgreement && <Loader variant="dark" />}
         </>
         <Body>Medlem siden</Body>
         <Body>

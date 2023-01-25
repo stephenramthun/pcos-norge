@@ -33,6 +33,7 @@ const Personvernerklæring: NextPage = () => {
           <Heading tag="h1" size="medium-large">
             Personvernerklæring
           </Heading>
+          <Body className={styles.revision}>Revisjonsdato: 25.01.2023</Body>
           <Body>
             PCOS Norge er behandlingsansvarlig for alle personopplysninger
             registrert hos oss. Vi forbeholder seg retten til å endre eller
@@ -65,16 +66,10 @@ const Personvernerklæring: NextPage = () => {
                   <Body>E-postadresse</Body>
                 </li>
                 <li>
-                  <Body>Medlemsnummer</Body>
+                  <Body>Telefonnummer</Body>
                 </li>
-              </ul>
-              <ul>
-                <Body>
-                  Ved påmelding til nyhetsbrevet vårt registrerer vi følgende
-                  informasjon om deg:
-                </Body>
                 <li>
-                  <Body>E-postadresse</Body>
+                  <Body>Medlemsnummer</Body>
                 </li>
               </ul>
             </li>
@@ -88,10 +83,10 @@ const Personvernerklæring: NextPage = () => {
               </Heading>
               <Body>
                 Vi bruker dine personopplysninger til å oppfylle våre avtaler
-                med deg, det vil si når du har registrert deg som medlem hos oss
-                eller meldt deg på nyhetsbrevet vårt. Det rettslige grunnlaget
-                for å behandle personopplysninger til dette formålet er at
-                behandlingen er nødvendig for å oppfylle en avtale med deg.
+                med deg, som når du har registrert deg som medlem hos oss. Det
+                rettslige grunnlaget for å behandle personopplysninger til dette
+                formålet er at behandlingen er nødvendig for å oppfylle en
+                avtale med deg.
               </Body>
 
               <Heading tag="h3" size="small">
@@ -151,8 +146,7 @@ const Personvernerklæring: NextPage = () => {
               <ul>
                 <li>
                   <Body>
-                    Vipps. Vipps har sin egen personvernserklæring som du kan
-                    lese{" "}
+                    Vipps. Personvernserklæringen deres kan du lese{" "}
                     <Link
                       href="https://vipps.no/vilkar/cookie-og-personvern/"
                       target="_blank"
@@ -193,21 +187,20 @@ const Personvernerklæring: NextPage = () => {
               <Body>
                 Du har rett til å få dine personopplysninger slettet uten
                 ugrunnet opphold. Du kan derfor når som helst be oss slette
-                opplysninger om deg selv. Men merk at informasjon som vi er
-                pålagt beholde av hensyn til andre rettslige forpliktelser (som
-                for eksempel bokføringsloven) ikke vil bli slettet.
+                opplysninger om deg selv. Merk at vi uten personopplysninger
+                ikke kan behandle medlemskapet ditt i PCOS Norge og du vil
+                derfor samtidig bli meldt ut.
               </Body>
 
               <Heading tag="h3" size="small">
                 Retten til å avslutte ditt medlemskap
               </Heading>
               <Body>
-                Du kan når som helst melde deg ut av foreningen ved å sende en
-                mail til{" "}
+                Du kan når som helst melde deg ut av foreningen ved å
+                administrere medlemskapet ditt på{" "}
+                <Link href="/min-side">Min side</Link> eller ved sende en mail
+                til{" "}
                 <Link href="mailto:post@pcosnorge.no">post@pcosnorge.no.</Link>.
-                Ved utmelding vil opplysningene om deg bli oppbevart i vårt
-                medlemsregister i 5 år grunnet krav om oppbevaring av
-                regnskapsbilag i bokføringsloven.
               </Body>
 
               <Heading tag="h3" size="small">
@@ -241,15 +234,60 @@ const Personvernerklæring: NextPage = () => {
               </Heading>
 
               <Heading tag="h3" size="small">
-                Medlemsskap i PCOS Norge
+                Avtalen
               </Heading>
               <Body>
-                Medlemsskapet gjelder i 12 kalendermåneder fra datoen
-                medlemskontingenten er mottatt. Du kan når som helst si opp ditt
-                medlemsskap ved å kontakte oss på{" "}
+                Avtalen består av disse salgsbetingelsene, opplysninger gitt i
+                bestillingsløsningen og eventuelt særskilt avtalte vilkår. Ved
+                eventuell motstrid mellom opplysningene, går det som særskilt er
+                avtalt mellom partene foran, så fremt det ikke strider mot
+                ufravikelig lovgivning. Avtalen vil i tillegg bli utfylt av
+                relevante lovbestemmelser som regulerer kjøp av varer mellom
+                næringsdrivende og forbrukere.
+              </Body>
+
+              <Heading tag="h3" size="small">
+                Partene
+              </Heading>
+              <Body>
+                Selger er PCOS NORGE - STØTTEFORENING FOR POLYCYSTISK
+                OVARIESYNDROM og betegnes i det følgende som selger/selgeren.
+                Kjøper er den forbrukeren som foretar bestillingen, og betegnes
+                i det følgende som kjøper/kjøperen.
+              </Body>
+
+              <Heading tag="h3" size="small">
+                Pris
+              </Heading>
+              <Body>
+                Den oppgitte prisen for varen og tjenester er den totale prisen
+                kjøper skal betale. Denne prisen inkluderer alle avgifter og
+                tilleggskostnader. Ytterligere kostnader som selger før kjøpet
+                ikke har informert om, skal kjøper ikke bære.
+              </Body>
+
+              <Heading tag="h3" size="small">
+                Avtaleinngåelse
+              </Heading>
+              <Body>
+                Avtalen er bindende for begge parter når kjøperen har sendt sin
+                bestilling til selgeren. Avtalen er likevel ikke bindende hvis
+                det har forekommet skrive- eller tastefeil i tilbudet fra
+                selgeren i bestillingsløsningen i nettbutikken eller i kjøperens
+                bestilling, og den annen part innså eller burde ha innsett at
+                det forelå en slik feil.
+              </Body>
+
+              <Heading tag="h3" size="small">
+                Medlemskap i PCOS Norge
+              </Heading>
+              <Body>
+                Medlemskapet gjelder i 12 kalendermåneder fra datoen
+                medlemskontingenten er mottatt av selger. Kjøper kan når som
+                helst si opp sitt medlemskap ved å kontakte selger på{" "}
                 <Link href="mailto:post@pcosnorge.no">post@pcosnorge.no</Link>.
                 Merk at medlemskontingent for gjenværende måneder ikke blir
-                tilbakebetalt.
+                tilbakebetalt kjøper.
               </Body>
 
               <Heading tag="h3" size="small">
@@ -257,7 +295,19 @@ const Personvernerklæring: NextPage = () => {
               </Heading>
               <Body>
                 Selgeren kan kreve betaling for medlemskontingent fra det
-                tidspunkt medlemsskapet blir registrert.
+                tidspunkt medlemskapet blir registrert. Selger godtar kun
+                betaling med Vipps. Medlemskapet fornyes hvert år på
+                registreringsdato, og kjøper vil motta et betalingskrav i Vipps
+                tidligst to dager før fornyelsesdato og senest samme dag som
+                fornyelsesdato.
+              </Body>
+
+              <Heading tag="h3" size="small">
+                Levering
+              </Heading>
+              <Body>
+                Levering er skjedd når kjøperen har overtatt tingen, mao. i det
+                øyeblikk medlemskapet er registrert i våre systemer.
               </Body>
 
               <Heading tag="h3" size="small">
@@ -267,6 +317,31 @@ const Personvernerklæring: NextPage = () => {
                 Det er ikke angrerett på medlemskontingent og donasjoner. Ved
                 spørsmål ta kontakt med{" "}
                 <Link href="mailto:post@pcosnorge.no">post@pcosnorge.no.</Link>.
+              </Body>
+
+              <Heading tag="h3" size="small">
+                Konfliktløsning
+              </Heading>
+              <Body>
+                Klager rettes til selger innen rimelig tid, jf. punkt 9 og 10.
+                Partene skal forsøke å løse eventuelle tvister i minnelighet.
+                Dersom dette ikke lykkes, kan kjøperen ta kontakt med
+                Forbrukertilsynet for mekling. Forbrukertilsynet er tilgjengelig
+                på telefon 23 400 600 eller{" "}
+                <Link href="www.forbrukertilsynet.no">
+                  www.forbrukertilsynet.no
+                </Link>
+                .
+              </Body>
+              <br />
+              <Body>
+                Europa-Kommisjonens klageportal kan også brukes hvis du ønsker å
+                inngi en klage. Det er særlig relevant, hvis du er forbruker
+                bosatt i et annet EU-land. Klagen inngis her:{" "}
+                <Link href="http://ec.europa.eu/odr">
+                  http://ec.europa.eu/odr
+                </Link>
+                .
               </Body>
             </li>
           </ol>

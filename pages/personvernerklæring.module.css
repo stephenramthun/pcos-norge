@@ -38,3 +38,7 @@
   font-size: var(--font-size-title-small);
   font-weight: var(--font-weight-bold);
 }
+
+.revision {
+  font-size: var(--font-size-details);
+}
