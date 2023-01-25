@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import classNames from "classnames"
 import NextLink from "next/link"
 import { useSession } from "next-auth/react"
-import { UserCircle } from "phosphor-react"
 
 import { Logo } from "@components/Logo"
 import { Button } from "@components/Button"
@@ -40,16 +39,10 @@ export const Header: React.VFC<HeaderProps> = ({
               <Link href="/om-oss">Om oss</Link>
               <Link href="/aktuelt">Aktuelt</Link>
               <Link href="/bidra">Bidra</Link>
-              {status === "unauthenticated" && (
-                <NextLink href="/bli-medlem">
-                  <Button role="link">Bli medlem</Button>
-                </NextLink>
-              )}
-              {status === "authenticated" && (
-                <Link href="/min-side" className={styles.link}>
-                  Min side <UserCircle size={24} />
-                </Link>
-              )}
+              <Link href="/min-side">Min side</Link>
+              <NextLink href="/bli-medlem">
+                <Button role="link">Bli medlem</Button>
+              </NextLink>
             </>
           )}
         </nav>

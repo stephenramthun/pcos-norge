@@ -9,6 +9,7 @@
   top: calc(var(--header-height) / 2);
   transform: translateY(-50%);
   right: 0;
+  cursor: pointer;
 }
 
 .button > svg > line {
@@ -36,7 +37,7 @@
   opacity: 0;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1000px) {
   .button {
     display: flex;
     align-items: center;
