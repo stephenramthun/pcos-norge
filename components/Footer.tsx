@@ -1,4 +1,5 @@
 import React from "react"
+import { FacebookLogo, InstagramLogo } from "phosphor-react"
 
 import { Logo } from "./Logo"
 import { Body } from "./Body"
@@ -10,7 +11,17 @@ import styles from "./Footer.module.css"
 export const Footer: React.FC = () => (
   <footer className={styles.container}>
     <Content className={styles.content}>
-      <Logo variant="light" priority={false} />
+      <div className={styles.logoContainer}>
+        <Logo variant="light" priority={false} />
+        <div className={styles.socials}>
+          <Link href="https://www.facebook.com/pcosnorge" target="_blank">
+            <FacebookLogo size={32} />
+          </Link>
+          <Link href="https://www.instagram.com/pcosnorge/" target="_blank">
+            <InstagramLogo size={32} />
+          </Link>
+        </div>
+      </div>
       <div>
         <article className={styles.details}>
           <div className={styles.grid}>

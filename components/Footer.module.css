@@ -41,6 +41,17 @@
   }
 }
 
+.logoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+}
+
 .details {
   display: flex;
   flex-direction: column;
