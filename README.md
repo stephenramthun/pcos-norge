@@ -2,7 +2,7 @@ Website for PCOS-Norge built with [Next](https://nextjs.org) and [Sanity](https:
 
 ## Getting Started
 
-First, run the development server:
+First, run the development server: 
 
 ```bash
 npm run dev
