@@ -2,7 +2,8 @@ import groq from "groq"
 import { createClient } from "next-sanity"
 import { SanityClient } from "@sanity/client"
 
-import { Article } from "types/schema"
+import { ArticleObject } from "types/sanity"
+
 import { config } from "./config"
 
 export const sanityClient = createClient(config)
@@ -23,7 +24,7 @@ type FetchArticlesOptions = {
 }
 
 type FetchArticlesResult = {
-  articles: Array<Article>
+  articles: ArticleObject[]
   remainingArticles: number
   query: string
 }
@@ -41,7 +42,7 @@ export const fetchArticles = async ({
         *[_type == "article"] |
         order(published desc)[${start}..${end}] {
           title,
-          slug,
+          "slug": slug.current,
           image,
           published,
           ingress

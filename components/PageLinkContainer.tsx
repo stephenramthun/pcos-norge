@@ -1,15 +1,15 @@
 import React from "react"
 
-import { Body } from "@components/Body"
-import { Content } from "@components/Content"
-import { Heading } from "@components/Heading"
-import { ArrowLink } from "@components/ArrowLink"
-import { PageLink } from "types/schema"
+import { Body } from "components/Body"
+import { Content } from "components/Content"
+import { Heading } from "components/Heading"
+import { ArrowLink } from "components/ArrowLink"
+import { SanityPageLink } from "types/sanity"
 
-import styles from "@hooks/usePortableTextComponents.module.css"
+import styles from "hooks/usePortableTextComponents.module.css"
 
 interface PageLinkContainerProps {
-  links: Array<PageLink>
+  links: SanityPageLink[]
 }
 
 export const PageLinkContainer: React.FC<PageLinkContainerProps> = ({

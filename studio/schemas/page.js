@@ -9,7 +9,6 @@ export const page = {
       type: "string",
       validation: (Rule) =>
         Rule.required().error("Alle sider må ha en sidetittel"),
-      codegen: { required: true },
     },
     {
       name: "elements",
@@ -24,7 +23,6 @@ export const page = {
         { type: "people" },
       ],
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
     },
     {
       name: "id",
@@ -35,7 +33,6 @@ export const page = {
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
     },
   ],
 }

@@ -1,20 +1,20 @@
 import React from "react"
 import NextImage, { ImageProps as NextImageProps } from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
+import { ImageAsset } from "@sanity/types"
 
-import { ImageAsset } from "types/schema"
 import { getClient } from "io/sanity/client"
-import { SanityImageAsset, SanityReference } from "sanity-codegen"
+import { SanityReference } from "@sanity/image-url/lib/types/types"
 
 const isImageAsset = (
-  asset: SanityReference<SanityImageAsset> | SanityImageAsset,
-): asset is SanityImageAsset => {
-  return (asset as SanityReference<SanityImageAsset>)._ref === undefined
+  asset: ImageAsset | SanityReference,
+): asset is ImageAsset => {
+  return asset._ref === undefined
 }
 
 interface SanityImageProps extends Omit<NextImageProps, "src"> {
-  asset: ImageAsset["asset"] | SanityImageAsset
-  alt: ImageAsset["alt"]
+  asset: ImageAsset | SanityReference
+  alt?: string
   layout?: NextImageProps["layout"]
 }
 

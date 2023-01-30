@@ -1,25 +1,24 @@
 import React from "react"
 import classNames from "classnames"
 
-import { Body } from "@components/Body"
-import { Heading } from "@components/Heading"
-import { ArrowLink } from "@components/ArrowLink"
-import { SanityImage } from "@components/SanityImage"
-import { useLocaleDateString } from "@hooks/useLocaleDateString"
-
-import { ImageAsset } from "types/schema"
+import { Body } from "components/Body"
+import { Heading } from "components/Heading"
+import { ArrowLink } from "components/ArrowLink"
+import { SanityImage } from "components/SanityImage"
+import { useLocaleDateString } from "hooks/useLocaleDateString"
+import { SanityImageAsset } from "types/sanity"
 
 import styles from "./ArticleCard.module.css"
 
 interface ArticleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   slug: string
   title: string
-  image: ImageAsset
+  image: SanityImageAsset
   published: Date
   ingress?: string
 }
 
-export const ArticleCard: React.VFC<ArticleCardProps> = ({
+export const ArticleCard: React.FC<ArticleCardProps> = ({
   slug,
   title,
   image,

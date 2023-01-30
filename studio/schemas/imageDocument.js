@@ -1,5 +1,4 @@
 import { nanoid } from "nanoid"
-import { isRequired } from "../helpers/validation"
 
 export const imageDocument = {
   type: "document",
@@ -11,13 +10,13 @@ export const imageDocument = {
       name: "title",
       title: "Tittel",
       initialValue: () => nanoid(),
-      ...isRequired(),
+      validation: (Rule) => Rule.required(),
     },
     {
       type: "imageAsset",
       name: "imageAsset",
       title: "Bildefil",
-      ...isRequired(),
+      validation: (Rule) => Rule.required(),
     },
     {
       type: "slug",
@@ -26,7 +25,7 @@ export const imageDocument = {
       options: {
         source: () => nanoid(),
       },
-      ...isRequired(),
+      validation: (Rule) => Rule.required(),
     },
   ],
 }

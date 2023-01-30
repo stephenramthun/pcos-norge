@@ -1,30 +1,29 @@
 import React from "react"
 import { signIn } from "next-auth/react"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import { SanityImageAsset } from "sanity-codegen"
+import { ImageAsset } from "@sanity/types"
 
-import { ImageDocument } from "types/schema"
+import { Head } from "components/Head"
+import { Main } from "components/Main"
+import { Body } from "components/Body"
+import { Link } from "components/Link"
+import { Header } from "components/Header"
+import { Footer } from "components/Footer"
+import { Content } from "components/Content"
+import { Heading } from "components/Heading"
+import { Checkbox } from "components/Checkbox"
+import { Breadcrumbs } from "components/Breadcrumbs"
+import { VippsButton } from "components/VippsButton"
+import { SanityImage } from "components/SanityImage"
+import { PageContainer } from "components/PageContainer"
+import { SanityImageDocument } from "types/sanity"
 import { getClient } from "io/sanity/client"
-
-import { PageContainer } from "@components/PageContainer"
-import { SanityImage } from "@components/SanityImage"
-import { Head } from "@components/Head"
-import { Header } from "@components/Header"
-import { Main } from "@components/Main"
-import { Footer } from "@components/Footer"
-import { Breadcrumbs } from "@components/Breadcrumbs"
-import { Content } from "@components/Content"
-import { Heading } from "@components/Heading"
-import { Body } from "@components/Body"
-import { VippsButton } from "@components/VippsButton"
-import { Checkbox } from "@components/Checkbox"
-import { Link } from "@components/Link"
 
 import styles from "./bliMedlem.module.css"
 
 interface BliMedlemProps {
-  image: Omit<ImageDocument, "imageAsset"> & {
-    asset: SanityImageAsset
+  image: Omit<SanityImageDocument, "imageAsset"> & {
+    asset: ImageAsset
     alt: string
   }
 }

@@ -10,7 +10,6 @@ export const openGraphMetaData = {
       title: "Tittel",
       type: "string",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
       description: "En kort tittel",
     },
     {
@@ -18,7 +17,6 @@ export const openGraphMetaData = {
       title: "Beskrivelse",
       type: "string",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
       description: "En kort beskrivelse av innholdet i lenka",
     },
     {
@@ -26,7 +24,6 @@ export const openGraphMetaData = {
       title: "Bilde",
       type: "imageAsset",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
       description:
         "Bilde som vises i lenke-previewen av siden. Bør være 1200 x 630 piklser i størrelse.",
     },

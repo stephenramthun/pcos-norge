@@ -8,7 +8,6 @@ export const article = {
       title: "Tittel",
       type: "string",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
       description: "En kort tittel",
     },
     {
@@ -16,7 +15,6 @@ export const article = {
       title: "Ingress",
       type: "string",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
       description: "En kort ingress",
     },
     {
@@ -24,7 +22,6 @@ export const article = {
       title: "Innhold",
       type: "blockContent",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
     },
     {
       name: "slug",
@@ -35,7 +32,6 @@ export const article = {
       },
       description: "ID som brukes for lenking til artikkelen",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
     },
     {
       name: "published",
@@ -45,7 +41,6 @@ export const article = {
       description:
         "Publiseringstidspunkt for artikkelen som vises på nettsiden. Merk at artikkelen publiseres umiddelbart uavhengig av tidspunktet som oppgis.",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
     },
     {
       name: "image",
@@ -54,7 +49,6 @@ export const article = {
       description: "Bilde som vises i lenker til artikkelen",
       validation: (Rule) =>
         Rule.required().error("Alle artikler må ha et bilde."),
-      codegen: { required: true },
     },
     {
       name: "pageLinks",

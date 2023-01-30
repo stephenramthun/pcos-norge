@@ -6,20 +6,19 @@ import {
   NextPage,
 } from "next"
 import { PortableText } from "@portabletext/react"
-
-import { Head } from "@components/Head"
-import { Header } from "@components/Header"
-import { Footer } from "@components/Footer"
-import { Content } from "@components/Content"
-import { Breadcrumbs } from "@components/Breadcrumbs"
-import { PageContainer } from "@components/PageContainer"
-import { ReferenceLinkSummary } from "@components/ReferenceLinkSummary"
-import { usePageComponents } from "@hooks/usePageComponents"
-import { useReferenceLinks } from "@hooks/useReferenceLinks"
-
-import { getClient } from "io/sanity/client"
-import { isBodyText } from "types/guards"
 import { PortableTextBlock } from "@portabletext/types"
+
+import { Head } from "components/Head"
+import { Header } from "components/Header"
+import { Footer } from "components/Footer"
+import { Content } from "components/Content"
+import { Breadcrumbs } from "components/Breadcrumbs"
+import { PageContainer } from "components/PageContainer"
+import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
+import { usePageComponents } from "hooks/usePageComponents"
+import { useReferenceLinks } from "hooks/useReferenceLinks"
+import { isBodyText } from "types/guards"
+import { getClient } from "io/sanity/client"
 
 interface PageProps {
   title: string

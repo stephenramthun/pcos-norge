@@ -2,14 +2,13 @@ import React from "react"
 import { PortableTextBlock } from "@portabletext/types"
 import { PortableTextReactComponents } from "@portabletext/react"
 
-import { Body } from "@components/Body"
-import { Link } from "@components/Link"
-import { SanityImage } from "@components/SanityImage"
-import { Heading } from "@components/Heading"
-import { FactBox } from "@components/FactBox"
-import { useReferenceLinks } from "@hooks/useReferenceLinks"
-
-import { BlockContent, ImageAsset } from "types/schema"
+import { Body } from "components/Body"
+import { Link } from "components/Link"
+import { Heading } from "components/Heading"
+import { FactBox } from "components/FactBox"
+import { SanityImage } from "components/SanityImage"
+import { useReferenceLinks } from "hooks/useReferenceLinks"
+import { SanityImageAsset } from "types/sanity"
 
 import styles from "./usePortableTextComponents.module.css"
 
@@ -18,12 +17,12 @@ type ComponentProps<T> = {
 }
 
 export const usePortableTextComponents = (
-  body: BlockContent | Array<PortableTextBlock>,
+  body: PortableTextBlock[],
 ): Partial<PortableTextReactComponents> => {
   const referenceLinks = useReferenceLinks(body)
   return {
     types: {
-      imageAsset: ({ value }: ComponentProps<ImageAsset>) => {
+      imageAsset: ({ value }: ComponentProps<SanityImageAsset>) => {
         return (
           <span>
             <SanityImage

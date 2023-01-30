@@ -8,7 +8,6 @@ export const person = {
       title: "Navn",
       type: "string",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
     },
     {
       name: "picture",
@@ -28,7 +27,6 @@ export const person = {
       title: "Rolle",
       type: "string",
       validation: (Rule) => Rule.required(),
-      codegen: { required: true },
     },
   ],
 }

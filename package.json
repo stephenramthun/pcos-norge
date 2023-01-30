@@ -10,7 +10,6 @@
     "lint": "next lint",
     "sanity": "npm run --prefix ./studio start",
     "sanity-deploy": "npm run --prefix ./studio deploy",
-    "sanity-codegen": "npx sanity-codegen",
     "dev-db": "cockroach start-single-node --insecure --store=type=mem,size=0.25 --cache=0.25 --advertise-addr=localhost",
     "db-migrate-prod": "npx prisma migrate deploy",
     "db-migrate-dev": "npx prisma migrate dev",
@@ -62,7 +61,6 @@
     "prettier": "^2.7.1",
     "pretty-format": "^29.2.1",
     "prisma": "^4.4.0",
-    "sanity-codegen": "^0.9.8",
     "typescript": "^4.8.3"
   },
   "prisma": {

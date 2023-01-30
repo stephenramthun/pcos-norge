@@ -1,11 +1,12 @@
 import React from "react"
-import { Person } from "types/schema"
-import { PersonCard } from "@components/PersonCard"
 
-import styles from "@components/PeopleContainer.module.css"
+import { PersonCard } from "components/PersonCard"
+import { SanityPerson } from "types/sanity"
+
+import styles from "components/PeopleContainer.module.css"
 
 interface PeopleProps {
-  people: Array<Person>
+  people: SanityPerson[]
 }
 
 export const PeopleContainer: React.FC<PeopleProps> = ({ people }) => {

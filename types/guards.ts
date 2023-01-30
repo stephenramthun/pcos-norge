@@ -1,14 +1,18 @@
-import { BodyText, Hero, PageLink } from "types/schema"
+import { SanityBodyText, SanityHero, SanityPageLink } from "./sanity"
 
-export const isHero = (element: SanityObject): element is Hero => {
+export const isHero = (element: SanityObject): element is SanityHero => {
   return element._type === "hero"
 }
 
-export const isPageLink = (element: SanityObject): element is PageLink => {
+export const isPageLink = (
+  element: SanityObject,
+): element is SanityPageLink => {
   return element._type === "pageLink"
 }
 
-export const isBodyText = (element: SanityObject): element is BodyText => {
+export const isBodyText = (
+  element: SanityObject,
+): element is SanityBodyText => {
   return element._type === "bodyText"
 }
 

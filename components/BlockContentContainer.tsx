@@ -1,14 +1,13 @@
 import React from "react"
 import { PortableText } from "@portabletext/react"
 
-import { usePortableTextComponents } from "@hooks/usePortableTextComponents"
-import { BlockContent } from "types/schema"
-import { Content } from "@components/Content"
+import { Content } from "components/Content"
+import { usePortableTextComponents } from "hooks/usePortableTextComponents"
 
 import styles from "./BlockContentContainer.module.css"
 
 interface BlockContentContainerProps {
-  blocks: BlockContent
+  blocks: PortableTextBlock[]
 }
 
 export const BlockContentContainer: React.FC<BlockContentContainerProps> = ({

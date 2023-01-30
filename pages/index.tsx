@@ -13,13 +13,13 @@ import { ArrowLink } from "components/ArrowLink"
 import { ArticleCard } from "components/ArticleCard"
 import { PageContainer } from "components/PageContainer"
 import { usePageComponents } from "hooks/usePageComponents"
-import { Article, Page } from "types/schema"
+import { ArticleObject, SanityPageDocument } from "types/sanity"
 
 import styles from "./index.module.css"
 
 interface HomeProps {
-  articles: Array<Omit<Article, "body">>
-  page: Page
+  articles: Array<Omit<ArticleObject, "body">>
+  page: SanityPageDocument
 }
 
 const Home: NextPage<HomeProps> = ({ articles, page }) => {
@@ -40,8 +40,8 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
             <div className={styles.Cards}>
               {articles.map((it) => (
                 <ArticleCard
-                  key={it.slug.current}
-                  slug={it.slug.current}
+                  key={it.slug}
+                  slug={it.slug}
                   title={it.title}
                   image={it.image}
                   published={new Date(it.published)}
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     { 
       "articles": *[_type == "article"] | order(published desc)[0..5] {
         title,
-        slug,
+        "slug": slug.current,
         image,
         published,
         ingress

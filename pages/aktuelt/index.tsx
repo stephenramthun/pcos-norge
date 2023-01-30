@@ -8,10 +8,9 @@ import { Content } from "components/Content"
 import { Heading } from "components/Heading"
 import { Breadcrumbs } from "components/Breadcrumbs"
 import { ArticleCard } from "components/ArticleCard"
-import { PageContainer } from "components/PageContainer"
 import { FetchButton } from "components/FetchButton"
-
-import { Article } from "types/schema"
+import { PageContainer } from "components/PageContainer"
+import { ArticleObject } from "types/sanity"
 import { fetchArticles } from "io/sanity/client"
 import { usePreviewSubscription } from "io/sanity/preview"
 
@@ -20,7 +19,7 @@ import styles from "./aktuelt.module.css"
 const articlesPerFetch = 6
 
 interface AktueltProps {
-  articles: Array<Article>
+  articles: Array<ArticleObject>
   remainingArticles: number
 }
 
@@ -70,8 +69,8 @@ const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
         <div className={styles.CardGrid}>
           {state.articles.map((it) => (
             <ArticleCard
-              key={it.slug.current}
-              slug={it.slug.current}
+              key={it.slug}
+              slug={it.slug}
               title={it.title}
               image={it.image}
               published={new Date(it.published)}
