@@ -1,7 +1,5 @@
 import React from "react"
 import classNames from "classnames"
-import Image from "next/image"
-import { useNextSanityImage } from "next-sanity-image"
 
 import { Body } from "@components/Body"
 import { Heading } from "@components/Heading"
@@ -9,9 +7,9 @@ import { ArrowLink } from "@components/ArrowLink"
 import { useLocaleDateString } from "@hooks/useLocaleDateString"
 
 import { ImageAsset } from "types/schema"
-import { getClient } from "io/sanity/client"
 
 import styles from "./ArticleCard.module.css"
+import { SanityImage } from "@components/SanityImage"
 
 interface ArticleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   slug: string
@@ -30,18 +28,13 @@ export const ArticleCard: React.VFC<ArticleCardProps> = ({
   className,
   ...divProps
 }) => {
-  const imageProps = useNextSanityImage(getClient(), image, {
-    imageBuilder: (imageUrlBuilder, options) =>
-      imageUrlBuilder.width(options.width || 400).quality(100),
-  })
-
   const date = useLocaleDateString(published)
 
   return (
     <div {...divProps} className={classNames(styles.container, className)}>
       <article key={slug} className={styles.article}>
         <div className={styles.imageContainer}>
-          <Image {...imageProps} alt="" unoptimized />
+          <SanityImage alt={image.alt ?? ""} asset={image.asset} />
         </div>
         <Body suppressHydrationWarning className={styles.date}>
           {date}
