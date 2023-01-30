@@ -9,5 +9,5 @@ jobs:
       - name: Captures outstanding charges
         run: |
           curl --request POST \
-          --url 'https://preview.pcosnorge.no/api/vipps/capture' \
-          --header 'Authorization: Bearer ${{ secrets.PREVIEW_VIPPS_CLIENT_SECRET }}'
+          --url 'https://www.pcosnorge.no/api/vipps/capture' \
+          --header 'Authorization: Bearer ${{ secrets.VIPPS_CLIENT_SECRET }}'
