@@ -14,10 +14,18 @@ export const Footer: React.FC = () => (
       <div className={styles.logoContainer}>
         <Logo variant="light" priority={false} />
         <div className={styles.socials}>
-          <Link href="https://www.facebook.com/pcosnorge" target="_blank">
+          <Link
+            href="https://www.facebook.com/pcosnorge"
+            target="_blank"
+            aria-label="PCOS Norge på Facebook"
+          >
             <FacebookLogo size={32} />
           </Link>
-          <Link href="https://www.instagram.com/pcosnorge/" target="_blank">
+          <Link
+            href="https://www.instagram.com/pcosnorge/"
+            target="_blank"
+            aria-label="PCOS Norge på Instagram"
+          >
             <InstagramLogo size={32} />
           </Link>
         </div>
