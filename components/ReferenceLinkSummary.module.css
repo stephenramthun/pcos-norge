@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  color: var(--color-brand-light-red);
+  color: var(--semantic-color-interaction-primary);
   font-size: var(--font-size-details);
   line-height: var(--line-height-details);
   width: max-content;
@@ -22,7 +22,7 @@
 
 .container a:focus {
   outline: none;
-  outline: var(--outline);
+  outline: var(--semantic-color-interaction-outline);
 }
 
 .container a > div {

@@ -1,6 +1,6 @@
 .link {
     position: relative;
-    color: var(--color-brand-dark-teal);
+    color: var(--semantic-color-text-primary);
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
     display: flex;
@@ -15,7 +15,7 @@
 .link:before {
     content: "";
     height: 2px;
-    background: var(--color-brand-light-red);
+    background: var(--semantic-color-interaction-primary);
     position: absolute;
     bottom: -3px;
     right: 0;
@@ -35,7 +35,7 @@
 }
 
 .link:focus-visible {
-    outline: var(--outline);
+    outline: var(--semantic-color-interaction-outline);
 }
 
 .link:hover > svg,

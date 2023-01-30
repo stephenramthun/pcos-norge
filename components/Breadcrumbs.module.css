@@ -10,12 +10,12 @@
 .container p {
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-body);
-  color: var(--color-text-primary);
+  color: var(--semantic-color-text-primary);
   line-height: var(--font-size-body);
 }
 
 .container svg polyline {
-  stroke: var(--color-text-primary);
+  stroke: var(--semantic-color-text-primary);
 }
 
 .container span {

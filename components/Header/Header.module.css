@@ -7,13 +7,13 @@
   display: flex;
   justify-content: center;
   z-index: var(--header-z-index);
-  background: var(--color-brand-extra-light-teal);
+  background: var(--semantic-color-background-primary);
   padding-left: var(--header-horizontal-margin);
   padding-right: var(--header-horizontal-margin);
 }
 
 .header .nav > a {
-  color: var(--color-text-primary);
+  color: var(--semantic-color-text-primary);
 }
 
 .logo {
@@ -35,9 +35,10 @@
 .nav {
   display: flex;
   gap: 2.5rem;
+  align-items: center;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1000px) {
   .nav {
     position: absolute;
     top: 0;
@@ -45,8 +46,9 @@
     width: 100vw;
     margin-left: calc(var(--page-margin) * -1);
     margin-right: calc(var(--page-margin) * -1);
-    background: var(--color-brand-extra-light-teal);
+    background: var(--semantic-color-background-primary);
     flex-direction: column;
+    align-items: flex-end;
     padding: var(--page-margin);
     padding-bottom: 3rem;
     padding-top: calc(var(--header-height) + 2rem);
@@ -55,12 +57,14 @@
     transition: all 300ms ease-in-out;
   }
 
-  .nav > a {
+  .nav > a,
+  .nav > button {
     transition: all 300ms ease;
     font-weight: 600;
   }
 
-  .nav.hide > a {
+  .nav.hide > a,
+  .nav.hide > button {
     opacity: 0;
     transform: translateY(-10px);
   }
@@ -69,7 +73,8 @@
     box-shadow: 0 0 15px 0 black;
   }
 
-  .nav.show > a {
+  .nav.show > a,
+  .nav.show > button{
     transition-delay: 300ms;
     opacity: 1;
   }

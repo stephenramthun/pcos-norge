@@ -15,7 +15,7 @@
 .container p,
 .container a {
   font-size: var(--font-size-details) !important;
-  color: var(--color-background-primary) !important;
+  color: var(--semantic-color-background-primary) !important;
 }
 
 .content {
@@ -24,32 +24,79 @@
   background: var(--color-brand-dark-teal) !important;
   padding-top: 0;
   padding-bottom: 0;
+  gap: 32px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .info {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
 }
 
 .details {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 48px;
+  flex-shrink: 0;
 }
 
-.details > div {
+.details .grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 24px;
+  row-gap: 4px;
+}
+
+.address {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
-.details > div > span {
-  display: flex;
-  gap: 24px;
-  height: 32px;
-  align-items: center;
+.privacy {
+  justify-self: flex-end;
+  width: max-content;
 }
 
 .description {
-  max-width: 600px;
+  flex-shrink: 1;
 }
 
-.logo {
-  margin-bottom: 2rem;
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav a {
+  white-space: nowrap;
+  cursor: pointer;
 }

@@ -18,6 +18,10 @@ export const getDefaultDocumentNode = () => {
 const component = () =>
   S.list()
     .title("Content")
-    .items([S.documentTypeListItem("article"), S.documentTypeListItem("page")])
+    .items([
+      S.documentTypeListItem("article"),
+      S.documentTypeListItem("page"),
+      S.documentTypeListItem("imageDocument"),
+    ])
 
 export default component

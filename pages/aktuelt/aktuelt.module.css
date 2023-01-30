@@ -1,5 +1,5 @@
 .Section {
-  background: var(--color-brand-extra-light-teal);
+  background: var(--semantic-color-background-primary);
   flex-direction: column;
   align-items: flex-end;
 }
@@ -26,9 +26,13 @@
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
   .CardGrid {
     --cards-per-row: 1;
+  }
+
+  .Card {
+    max-width: 100%;
   }
 }
 

@@ -1,21 +1,21 @@
 import React, { useState } from "react"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 
-import { Head } from "@components/Head"
-import { Header } from "@components/Header"
-import { Footer } from "@components/Footer"
-import { Content } from "@components/Content"
-import { Heading } from "@components/Heading"
-import { Breadcrumbs } from "@components/Breadcrumbs"
-import { ArticleCard } from "@components/ArticleCard"
-import { PageContainer } from "@components/PageContainer"
+import { Head } from "components/Head"
+import { Header } from "components/Header"
+import { Footer } from "components/Footer"
+import { Content } from "components/Content"
+import { Heading } from "components/Heading"
+import { Breadcrumbs } from "components/Breadcrumbs"
+import { ArticleCard } from "components/ArticleCard"
+import { PageContainer } from "components/PageContainer"
+import { FetchButton } from "components/FetchButton"
 
 import { Article } from "types/schema"
 import { fetchArticles } from "io/sanity/client"
 import { usePreviewSubscription } from "io/sanity/preview"
 
 import styles from "./aktuelt.module.css"
-import { FetchButton } from "@components/FetchButton"
 
 const articlesPerFetch = 6
 

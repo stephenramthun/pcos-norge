@@ -1,5 +1,6 @@
 import React from "react"
 import { Pencil } from "phosphor-react"
+import { isRequired } from "../helpers/validation"
 
 export const bodyText = {
   title: "Brødtekst",
@@ -10,8 +11,7 @@ export const bodyText = {
       name: "content",
       title: "Innhold",
       type: "blockContent",
-      validation: (Rule) => Rule.required(),
-      codegen: { required: true },
+      ...isRequired(),
     },
   ],
   preview: {

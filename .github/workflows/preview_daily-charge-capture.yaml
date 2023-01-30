@@ -1,0 +1,13 @@
+name: daily-charge-capture
+on:
+  schedule:
+    - cron: '0 1 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Captures outstanding charges
+        run: |
+          curl --request POST \
+          --url 'https://preview.pcosnorge.no/api/vipps/capture' \
+          --header 'Authorization: Bearer ${{ secrets.PREVIEW_VIPPS_CLIENT_SECRET }}'

@@ -15,6 +15,10 @@
   margin-bottom: 1rem;
 }
 
+.Cards::-webkit-scrollbar {
+  display: none;
+}
+
 .Cards {
   display: flex;
   gap: 5rem;
@@ -24,6 +28,7 @@
   padding-right: var(--padding-horizontal);
   overflow-x: scroll;
   padding-bottom: 1rem;
+  -ms-overflow-style: none;
 }
 
 .Card {

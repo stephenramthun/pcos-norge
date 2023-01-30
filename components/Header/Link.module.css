@@ -1,6 +1,6 @@
 .link {
   position: relative;
-  color: var(--color-background-secondary);
+  color: var(--semantic-color-background-primary);
   font-weight: var(--font-weight-light);
   font-size: var(--font-size-body);
   display: flex;
@@ -10,6 +10,7 @@
   outline: none;
   transition: filter 0.1s ease-in-out;
   width: max-content;
+  height: max-content;
 }
 
 .link:before {
@@ -17,7 +18,7 @@
   position: absolute;
   height: 2px;
   width: 100%;
-  background: var(--color-accent-secondary);
+  background: var(--semantic-color-interaction-primary);
   bottom: -3px;
   left: 0;
   transition: opacity 100ms;
@@ -30,5 +31,5 @@
 }
 
 .link:focus-visible {
-    outline: var(--outline);
+    outline: var(--semantic-color-interaction-outline);
 }

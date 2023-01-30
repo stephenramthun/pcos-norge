@@ -1,5 +1,5 @@
 .list {
-  --accent-color: var(--color-brand-green);
+  --accent-color: var(--semantic-color-interaction-primary);
   --border-radius: 4px;
   position: relative;
   margin: 0;

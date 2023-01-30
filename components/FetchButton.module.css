@@ -5,5 +5,5 @@
 }
 
 .button:hover {
-  --override-background-color: var(--color-brand-light-red);
+  --override-background-color: var(--semantic-color-interaction-primary);
 }
