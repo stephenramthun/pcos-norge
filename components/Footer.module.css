@@ -99,4 +99,5 @@
 .nav a {
   white-space: nowrap;
   cursor: pointer;
+  line-height: var(--line-height-body);
 }
