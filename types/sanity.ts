@@ -105,4 +105,5 @@ export type ArticleObject = SanityDocument & {
   image: SanityImageAsset
   pageLinks?: SanityNavigationLinks
   metadata?: OgMetadata
+  show: boolean
 }

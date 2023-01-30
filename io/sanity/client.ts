@@ -39,7 +39,7 @@ export const fetchArticles = async ({
   const query = groq`
     {
       "articles": 
-        *[_type == "article"] |
+        *[_type == "article" && show == true] |
         order(published desc)[${start}..${end}] {
           title,
           "slug": slug.current,
@@ -47,7 +47,9 @@ export const fetchArticles = async ({
           published,
           ingress
         },
-      "remainingArticles": count(*[_type == "article"][${end + 1}..-1])
+      "remainingArticles": count(*[_type == "article" && show == true][${
+        end + 1
+      }..-1])
     }
   `
 

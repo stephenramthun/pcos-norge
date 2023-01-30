@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
 > => {
   const props = await getClient().fetch(`
     { 
-      "articles": *[_type == "article"] | order(published desc)[0..5] {
+      "articles": *[_type == "article" && show == true] | order(published desc)[0..5] {
         title,
         "slug": slug.current,
         image,

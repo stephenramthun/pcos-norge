@@ -62,5 +62,13 @@ export const article = {
       title: "Metadata",
       type: "openGraphMetaData",
     },
+    {
+      name: "show",
+      title: "Vis lenke til artikkel",
+      type: "boolean",
+      description:
+        "Bestemmer om det skal vises lenke til artikkelen på nettsidene",
+      initialValue: true,
+    },
   ],
 }
