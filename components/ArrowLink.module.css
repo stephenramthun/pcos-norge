@@ -1,44 +1,45 @@
 .link {
-    position: relative;
-    color: var(--semantic-color-text-primary);
-    font-size: var(--font-size-body);
-    font-weight: var(--font-weight-semibold);
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    outline: none;
-    transition: filter 0.1s ease-in-out;
-    width: max-content;
+  position: relative;
+  color: var(--semantic-color-text-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  outline: none;
+  transition: filter 0.1s ease-in-out;
+  width: max-content;
+  height: max-content;
 }
 
 .link:before {
-    content: "";
-    height: 2px;
-    background: var(--semantic-color-interaction-primary);
-    position: absolute;
-    bottom: -3px;
-    right: 0;
-    left: 0;
-    transition: opacity 100ms;
+  content: "";
+  height: 2px;
+  background: var(--semantic-color-interaction-primary);
+  position: absolute;
+  bottom: -3px;
+  right: 0;
+  left: 0;
+  transition: opacity 100ms;
 }
 
 .link:hover:before,
 .link:focus-visible:before {
-    opacity: 0;
+  opacity: 0;
 }
 
 .link > svg {
-    align-self: flex-end;
-    margin-left: 0.25rem;
-    transition: transform 0.1s ease-in-out;
+  align-self: flex-end;
+  margin-left: 0.25rem;
+  transition: transform 0.1s ease-in-out;
 }
 
 .link:focus-visible {
-    outline: var(--semantic-color-interaction-outline);
+  outline: var(--semantic-color-interaction-outline);
 }
 
 .link:hover > svg,
 .link:focus-visible > svg {
-    transform: translateX(0.25rem);
+  transform: translateX(0.25rem);
 }

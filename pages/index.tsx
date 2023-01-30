@@ -31,9 +31,12 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
         <PortableText value={page.elements} components={usePageComponents()} />
         <Content className={styles.Section}>
           <article>
-            <Heading tag="h2" size="medium">
-              Aktuelt
-            </Heading>
+            <div className={styles.titleRow}>
+              <Heading tag="h2" size="medium">
+                Aktuelt
+              </Heading>
+              <ArrowLink href="aktuelt">Se flere saker</ArrowLink>
+            </div>
             <div className={styles.Cards}>
               {articles.map((it) => (
                 <ArticleCard
@@ -46,9 +49,6 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
                   className={styles.Card}
                 />
               ))}
-              <div>
-                <ArrowLink href="aktuelt">Se flere saker</ArrowLink>
-              </div>
             </div>
           </article>
         </Content>
