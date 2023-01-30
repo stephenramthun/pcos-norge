@@ -10,4 +10,4 @@ jobs:
         run: |
           curl --request POST \
           --url 'https://www.pcosnorge.no/api/vipps/capture' \
-          --header 'Authorization: Bearer ${{ secrets.VIPPS_CLIENT_SECRET }}'
+          --header 'Authorization: Bearer ${{ secrets.PRODUCTION_VIPPS_CLIENT_SECRET }}'
