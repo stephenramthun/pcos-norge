@@ -11,14 +11,14 @@
 @media screen and (max-width: 400px) {
   .article {
     max-width: 200px;
-    min-width: 200px;
+    min-width: 200px !important;
   }
 }
 
 @media screen and (max-width: 500px) {
   .article {
     max-width: 100%;
-    min-width: 300px;
+    min-width: 300px !important;
   }
 }
 
@@ -29,7 +29,13 @@
 
 .imageContainer {
   position: relative;
-  max-height: 400px;
+  max-height: 300px;
+}
+
+@media screen and (max-width: 500px) {
+  .imageContainer {
+    max-height: 200px;
+  }
 }
 
 .imageContainer span {
