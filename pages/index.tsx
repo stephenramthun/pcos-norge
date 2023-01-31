@@ -12,8 +12,9 @@ import { Content } from "components/Content"
 import { ArrowLink } from "components/ArrowLink"
 import { ArticleCard } from "components/ArticleCard"
 import { PageContainer } from "components/PageContainer"
-import { usePageComponents } from "hooks/usePageComponents"
+import { HorizontalDragContainer } from "components/HorizontalDragContainer"
 import { ArticleObject, SanityPageDocument } from "types/sanity"
+import { usePageComponents } from "hooks/usePageComponents"
 
 import styles from "./index.module.css"
 
@@ -37,7 +38,7 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
               </Heading>
               <ArrowLink href="aktuelt">Se flere saker</ArrowLink>
             </div>
-            <div className={styles.Cards}>
+            <HorizontalDragContainer className={styles.Cards}>
               {articles.map((it) => (
                 <ArticleCard
                   key={it.slug}
@@ -49,7 +50,7 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
                   className={styles.Card}
                 />
               ))}
-            </div>
+            </HorizontalDragContainer>
           </article>
         </Content>
       </Main>
