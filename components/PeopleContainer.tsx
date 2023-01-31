@@ -18,6 +18,7 @@ export const PeopleContainer: React.FC<PeopleProps> = ({ people }) => {
           name={it.name}
           capacity={it.role}
           image={it.picture}
+          email={it.email}
         />
       ))}
     </div>

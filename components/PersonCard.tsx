@@ -4,22 +4,24 @@ import Image from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
+import { Link } from "components/Link"
 import { getClient } from "io/sanity/client"
 
 import styles from "./PersonCard.module.css"
-
-import avatar from "../public/avatar.svg"
+import avatar from "public/avatar.svg"
 
 type PersonCardProps = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   name: string
   capacity: string
   image?: Maybe<SanityImageObject>
+  email?: string
 }
 
 export const PersonCard: React.VFC<PersonCardProps> = ({
   name,
   capacity,
   image,
+  email,
   className,
   ...divProps
 }) => {
@@ -46,6 +48,11 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
       <span className={styles.details}>
         <p className={styles.capacity}>{capacity}</p>
         <p className={styles.name}>{name}</p>
+        {email && (
+          <Link href={`mailto:${email}`}>
+            <a className={styles.email}>{email}</a>
+          </Link>
+        )}
       </span>
     </div>
   )
