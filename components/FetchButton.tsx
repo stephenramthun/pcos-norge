@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import classNames from "classnames"
 
-import { Loader } from "@components/Loader"
-import { Button } from "@components/Button"
+import { Loader } from "components/Loader"
+import { Button } from "components/Button"
 
 import styles from "./FetchButton.module.css"
 

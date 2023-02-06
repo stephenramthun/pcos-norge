@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Link } from "@components/Link"
+import { Link } from "components/Link"
 
 import styles from "./PageLinks.module.css"
 

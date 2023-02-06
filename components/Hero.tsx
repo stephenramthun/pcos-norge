@@ -1,9 +1,9 @@
 import React from "react"
 import classNames from "classnames"
 
-import { Heading } from "@components/Heading"
-import { Content } from "@components/Content"
-import { LinkButton } from "@components/LinkButton"
+import { Heading } from "components/Heading"
+import { Content } from "components/Content"
+import { LinkButton } from "components/LinkButton"
 
 import styles from "components/Hero.module.css"
 

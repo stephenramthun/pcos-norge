@@ -3,7 +3,7 @@ import { unstable_getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth]"
 import { isUser } from "types/guards"
-import { MinSideService } from "@io/api/minSideService"
+import { MinSideService } from "io/api/minSideService"
 
 export default async function data(
   req: NextApiRequest,

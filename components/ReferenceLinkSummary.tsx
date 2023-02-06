@@ -2,8 +2,8 @@ import React from "react"
 import classNames from "classnames"
 import { ArrowSquareOut } from "phosphor-react"
 
-import { Link } from "@components/Link"
-import { UseReferenceLinksResult } from "@hooks/useReferenceLinks"
+import { Link } from "components/Link"
+import { UseReferenceLinksResult } from "hooks/useReferenceLinks"
 
 import styles from "./ReferenceLinkSummary.module.css"
 

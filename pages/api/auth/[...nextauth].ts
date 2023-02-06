@@ -1,7 +1,7 @@
 import NextAuth, { AuthOptions, User } from "next-auth"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { VippsProvider } from "@auth/providers/VippsProvider"
-import { prisma } from "@io/prisma/client"
+import { VippsProvider } from "auth/providers/VippsProvider"
+import { prisma } from "io/prisma/client"
 
 type AdditionalFields = {
   id: string

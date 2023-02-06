@@ -3,8 +3,8 @@ import classNames from "classnames"
 import NextLink from "next/link"
 import { useSession } from "next-auth/react"
 
-import { Logo } from "@components/Logo"
-import { Button } from "@components/Button"
+import { Logo } from "components/Logo"
+import { Button } from "components/Button"
 import { Link } from "./Link"
 import { HamburgerMenu } from "./HamburgerMenu"
 

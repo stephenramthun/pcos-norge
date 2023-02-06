@@ -26,7 +26,7 @@ import { useAsyncPolling } from "hooks/useAsyncPolling"
 import { MinSideService } from "io/api/minSideService"
 
 import styles from "./min-side.module.css"
-import { Loader } from "@components/Loader"
+import { Loader } from "components/Loader"
 
 const Unauthorized: React.FC = () => {
   return (

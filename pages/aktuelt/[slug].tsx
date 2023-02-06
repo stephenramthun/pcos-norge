@@ -39,7 +39,7 @@ const filterDataToSingleItem = <T extends SanityDocument>(
   }
 
   if (preview) {
-    return data.find((item) => item._id.startsWith(`drafts.`)) || data[0]
+    return data.find((item) => item._id?.startsWith(`drafts.`)) || data[0]
   }
 
   return data[0]

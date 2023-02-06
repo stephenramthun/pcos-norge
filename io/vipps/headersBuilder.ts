@@ -1,4 +1,4 @@
-import { VippsConfig } from "@config/vipps"
+import { VippsConfig } from "config/vipps"
 import { nanoid } from "nanoid"
 
 type Headers = {

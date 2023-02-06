@@ -2,8 +2,8 @@ import React from "react"
 import classNames from "classnames"
 import { CaretRight } from "phosphor-react"
 
-import { Link } from "@components/Header"
-import { Body } from "@components/Body"
+import { Link } from "components/Header"
+import { Body } from "components/Body"
 
 import styles from "./Breadcrumbs.module.css"
 

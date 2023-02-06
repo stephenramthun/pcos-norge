@@ -1,4 +1,4 @@
-import { prisma } from "@io/prisma/client"
+import { prisma } from "io/prisma/client"
 import { Agreement, AgreementStatus } from "@prisma/client"
 
 export const getAgreement = async (id: string): Promise<Agreement | null> => {

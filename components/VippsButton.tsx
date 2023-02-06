@@ -4,8 +4,8 @@ import { signIn } from "next-auth/react"
 import classNames from "classnames"
 
 import styles from "./VippsButton.module.css"
-import registerIcon from "@public/register_in_with_vipps_rect_250_NO@3x.png"
-import loginIcon from "@public/log_in_with_vipps_rect_250_NO@3x.png"
+import registerIcon from "public/register_in_with_vipps_rect_250_NO@3x.png"
+import loginIcon from "public/log_in_with_vipps_rect_250_NO@3x.png"
 
 const getImageSource = (variant: "register" | "login"): string => {
   switch (variant) {
