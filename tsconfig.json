@@ -21,6 +21,7 @@
       "config/*": ["config/*"],
       "io/*": ["io/*"],
       "auth/*": ["auth/*"],
+      "emails/*": ["emails/*"]
     },
     "incremental": true
   },
