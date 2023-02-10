@@ -14,13 +14,15 @@ export const Footer: React.FC = () => (
   <>
     <Content className={styles.sponsors}>
       <Body>Våre støttespillere:</Body>
-      <Image
-        alt="Bergesenstiftelsen"
-        src={bergesensLogo.src}
-        height={100}
-        width={200}
-        unoptimized
-      />
+      <Link href="https://bergesenstiftelsen.no/" target="_blank">
+        <Image
+          alt="Bergesenstiftelsen"
+          src={bergesensLogo.src}
+          height={100}
+          width={200}
+          unoptimized
+        />
+      </Link>
     </Content>
     <footer className={styles.container}>
       <Content className={styles.content}>
