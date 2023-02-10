@@ -1,3 +1,15 @@
+.sponsors {
+  height: max-content;
+  background-color: #a2f2f2;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sponsors p {
+  width: max-content;
+}
+
 .container {
   width: 100%;
   height: max-content;
