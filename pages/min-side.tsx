@@ -184,7 +184,7 @@ const MinSide: NextPage<MinSideProps> = ({ initialData }) => {
 
   return (
     <PageContainer>
-      <Head />
+      <Head title="Min side | PCOS Norge" />
       <Header />
 
       <Content>

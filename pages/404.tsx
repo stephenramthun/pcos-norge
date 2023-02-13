@@ -16,7 +16,7 @@ import styles from "./pageNotFound.module.css"
 const PageNotFound: NextPage = () => {
   return (
     <PageContainer>
-      <Head />
+      <Head title="Side ikke funnet | PCOS Norge" />
 
       <Header />
 

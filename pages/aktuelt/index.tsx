@@ -52,7 +52,7 @@ const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
 
   return (
     <PageContainer>
-      <Head />
+      <Head title="Aktuelt | PCOS Norge" />
       <Header />
       <Content>
         <Breadcrumbs

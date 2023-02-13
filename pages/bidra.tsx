@@ -16,7 +16,7 @@ import styles from "./bidra.module.css"
 const Bidra: NextPage = () => {
   return (
     <PageContainer>
-      <Head />
+      <Head title="Bidra | PCOS Norge" />
       <Header />
 
       <Content>

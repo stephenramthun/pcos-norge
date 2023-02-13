@@ -3,11 +3,15 @@ import NextHead from "next/head"
 
 interface HeadProps {
   children?: ReactNode
+  title?: string
 }
 
-export const Head: React.FC<HeadProps> = ({ children }) => (
+export const Head: React.FC<HeadProps> = ({
+  children,
+  title = "PCOS Norge | Den norske PCOS-foreningen",
+}) => (
   <NextHead>
-    <title>PCOS Norge</title>
+    <title>{title}</title>
     <meta name="description" content="Den norske PCOS-foreningen" />
     <link rel="shortcut icon" href="/favicon.ico" />
     {children}

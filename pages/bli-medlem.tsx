@@ -31,7 +31,7 @@ interface BliMedlemProps {
 const BliMedlem: NextPage<BliMedlemProps> = (props) => {
   return (
     <PageContainer>
-      <Head />
+      <Head title="Bli medlem | PCOS Norge" />
       <Header />
 
       <Content>

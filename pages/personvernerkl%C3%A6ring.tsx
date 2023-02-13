@@ -16,7 +16,7 @@ import styles from "./personvernerklæring.module.css"
 const Personvernerklæring: NextPage = () => {
   return (
     <PageContainer>
-      <Head />
+      <Head title="Personvernserklæring | PCOS Norge" />
       <Header />
 
       <Content>
