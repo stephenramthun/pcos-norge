@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import classNames from "classnames"
 import NextLink from "next/link"
-import { useSession } from "next-auth/react"
 
 import { Logo } from "components/Logo"
 import { Button } from "components/Button"
@@ -17,7 +16,6 @@ export const Header: React.VFC<HeaderProps> = ({
   ...headerProps
 }) => {
   const [showNav, setShowNav] = useState(false)
-  const { status } = useSession()
 
   return (
     <header
@@ -33,20 +31,16 @@ export const Header: React.VFC<HeaderProps> = ({
             showNav ? styles.show : styles.hide,
           )}
         >
-          {status !== "loading" && (
+          <Link href="/hva-er-pcos">Hva er PCOS</Link>
+          <Link href="/om-oss">Om oss</Link>
+          <Link href="/aktuelt">Aktuelt</Link>
+          <Link href="/bidra">Bidra</Link>
+          {process.env.NEXT_PUBLIC_MEDLEMSREGISTRERING && (
             <>
-              <Link href="/hva-er-pcos">Hva er PCOS</Link>
-              <Link href="/om-oss">Om oss</Link>
-              <Link href="/aktuelt">Aktuelt</Link>
-              <Link href="/bidra">Bidra</Link>
-              {process.env.NEXT_PUBLIC_MEDLEMSREGISTRERING && (
-                <>
-                  <Link href="/min-side">Min side</Link>
-                  <NextLink href="/bli-medlem">
-                    <Button role="link">Bli medlem</Button>
-                  </NextLink>
-                </>
-              )}
+              <Link href="/min-side">Min side</Link>
+              <NextLink href="/bli-medlem">
+                <Button role="link">Bli medlem</Button>
+              </NextLink>
             </>
           )}
         </nav>
