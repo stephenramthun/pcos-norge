@@ -1,29 +1,4 @@
 export const colors = {
-  white: "#e4ebfa",
-  black: "#111",
-  blue: "#b8ceff",
-  gray300: "#ccc",
-  gray500: "#555",
-  gray600: "#444",
-  gray700: "#333",
-  gray800: "#222",
-  slate300: "#bdc3cf",
-  slate400: "#a5aab4",
-  slate500: "#7b7e85",
-  neutral200: "#eee",
-  neutral500: "#777",
-  neutral600: "#666",
-  neutral800: "#444",
-  black000: "#000",
-  red400: "#f59c9c",
-  amber200: "#fadf98",
-  green200: "#dbf7d7",
-  green300: "#c3f2bc",
-  emerald700: "#728a6f",
-  blue300: "#dce7ff",
-  blue400: "#a1bfff",
-  blue600: "#3a70e3",
-  zinc800: "#27272a",
   teal100: "#effcff",
   teal700: "#1e505f",
   teal800: "#012b36",
@@ -43,7 +18,6 @@ export const fontSize = {
 export const lineHeight = {
   tight: "115%",
   base: "150%",
-  relaxed: "185%",
 }
 
 export const fontWeight = {
@@ -52,16 +26,11 @@ export const fontWeight = {
 }
 
 export const borderRadius = {
-  sm: 8,
   base: 16,
-  full: 9999,
 }
 
 export const fontFamily = {
   sans: 'ibm-plex-sans, "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-  serif:
-    'swear-display-cilati, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
-  mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
 }
 
 export const spacing = {

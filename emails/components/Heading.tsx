@@ -1,5 +1,6 @@
 import React from "react"
 import Text from "./Text"
+import cx from "classnames"
 import { fontFamily, fontSize, fontWeight, lineHeight } from "../theme"
 
 type HeadingProps = React.ComponentProps<typeof Text>
@@ -11,10 +12,14 @@ const defaultProps = {
   fontSize: fontSize.xl,
 }
 
-const Heading: React.FC<HeadingProps> = (props: HeadingProps) => {
+const Heading: React.FC<HeadingProps> = ({
+  children,
+  cssClass,
+  ...rest
+}: HeadingProps) => {
   return (
-    <Text {...defaultProps} {...props}>
-      {props.children}
+    <Text {...defaultProps} {...rest} cssClass={cx("heading", cssClass)}>
+      {children}
     </Text>
   )
 }
