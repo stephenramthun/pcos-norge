@@ -67,5 +67,9 @@
   },
   "prisma": {
     "schema": "./io/prisma/schema.prisma"
-  }
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import sendMail from "emails/index"
-import Welcome from "emails/Welcome"
+import { sendMail, Welcome } from "packages/emails"
 
 export default async function send(
   req: NextApiRequest,

@@ -11,7 +11,7 @@ export const transport = nodemailer.createTransport({
   },
 })
 
-const sendMail = buildSendMail({
+export const sendMail = buildSendMail({
   transport: transport,
   defaultFrom: "hei@pcosnorge.no",
   configPath: "./mailing.config.json",

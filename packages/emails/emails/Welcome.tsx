@@ -5,8 +5,8 @@ import Footer from "./components/Footer"
 import Heading from "./components/Heading"
 import Header from "./components/Header"
 import Text from "./components/Text"
+import Link from "./components/Link"
 import { fontSize, fontWeight, screens, spacing } from "./theme"
-import Link from "emails/components/Link"
 
 const welcomeStyle = `
   .p > * {
@@ -24,7 +24,7 @@ type WelcomeProps = {
   name?: string
 }
 
-const Welcome: React.FC<WelcomeProps> = ({ name }) => {
+export const Welcome: React.FC<WelcomeProps> = ({ name }) => {
   return (
     <BaseLayout width={600} style={welcomeStyle}>
       <Header />
@@ -60,7 +60,6 @@ const Welcome: React.FC<WelcomeProps> = ({ name }) => {
     </BaseLayout>
   )
 }
-
 ;(Welcome as unknown as { subject: string }).subject =
   "Velkommen til PCOS Norge"
 

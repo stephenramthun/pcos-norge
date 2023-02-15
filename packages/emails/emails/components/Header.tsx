@@ -2,8 +2,8 @@ import React from "react"
 import { MjmlColumn, MjmlGroup, MjmlSection, MjmlWrapper } from "mjml-react"
 import Text from "./Text"
 import Link from "./Link"
+import { Logo } from "./Logo"
 import { fontSize, fontWeight } from "../theme"
-import { Logo } from "emails/components/Logo"
 
 const Header: React.FC = () => {
   return (

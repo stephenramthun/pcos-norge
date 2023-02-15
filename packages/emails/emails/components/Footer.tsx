@@ -1,8 +1,8 @@
 import React from "react"
 import { MjmlColumn, MjmlSection, MjmlText, MjmlWrapper } from "mjml-react"
 import Link from "./Link"
+import Text from "./Text"
 import { colors, fontSize, spacing } from "../theme"
-import Text from "emails/components/Text"
 
 const Footer: React.FC = () => {
   return (
