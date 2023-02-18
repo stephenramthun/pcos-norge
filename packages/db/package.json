@@ -1,0 +1,16 @@
+{
+  "name": "db",
+  "scripts": {
+    "predev": "npx prisma migrate dev",
+    "dev": "cockroach start-single-node --insecure --store=type=mem,size=0.25 --cache=0.25 --advertise-addr=localhost",
+    "db:generate": "npx prisma generate",
+    "db:push": "npx prisma db push --skip-generate",
+    "db:migrate": "npx prisma migrate dev"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.10.1"
+  },
+  "devDependencies": {
+    "prisma": "^4.10.1"
+  }
+}

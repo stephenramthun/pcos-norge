@@ -10,8 +10,8 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
 /build
@@ -21,9 +21,9 @@
 .DS_Store
 *.pem
 **/*/.idea
-/heap_profiler
-/inflight_trace_dump
-/goroutine_dump
+heap_profiler
+inflight_trace_dump
+goroutine_dump
 
 # debug
 npm-debug.log*

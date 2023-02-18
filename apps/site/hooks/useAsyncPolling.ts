@@ -21,7 +21,7 @@ export const useAsyncPolling = (
   const callback = useCallback(async () => {
     await fn()
     timeout.current = window.setTimeout(callback, interval)
-  }, [fn, interval, active])
+  }, [fn, interval])
 
   useEffect(() => {
     if (active) {

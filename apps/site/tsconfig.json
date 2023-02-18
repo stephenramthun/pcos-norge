@@ -20,13 +20,10 @@
       "public/*": ["public/*"],
       "config/*": ["config/*"],
       "io/*": ["io/*"],
-      "auth/*": ["auth/*"],
-      "emails/*": ["emails/*"]
+      "auth/*": ["auth/*"]
     },
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["./node_modules",
-    "./cms/node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
