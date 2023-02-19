@@ -5,9 +5,7 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "dev": "npx mailing",
-    "build": "npx mailing server build",
-    "start": "npx mailing server start"
+    "dev": "npx mailing"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
