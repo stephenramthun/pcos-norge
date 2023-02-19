@@ -1,5 +1,5 @@
 {
-  "name": "sanity",
+  "name": "cms",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -7,9 +7,9 @@
   "author": "Stephen Ramthun <stephenramthun@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "npx sanity start",
-    "build": "npx sanity build",
-    "deploy": "npx sanity deploy"
+    "dev": "sanity start",
+    "cms:build": "sanity build",
+    "cms:deploy": "sanity deploy"
   },
   "keywords": [
     "sanity"
@@ -29,8 +29,5 @@
     "react-dom": "^18.2.0",
     "sanity-plugin-iframe-pane": "^1.1.0",
     "styled-components": "^5.3.5"
-  },
-  "devDependencies": {
-    "sanity": "^1.0.0"
   }
 }
