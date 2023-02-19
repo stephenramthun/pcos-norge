@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "npx mailing",
-    "build": "npx mailing server build",
-    "start": "npx mailing server start"
+    "email:build": "npx mailing server build",
+    "email:start": "npx mailing server start"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
