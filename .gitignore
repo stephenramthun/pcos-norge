@@ -10,8 +10,8 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
 /build
@@ -21,9 +21,9 @@
 .DS_Store
 *.pem
 **/*/.idea
-/heap_profiler
-/inflight_trace_dump
-/goroutine_dump
+heap_profiler
+inflight_trace_dump
+goroutine_dump
 
 # debug
 npm-debug.log*
@@ -37,9 +37,9 @@ yarn-error.log*
 .env.production
 .env.test.local
 .env.production.local
-/studio/.env.development
-/studio/.env.production
-/studio/.env.local
+/cms/.env.development
+/cms/.env.production
+/cms/.env.local
 
 # vercel
 .vercel
@@ -47,3 +47,5 @@ yarn-error.log*
 /ui-debug.log
 
 .mailing
+
+.turbo
