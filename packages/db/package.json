@@ -1,18 +1,21 @@
 {
   "name": "db",
+  "main": "index.ts",
+  "types": "index.ts",
   "scripts": {
+    "build": "npx prisma generate",
     "predev": "npx prisma migrate dev",
     "dev": "cockroach start-single-node --insecure --store=type=mem,size=0.25 --cache=0.25 --advertise-addr=localhost",
     "db:generate": "npx prisma generate",
     "db:push": "npx prisma db push --skip-generate",
-    "db:migrate": "npx prisma migrate deploy",
-    "db:migrate-dev": "npx prisma migrate dev"
+    "db:migrate": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "^4.10.1"
   },
   "devDependencies": {
-    "prisma": "^4.10.1"
+    "prisma": "^4.10.1",
+    "typescript": "^4.9.5"
   },
   "prisma": {
     "schema": "./prisma/schema.prisma"

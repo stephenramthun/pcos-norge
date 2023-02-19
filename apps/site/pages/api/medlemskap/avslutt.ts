@@ -4,7 +4,7 @@ import { unstable_getServerSession } from "next-auth"
 import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
 import { isUser } from "types/guards"
-import { deleteAgreement } from "io/prisma/dao/agreement"
+import { deleteAgreement } from "db/prisma/dao/agreement"
 
 export default async function avslutt(
   req: NextApiRequest,

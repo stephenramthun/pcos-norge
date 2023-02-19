@@ -3,7 +3,7 @@ import { unstable_getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
-import { updateAgreement } from "io/prisma/dao/agreement"
+import { updateAgreement } from "db/prisma/dao/agreement"
 import { isAgreement, isUser } from "types/guards"
 
 export default async function oppdater(

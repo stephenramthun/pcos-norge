@@ -1,4 +1,4 @@
-import { getAgreementsForUser } from "io/prisma/dao/agreement"
+import { getAgreementsForUser } from "db/prisma/dao/agreement"
 import { Agreement as AgreementDto } from "@prisma/client"
 
 const mapAgreement = (agreement?: AgreementDto): Agreement | null =>

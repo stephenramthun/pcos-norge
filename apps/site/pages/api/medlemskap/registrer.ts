@@ -6,7 +6,7 @@ import { AgreementService } from "io/vipps/agreementService"
 import {
   hasActiveOrPendingAgreement,
   insertAgreement,
-} from "io/prisma/dao/agreement"
+} from "db/prisma/dao/agreement"
 import { isUser } from "types/guards"
 
 export default async function registrer(
