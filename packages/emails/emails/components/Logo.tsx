@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 interface LogoProps {
-  variant: "light" | "dark"
+  variant: "light" | "dark";
 }
 
 export const Logo: React.FC<LogoProps> = ({ variant }) => {
@@ -11,11 +11,11 @@ export const Logo: React.FC<LogoProps> = ({ variant }) => {
       <img
         height={20}
         width={136}
-        src={`https://raw.githubusercontent.com/stephenramthun/pcos-norge/main/public/logo-${variant}.png`}
+        src={`https://raw.githubusercontent.com/stephenramthun/pcos-norge/main/apps/site/public/logo-${variant}.png`}
         alt=""
         style={{ position: "absolute" }}
         className={`logo-${variant}`}
       />
     </>
-  )
-}
+  );
+};
