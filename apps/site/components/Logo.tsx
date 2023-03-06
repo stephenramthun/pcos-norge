@@ -20,7 +20,7 @@ export const Logo: React.VFC<LogoProps> = ({
   ...anchorProps
 }) => {
   return (
-    <Link href="/">
+    <Link href="/" legacyBehavior>
       <a className={classNames(styles.container, className)} {...anchorProps}>
         <Image
           alt="Logo PCOS Norge"

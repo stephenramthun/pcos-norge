@@ -21,6 +21,7 @@ export const Footer: React.FC = () => (
           height={100}
           width={200}
           unoptimized
+          loader={({ src }) => src}
         />
       </Link>
     </Content>

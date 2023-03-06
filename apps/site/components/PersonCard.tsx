@@ -49,8 +49,8 @@ export const PersonCard: React.VFC<PersonCardProps> = ({
         <p className={styles.capacity}>{capacity}</p>
         <p className={styles.name}>{name}</p>
         {email && (
-          <Link href={`mailto:${email}`}>
-            <a className={styles.email}>{email}</a>
+          <Link href={`mailto:${email}`} className={styles.email}>
+            {email}
           </Link>
         )}
       </span>

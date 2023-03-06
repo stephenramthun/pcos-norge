@@ -12,7 +12,7 @@ const isImageAsset = (
   return asset._ref === undefined
 }
 
-interface SanityImageProps extends Omit<NextImageProps, "src"> {
+interface SanityImageProps extends Omit<NextImageProps, "src" | "alt"> {
   asset: ImageAsset | SanityReference
   alt?: string
   layout?: NextImageProps["layout"]
@@ -20,7 +20,7 @@ interface SanityImageProps extends Omit<NextImageProps, "src"> {
 
 export const SanityImage: React.FC<SanityImageProps> = ({
   asset,
-  alt,
+  alt = "",
   layout = "responsive",
   ...imgProps
 }) => {
