@@ -5,6 +5,7 @@
       "dependsOn": ["^build", "db:migrate"],
       "outputs": [".next/**"]
     },
+    "test": {},
     "lint": {},
     "dev": {
       "cache": false,
