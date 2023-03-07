@@ -1,0 +1,29 @@
+name: Deploy Sanity Studio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        id: setup-node
+        uses: action/setup-node@v3
+        with:
+          cache: npm
+          cache-dependency-path: |
+            node_modules
+            ~/.npm
+
+      - name: Install dependencies
+        if: steps.setup-node.outputs.cache-hit != 'true'
+        run: npm i -w cms
+
+      - name: Deploy studio
+        run: npm run cms:deploy -w cms
