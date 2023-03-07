@@ -30,4 +30,4 @@ jobs:
         run: npm ci
 
       - name: Deploy studio
-        run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_API_TOKEN }} npm run cms:deploy -w cms
+        run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_DEPLOY_TOKEN }} npm run cms:deploy -w cms
