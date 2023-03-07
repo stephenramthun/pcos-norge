@@ -8,13 +8,15 @@
     "start": "turbo start",
     "lint": "turbo lint",
     "test": "turbo jest",
-    "deploy": "turbo deploy"
+    "deploy": "turbo deploy",
+    "clean": "rm -rf node_modules"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "devDependencies": {
+    "rxjs": "^7.8.0",
     "turbo": "^1.8.1"
   }
 }

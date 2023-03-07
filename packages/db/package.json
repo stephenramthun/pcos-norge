@@ -9,7 +9,8 @@
     "db:generate": "npx prisma generate",
     "db:push": "npx prisma db push --skip-generate",
     "db:migrate": "npx prisma migrate deploy",
-    "db:migrate-dev": "npx prisma migrate deploy"
+    "db:migrate-dev": "npx prisma migrate deploy",
+    "clean": "rm -rf node_modules && turbo run clean"
   },
   "dependencies": {
     "@prisma/client": "^4.10.1"
