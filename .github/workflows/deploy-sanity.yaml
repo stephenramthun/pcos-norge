@@ -21,12 +21,13 @@ jobs:
         with:
           path: |
             apps/cms/node_modules
+            node_modules
             ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('apps/cms/package-lock.json') }}
 
       - name: Install dependencies
         if: steps.setup-node.outputs.cache-hit != 'true'
-        run: npm ci -w cms
+        run: npm ci
 
       - name: Deploy studio
         run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_API_TOKEN }} npm run cms:deploy -w cms
