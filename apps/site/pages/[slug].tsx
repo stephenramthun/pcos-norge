@@ -19,6 +19,7 @@ import { usePageComponents } from "hooks/usePageComponents"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
 import { isBodyText } from "types/guards"
 import { getClient } from "io/sanity/client"
+import { Main } from "components/Main"
 
 interface PageProps {
   title: string
@@ -39,20 +40,22 @@ const Page: NextPage<PageProps> = ({ title, elements, id }) => {
     <PageContainer>
       <Head />
       <Header />
-      <Content>
-        <Breadcrumbs
-          links={[
-            { href: "/", label: "Hjem" },
-            { href: `/${id.current}`, label: title },
-          ]}
-        />
-      </Content>
-      <PortableText value={elements} components={components} />
-      {Object.entries(referenceLinks).length > 0 && (
+      <Main>
         <Content>
-          <ReferenceLinkSummary links={referenceLinks} />
+          <Breadcrumbs
+            links={[
+              { href: "/", label: "Hjem" },
+              { href: `/${id.current}`, label: title },
+            ]}
+          />
         </Content>
-      )}
+        <PortableText value={elements} components={components} />
+        {Object.entries(referenceLinks).length > 0 && (
+          <Content>
+            <ReferenceLinkSummary links={referenceLinks} />
+          </Content>
+        )}
+      </Main>
       <Footer />
     </PageContainer>
   )

@@ -26,6 +26,7 @@ export const Header: React.VFC<HeaderProps> = ({
       <div className={classNames(styles.content)}>
         <Logo className={styles.logo} />
         <nav
+          role="navigation"
           className={classNames(
             styles.nav,
             showNav ? styles.show : styles.hide,

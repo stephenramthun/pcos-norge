@@ -55,6 +55,13 @@ export const usePortableTextComponents = (
           </Heading>
         )
       },
+      h3: ({ children }) => {
+        return (
+          <Heading size="extra-small" tag="h3">
+            {children}
+          </Heading>
+        )
+      },
       normal: ({ children }) => {
         return <Body>{children}</Body>
       },

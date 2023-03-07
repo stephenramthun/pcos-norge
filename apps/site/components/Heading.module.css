@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.extra-small {
+  font-size: var(--font-size-title-extra-small);
+}
+
 .small {
   font-size: var(--font-size-title-small);
 }
