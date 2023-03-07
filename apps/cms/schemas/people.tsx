@@ -1,5 +1,4 @@
-import React from "react"
-import { Users } from "phosphor-react"
+import { Users } from "phosphor-react";
 
 export const people = {
   type: "object",
@@ -23,7 +22,7 @@ export const people = {
             <Users />
           </span>
         ),
-      }
+      };
     },
   },
-}
+};

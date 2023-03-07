@@ -1,5 +1,4 @@
-import React from "react"
-import { Question } from "phosphor-react"
+import { Question } from "phosphor-react";
 
 export const fact = {
   type: "object",
@@ -31,7 +30,7 @@ export const fact = {
             <Question />
           </span>
         ),
-      }
+      };
     },
   },
-}
+};

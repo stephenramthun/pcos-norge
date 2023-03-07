@@ -7,27 +7,23 @@
   "author": "Stephen Ramthun <stephenramthun@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "npx sanity start",
-    "cms:build": "npx sanity build",
-    "cms:deploy": "npx sanity deploy"
+    "dev": "sanity dev",
+    "cms:start": "sanity start",
+    "cms:build": "sanity build",
+    "cms:deploy": "sanity deploy"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.30.1",
     "@sanity/block-content-to-react": "^3.0.0",
-    "@sanity/core": "^2.30.2",
-    "@sanity/default-layout": "^2.30.1",
-    "@sanity/default-login": "^2.30.1",
-    "@sanity/desk-tool": "^2.30.1",
-    "@sanity/production-preview": "^2.29.3",
-    "@sanity/vision": "^2.30.1",
+    "@sanity/vision": "^3.5.1",
     "phosphor-react": "^1.4.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sanity-plugin-iframe-pane": "^1.1.0",
+    "sanity": "^3.5.1",
+    "sanity-plugin-iframe-pane": "^2.2.0",
     "styled-components": "^5.3.5"
   }
 }

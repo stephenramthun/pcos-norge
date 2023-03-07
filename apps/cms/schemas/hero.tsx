@@ -1,5 +1,4 @@
-import React from "react"
-import { Confetti } from "phosphor-react"
+import { Confetti } from "phosphor-react";
 
 export const hero = {
   type: "object",
@@ -29,7 +28,7 @@ export const hero = {
             <Confetti />
           </span>
         ),
-      }
+      };
     },
   },
-}
+};

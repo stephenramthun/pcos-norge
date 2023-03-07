@@ -1,5 +1,4 @@
-import React from "react"
-import { Link } from "phosphor-react"
+import { Link } from "phosphor-react";
 
 export const pageLinks = {
   type: "object",
@@ -28,7 +27,7 @@ export const pageLinks = {
             <Link />
           </span>
         ),
-      }
+      };
     },
   },
-}
+};

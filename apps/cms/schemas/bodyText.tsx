@@ -1,6 +1,5 @@
-import React from "react"
-import { Pencil } from "phosphor-react"
-import { isRequired } from "../helpers/validation"
+import { Pencil } from "phosphor-react";
+import { isRequired } from "../helpers/validation";
 
 export const bodyText = {
   title: "Brødtekst",
@@ -26,7 +25,7 @@ export const bodyText = {
             <Pencil />
           </span>
         ),
-      }
+      };
     },
   },
-}
+};

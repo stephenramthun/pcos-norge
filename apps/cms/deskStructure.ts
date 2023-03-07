@@ -1,10 +1,8 @@
-import S from "@sanity/desk-tool/structure-builder"
-import Iframe from "sanity-plugin-iframe-pane"
+import Iframe from "sanity-plugin-iframe-pane";
+import resolveProductionUrl from "./resolveProductionUrl";
 
-import resolveProductionUrl from "./resolveProductionUrl"
-
-export const getDefaultDocumentNode = () => {
-  return S.document().views([
+export const getDefaultDocumentNode = (S) =>
+  S.document().views([
     S.view.form(),
     S.view
       .component(Iframe)
@@ -12,16 +10,15 @@ export const getDefaultDocumentNode = () => {
         url: (doc) => resolveProductionUrl(doc),
       })
       .title("Preview"),
-  ])
-}
+  ]);
 
-const component = () =>
+const component = (S) =>
   S.list()
     .title("Content")
     .items([
       S.documentTypeListItem("article"),
       S.documentTypeListItem("page"),
       S.documentTypeListItem("imageDocument"),
-    ])
+    ]);
 
-export default component
+export default component;

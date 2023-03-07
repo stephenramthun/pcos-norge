@@ -1,5 +1,4 @@
-import React from "react"
-import { ListBullets } from "phosphor-react"
+import { ListBullets } from "phosphor-react";
 
 export const factBox = {
   name: "factBox",
@@ -26,7 +25,7 @@ export const factBox = {
             <ListBullets />
           </span>
         ),
-      }
+      };
     },
   },
-}
+};

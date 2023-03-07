@@ -2,14 +2,21 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build", "db:migrate"],
-      "outputs": [".next/**"]
+      "dependsOn": [
+        "^build",
+        "db:migrate"
+      ],
+      "outputs": [
+        ".next/**"
+      ]
     },
     "test": {},
     "lint": {},
     "dev": {
       "cache": false,
-      "dependsOn": ["db:generate"]
+      "dependsOn": [
+        "db:generate"
+      ]
     },
     "db:generate": {
       "cache": false
@@ -18,6 +25,12 @@
       "cache": false
     },
     "db:migrate": {
+      "cache": false
+    },
+    "cms:build": {
+      "cache": false
+    },
+    "cms:deploy": {
       "cache": false
     }
   }

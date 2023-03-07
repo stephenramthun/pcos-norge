@@ -1,5 +1,4 @@
-import React from "react"
-import { Link } from "phosphor-react"
+import { Link } from "phosphor-react";
 
 export const navigationLinks = {
   name: "navigationLinks",
@@ -29,7 +28,7 @@ export const navigationLinks = {
             <Link />
           </span>
         ),
-      }
+      };
     },
   },
-}
+};

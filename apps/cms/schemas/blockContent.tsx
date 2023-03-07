@@ -16,7 +16,8 @@ export const blockContent = {
           {
             title: "Ingress",
             value: "ingress",
-            blockEditor: { icon: () => "Ing" },
+            icon: () => "Ing",
+            component: () => "Ing"
           },
           {
             title: "Strong",
@@ -32,9 +33,8 @@ export const blockContent = {
             title: "Link",
             name: "link",
             type: "object",
-            blockEditor: {
-              icon: () => "L",
-            },
+            icon: () => "L",
+            component: () => "L",
             fields: [
               {
                 title: "URL",
@@ -52,9 +52,8 @@ export const blockContent = {
             title: "Reference Link",
             name: "referenceLink",
             type: "object",
-            blockEditor: {
-              icon: () => "RL",
-            },
+            icon: () => "RL",
+            component: () => "RL",
             fields: [
               {
                 title: "URL",
