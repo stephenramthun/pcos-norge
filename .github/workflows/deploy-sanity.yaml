@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.setup-node.outputs.cache-hit != 'true'
-        run: npm i -w cms
+        run: npm ci -w cms
 
       - name: Deploy studio
-        run: npm run cms:deploy -w cms
+        run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_API_TOKEN }} npm run cms:deploy -w cms
