@@ -44,6 +44,10 @@ yarn-error.log*
 /.idea/
 /ui-debug.log
 
+# generated
 .mailing
-
 .turbo
+.sanity
+.swc
+**/cypress/videos
+**/cypress/screenshots
