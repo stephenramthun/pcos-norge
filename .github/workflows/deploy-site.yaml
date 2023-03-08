@@ -45,6 +45,8 @@ jobs:
         run: npx turbo run build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL_PRODUCTION }}
+          NEXT_PUBLIC_SANITY_DATASET: production
+          NEXT_PUBLIC_SANITY_PROJECT_ID: 7bmjnb8i
 
       - name: Save build folder
         uses: actions/upload-artifact@v3
