@@ -75,6 +75,7 @@ const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
               image={it.image}
               published={new Date(it.published)}
               ingress={it.ingress}
+              headingLevel="h2"
               className={styles.Card}
             />
           ))}

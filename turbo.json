@@ -11,7 +11,12 @@
       ]
     },
     "test": {},
-    "lint": {},
+    "cy:test": {
+      "cache": false,
+      "dependsOn": [
+        "db:generate"
+      ]
+    },
     "dev": {
       "cache": false,
       "dependsOn": [
@@ -21,16 +26,7 @@
     "db:generate": {
       "cache": false
     },
-    "db:push": {
-      "cache": false
-    },
     "db:migrate": {
-      "cache": false
-    },
-    "cms:build": {
-      "cache": false
-    },
-    "cms:deploy": {
       "cache": false
     },
     "clean": {}

@@ -16,6 +16,7 @@ interface ArticleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   image: SanityImageAsset
   published: Date
   ingress?: string
+  headingLevel?: "h2" | "h3"
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -24,6 +25,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   image,
   published,
   ingress,
+  headingLevel = "h3",
   className,
   ...elementProps
 }) => {
@@ -41,7 +43,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       <Body suppressHydrationWarning className={styles.date}>
         {date}
       </Body>
-      <Heading tag="h3" size="small">
+      <Heading tag={headingLevel} size="small">
         {title}
       </Heading>
       <Body>{ingress}</Body>

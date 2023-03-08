@@ -3,7 +3,7 @@ describe('Page "Bidra"', () => {
     cy.visit("/bidra")
 
     cy.injectAxe()
-    cy.checkA11y("#__next")
+    cy.checkA11y("#__next", { retries: 3, interval: 50 })
   })
 })
 

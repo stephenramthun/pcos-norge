@@ -3,7 +3,7 @@ describe('Page "Aktuelt"', () => {
     cy.visit("/aktuelt")
 
     cy.injectAxe()
-    cy.checkA11y("#__next")
+    cy.checkA11y("#__next", { retries: 3, interval: 50 })
   })
 })
 

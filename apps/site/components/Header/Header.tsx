@@ -11,7 +11,7 @@ import styles from "./Header.module.css"
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
-export const Header: React.VFC<HeaderProps> = ({
+export const Header: React.FC<HeaderProps> = ({
   className,
   ...headerProps
 }) => {
@@ -27,6 +27,7 @@ export const Header: React.VFC<HeaderProps> = ({
         <Logo className={styles.logo} />
         <nav
           role="navigation"
+          aria-label="lenker"
           className={classNames(
             styles.nav,
             showNav ? styles.show : styles.hide,
