@@ -44,7 +44,7 @@ jobs:
       - name: Build site
         run: npx turbo run build
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL_PRODUCTION }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NEXT_PUBLIC_SANITY_DATASET: production
           NEXT_PUBLIC_SANITY_PROJECT_ID: 7bmjnb8i
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
