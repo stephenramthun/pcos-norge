@@ -43,6 +43,8 @@ jobs:
 
       - name: Build site
         run: npx turbo run build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL_PRODUCTION }}
 
       - name: Save build folder
         uses: actions/upload-artifact@v3
