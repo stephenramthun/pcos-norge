@@ -1,4 +1,4 @@
-name: Deploy site
+name: Run tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Install deps and build site
+    name: Install and build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
