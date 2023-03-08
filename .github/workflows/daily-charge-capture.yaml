@@ -5,7 +5,7 @@ on:
     - cron: '0 1 * * *'
 
 jobs:
-  cron:
+  capture-production:
     runs-on: ubuntu-latest
     steps:
       - name: Capture outstanding charges
