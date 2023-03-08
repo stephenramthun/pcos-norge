@@ -42,7 +42,7 @@ jobs:
         run: npx cypress install
 
       - name: Build site
-        run: turbo run build
+        run: npx turbo run build
 
       - name: Save build folder
         uses: actions/upload-artifact@v3
