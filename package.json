@@ -7,7 +7,7 @@
     "build": "turbo build",
     "start": "turbo start",
     "lint": "turbo lint",
-    "test": "turbo jest",
+    "test": "turbo test",
     "deploy": "turbo deploy",
     "clean": "rm -rf node_modules"
   },
