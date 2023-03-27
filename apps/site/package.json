@@ -10,7 +10,7 @@
     "test": "npx jest",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:test": "start-server-and-test start http://localhost:3000 cy:run",
+    "cy:test": "start-server-and-test dev http://localhost:3000/ cy:run",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
