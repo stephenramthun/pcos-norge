@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/extend-expect"
 import { TextDecoder, TextEncoder } from "util"
 import { server } from "./mocks/server"
-import { afterAll, afterEach, beforeAll } from "@jest/globals"
+import { afterAll, afterEach, beforeAll, jest } from "@jest/globals"
 import { fetch, Request, Response } from "cross-fetch"
 
 global.fetch = fetch
@@ -21,4 +21,10 @@ afterEach(() => {
 
 afterAll(() => {
   server.close()
+})
+
+jest.mock("nanoid", () => {
+  return {
+    nanoid: () => "abcdefghijklmnopqrstuvqxyz",
+  }
 })

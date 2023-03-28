@@ -8,6 +8,9 @@ import {
   insertAgreement,
 } from "db/prisma/dao/agreement"
 import { isUser } from "types/guards"
+import { VippsConfig } from "config/vipps"
+
+const agreementService = new AgreementService(VippsConfig)
 
 export default async function registrer(
   req: NextApiRequest,
@@ -24,7 +27,7 @@ export default async function registrer(
   }
 
   const { vippsConfirmationUrl, agreementId } =
-    await AgreementService.newAgreement()
+    await agreementService.newAgreement()
 
   const agreement = await insertAgreement(
     agreementId,

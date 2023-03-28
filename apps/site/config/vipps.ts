@@ -7,7 +7,7 @@ const requireValue = (key: string): string => {
   )
 }
 
-export const VippsConfig = {
+export const VippsConfig: VippsConfigObject = {
   clientId: requireValue("VIPPS_CLIENT_ID"),
   clientSecret: requireValue("VIPPS_CLIENT_SECRET"),
   accessTokenEndpoint: requireValue("VIPPS_ACCESSTOKEN_ENDPOINT"),

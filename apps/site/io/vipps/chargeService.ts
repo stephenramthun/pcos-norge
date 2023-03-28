@@ -1,16 +1,7 @@
-import { VippsConfig } from "config/vipps"
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { AccessTokenService } from "io/vipps/accessTokenService"
 
-type Charge = {
-  amount: number
-  description: string
-  transactionType: "DIRECT_CAPTURE" | "RESERVE_CAPTURE"
-  due: string
-  retryDays: number
-}
-
-const createCharge = (due: string): Charge => ({
+const createCharge = (due: string): ChargeRequestBody => ({
   amount: 20000,
   description: "Medlemskap PCOS Norge, 1 år",
   transactionType: "DIRECT_CAPTURE",
@@ -18,18 +9,25 @@ const createCharge = (due: string): Charge => ({
   retryDays: 14,
 })
 
-const config = VippsConfig
+export class ChargeService {
+  private readonly config: VippsConfigObject
+  private accessTokenService: AccessTokenService
 
-const accessTokenService = new AccessTokenService(config)
+  constructor(config: VippsConfigObject) {
+    this.config = config
+    this.accessTokenService = new AccessTokenService(config)
+  }
 
-export const ChargeService = {
-  async createCharge(agreementId: string, due: string): Promise<void> {
-    const { access_token } = await accessTokenService.fetchAccessToken(config)
+  createCharge = async (
+    agreementId: string,
+    due: string,
+  ): Promise<ChargeResponseBody> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
-      `${VippsConfig.recurringPaymentEndpoint}/${agreementId}/charges`,
+      `${this.config.recurringPaymentEndpoint}/${agreementId}/charges`,
       {
         method: "POST",
-        headers: new HeadersBuilder()
+        headers: new HeadersBuilder(this.config)
           .commonHeaders(access_token)
           .idempotency()
           .build(),
@@ -37,5 +35,5 @@ export const ChargeService = {
       },
     )
     return await response.json()
-  },
+  }
 }

@@ -1,5 +1,3 @@
-import { VippsConfig } from "config/vipps"
-
 type Seconds = string
 type UnixDate = string
 type JWT = string
@@ -17,9 +15,9 @@ export type AccessTokenResponse = {
 export class AccessTokenService {
   cache: AccessTokenResponse | null = null
 
-  private config: typeof VippsConfig
+  private config: VippsConfigObject
 
-  constructor(config: typeof VippsConfig) {
+  constructor(config: VippsConfigObject) {
     this.config = config
   }
 

@@ -1,40 +1,7 @@
-import { VippsConfig } from "config/vipps"
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { AccessTokenService } from "io/vipps/accessTokenService"
 
-type NewAgreementResponse = {
-  vippsConfirmationUrl: string
-  agreementId: string
-  chargeId: string | null
-}
-
-type Agreement = {
-  status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
-  start?: string
-  stop?: string
-}
-
-type AgreementBody = {
-  interval: {
-    unit: "YEAR"
-    count: number
-  }
-  initialCharge: {
-    amount: number
-    description: string
-    transactionType: "DIRECT_CAPTURE" | "RESERVE_CAPTURE"
-  }
-  pricing: {
-    type: "LEGACY"
-    amount: number
-    currency: "NOK"
-  }
-  merchantRedirectUrl: string
-  merchantAgreementUrl: string
-  productName: string
-}
-
-const createAgreement = (): AgreementBody => ({
+const createAgreement = (config: VippsConfigObject): AgreementRequestBody => ({
   interval: {
     unit: "YEAR",
     count: 1,
@@ -49,48 +16,54 @@ const createAgreement = (): AgreementBody => ({
     amount: 20000,
     currency: "NOK",
   },
-  merchantRedirectUrl: VippsConfig.registerRedirectUri,
-  merchantAgreementUrl: VippsConfig.registerRedirectUri,
+  merchantRedirectUrl: config.registerRedirectUri,
+  merchantAgreementUrl: config.registerRedirectUri,
   productName: "Medlemskap PCOS Norge, 1 år",
 })
 
-const config = VippsConfig
+export class AgreementService {
+  private readonly config: VippsConfigObject
+  private accessTokenService: AccessTokenService
 
-const accessTokenService = new AccessTokenService(config)
+  constructor(config: VippsConfigObject) {
+    this.config = config
+    this.accessTokenService = new AccessTokenService(config)
+  }
 
-export const AgreementService = {
-  async newAgreement(): Promise<NewAgreementResponse> {
-    const { access_token } = await accessTokenService.fetchAccessToken(config)
-    const response = await fetch(VippsConfig.recurringPaymentEndpoint, {
+  newAgreement = async (): Promise<AgreementResponseBody> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
+    const response = await fetch(this.config.recurringPaymentEndpoint, {
       method: "POST",
-      headers: new HeadersBuilder()
+      headers: new HeadersBuilder(this.config)
         .commonHeaders(access_token)
         .idempotency()
         .build(),
-      body: JSON.stringify(createAgreement()),
+      body: JSON.stringify(createAgreement(this.config)),
     })
     return await response.json()
-  },
+  }
 
-  async getAgreement(id: string): Promise<Agreement | Response> {
-    const { access_token } = await accessTokenService.fetchAccessToken(config)
+  getAgreement = async (id: string): Promise<Agreement> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
-      `${VippsConfig.recurringPaymentEndpoint}/${id}`,
+      `${this.config.recurringPaymentEndpoint}/${id}`,
       {
         method: "GET",
-        headers: new HeadersBuilder().commonHeaders(access_token).build(),
+        headers: new HeadersBuilder(this.config)
+          .commonHeaders(access_token)
+          .build(),
       },
     )
     return await response.json()
-  },
+  }
 
-  async stopAgreement(id: string): Promise<number> {
-    const { access_token } = await accessTokenService.fetchAccessToken(config)
+  stopAgreement = async (id: string): Promise<number> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
-      `${VippsConfig.recurringPaymentEndpoint}/${id}`,
+      `${this.config.recurringPaymentEndpoint}/${id}`,
       {
         method: "PATCH",
-        headers: new HeadersBuilder()
+        headers: new HeadersBuilder(this.config)
           .commonHeaders(access_token)
           .idempotency()
           .build(),
@@ -98,5 +71,5 @@ export const AgreementService = {
       },
     )
     return response.status
-  },
+  }
 }

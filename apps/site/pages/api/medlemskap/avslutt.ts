@@ -5,6 +5,9 @@ import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
 import { isUser } from "types/guards"
 import { deleteAgreement } from "db/prisma/dao/agreement"
+import { VippsConfig } from "config/vipps"
+
+const agreementService = new AgreementService(VippsConfig)
 
 export default async function avslutt(
   req: NextApiRequest,
@@ -17,8 +20,7 @@ export default async function avslutt(
   }
 
   const id = req.query.agreementId as string
-
-  const status = await AgreementService.stopAgreement(id)
+  const status = await agreementService.stopAgreement(id)
 
   if (status >= 400) {
     return res.redirect(`/feil?status=${status}`).end()
