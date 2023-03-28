@@ -2,7 +2,7 @@ import { AgreementService } from "io/vipps/agreementService"
 import { vippsConfig } from "mocks/config"
 import {
   mockGetAgreement,
-  mockPatchAgreement,
+  mockStopAgreement,
   mockPostAgreement,
 } from "mocks/server"
 
@@ -40,7 +40,7 @@ describe("agreementService", () => {
     const id = "apdiqwcybw9iuycb"
     const agreementService = new AgreementService(vippsConfig)
 
-    mockPatchAgreement(id)
+    mockStopAgreement(id)
 
     const response = await agreementService.stopAgreement(id)
 

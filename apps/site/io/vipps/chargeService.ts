@@ -1,13 +1,7 @@
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { AccessTokenService } from "io/vipps/accessTokenService"
-
-const createCharge = (due: string): ChargeRequestBody => ({
-  amount: 20000,
-  description: "Medlemskap PCOS Norge, 1 år",
-  transactionType: "DIRECT_CAPTURE",
-  due: due,
-  retryDays: 14,
-})
+import { FailedCaptureError, FailedFetchingCharges } from "io/vipps/errors"
+import { getReservedAgreements } from "db/prisma/dao/agreement"
 
 export class ChargeService {
   private readonly config: VippsConfigObject
@@ -18,22 +12,75 @@ export class ChargeService {
     this.accessTokenService = new AccessTokenService(config)
   }
 
-  createCharge = async (
-    agreementId: string,
-    due: string,
-  ): Promise<ChargeResponseBody> => {
+  getCharges = async (agreementId: string): Promise<ChargeResponseBody[]> => {
     const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
       `${this.config.recurringPaymentEndpoint}/${agreementId}/charges`,
+      {
+        method: "GET",
+        headers: new HeadersBuilder(this.config)
+          .commonHeaders(access_token)
+          .idempotency()
+          .build(),
+      },
+    )
+    if (!response.ok) {
+      throw new FailedFetchingCharges(agreementId)
+    }
+
+    return response.json()
+  }
+
+  captureCharge = async (
+    agreementId: string,
+    chargeId: string,
+    amount: number,
+    description = "Årsmedlemskap i PCOS Norge",
+  ): Promise<number> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
+    const response = await fetch(
+      `${this.config.recurringPaymentEndpoint}/${agreementId}/charges/${chargeId}/capture`,
       {
         method: "POST",
         headers: new HeadersBuilder(this.config)
           .commonHeaders(access_token)
           .idempotency()
           .build(),
-        body: JSON.stringify(createCharge(due)),
+        body: JSON.stringify({
+          amount,
+          description,
+        }),
       },
     )
-    return await response.json()
+    if (!response.ok) {
+      throw new FailedCaptureError(agreementId)
+    }
+
+    return response.status
+  }
+
+  captureReservedAgreements = async (): Promise<void> => {
+    const reservedAgreements = await getReservedAgreements()
+
+    for (const agreement of reservedAgreements) {
+      try {
+        const charges = await this.getCharges(agreement.id)
+        for (const charge of charges) {
+          if (charge.status === "RESERVED") {
+            this.captureCharge(agreement.id, charge.id, charge.amount).catch(
+              (e) => {
+                if (e instanceof FailedCaptureError) {
+                  console.error(e.message)
+                }
+              },
+            )
+          }
+        }
+      } catch (e) {
+        if (e instanceof FailedFetchingCharges) {
+          console.error(e.message)
+        }
+      }
+    }
   }
 }

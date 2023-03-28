@@ -1,5 +1,11 @@
 import { prisma } from "db/prisma/client";
-import { Agreement, AgreementStatus } from "@prisma/client";
+import { Agreement, AgreementStatus, PaymentStatus } from "@prisma/client";
+
+export const getReservedAgreements = async (): Promise<Agreement[]> => {
+  return prisma.agreement.findMany({
+    where: { payment: PaymentStatus.RESERVED },
+  });
+};
 
 export const getAgreement = async (id: string): Promise<Agreement | null> => {
   return prisma.agreement.findUnique({ where: { id: id } });

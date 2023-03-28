@@ -1,15 +1,3 @@
-declare type ChargeResponseBody = {
-  chargeId: string
-}
-
-declare type ChargeRequestBody = {
-  amount: number
-  description: string
-  transactionType: "DIRECT_CAPTURE" | "RESERVE_CAPTURE"
-  due: string
-  retryDays: number
-}
-
 declare type Agreement = {
   id: string
   status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
@@ -41,4 +29,22 @@ declare type AgreementRequestBody = {
   merchantRedirectUrl: string
   merchantAgreementUrl: string
   productName: string
+}
+
+declare type ChargeStatus =
+  | "PENDING"
+  | "DUE"
+  | "RESERVED"
+  | "CHARGED"
+  | "PARTIALLY_CAPTURED"
+  | "FAILED"
+  | "CANCELLED"
+  | "PARTIALLY_REFUNDED"
+  | "REFUNDED"
+  | "PROCESSING"
+
+declare type ChargeResponseBody = {
+  id: string
+  amount: number
+  status: ChargeStatus
 }

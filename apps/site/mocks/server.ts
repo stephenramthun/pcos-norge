@@ -3,12 +3,7 @@ import { setupServer } from "msw/node"
 import { handlers } from "./handlers"
 import { AccessTokenResponse } from "io/vipps/accessTokenService"
 import { vippsConfig } from "mocks/config"
-import {
-  accessTokenResponse,
-  agreement,
-  agreementResponse,
-  chargeResponse,
-} from "mocks/data"
+import { accessTokenResponse, agreement, agreementResponse } from "mocks/data"
 
 export const server = setupServer(...handlers)
 
@@ -49,7 +44,7 @@ export const mockGetAgreement = (
   )
 }
 
-export const mockPatchAgreement = (id: string): void => {
+export const mockStopAgreement = (id: string): void => {
   server.use(
     rest.patch(
       `${vippsConfig.recurringPaymentEndpoint}/${id}`,
@@ -60,15 +55,29 @@ export const mockPatchAgreement = (id: string): void => {
   )
 }
 
-export const mockPostCharge = (agreementId: string, chargeId: string): void => {
+export const mockCaptureCharge = (
+  agreementId: string,
+  chargeId: string,
+): void => {
   server.use(
     rest.post(
-      `${vippsConfig.recurringPaymentEndpoint}/${agreementId}/charges`,
+      `${vippsConfig.recurringPaymentEndpoint}/${agreementId}/charges/${chargeId}/capture`,
       (req, res, context) => {
-        return res(
-          context.status(204),
-          context.json(chargeResponse({ chargeId })),
-        )
+        return res(context.status(204))
+      },
+    ),
+  )
+}
+
+export const mockCaptureError = (
+  agreementId: string,
+  chargeId: string,
+): void => {
+  server.use(
+    rest.post(
+      `${vippsConfig.recurringPaymentEndpoint}/${agreementId}/charges/${chargeId}/capture`,
+      (req, res, context) => {
+        return res(context.status(400), context.json({ ok: false }))
       },
     ),
   )

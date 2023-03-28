@@ -53,10 +53,3 @@ export const agreement = (overrides?: Partial<Agreement>): Agreement => ({
   stop: "2021-01-01",
   ...overrides,
 })
-
-export const chargeResponse = (
-  overrides?: Partial<ChargeResponseBody>,
-): ChargeResponseBody => ({
-  chargeId: "aoscmq923n",
-  ...overrides,
-})

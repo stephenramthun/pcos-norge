@@ -1,4 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next"
+import { ChargeService } from "io/vipps/chargeService"
+import { VippsConfig } from "config/vipps"
+
+const chargeService = new ChargeService(VippsConfig)
 
 export default async function capture(
   req: NextApiRequest,
@@ -20,7 +24,7 @@ export default async function capture(
     return res.end()
   }
 
-  // TODO: Attempt charge capture
+  await chargeService.captureReservedAgreements()
 
   return res
 }

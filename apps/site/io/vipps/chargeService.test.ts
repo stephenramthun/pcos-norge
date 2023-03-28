@@ -1,18 +1,34 @@
 import { ChargeService } from "io/vipps/chargeService"
 import { vippsConfig } from "mocks/config"
-import { mockPostCharge } from "mocks/server"
+import { mockCaptureCharge, mockCaptureError } from "mocks/server"
+import { FailedCaptureError } from "io/vipps/errors"
 
 describe("chargeService", () => {
-  it("creates charge", async () => {
-    const chargeId = "charge-id"
+  it("captures charge", async () => {
     const agreementId = "agreement-id"
-    const due = "2020-01-01"
+    const chargeId = "charge-id"
     const chargeService = new ChargeService(vippsConfig)
 
-    mockPostCharge(agreementId, chargeId)
+    mockCaptureCharge(agreementId, chargeId)
 
-    const response = await chargeService.createCharge(agreementId, due)
+    const status = await chargeService.captureCharge(
+      agreementId,
+      chargeId,
+      2000,
+    )
 
-    expect(response.chargeId).toEqual(chargeId)
+    expect(status).toEqual(204)
+  })
+
+  it("throws error when capture was unsuccessful", async () => {
+    const agreementId = "agreement-id"
+    const chargeId = "charge-id"
+    const chargeService = new ChargeService(vippsConfig)
+
+    mockCaptureError(agreementId, chargeId)
+
+    await expect(() =>
+      chargeService.captureCharge(agreementId, chargeId, 2000),
+    ).rejects.toThrow(FailedCaptureError)
   })
 })
