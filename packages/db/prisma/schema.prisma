@@ -70,6 +70,12 @@ model Agreement {
   start     String?
   stop      String?
   createdAt DateTime        @default(now())
+  payment   PaymentStatus   @default(RESERVED)
+}
+
+enum PaymentStatus {
+  RESERVED
+  CHARGED
 }
 
 enum AgreementStatus {
