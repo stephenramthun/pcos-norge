@@ -9,6 +9,7 @@ import {
 } from "db/prisma/dao/agreement"
 import { isUser } from "types/guards"
 import { VippsConfig } from "config/vipps"
+import { sendMail, Welcome } from "emails"
 
 const agreementService = new AgreementService(VippsConfig)
 
@@ -36,6 +37,12 @@ export default async function registrer(
   )
 
   if (agreement) {
+    await sendMail({
+      from: "hei@pcosnorge.no",
+      to: session.user.email,
+      dangerouslyForceDeliver: true,
+      component: <Welcome name={session.user.givenName} />,
+    })
     return res.redirect(vippsConfirmationUrl).end()
   }
 
