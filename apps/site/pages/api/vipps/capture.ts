@@ -24,7 +24,7 @@ export default async function capture(
     return res.end()
   }
 
-  chargeService.captureReservedAgreements()
+  await chargeService.captureReservedAgreements()
 
-  return res
+  return res.end()
 }

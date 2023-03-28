@@ -70,6 +70,7 @@ export class ChargeService {
         const charges = await this.getCharges(agreement.id)
         console.log("Done getting charges for agreement")
         for (const charge of charges) {
+          console.log("Attempting to capture charge", charge)
           if (charge.status === "RESERVED") {
             console.log("Capturing charge")
             this.captureCharge(agreement.id, charge.id, charge.amount).catch(
