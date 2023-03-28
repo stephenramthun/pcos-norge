@@ -60,13 +60,18 @@ export class ChargeService {
   }
 
   captureReservedAgreements = async (): Promise<void> => {
+    console.log("Fetching reserved agreements from db")
     const reservedAgreements = await getReservedAgreements()
+    console.log("Done fetching reserved agreements from db")
 
     for (const agreement of reservedAgreements) {
       try {
+        console.log("Getting charges for agreement", agreement.id)
         const charges = await this.getCharges(agreement.id)
+        console.log("Done getting charges for agreement")
         for (const charge of charges) {
           if (charge.status === "RESERVED") {
+            console.log("Capturing charge")
             this.captureCharge(agreement.id, charge.id, charge.amount).catch(
               (e) => {
                 if (e instanceof FailedCaptureError) {
