@@ -1,8 +1,8 @@
 declare type Agreement = {
   id: string
   status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
-  start?: string
-  stop?: string
+  start?: string | null
+  stop?: string | null
 }
 
 declare type AgreementResponseBody = {

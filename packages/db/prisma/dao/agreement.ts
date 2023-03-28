@@ -55,8 +55,8 @@ export const insertAgreement = async (
 export const updateAgreement = async (
   id: string,
   status: AgreementStatus,
-  start?: string,
-  stop?: string
+  start?: string | null,
+  stop?: string | null
 ): Promise<Agreement> => {
   return prisma.agreement.update({
     where: { id },
