@@ -6,6 +6,7 @@ import {
 import { vippsConfig } from "mocks/config"
 import { mockAccessTokenResponse } from "mocks/server"
 import { accessTokenResponse } from "mocks/data"
+import { expect } from "@jest/globals"
 
 describe("AccessTokenService", () => {
   it("fetches access tokens", async () => {

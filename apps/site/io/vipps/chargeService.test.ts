@@ -1,3 +1,4 @@
+import { expect } from "@jest/globals"
 import { ChargeService } from "io/vipps/chargeService"
 import { vippsConfig } from "mocks/config"
 import { mockCaptureCharge, mockCaptureError } from "mocks/server"
