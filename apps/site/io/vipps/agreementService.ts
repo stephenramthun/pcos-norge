@@ -9,7 +9,7 @@ const createAgreement = (config: VippsConfigObject): AgreementRequestBody => ({
   initialCharge: {
     amount: 20000,
     description: "Medlemskap PCOS Norge, 1 år",
-    transactionType: "DIRECT_CAPTURE",
+    transactionType: "RESERVE_CAPTURE",
   },
   pricing: {
     type: "LEGACY",
