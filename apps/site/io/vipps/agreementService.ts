@@ -54,9 +54,13 @@ const createAgreement = (): AgreementBody => ({
   productName: "Medlemskap PCOS Norge, 1 år",
 })
 
+const config = VippsConfig
+
+const accessTokenService = new AccessTokenService(config)
+
 export const AgreementService = {
   async newAgreement(): Promise<NewAgreementResponse> {
-    const { access_token } = await AccessTokenService.fetchAccessToken()
+    const { access_token } = await accessTokenService.fetchAccessToken(config)
     const response = await fetch(VippsConfig.recurringPaymentEndpoint, {
       method: "POST",
       headers: new HeadersBuilder()
@@ -69,7 +73,7 @@ export const AgreementService = {
   },
 
   async getAgreement(id: string): Promise<Agreement | Response> {
-    const { access_token } = await AccessTokenService.fetchAccessToken()
+    const { access_token } = await accessTokenService.fetchAccessToken(config)
     const response = await fetch(
       `${VippsConfig.recurringPaymentEndpoint}/${id}`,
       {
@@ -81,7 +85,7 @@ export const AgreementService = {
   },
 
   async stopAgreement(id: string): Promise<number> {
-    const { access_token } = await AccessTokenService.fetchAccessToken()
+    const { access_token } = await accessTokenService.fetchAccessToken(config)
     const response = await fetch(
       `${VippsConfig.recurringPaymentEndpoint}/${id}`,
       {

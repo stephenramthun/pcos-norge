@@ -18,9 +18,13 @@ const createCharge = (due: string): Charge => ({
   retryDays: 14,
 })
 
+const config = VippsConfig
+
+const accessTokenService = new AccessTokenService(config)
+
 export const ChargeService = {
   async createCharge(agreementId: string, due: string): Promise<void> {
-    const { access_token } = await AccessTokenService.fetchAccessToken()
+    const { access_token } = await accessTokenService.fetchAccessToken(config)
     const response = await fetch(
       `${VippsConfig.recurringPaymentEndpoint}/${agreementId}/charges`,
       {

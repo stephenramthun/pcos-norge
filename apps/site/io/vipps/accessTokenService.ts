@@ -15,19 +15,25 @@ export type AccessTokenResponse = {
 }
 
 export class AccessTokenService {
-  static cache: AccessTokenResponse | null = null
+  cache: AccessTokenResponse | null = null
 
-  static async fetchAccessToken(): Promise<AccessTokenResponse> {
+  private config: typeof VippsConfig
+
+  constructor(config: typeof VippsConfig) {
+    this.config = config
+  }
+
+  async fetchAccessToken(): Promise<AccessTokenResponse> {
     if (this.cache && !this.hasExpired(this.cache)) {
       return this.cache
     }
-    const response = await fetch(VippsConfig.accessTokenEndpoint, {
+    const response = await fetch(this.config.accessTokenEndpoint, {
       method: "POST",
       headers: {
-        client_id: VippsConfig.clientId,
-        client_secret: VippsConfig.clientSecret,
-        "Ocp-Apim-Subscription-Key": VippsConfig.subscriptionKey,
-        "Merchant-Serial-Number": VippsConfig.merchantSerialNumber,
+        client_id: this.config.clientId,
+        client_secret: this.config.clientSecret,
+        "Ocp-Apim-Subscription-Key": this.config.subscriptionKey,
+        "Merchant-Serial-Number": this.config.merchantSerialNumber,
       },
     })
     const data = await response.json()
@@ -35,7 +41,7 @@ export class AccessTokenService {
     return data
   }
 
-  static hasExpired(tokenResponse: AccessTokenResponse): boolean {
+  hasExpired(tokenResponse: AccessTokenResponse): boolean {
     return (
       new Date().getTime() - new Date(tokenResponse.expires_on).getTime() > 0
     )

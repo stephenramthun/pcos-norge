@@ -1,4 +1,6 @@
-export const VippsConfig = {
+import { VippsConfig } from "config/vipps"
+
+export const vippsConfig: typeof VippsConfig = {
   clientId: "test-id",
   clientSecret: "test-secret",
   accessTokenEndpoint: "http://localhost:3000/api/test/accessToken",

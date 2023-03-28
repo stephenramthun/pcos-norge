@@ -35,22 +35,23 @@ model Session {
 }
 
 model User {
-  id            String      @id @default(cuid())
-  email         String      @unique
-  emailVerified Boolean?
-  name          String
-  givenName     String
-  familyName    String
-  birthdate     DateTime
-  phoneNumber   String
-  country       String
-  region        String
-  postalCode    String
-  streetAddress String
-  createdAt     DateTime    @default(now())
-  accounts      Account[]
-  sessions      Session[]
-  agreements    Agreement[]
+  id                String              @id @default(cuid())
+  email             String              @unique
+  emailVerified     Boolean?
+  name              String
+  givenName         String
+  familyName        String
+  birthdate         DateTime
+  phoneNumber       String
+  country           String
+  region            String
+  postalCode        String
+  streetAddress     String
+  createdAt         DateTime            @default(now())
+  accounts          Account[]
+  sessions          Session[]
+  agreements        Agreement[]
+  EmailSubscription EmailSubscription[]
 }
 
 model VerificationToken {
@@ -76,4 +77,15 @@ enum AgreementStatus {
   PENDING
   EXPIRED
   STOPPED
+}
+
+model EmailSubscription {
+  id     String           @id
+  user   User             @relation(references: [id], fields: [userId])
+  userId String
+  type   SubscriptionType
+}
+
+enum SubscriptionType {
+  NYHETSBREV
 }
