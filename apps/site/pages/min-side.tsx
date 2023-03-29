@@ -7,7 +7,7 @@ import {
 } from "next"
 import { signOut, useSession } from "next-auth/react"
 import { useRouter } from "next/router"
-import { Session, unstable_getServerSession } from "next-auth"
+import { getServerSession, Session } from "next-auth"
 
 import { authOptions } from "./api/auth/[...nextauth]"
 import { Head } from "components/Head"
@@ -23,7 +23,7 @@ import { Main } from "components/Main"
 import { Body } from "components/Body"
 import { isUser } from "types/guards"
 import { useAsyncPolling } from "hooks/useAsyncPolling"
-import { MinSideService } from "io/api/minSideService"
+import { UserService } from "io/api/userService"
 
 import styles from "./min-side.module.css"
 import { Loader } from "components/Loader"
@@ -44,7 +44,7 @@ const Unauthorized: React.FC = () => {
   )
 }
 
-const fetchData = (): Promise<MinSideData> => {
+const fetchData = (): Promise<UserData> => {
   return fetch("/api/min-side/data", { method: "GET" }).then((res) =>
     res.json(),
   )
@@ -52,22 +52,22 @@ const fetchData = (): Promise<MinSideData> => {
 
 interface AuthorizedProps {
   user: Session["user"]
-  initialData: MinSideData
+  initialData: UserData
 }
 
 const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
   const router = useRouter()
-  const [data, setData] = useState<MinSideData>(initialData)
+  const [data, setData] = useState<UserData>(initialData)
 
   useEffect(() => {
     fetchData().then(setData)
   }, [])
 
   const updateData = useCallback(async () => {
-    if (data?.pendingAgreement) {
+    if (data?.agreement?.status === "PENDING") {
       await fetch("/api/medlemskap/oppdater", {
         method: "POST",
-        body: JSON.stringify({ agreementId: data.pendingAgreement.id }),
+        body: JSON.stringify({ agreementId: data.agreement.id }),
       })
         .then((res) => res.json())
         .then((res) => {
@@ -81,16 +81,21 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
   useAsyncPolling(updateData, {
     delay: 3000,
     interval: 2000,
-    active: data ? data.pendingAgreement !== null : undefined,
+    active: data
+      ? data.agreement !== null && data.agreement.status === "PENDING"
+      : undefined,
   })
+
+  console.log("initial agreement", initialData.agreement)
 
   if (!isUser(user) || !data) {
     return null
   }
 
-  const { activeAgreement, pendingAgreement } = data
+  const { agreement } = data
 
-  const hasActiveOrPendingAgreement = pendingAgreement || activeAgreement
+  const hasActiveOrPendingAgreement =
+    agreement?.status === "ACTIVE" || agreement?.status === "PENDING"
 
   return (
     <Content className={styles.content}>
@@ -109,7 +114,7 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
           />
         </article>
       )}
-      {!initialData.activeAgreement && initialData.pendingAgreement && (
+      {initialData.agreement?.status === "PENDING" && (
         <article className={styles.gratitudeDialog}>
           <Heading tag="p" size="medium-large">
             Velkommen, {user.givenName}! 🎉
@@ -143,13 +148,13 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
         <>
           <Body>Medlemskapsstatus</Body>
           {!hasActiveOrPendingAgreement && <Body>Inaktiv</Body>}
-          {!pendingAgreement && activeAgreement && (
+          {agreement?.status === "ACTIVE" && (
             <Body>
               Aktiv, fornyes{" "}
-              {dayjs(activeAgreement.start).add(1, "year").format("DD.MM.YYYY")}
+              {dayjs(agreement.start).add(1, "year").format("DD.MM.YYYY")}
             </Body>
           )}
-          {pendingAgreement && !activeAgreement && <Loader variant="dark" />}
+          {agreement?.status === "PENDING" && <Loader variant="dark" />}
         </>
         <Body>Medlem siden</Body>
         <Body>
@@ -158,13 +163,11 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
       </div>
       <span className={styles.buttons}>
         <Button onClick={() => signOut({ callbackUrl: "/" })}>Logg ut</Button>
-        {activeAgreement && (
+        {agreement?.status === "ACTIVE" && (
           <Button
             variant="secondary"
             onClick={() =>
-              router.push(
-                `/api/medlemskap/avslutt?agreementId=${activeAgreement.id}`,
-              )
+              router.push(`/api/medlemskap/avslutt?agreementId=${agreement.id}`)
             }
           >
             Avslutt medlemskap
@@ -176,7 +179,7 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
 }
 
 interface MinSideProps {
-  initialData: MinSideData
+  initialData: UserData
 }
 
 const MinSide: NextPage<MinSideProps> = ({ initialData }) => {
@@ -210,31 +213,26 @@ const MinSide: NextPage<MinSideProps> = ({ initialData }) => {
 
 type ServerSideProps = GetServerSidePropsResult<{
   session: VippsSession | null
-  initialData: MinSideData
+  initialData: UserData
 }>
 
 export async function getServerSideProps(
   context: GetServerSidePropsContext,
 ): Promise<ServerSideProps> {
-  const session = await unstable_getServerSession(
-    context.req,
-    context.res,
-    authOptions,
-  )
+  const session = await getServerSession(context.req, context.res, authOptions)
 
   if (!session || !isUser(session.user)) {
     return {
       props: {
         session: null,
         initialData: {
-          pendingAgreement: null,
-          activeAgreement: null,
+          agreement: null,
         },
       },
     }
   }
 
-  const initialData = await MinSideService.getData(session.user.id)
+  const initialData = await UserService.getUpdatedAgreement(session.user.id)
 
   return {
     props: {

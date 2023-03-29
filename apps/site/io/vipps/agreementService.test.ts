@@ -1,11 +1,17 @@
 import { AgreementService } from "io/vipps/agreementService"
 import { vippsConfig } from "mocks/config"
 import {
-  mockGetAgreement,
+  mockGetAgreementError,
   mockPostAgreement,
-  mockStopAgreement,
+  mockPostAgreementError,
+  mockStopAgreementError,
 } from "mocks/server"
 import { expect } from "@jest/globals"
+import {
+  FetchingAgreementError,
+  PostingAgreementError,
+  StoppingAgreementError,
+} from "io/vipps/errors"
 
 describe("agreementService", () => {
   it("posts new agreement", async () => {
@@ -22,29 +28,61 @@ describe("agreementService", () => {
     expect(response.agreementId).toEqual(expected.agreementId)
   })
 
-  it("gets existing agreement", async () => {
-    const id = "apdiqwcybw9iuycb"
-    const expected: Partial<Agreement> = {
-      id,
+  it("throws error when posting new agreement fails", async () => {
+    const error: ErrorResponse = {
+      status: 401,
+      details: "Unauthorized",
     }
 
     const agreementService = new AgreementService(vippsConfig)
 
-    mockGetAgreement(id, expected)
+    mockPostAgreementError(error)
 
+    await expect(() => agreementService.newAgreement()).rejects.toThrow(
+      new PostingAgreementError(error.details, error.status),
+    )
+  })
+
+  it("gets existing agreement", async () => {
+    const id = "apdiqwcybw9iuycb"
+    const agreementService = new AgreementService(vippsConfig)
     const response = await agreementService.getAgreement(id)
 
-    expect(response.id).toEqual(expected.id)
+    expect(response.id).toEqual(id)
+  })
+
+  it("throws error when failing to get agreement", async () => {
+    const id = "apdiqwcybw9iuycb"
+    const error: ErrorResponse = {
+      status: 500,
+      details: "Beep boop, I'm an error",
+    }
+
+    const agreementService = new AgreementService(vippsConfig)
+
+    mockGetAgreementError(id, error)
+
+    await expect(() => agreementService.getAgreement(id)).rejects.toThrow(
+      new FetchingAgreementError(id, error.details, error.status),
+    )
   })
 
   it("stops existing agreement", async () => {
-    const id = "apdiqwcybw9iuycb"
+    const id = "aoscbqouc12d91ub"
     const agreementService = new AgreementService(vippsConfig)
-
-    mockStopAgreement(id)
-
     const response = await agreementService.stopAgreement(id)
 
     expect(response).toEqual(204)
+  })
+
+  it("throws error if it fails to stop existing agreement", async () => {
+    const id = "aoscbqouc12d91ub"
+    const agreementService = new AgreementService(vippsConfig)
+
+    mockStopAgreementError(401)
+
+    await expect(() => agreementService.stopAgreement(id)).rejects.toThrow(
+      new StoppingAgreementError(id, 401),
+    )
   })
 })

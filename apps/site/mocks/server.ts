@@ -3,7 +3,7 @@ import { setupServer } from "msw/node"
 import { handlers } from "./handlers"
 import { AccessTokenResponse } from "io/vipps/accessTokenService"
 import { vippsConfig } from "mocks/config"
-import { accessTokenResponse, agreement, agreementResponse } from "mocks/data"
+import { accessTokenResponse, agreementResponse } from "mocks/data"
 
 export const server = setupServer(...handlers)
 
@@ -30,26 +30,62 @@ export const mockPostAgreement = (
   )
 }
 
-export const mockGetAgreement = (
+export const mockPostAgreementError = (error: ErrorResponse): void => {
+  server.use(
+    rest.post(vippsConfig.recurringPaymentEndpoint, (req, res, context) => {
+      return res(context.status(error.status), context.json(error))
+    }),
+  )
+}
+
+export const mockGetAgreementError = (
   id: string,
-  response: Partial<Agreement>,
+  error: ErrorResponse,
 ): void => {
   server.use(
     rest.get(
       `${vippsConfig.recurringPaymentEndpoint}/${id}`,
       (req, res, context) => {
-        return res(context.status(204), context.json(agreement(response)))
+        return res(context.status(error.status), context.json(error))
       },
     ),
   )
 }
 
-export const mockStopAgreement = (id: string): void => {
+export const mockStopAgreementError = (status = 500): void => {
   server.use(
     rest.patch(
-      `${vippsConfig.recurringPaymentEndpoint}/${id}`,
+      `${vippsConfig.recurringPaymentEndpoint}/:agreementId`,
       (req, res, context) => {
-        return res(context.status(204))
+        return res(context.status(status))
+      },
+    ),
+  )
+}
+
+export const mockGetCharges = (
+  agreementId: string,
+  charges: ChargeResponseBody[] = [],
+): void => {
+  server.use(
+    rest.get(
+      `${vippsConfig.recurringPaymentEndpoint}/${agreementId}/charges`,
+      (req, res, context) => {
+        return res(context.status(200), context.json(charges))
+      },
+    ),
+  )
+}
+
+export const mockGetChargesError = (
+  agreementId: string,
+  status = 500,
+): void => {
+  server.use(
+    rest.get(
+      `${vippsConfig.recurringPaymentEndpoint}/${agreementId}/charges`,
+      (req, res, context) => {
+        return res(context.status(status), context.json({ ok: false }))
       },
     ),
   )
@@ -63,7 +99,7 @@ export const mockCaptureCharge = (
     rest.post(
       `${vippsConfig.recurringPaymentEndpoint}/${agreementId}/charges/${chargeId}/capture`,
       (req, res, context) => {
-        return res(context.status(204))
+        return res(context.status(204), context.json({ ok: true }))
       },
     ),
   )

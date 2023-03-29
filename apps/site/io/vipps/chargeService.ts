@@ -1,7 +1,10 @@
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { AccessTokenService } from "io/vipps/accessTokenService"
-import { FailedCaptureError, FailedFetchingCharges } from "io/vipps/errors"
-import { getReservedAgreements } from "db/prisma/dao/agreement"
+import { CapturingChargeError, FetchingChargesError } from "io/vipps/errors"
+import {
+  getReservedAgreements,
+  updatePaymentStatus,
+} from "db/prisma/dao/agreement"
 
 export class ChargeService {
   private readonly config: VippsConfigObject
@@ -25,7 +28,7 @@ export class ChargeService {
       },
     )
     if (!response.ok) {
-      throw new FailedFetchingCharges(agreementId)
+      throw new FetchingChargesError(agreementId)
     }
 
     return response.json()
@@ -36,7 +39,7 @@ export class ChargeService {
     chargeId: string,
     amount: number,
     description = "Årsmedlemskap i PCOS Norge",
-  ): Promise<number> => {
+  ): Promise<Response> => {
     const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
       `${this.config.recurringPaymentEndpoint}/${agreementId}/charges/${chargeId}/capture`,
@@ -53,37 +56,39 @@ export class ChargeService {
       },
     )
     if (!response.ok) {
-      throw new FailedCaptureError(agreementId)
+      throw new CapturingChargeError(agreementId)
     }
 
-    return response.status
+    return response
   }
 
   captureReservedAgreements = async (): Promise<void> => {
-    console.log("Fetching reserved agreements from db")
     const reservedAgreements = await getReservedAgreements()
-    console.log("Done fetching reserved agreements from db")
 
     for (const agreement of reservedAgreements) {
       try {
-        console.log("Getting charges for agreement", agreement.id)
         const charges = await this.getCharges(agreement.id)
-        console.log("Done getting charges for agreement")
         for (const charge of charges) {
-          console.log("Attempting to capture charge", charge)
+          if (charge.status === "CHARGED") {
+            updatePaymentStatus(agreement.id, "CHARGED")
+            continue
+          }
           if (charge.status === "RESERVED") {
-            console.log("Capturing charge")
-            this.captureCharge(agreement.id, charge.id, charge.amount).catch(
-              (e) => {
-                if (e instanceof FailedCaptureError) {
+            this.captureCharge(agreement.id, charge.id, charge.amount)
+              .then((response) => {
+                if (response.ok) {
+                  updatePaymentStatus(agreement.id, "CHARGED")
+                }
+              })
+              .catch((e) => {
+                if (e instanceof CapturingChargeError) {
                   console.error(e.message)
                 }
-              },
-            )
+              })
           }
         }
       } catch (e) {
-        if (e instanceof FailedFetchingCharges) {
+        if (e instanceof FetchingChargesError) {
           console.error(e.message)
         }
       }

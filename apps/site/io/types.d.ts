@@ -48,3 +48,12 @@ declare type ChargeResponseBody = {
   amount: number
   status: ChargeStatus
 }
+
+declare type UserData = {
+  agreement: Agreement | null
+}
+
+declare type ErrorResponse = {
+  status: number
+  details: string
+}

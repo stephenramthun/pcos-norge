@@ -11,26 +11,24 @@ export const getAgreement = async (id: string): Promise<Agreement | null> => {
   return prisma.agreement.findUnique({ where: { id: id } });
 };
 
-export const getAgreementsForUser = async (
+export const getAgreementForUser = async (
   id: string
-): Promise<Agreement[]> => {
+): Promise<Agreement | null> => {
   const result = (await prisma.user.findUnique({
     where: { id: id },
-    select: { agreements: true },
-  })) ?? { agreements: [] };
+    select: { agreement: true },
+  })) ?? { agreement: null };
 
-  return result.agreements as unknown as Agreement[];
+  return result.agreement;
 };
 
 export const hasActiveOrPendingAgreement = async (
   userId: string
 ): Promise<boolean> => {
-  const agreements = await getAgreementsForUser(userId);
+  const agreement = await getAgreementForUser(userId);
   return (
-    agreements.find(
-      (agreement) =>
-        agreement.status === "ACTIVE" || agreement.status === "PENDING"
-    ) !== undefined
+    agreement !== null &&
+    (agreement.status === "ACTIVE" || agreement.status === "PENDING")
   );
 };
 
@@ -61,6 +59,16 @@ export const updateAgreement = async (
   return prisma.agreement.update({
     where: { id },
     data: { status, start, stop },
+  });
+};
+
+export const updatePaymentStatus = async (
+  id: string,
+  payment: PaymentStatus
+): Promise<Agreement> => {
+  return prisma.agreement.update({
+    where: { id },
+    data: { payment },
   });
 };
 

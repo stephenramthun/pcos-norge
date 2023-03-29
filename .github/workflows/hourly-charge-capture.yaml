@@ -1,8 +1,8 @@
-name: Daily charge capture
+name: Hourly charge capture
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 * * * *'
 
 jobs:
   capture-production:
