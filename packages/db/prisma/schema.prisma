@@ -71,6 +71,7 @@ model Agreement {
   stop      String?
   createdAt DateTime        @default(now())
   paidDate  DateTime?
+  chargeId  String
 }
 
 enum AgreementStatus {

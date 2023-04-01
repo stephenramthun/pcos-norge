@@ -36,6 +36,7 @@ export const insertAgreement = async (
   id: string,
   userId: string,
   status: AgreementStatus,
+  chargeId: string,
   start?: string,
   stop?: string
 ): Promise<Agreement> => {
@@ -44,6 +45,7 @@ export const insertAgreement = async (
       id,
       userId,
       status,
+      chargeId,
       start,
       stop,
     },

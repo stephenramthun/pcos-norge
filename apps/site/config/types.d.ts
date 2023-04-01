@@ -9,4 +9,5 @@ declare type VippsConfigObject = {
   merchantSerialNumber: string
   subscriptionKey: string
   registerRedirectUri: string
+  merchantAgreementUri: string
 }

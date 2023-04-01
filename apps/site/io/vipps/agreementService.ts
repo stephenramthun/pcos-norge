@@ -28,7 +28,7 @@ const createAgreement = (
     currency: "NOK",
   },
   merchantRedirectUrl: config.registerRedirectUri,
-  merchantAgreementUrl: config.registerRedirectUri,
+  merchantAgreementUrl: config.merchantAgreementUri,
   productName: description,
 })
 

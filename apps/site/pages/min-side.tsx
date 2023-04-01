@@ -112,7 +112,7 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
           />
         </article>
       )}
-      {initialData.agreement?.status === "PENDING" && (
+      {router.query.welcome && (
         <article className={styles.gratitudeDialog}>
           <Heading tag="p" size="medium-large">
             Velkommen, {user.givenName}! 🎉

@@ -18,4 +18,5 @@ export const VippsConfig: VippsConfigObject = {
   merchantSerialNumber: requireValue("VIPPS_MERCHANT_SERIAL_NUMBER"),
   subscriptionKey: requireValue("VIPPS_SUBSCRIPTION_KEY"),
   registerRedirectUri: requireValue("VIPPS_REGISTER_REDIRECT_URI"),
+  merchantAgreementUri: requireValue("VIPPS_MERCHANT_AGREEMENT_URI"),
 }

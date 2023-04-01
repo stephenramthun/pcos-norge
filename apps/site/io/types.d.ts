@@ -19,7 +19,7 @@ declare type AgreementRequestBody = {
   initialCharge: {
     amount: number
     description: string
-    transactionType: "DIRECT_CAPTURE" | "RESERVE_CAPTURE"
+    transactionType: "RESERVE_CAPTURE"
   }
   pricing: {
     type: "LEGACY"
