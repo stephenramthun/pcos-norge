@@ -1,3 +1,9 @@
+-- CreateEnum
+CREATE TYPE "AgreementStatus" AS ENUM ('ACTIVE', 'PENDING', 'EXPIRED', 'STOPPED');
+
+-- CreateEnum
+CREATE TYPE "SubscriptionType" AS ENUM ('MEDLEMSBREV', 'NYHETSBREV');
+
 -- CreateTable
 CREATE TABLE "Account" (
     "id" STRING NOT NULL,
@@ -56,8 +62,22 @@ CREATE TABLE "VerificationToken" (
 CREATE TABLE "Agreement" (
     "id" STRING NOT NULL,
     "userId" STRING NOT NULL,
+    "status" "AgreementStatus" NOT NULL DEFAULT 'PENDING',
+    "start" STRING,
+    "stop" STRING,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "paidDate" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Agreement_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "EmailSubscription" (
+    "id" STRING NOT NULL,
+    "userId" STRING NOT NULL,
+    "type" "SubscriptionType" NOT NULL,
+
+    CONSTRAINT "EmailSubscription_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -75,6 +95,9 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 -- CreateIndex
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Agreement_userId_key" ON "Agreement"("userId");
+
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -83,3 +106,6 @@ ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId"
 
 -- AddForeignKey
 ALTER TABLE "Agreement" ADD CONSTRAINT "Agreement_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "EmailSubscription" ADD CONSTRAINT "EmailSubscription_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

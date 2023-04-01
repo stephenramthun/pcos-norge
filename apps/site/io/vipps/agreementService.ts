@@ -6,6 +6,7 @@ import {
   PostingAgreementError,
   StoppingAgreementError,
 } from "io/vipps/errors"
+import { getBaseUrl } from "config/path"
 
 const createAgreement = (
   config: VippsConfigObject,
@@ -17,13 +18,13 @@ const createAgreement = (
     count: 1,
   },
   initialCharge: {
-    amount,
-    description,
+    amount: amount,
+    description: description,
     transactionType: "RESERVE_CAPTURE",
   },
   pricing: {
     type: "LEGACY",
-    amount,
+    amount: amount,
     currency: "NOK",
   },
   merchantRedirectUrl: config.registerRedirectUri,
@@ -100,6 +101,15 @@ export class AgreementService {
     return response.status
   }
 
+  updateAgreement = async ({
+    id,
+    status,
+    start,
+    stop,
+  }: Agreement): Promise<Agreement> => {
+    return updateAgreement(id, status, start, stop)
+  }
+
   updateAgreementForUser = async (
     userId: string,
   ): Promise<Agreement | null> => {
@@ -117,5 +127,27 @@ export class AgreementService {
         // Log error?
         return null
       })
+  }
+
+  pollAgreementStatus = async (
+    agreementId: string,
+    chargeId: string,
+    tries = 0,
+    limit = 30,
+  ): Promise<Response | void> => {
+    if (tries > limit) {
+      return
+    }
+    return fetch(`${getBaseUrl()}/api/vipps/agreement/update/${agreementId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.VIPPS_CLIENT_SECRET}`,
+      },
+      body: JSON.stringify({
+        chargeId: chargeId,
+        tries: tries + 1,
+      }),
+    })
   }
 }

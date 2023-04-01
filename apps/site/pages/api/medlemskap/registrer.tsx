@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { unstable_getServerSession } from "next-auth"
+import { getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
@@ -9,15 +9,16 @@ import {
 } from "db/prisma/dao/agreement"
 import { isUser } from "types/guards"
 import { VippsConfig } from "config/vipps"
-import { sendMail, Welcome } from "emails"
+import { EmailService } from "io/email/emailService"
 
 const agreementService = new AgreementService(VippsConfig)
+const emailService = new EmailService()
 
 export default async function registrer(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<NextApiResponse> {
-  const session = await unstable_getServerSession(req, res, authOptions)
+  const session = await getServerSession(req, res, authOptions)
 
   if (!session || !isUser(session.user)) {
     return res.redirect(`/feil?status=401`).end()
@@ -27,7 +28,7 @@ export default async function registrer(
     return res.redirect("/min-side").end()
   }
 
-  const { vippsConfirmationUrl, agreementId } =
+  const { vippsConfirmationUrl, agreementId, chargeId } =
     await agreementService.newAgreement()
 
   const agreement = await insertAgreement(
@@ -37,12 +38,11 @@ export default async function registrer(
   )
 
   if (agreement) {
-    await sendMail({
-      from: "hei@pcosnorge.no",
-      to: session.user.email,
-      dangerouslyForceDeliver: true,
-      component: <Welcome name={session.user.givenName} />,
-    })
+    agreementService.pollAgreementStatus(agreementId, chargeId)
+    await emailService.sendWelcomeMail(
+      session.user.email,
+      session.user.givenName,
+    )
     return res.redirect(vippsConfirmationUrl).end()
   }
 

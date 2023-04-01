@@ -1,10 +1,7 @@
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { AccessTokenService } from "io/vipps/accessTokenService"
 import { CapturingChargeError, FetchingChargesError } from "io/vipps/errors"
-import {
-  getReservedAgreements,
-  updatePaymentStatus,
-} from "db/prisma/dao/agreement"
+import { getUnpaidAgreements, updatePaidDate } from "db/prisma/dao/agreement"
 
 export class ChargeService {
   private readonly config: VippsConfigObject
@@ -62,22 +59,23 @@ export class ChargeService {
     return response
   }
 
-  captureReservedAgreements = async (): Promise<void> => {
-    const reservedAgreements = await getReservedAgreements()
+  chargeUnpaidAgreements = async (): Promise<void> => {
+    const unpaidAgreements = await getUnpaidAgreements()
 
-    for (const agreement of reservedAgreements) {
+    for (const agreement of unpaidAgreements) {
       try {
         const charges = await this.getCharges(agreement.id)
         for (const charge of charges) {
           if (charge.status === "CHARGED") {
-            updatePaymentStatus(agreement.id, "CHARGED")
+            const chargedDate = new Date(charge.history.slice(-1)[0].occurred)
+            updatePaidDate(agreement.id, chargedDate)
             continue
           }
           if (charge.status === "RESERVED") {
             this.captureCharge(agreement.id, charge.id, charge.amount)
               .then((response) => {
                 if (response.ok) {
-                  updatePaymentStatus(agreement.id, "CHARGED")
+                  updatePaidDate(agreement.id)
                 }
               })
               .catch((e) => {
@@ -93,5 +91,41 @@ export class ChargeService {
         }
       }
     }
+  }
+
+  pollChargeCapture = async (
+    agreementId: string,
+    chargeId: string,
+    tries = 0,
+    limit = 10,
+    waitMs = 500,
+  ): Promise<Response> => {
+    const charge = await this.getCharges(agreementId).then((charges) =>
+      charges.find((it) => it.id === chargeId),
+    )
+
+    if (!charge) {
+      throw Error(
+        `Couldn't find charge with id ${chargeId} for agreement with id ${agreementId}`,
+      )
+    }
+
+    if (charge.status === "RESERVED") {
+      const response = await this.captureCharge(
+        agreementId,
+        charge.id,
+        charge.amount,
+      )
+
+      if (response.ok) {
+        updatePaidDate(agreementId)
+      }
+
+      return response
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, waitMs))
+
+    return this.pollChargeCapture(agreementId, charge.id, tries + 1, limit)
   }
 }

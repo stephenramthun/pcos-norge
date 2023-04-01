@@ -86,8 +86,6 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
       : undefined,
   })
 
-  console.log("initial agreement", initialData.agreement)
-
   if (!isUser(user) || !data) {
     return null
   }

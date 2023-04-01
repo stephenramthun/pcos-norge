@@ -8,24 +8,21 @@ import {
   mockGetChargesError,
 } from "mocks/server"
 import { CapturingChargeError, FetchingChargesError } from "io/vipps/errors"
-import {
-  getReservedAgreements,
-  updatePaymentStatus,
-} from "db/prisma/dao/agreement"
+import { getUnpaidAgreements, updatePaidDate } from "db/prisma/dao/agreement"
 import { waitFor } from "@testing-library/react"
 
 jest.mock("db/prisma/dao/agreement", () => ({
-  getReservedAgreements: jest.fn(),
-  updatePaymentStatus: jest.fn(),
+  getUnpaidAgreements: jest.fn(),
+  updatePaidDate: jest.fn(),
 }))
 
 describe("chargeService", () => {
-  const getReservedAgreementsMock = getReservedAgreements as jest.Mock
-  const updatePaymentStatusMock = updatePaymentStatus as jest.Mock
+  const getUnpaidAgreementsMock = getUnpaidAgreements as jest.Mock
+  const updatePaidDateMock = updatePaidDate as jest.Mock
 
   afterEach(() => {
-    getReservedAgreementsMock.mockReset()
-    updatePaymentStatusMock.mockReset()
+    getUnpaidAgreementsMock.mockReset()
+    updatePaidDateMock.mockReset()
     jest.resetAllMocks()
   })
 
@@ -40,11 +37,13 @@ describe("chargeService", () => {
         id: "charge-1",
         amount: 2000,
         status: "RESERVED",
+        history: [{ occurred: "2020-01-01" }],
       },
       {
         id: "charge-2",
         amount: 4000,
         status: "CHARGED",
+        history: [{ occurred: "2020-01-01" }],
       },
     ]
 
@@ -97,27 +96,30 @@ describe("chargeService", () => {
     ).rejects.toThrow(CapturingChargeError)
   })
 
-  it("captures reserved agreements", async () => {
+  it("charges unpaid agreements", async () => {
     const agreementId = "agreement-id"
     const charges: ChargeResponseBody[] = [
       {
         id: "charge-1",
         amount: 2000,
         status: "RESERVED",
+        history: [{ occurred: "2020-01-01" }],
       },
       {
         id: "charge-2",
         amount: 4000,
         status: "CHARGED",
+        history: [{ occurred: "2020-01-01" }],
       },
       {
         id: "charge-3",
         amount: 4000,
         status: "CANCELLED",
+        history: [{ occurred: "2020-01-01" }],
       },
     ]
 
-    getReservedAgreementsMock.mockReturnValue([
+    getUnpaidAgreementsMock.mockReturnValue([
       {
         id: agreementId,
         userId: "some-user",
@@ -125,7 +127,6 @@ describe("chargeService", () => {
         start: null,
         stop: null,
         createdAt: new Date(),
-        payment: "RESERVED",
       },
     ])
 
@@ -134,20 +135,16 @@ describe("chargeService", () => {
     mockGetCharges(agreementId, charges)
     mockCaptureCharge(agreementId, "charge-1")
 
-    await chargeService.captureReservedAgreements()
+    await chargeService.chargeUnpaidAgreements()
 
     await waitFor(() => {
-      expect(updatePaymentStatusMock).toHaveBeenCalledTimes(2)
-      expect(updatePaymentStatusMock).toHaveBeenNthCalledWith(
+      expect(updatePaidDateMock).toHaveBeenCalledTimes(2)
+      expect(updatePaidDateMock).toHaveBeenNthCalledWith(
         1,
         agreementId,
-        "CHARGED",
+        new Date("2020-01-01"),
       )
-      expect(updatePaymentStatusMock).toHaveBeenNthCalledWith(
-        2,
-        agreementId,
-        "CHARGED",
-      )
+      expect(updatePaidDateMock).toHaveBeenNthCalledWith(2, agreementId)
     })
   })
 })

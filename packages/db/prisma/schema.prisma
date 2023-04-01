@@ -66,16 +66,11 @@ model Agreement {
   id        String          @id
   user      User            @relation(references: [id], fields: [userId])
   userId    String          @unique
-  status    AgreementStatus
+  status    AgreementStatus @default(PENDING)
   start     String?
   stop      String?
   createdAt DateTime        @default(now())
-  payment   PaymentStatus   @default(RESERVED)
-}
-
-enum PaymentStatus {
-  RESERVED
-  CHARGED
+  paidDate  DateTime?
 }
 
 enum AgreementStatus {

@@ -1,9 +1,9 @@
 import { prisma } from "db/prisma/client";
-import { Agreement, AgreementStatus, PaymentStatus } from "@prisma/client";
+import { Agreement, AgreementStatus } from "@prisma/client";
 
-export const getReservedAgreements = async (): Promise<Agreement[]> => {
+export const getUnpaidAgreements = async (): Promise<Agreement[]> => {
   return prisma.agreement.findMany({
-    where: { payment: PaymentStatus.RESERVED },
+    where: { status: AgreementStatus.ACTIVE, paidDate: undefined },
   });
 };
 
@@ -62,15 +62,17 @@ export const updateAgreement = async (
   });
 };
 
-export const updatePaymentStatus = async (
+export const updatePaidDate = async (
   id: string,
-  payment: PaymentStatus
+  date = new Date()
 ): Promise<Agreement> => {
   return prisma.agreement.update({
     where: { id },
-    data: { payment },
+    data: { paidDate: date },
   });
 };
+
+export const insertCharge = async () => {};
 
 export const deleteAgreement = async (id: string): Promise<Agreement> => {
   return prisma.agreement.delete({ where: { id } });

@@ -8,7 +8,7 @@ declare type Agreement = {
 declare type AgreementResponseBody = {
   vippsConfirmationUrl: string
   agreementId: string
-  chargeId: string | null
+  chargeId: string
 }
 
 declare type AgreementRequestBody = {
@@ -47,6 +47,7 @@ declare type ChargeResponseBody = {
   id: string
   amount: number
   status: ChargeStatus
+  history: { occurred: string }[]
 }
 
 declare type UserData = {
