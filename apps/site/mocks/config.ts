@@ -6,7 +6,8 @@ export const vippsConfig: VippsConfigObject = {
   userInfoEndpoint: "http://localhost:3000/api/test/userInfo",
   wellKnown: "http://localhost:3000/api/test/wellKnown",
   redirectUri: "http://localhost:3000/min-side",
-  registerRedirectUri: "http://localhost:3000/min-side",
+  registerRedirectUri: "http://localhost:3000/api/vipps/agreement/callback",
+  merchantAgreementUri: "http://localhost:3000/min-side",
   merchantSerialNumber: "12345678",
   subscriptionKey: "subscription-key",
 }
