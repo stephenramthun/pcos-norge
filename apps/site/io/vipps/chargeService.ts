@@ -78,14 +78,14 @@ export class ChargeService {
               chargedDate,
               charge.id,
             )
-            updatePaidDate(agreement.id, chargedDate)
+            await updatePaidDate(agreement.id, chargedDate)
             continue
           }
           if (charge.status === "RESERVED") {
-            this.captureCharge(agreement.id, charge.id, charge.amount)
+            await this.captureCharge(agreement.id, charge.id, charge.amount)
               .then((response) => {
                 if (response.ok) {
-                  updatePaidDate(agreement.id)
+                  return updatePaidDate(agreement.id)
                 }
               })
               .catch((e) => {
