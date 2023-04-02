@@ -37,14 +37,10 @@ export const Header: React.FC<HeaderProps> = ({
           <Link href="/om-oss">Om oss</Link>
           <Link href="/aktuelt">Aktuelt</Link>
           <Link href="/bidra">Bidra</Link>
-          {process.env.NEXT_PUBLIC_MEDLEMSREGISTRERING && (
-            <>
-              <Link href="/min-side">Min side</Link>
-              <NextLink href="/bli-medlem">
-                <Button role="link">Bli medlem</Button>
-              </NextLink>
-            </>
-          )}
+          <Link href="/min-side">Min side</Link>
+          <NextLink href="/bli-medlem">
+            <Button role="link">Bli medlem</Button>
+          </NextLink>
         </nav>
         <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
       </div>

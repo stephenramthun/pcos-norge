@@ -79,16 +79,12 @@ export const Footer: React.FC = () => (
                 <li>
                   <Link href="/bidra">Bidra</Link>
                 </li>
-                {process.env.NEXT_PUBLIC_MEDLEMSREGISTRERING && (
-                  <>
-                    <li>
-                      <Link href="/min-side">Min side</Link>
-                    </li>
-                    <li>
-                      <Link href="/bli-medlem">Bli medlem</Link>
-                    </li>
-                  </>
-                )}
+                <li>
+                  <Link href="/min-side">Min side</Link>
+                </li>
+                <li>
+                  <Link href="/bli-medlem">Bli medlem</Link>
+                </li>
               </ul>
             </nav>
           </article>
