@@ -13,10 +13,6 @@ export const getPendingAgreements = async (): Promise<Agreement[]> => {
   });
 };
 
-export const getAgreement = async (id: string): Promise<Agreement | null> => {
-  return prisma.agreement.findUnique({ where: { id: id } });
-};
-
 export const getAgreementForUser = async (
   id: string
 ): Promise<Agreement | null> => {
@@ -79,8 +75,6 @@ export const updatePaidDate = async (
     data: { paidDate: date },
   });
 };
-
-export const insertCharge = async () => {};
 
 export const deleteAgreement = async (id: string): Promise<Agreement> => {
   return prisma.agreement.delete({ where: { id } });
