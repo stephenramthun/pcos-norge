@@ -20,9 +20,11 @@
       "public/*": ["public/*"],
       "config/*": ["config/*"],
       "io/*": ["io/*"],
-      "auth/*": ["auth/*"]
+      "auth/*": ["auth/*"],
+      "mocks/*": ["mocks/*"]
     },
-    "incremental": true
+    "incremental": true,
+    "types": ["jest"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

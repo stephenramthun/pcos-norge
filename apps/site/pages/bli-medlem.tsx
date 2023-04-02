@@ -20,6 +20,7 @@ import { SanityImageDocument } from "types/sanity"
 import { getClient } from "io/sanity/client"
 
 import styles from "./bliMedlem.module.css"
+import { MembershipPrice } from "../model/membershipPrice"
 
 interface BliMedlemProps {
   image: Omit<SanityImageDocument, "imageAsset"> & {
@@ -52,50 +53,67 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
           <section className={styles.pitch}>
             <div className={styles.textContainer}>
               <Body>
-                Det er på tide at PCOS blir tatt på alvor i helsevesenet. Som
-                medlem i PCOS Norge støtter du oss i vårt arbeid for mer
-                synlighet, normalisering og økt oppmerksomhet rundt diagnosen og
-                bedre kunnskap om PCOS i helsevesenet. Du er velkommen til å
-                melde seg inn som medlem hos oss uavhengig om du har sykdommen,
-                kjenner noen som har den eller bare ønsker å støtte en viktig og
-                god sak.
+                PCOS Norge er en ideell, landsdekkende forening for alle med
+                diagnosen PCOS, for pårørende og for helsevesen. Sammen står vi
+                sterkere og jo flere vi er i vårt fellesskap, desto mer kan vi
+                få til.
               </Body>
               <Body>
-                Vi er en nyoppstartet organisasjon og jobber for tiden med å
-                kunne tilby våre medlemmer eksklusive medlemsfordeler.
+                Ditt medlemsskap i PCOS Norge gjør det mulig for oss å kjempe
+                for et bedre behandlingstilbud, politisk innflytelse, økt
+                forståelse og kjennskap til diagnosen og å bryte tabu og skam
+                mange som lever med diagnosen kjenner på. Her kan du lese mer om
+                våre formål, hvem styret er og hva vi jobber med{" "}
+                <Link href="/om-oss">her</Link>.
+              </Body>
+              <Body>
+                Som medlem i PCOS Norge får du tilgang til våre medlemsfordeler.
+                Medlemskontingenten betales kun en gang i året. Du får et
+                automatisk fornyelseskrav i Vipps når året er omme.
               </Body>
               <ul className={styles.list}>
-                <Body>Derfor bør du bli medlem</Body>
+                <Body>Ditt medlemskap bidrar til:</Body>
                 <li>
                   <Body>
-                    Ditt medlemskap bidrar til økt kunnskap om PCOS i Norge
+                    å sikre bedre informasjonen til nydiagnostiserte i fremtiden
+                  </Body>
+                </li>
+                <li>
+                  <Body>økt kunnskap om PCOS</Body>
+                </li>
+                <li>
+                  <Body>kompetanseheving i helseforetakene</Body>
+                </li>
+                <li>
+                  <Body>
+                    mer åpenhet og bekjempelse av skam og tabu knyttet til
+                    diagnosen
                   </Body>
                 </li>
                 <li>
                   <Body>
-                    Din støtte sikrer en bedre helsefremtid for alle med PCOS
+                    å gjøre diagnosen synlig på et politisk nivå hvor vi kan
+                    skape varig endring
                   </Body>
                 </li>
                 <li>
                   <Body>
-                    Du hjelper oss nå politikere og andre viktige aktører på
-                    helsefeltet
-                  </Body>
-                </li>
-                <li>
-                  <Body>
-                    Du bidrar til kompetanseheving av helsepersonell over hele
-                    landet
+                    et enhetlig og tverrfaglig behandlingstilbud som er likt for
+                    alle uansett hvor i landet man bor og uavhengig av hvilken
+                    lege man går til.
                   </Body>
                 </li>
               </ul>
-              <Body>Medlemskap koster 200,- i året.</Body>
+              <Body>
+                Medlemskap koster {MembershipPrice.asKroner},- i året.
+              </Body>
             </div>
             <div>
               <SanityImage
                 asset={props.image.asset}
                 alt={props.image.alt}
                 layout="intrinsic"
+                maxWidth={1000}
               />
             </div>
           </section>

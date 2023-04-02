@@ -35,22 +35,24 @@ model Session {
 }
 
 model User {
-  id            String      @id @default(cuid())
-  email         String      @unique
-  emailVerified Boolean?
-  name          String
-  givenName     String
-  familyName    String
-  birthdate     DateTime
-  phoneNumber   String
-  country       String
-  region        String
-  postalCode    String
-  streetAddress String
-  createdAt     DateTime    @default(now())
-  accounts      Account[]
-  sessions      Session[]
-  agreements    Agreement[]
+  id                String              @id @default(cuid())
+  email             String              @unique
+  emailVerified     Boolean?
+  name              String
+  givenName         String
+  familyName        String
+  birthdate         DateTime
+  phoneNumber       String
+  country           String
+  region            String
+  postalCode        String
+  streetAddress     String
+  createdAt         DateTime            @default(now())
+  accounts          Account[]
+  sessions          Session[]
+  agreement         Agreement?
+  EmailSubscription EmailSubscription[]
+  EmailDelivery     EmailDelivery[]
 }
 
 model VerificationToken {
@@ -64,11 +66,13 @@ model VerificationToken {
 model Agreement {
   id        String          @id
   user      User            @relation(references: [id], fields: [userId])
-  userId    String
-  status    AgreementStatus
+  userId    String          @unique
+  status    AgreementStatus @default(PENDING)
   start     String?
   stop      String?
   createdAt DateTime        @default(now())
+  paidDate  DateTime?
+  chargeId  String
 }
 
 enum AgreementStatus {
@@ -76,4 +80,25 @@ enum AgreementStatus {
   PENDING
   EXPIRED
   STOPPED
+}
+
+model EmailSubscription {
+  user   User             @relation(references: [id], fields: [userId])
+  userId String
+  type   SubscriptionType
+
+  @@unique([userId, type])
+}
+
+enum SubscriptionType {
+  MEDLEMSBREV
+  NYHETSBREV
+}
+
+model EmailDelivery {
+  user    User   @relation(references: [id], fields: [userId])
+  userId  String
+  emailId String
+
+  @@unique([userId, emailId])
 }

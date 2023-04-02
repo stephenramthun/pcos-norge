@@ -1,26 +1,31 @@
 import { NextApiRequest, NextApiResponse } from "next"
+import { ChargeService } from "io/vipps/chargeService"
+import { VippsConfig } from "config/vipps"
+import { validateAuthorization } from "auth/index"
+
+export const validateMethod = (
+  req: NextApiRequest,
+  res: NextApiResponse,
+): boolean => {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST")
+    res.status(405).end("Method Not Allowed")
+    return false
+  }
+  return true
+}
+
+const chargeService = new ChargeService(VippsConfig)
 
 export default async function capture(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<NextApiResponse> {
-  if (req.method === "POST") {
-    try {
-      const { authorization } = req.headers
-
-      if (authorization === `Bearer ${process.env.VIPPS_CLIENT_SECRET}`) {
-        res.status(200).json({ success: true })
-      } else {
-        res.status(401).json({ success: false })
-      }
-    } catch (err) {
-      res
-        .status(500)
-        .json({ statusCode: 500, message: (err as Error)?.message })
-    }
-  } else {
-    res.setHeader("Allow", "POST")
-    res.status(405).end("Method Not Allowed")
+  if (!validateMethod(req, res) || !validateAuthorization(req, res)) {
+    return res.status(400).end()
   }
-  return res
+
+  await chargeService.chargeUnpaidAgreements()
+
+  return res.end()
 }

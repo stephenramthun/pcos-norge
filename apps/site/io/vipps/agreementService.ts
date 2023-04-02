@@ -1,98 +1,166 @@
-import { VippsConfig } from "config/vipps"
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { AccessTokenService } from "io/vipps/accessTokenService"
+import {
+  getAgreementForUser,
+  getPendingAgreements,
+  updateAgreement,
+} from "db/prisma/dao/agreement"
+import {
+  FetchingAgreementError,
+  PostingAgreementError,
+  StoppingAgreementError,
+} from "io/vipps/errors"
+import { getBaseUrl } from "config/path"
+import { MembershipPrice } from "../../model/membershipPrice"
 
-type NewAgreementResponse = {
-  vippsConfirmationUrl: string
-  agreementId: string
-  chargeId: string | null
-}
-
-type Agreement = {
-  status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
-  start?: string
-  stop?: string
-}
-
-type AgreementBody = {
-  interval: {
-    unit: "YEAR"
-    count: number
-  }
-  initialCharge: {
-    amount: number
-    description: string
-    transactionType: "DIRECT_CAPTURE" | "RESERVE_CAPTURE"
-  }
-  pricing: {
-    type: "LEGACY"
-    amount: number
-    currency: "NOK"
-  }
-  merchantRedirectUrl: string
-  merchantAgreementUrl: string
-  productName: string
-}
-
-const createAgreement = (): AgreementBody => ({
+const createAgreement = (
+  config: VippsConfigObject,
+  amount = MembershipPrice.asØre,
+  description = "Medlemskap PCOS Norge, 1 år",
+): AgreementRequestBody => ({
   interval: {
     unit: "YEAR",
     count: 1,
   },
   initialCharge: {
-    amount: 20000,
-    description: "Medlemskap PCOS Norge, 1 år",
-    transactionType: "DIRECT_CAPTURE",
+    amount: amount,
+    description: description,
+    transactionType: "RESERVE_CAPTURE",
   },
   pricing: {
     type: "LEGACY",
-    amount: 20000,
+    amount: amount,
     currency: "NOK",
   },
-  merchantRedirectUrl: VippsConfig.registerRedirectUri,
-  merchantAgreementUrl: VippsConfig.registerRedirectUri,
-  productName: "Medlemskap PCOS Norge, 1 år",
+  merchantRedirectUrl: config.registerRedirectUri,
+  merchantAgreementUrl: config.merchantAgreementUri,
+  productName: description,
 })
 
-export const AgreementService = {
-  async newAgreement(): Promise<NewAgreementResponse> {
-    const { access_token } = await AccessTokenService.fetchAccessToken()
-    const response = await fetch(VippsConfig.recurringPaymentEndpoint, {
+export class AgreementService {
+  private readonly config: VippsConfigObject
+  private accessTokenService: AccessTokenService
+
+  constructor(config: VippsConfigObject) {
+    this.config = config
+    this.accessTokenService = new AccessTokenService(config)
+  }
+
+  newAgreement = async (): Promise<AgreementResponseBody> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
+    const response = await fetch(this.config.recurringPaymentEndpoint, {
       method: "POST",
-      headers: new HeadersBuilder()
+      headers: new HeadersBuilder(this.config)
         .commonHeaders(access_token)
         .idempotency()
         .build(),
-      body: JSON.stringify(createAgreement()),
+      body: JSON.stringify(createAgreement(this.config)),
     })
-    return await response.json()
-  },
 
-  async getAgreement(id: string): Promise<Agreement | Response> {
-    const { access_token } = await AccessTokenService.fetchAccessToken()
+    if (!response.ok) {
+      const { details, status } = await response.json()
+      throw new PostingAgreementError(details, status)
+    }
+
+    return await response.json()
+  }
+
+  getAgreement = async (id: string): Promise<Agreement> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
-      `${VippsConfig.recurringPaymentEndpoint}/${id}`,
+      `${this.config.recurringPaymentEndpoint}/${id}`,
       {
         method: "GET",
-        headers: new HeadersBuilder().commonHeaders(access_token).build(),
+        headers: new HeadersBuilder(this.config)
+          .commonHeaders(access_token)
+          .build(),
       },
     )
-    return await response.json()
-  },
 
-  async stopAgreement(id: string): Promise<number> {
-    const { access_token } = await AccessTokenService.fetchAccessToken()
+    if (!response.ok) {
+      const { details, status } = await response.json()
+      throw new FetchingAgreementError(id, details, status)
+    }
+
+    return await response.json()
+  }
+
+  stopAgreement = async (id: string): Promise<number> => {
+    const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
-      `${VippsConfig.recurringPaymentEndpoint}/${id}`,
+      `${this.config.recurringPaymentEndpoint}/${id}`,
       {
         method: "PATCH",
-        headers: new HeadersBuilder()
+        headers: new HeadersBuilder(this.config)
           .commonHeaders(access_token)
           .idempotency()
           .build(),
         body: JSON.stringify({ status: "STOPPED" }),
       },
     )
+
+    if (!response.ok) {
+      throw new StoppingAgreementError(id, response.status)
+    }
+
     return response.status
-  },
+  }
+
+  updateAgreement = async ({
+    id,
+    status,
+    start,
+    stop,
+  }: Agreement): Promise<Agreement> => {
+    return updateAgreement(id, status, start, stop)
+  }
+
+  updateAgreementForUser = async (
+    userId: string,
+  ): Promise<Agreement | null> => {
+    return getAgreementForUser(userId)
+      .then((agreement) => {
+        if (!agreement) {
+          throw Error("User is missing agreement")
+        }
+        return this.getAgreement(agreement.id)
+      })
+      .then(({ id, status, stop, start }) =>
+        updateAgreement(id, status, start, stop),
+      )
+      .catch(() => {
+        // Log error?
+        return null
+      })
+  }
+
+  pollAgreementStatus = async (
+    agreementId: string,
+    chargeId: string,
+    tries = 0,
+    limit = 30,
+  ): Promise<Response | void> => {
+    if (tries > limit) {
+      return
+    }
+    return fetch(`${getBaseUrl()}/api/vipps/agreement/update/${agreementId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.VIPPS_CLIENT_SECRET}`,
+      },
+      body: JSON.stringify({
+        chargeId: chargeId,
+        tries: tries + 1,
+      }),
+    })
+  }
+
+  updatePendingAgreements = async (): Promise<void> => {
+    const agreements = await getPendingAgreements()
+
+    for (const agreement of agreements) {
+      this.pollAgreementStatus(agreement.id, agreement.chargeId)
+    }
+  }
 }

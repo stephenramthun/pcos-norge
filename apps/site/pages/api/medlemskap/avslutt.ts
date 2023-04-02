@@ -5,6 +5,11 @@ import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
 import { isUser } from "types/guards"
 import { deleteAgreement } from "db/prisma/dao/agreement"
+import { VippsConfig } from "config/vipps"
+import { EmailService } from "io/email/emailService"
+
+const agreementService = new AgreementService(VippsConfig)
+const emailService = new EmailService()
 
 export default async function avslutt(
   req: NextApiRequest,
@@ -17,8 +22,7 @@ export default async function avslutt(
   }
 
   const id = req.query.agreementId as string
-
-  const status = await AgreementService.stopAgreement(id)
+  const status = await agreementService.stopAgreement(id)
 
   if (status >= 400) {
     return res.redirect(`/feil?status=${status}`).end()
@@ -29,6 +33,8 @@ export default async function avslutt(
   if (!agreement) {
     return res.redirect("/feil")
   }
+
+  await emailService.removeSubscriptions(session.user.id)
 
   return res.status(status).redirect("/min-side")
 }

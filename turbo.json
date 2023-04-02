@@ -7,8 +7,7 @@
     },
     "test": {},
     "cy:test": {
-      "cache": false,
-      "dependsOn": ["db:generate"]
+      "cache": false
     },
     "dev": {
       "cache": false,

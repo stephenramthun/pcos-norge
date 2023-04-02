@@ -47,13 +47,6 @@ type User = {
   phoneNumber: string
 }
 
-type Agreement = {
-  id: string
-  status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
-  start: string | null
-  stop: string | null
-}
-
 type VippsSession = Session & {
   user: Session["user"] & Partial<AdditionalFields>
 }

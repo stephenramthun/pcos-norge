@@ -1,30 +1,36 @@
 import { prisma } from "db/prisma/client";
 import { Agreement, AgreementStatus } from "@prisma/client";
 
-export const getAgreement = async (id: string): Promise<Agreement | null> => {
-  return prisma.agreement.findUnique({ where: { id: id } });
+export const getUnpaidAgreements = async (): Promise<Agreement[]> => {
+  return prisma.agreement.findMany({
+    where: { status: AgreementStatus.ACTIVE, paidDate: undefined },
+  });
 };
 
-export const getAgreementsForUser = async (
+export const getPendingAgreements = async (): Promise<Agreement[]> => {
+  return prisma.agreement.findMany({
+    where: { status: AgreementStatus.PENDING },
+  });
+};
+
+export const getAgreementForUser = async (
   id: string
-): Promise<Agreement[]> => {
+): Promise<Agreement | null> => {
   const result = (await prisma.user.findUnique({
     where: { id: id },
-    select: { agreements: true },
-  })) ?? { agreements: [] };
+    select: { agreement: true },
+  })) ?? { agreement: null };
 
-  return result.agreements as unknown as Agreement[];
+  return result.agreement;
 };
 
 export const hasActiveOrPendingAgreement = async (
   userId: string
 ): Promise<boolean> => {
-  const agreements = await getAgreementsForUser(userId);
+  const agreement = await getAgreementForUser(userId);
   return (
-    agreements.find(
-      (agreement) =>
-        agreement.status === "ACTIVE" || agreement.status === "PENDING"
-    ) !== undefined
+    agreement !== null &&
+    (agreement.status === "ACTIVE" || agreement.status === "PENDING")
   );
 };
 
@@ -32,6 +38,7 @@ export const insertAgreement = async (
   id: string,
   userId: string,
   status: AgreementStatus,
+  chargeId: string,
   start?: string,
   stop?: string
 ): Promise<Agreement> => {
@@ -40,6 +47,7 @@ export const insertAgreement = async (
       id,
       userId,
       status,
+      chargeId,
       start,
       stop,
     },
@@ -49,12 +57,22 @@ export const insertAgreement = async (
 export const updateAgreement = async (
   id: string,
   status: AgreementStatus,
-  start?: string,
-  stop?: string
+  start?: string | null,
+  stop?: string | null
 ): Promise<Agreement> => {
   return prisma.agreement.update({
     where: { id },
     data: { status, start, stop },
+  });
+};
+
+export const updatePaidDate = async (
+  id: string,
+  date = new Date()
+): Promise<Agreement> => {
+  return prisma.agreement.update({
+    where: { id },
+    data: { paidDate: date },
   });
 };
 

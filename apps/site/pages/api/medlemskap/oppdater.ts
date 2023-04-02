@@ -5,6 +5,9 @@ import { authOptions } from "../auth/[...nextauth]"
 import { AgreementService } from "io/vipps/agreementService"
 import { updateAgreement } from "db/prisma/dao/agreement"
 import { isAgreement, isUser } from "types/guards"
+import { VippsConfig } from "config/vipps"
+
+const agreementService = new AgreementService(VippsConfig)
 
 export default async function oppdater(
   req: NextApiRequest,
@@ -17,7 +20,7 @@ export default async function oppdater(
   }
 
   const id = JSON.parse(req.body).agreementId
-  const agreement = await AgreementService.getAgreement(id)
+  const agreement = await agreementService.getAgreement(id)
 
   if (isAgreement(agreement) && agreement.status !== "PENDING") {
     await updateAgreement(id, agreement.status, agreement.start, agreement.stop)

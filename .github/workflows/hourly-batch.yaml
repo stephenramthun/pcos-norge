@@ -1,0 +1,33 @@
+name: Hourly batch
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  batch-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Active pending agreements
+        run: |
+          curl --request POST \
+          --url 'https://www.pcosnorge.no/api/vipps/agreement/batch' \
+          --header 'Authorization: Bearer ${{ secrets.PRODUCTION_VIPPS_CLIENT_SECRET }}'
+      - name: Capture outstanding charges
+        run: |
+          curl --request POST \
+          --url 'https://www.pcosnorge.no/api/vipps/capture' \
+          --header 'Authorization: Bearer ${{ secrets.PRODUCTION_VIPPS_CLIENT_SECRET }}'
+  batch-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Active pending agreements
+        run: |
+          curl --request POST \
+          --url 'https://preview.pcosnorge.no/api/vipps/agreement/batch' \
+          --header 'Authorization: Bearer ${{ secrets.PREVIEW_VIPPS_CLIENT_SECRET }}'
+      - name: Capture outstanding charges
+        run: |
+          curl --request POST \
+          --url 'https://preview.pcosnorge.no/api/vipps/capture' \
+          --header 'Authorization: Bearer ${{ secrets.PREVIEW_VIPPS_CLIENT_SECRET }}'

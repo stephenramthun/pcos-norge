@@ -3,7 +3,7 @@ import { unstable_getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth]"
 import { isUser } from "types/guards"
-import { MinSideService } from "io/api/minSideService"
+import { UserService } from "io/api/userService"
 
 export default async function data(
   req: NextApiRequest,
@@ -15,6 +15,6 @@ export default async function data(
     return res.status(401).end()
   }
 
-  res.send(await MinSideService.getData(session.user.id))
+  res.send(await UserService.getUserData(session.user.id))
   return res.end()
 }
