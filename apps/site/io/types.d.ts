@@ -47,7 +47,10 @@ declare type ChargeResponseBody = {
   id: string
   amount: number
   status: ChargeStatus
-  history: { occurred: string; event: "CREATE" | "RESERVE" | "CAPTURE" }[]
+  history: {
+    occurred: string
+    event: "CREATE" | "RESERVE" | "CAPTURE" | "CANCEL"
+  }[]
 }
 
 declare type UserData = {
