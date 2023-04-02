@@ -1,4 +1,8 @@
-import { EmailDelivery, SubscriptionType } from "@prisma/client";
+import {
+  EmailDelivery,
+  EmailSubscription,
+  SubscriptionType,
+} from "@prisma/client";
 import { prisma } from "../client";
 
 export class EmailDao {
@@ -17,6 +21,15 @@ export class EmailDao {
     });
 
     return subscriptions.map((it) => it.type);
+  };
+
+  removeSubscription = async (
+    userId: string,
+    type: SubscriptionType
+  ): Promise<EmailSubscription> => {
+    return prisma.emailSubscription.delete({
+      where: { userId_type: { userId, type } },
+    });
   };
 
   removeSubscriptions = async (userId: string): Promise<number> => {

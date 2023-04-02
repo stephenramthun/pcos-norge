@@ -16,18 +16,20 @@ import { Content } from "components/Content"
 import { PageContainer } from "components/PageContainer"
 import { Breadcrumbs } from "components/Breadcrumbs"
 import { VippsButton } from "components/VippsButton"
+import { Checkbox } from "components/Checkbox"
 import { Heading } from "components/Heading"
 import { Footer } from "components/Footer"
 import { Button } from "components/Button"
+import { Loader } from "components/Loader"
 import { Main } from "components/Main"
 import { Body } from "components/Body"
 import { isUser } from "types/guards"
 import { useAsyncPolling } from "hooks/useAsyncPolling"
 import { UserService } from "io/api/userService"
+import { MembershipPrice } from "model/membershipPrice"
 
 import styles from "./min-side.module.css"
-import { Loader } from "components/Loader"
-import { MembershipPrice } from "../model/membershipPrice"
+import { capitalize } from "../util/string"
 
 const Unauthorized: React.FC = () => {
   return (
@@ -160,6 +162,22 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
           {new Intl.DateTimeFormat("nb-NO").format(new Date(user.createdAt))}
         </Body>
       </div>
+      <hr />
+      <fieldset>
+        <legend>Jeg ønsker å motta følgende eposter fra PCOS Norge:</legend>
+        {["MEDLEMSBREV", "NYHETSBREV"].map((type) => (
+          <Checkbox
+            key={type}
+            label={capitalize(type)}
+            defaultChecked={data.subscriptions.includes(type)}
+            onChange={(event) => {
+              fetch(`/api/medlemskap/email/${type}`, {
+                method: event.target.checked ? "PUT" : "DELETE",
+              })
+            }}
+          />
+        ))}
+      </fieldset>
       <span className={styles.buttons}>
         <Button onClick={() => signOut({ callbackUrl: "/" })}>Logg ut</Button>
         {agreement?.status === "ACTIVE" && (

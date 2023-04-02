@@ -1,6 +1,6 @@
 import { sendMail, Welcome } from "emails"
 import { EmailDao } from "db/prisma/dao/email"
-import type { SubscriptionType } from "db"
+import type { EmailSubscription, SubscriptionType } from "db"
 
 const emailDao = new EmailDao()
 
@@ -11,12 +11,26 @@ const emailIds = {
 const defaultSubscriptions: SubscriptionType[] = ["MEDLEMSBREV", "NYHETSBREV"]
 
 export class EmailService {
+  addSubscription = async (
+    userId: string,
+    type: SubscriptionType,
+  ): Promise<void> => {
+    return emailDao.subscribe(userId, type)
+  }
+
   addDefaultSubscriptions = async (userId: string): Promise<void> => {
     await emailDao.subscribe(userId, ...defaultSubscriptions)
   }
 
   getSubscriptions = async (userId: string): Promise<SubscriptionType[]> => {
     return emailDao.getSubscriptions(userId)
+  }
+
+  removeSubscription = async (
+    userId: string,
+    type: SubscriptionType,
+  ): Promise<EmailSubscription> => {
+    return emailDao.removeSubscription(userId, type)
   }
 
   removeSubscriptions = async (userId: string): Promise<number> => {
