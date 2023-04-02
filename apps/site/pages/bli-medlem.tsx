@@ -20,6 +20,7 @@ import { SanityImageDocument } from "types/sanity"
 import { getClient } from "io/sanity/client"
 
 import styles from "./bliMedlem.module.css"
+import { MembershipPrice } from "../model/membershipPrice"
 
 interface BliMedlemProps {
   image: Omit<SanityImageDocument, "imageAsset"> & {
@@ -103,7 +104,9 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
                   </Body>
                 </li>
               </ul>
-              <Body>Medlemskap koster 300,- i året.</Body>
+              <Body>
+                Medlemskap koster {MembershipPrice.asKroner},- i året.
+              </Body>
             </div>
             <div>
               <SanityImage

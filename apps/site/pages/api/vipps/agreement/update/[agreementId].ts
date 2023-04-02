@@ -31,6 +31,8 @@ export default async function updateAgreement(
     return res.end()
   }
 
+  await agreementService.updateAgreement(agreement)
+
   if (agreement.status === "PENDING") {
     await new Promise((resolve) => setTimeout(resolve, WAIT_MS))
     agreementService.pollAgreementStatus(
@@ -41,8 +43,6 @@ export default async function updateAgreement(
   } else if (agreement.status === "ACTIVE") {
     chargeService.pollChargeCapture(agreementId, req.body.chargeId)
   }
-
-  await agreementService.updateAgreement(agreement)
 
   return res.end()
 }

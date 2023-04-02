@@ -27,6 +27,7 @@ import { UserService } from "io/api/userService"
 
 import styles from "./min-side.module.css"
 import { Loader } from "components/Loader"
+import { MembershipPrice } from "../model/membershipPrice"
 
 const Unauthorized: React.FC = () => {
   return (
@@ -105,7 +106,7 @@ const Authorized: React.FC<AuthorizedProps> = ({ user, initialData }) => {
             alle med PCOS i Norge? Forny medlemskapet ditt ved å klikke på
             knappen under.
           </Body>
-          <Body>Medlemskap koster 200,- per år.</Body>
+          <Body>Medlemskap koster {MembershipPrice.asKroner},- per år.</Body>
           <VippsButton
             variant="register"
             onClick={() => router.push("/api/medlemskap/registrer")}

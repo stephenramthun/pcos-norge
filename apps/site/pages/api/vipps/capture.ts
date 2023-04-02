@@ -22,7 +22,7 @@ export default async function capture(
   res: NextApiResponse,
 ): Promise<NextApiResponse> {
   if (!validateMethod(req, res) || !validateAuthorization(req, res)) {
-    return res
+    return res.status(400).end()
   }
 
   await chargeService.chargeUnpaidAgreements()

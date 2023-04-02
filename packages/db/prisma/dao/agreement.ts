@@ -7,6 +7,12 @@ export const getUnpaidAgreements = async (): Promise<Agreement[]> => {
   });
 };
 
+export const getPendingAgreements = async (): Promise<Agreement[]> => {
+  return prisma.agreement.findMany({
+    where: { status: AgreementStatus.PENDING },
+  });
+};
+
 export const getAgreement = async (id: string): Promise<Agreement | null> => {
   return prisma.agreement.findUnique({ where: { id: id } });
 };

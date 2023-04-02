@@ -1,16 +1,21 @@
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { AccessTokenService } from "io/vipps/accessTokenService"
-import { getAgreementForUser, updateAgreement } from "db/prisma/dao/agreement"
+import {
+  getAgreementForUser,
+  getPendingAgreements,
+  updateAgreement,
+} from "db/prisma/dao/agreement"
 import {
   FetchingAgreementError,
   PostingAgreementError,
   StoppingAgreementError,
 } from "io/vipps/errors"
 import { getBaseUrl } from "config/path"
+import { MembershipPrice } from "../../model/membershipPrice"
 
 const createAgreement = (
   config: VippsConfigObject,
-  amount = 20000,
+  amount = MembershipPrice.asØre,
   description = "Medlemskap PCOS Norge, 1 år",
 ): AgreementRequestBody => ({
   interval: {
@@ -149,5 +154,13 @@ export class AgreementService {
         tries: tries + 1,
       }),
     })
+  }
+
+  updatePendingAgreements = async (): Promise<void> => {
+    const agreements = await getPendingAgreements()
+
+    for (const agreement of agreements) {
+      this.pollAgreementStatus(agreement.id, agreement.chargeId)
+    }
   }
 }
