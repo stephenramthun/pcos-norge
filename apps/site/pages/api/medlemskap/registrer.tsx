@@ -9,8 +9,10 @@ import {
 } from "db/prisma/dao/agreement"
 import { isUser } from "types/guards"
 import { VippsConfig } from "config/vipps"
+import { EmailService } from "io/email/emailService"
 
 const agreementService = new AgreementService(VippsConfig)
+const emailService = new EmailService()
 
 export default async function registrer(
   req: NextApiRequest,
@@ -37,6 +39,7 @@ export default async function registrer(
   )
 
   if (agreement) {
+    await emailService.addDefaultSubscriptions(session.user.id)
     return res.redirect(vippsConfirmationUrl).end()
   }
 

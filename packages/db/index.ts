@@ -1,5 +1,10 @@
 import { prisma } from "./prisma/client";
-import { Agreement, AgreementStatus } from "@prisma/client";
+import {
+  Agreement,
+  AgreementStatus,
+  EmailSubscription,
+  SubscriptionType,
+} from "@prisma/client";
 
-export { prisma, AgreementStatus };
-export type { Agreement };
+export { prisma, AgreementStatus, SubscriptionType };
+export type { Agreement, EmailSubscription };

@@ -226,12 +226,13 @@ export async function getServerSideProps(
         session: null,
         initialData: {
           agreement: null,
+          subscriptions: [],
         },
       },
     }
   }
 
-  const initialData = await UserService.getUpdatedAgreement(session.user.id)
+  const initialData = await UserService.getUserData(session.user.id)
 
   return {
     props: {

@@ -52,6 +52,7 @@ declare type ChargeResponseBody = {
 
 declare type UserData = {
   agreement: Agreement | null
+  subscriptions: string[]
 }
 
 declare type ErrorResponse = {

@@ -1,5 +1,6 @@
 import { AgreementService } from "io/vipps/agreementService"
 import { VippsConfig } from "config/vipps"
+import { EmailService } from "io/email/emailService"
 
 const mapAgreement = (agreement: Agreement): Agreement => ({
   id: agreement.id,
@@ -9,13 +10,16 @@ const mapAgreement = (agreement: Agreement): Agreement => ({
 })
 
 const agreementService = new AgreementService(VippsConfig)
+const emailService = new EmailService()
 
 export const UserService = {
-  async getUpdatedAgreement(userId: string): Promise<UserData> {
+  async getUserData(userId: string): Promise<UserData> {
     const agreement = await agreementService.updateAgreementForUser(userId)
+    const subscriptions = await emailService.getSubscriptions(userId)
 
     return {
       agreement: agreement ? mapAgreement(agreement) : null,
+      subscriptions,
     }
   },
 }

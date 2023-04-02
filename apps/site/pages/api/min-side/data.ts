@@ -15,6 +15,6 @@ export default async function data(
     return res.status(401).end()
   }
 
-  res.send(await UserService.getUpdatedAgreement(session.user.id))
+  res.send(await UserService.getUserData(session.user.id))
   return res.end()
 }
