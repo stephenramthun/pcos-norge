@@ -52,6 +52,7 @@ model User {
   sessions          Session[]
   agreement         Agreement?
   EmailSubscription EmailSubscription[]
+  EmailDelivery     EmailDelivery[]
 }
 
 model VerificationToken {
@@ -91,4 +92,12 @@ model EmailSubscription {
 enum SubscriptionType {
   MEDLEMSBREV
   NYHETSBREV
+}
+
+model EmailDelivery {
+  user    User   @relation(references: [id], fields: [userId])
+  userId  String
+  emailId String
+
+  @@unique([userId, emailId])
 }

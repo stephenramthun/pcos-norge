@@ -18,3 +18,6 @@ jobs:
           curl --request POST \
           --url 'https://www.pcosnorge.no/api/vipps/capture' \
           --header 'Authorization: Bearer ${{ secrets.PRODUCTION_VIPPS_CLIENT_SECRET }}'
+
+
+curl --request POST --url 'https://www.pcosnorge.no/api/vipps/capture' --header 'Authorization: Bearer -wQHNDIU2A1z2ZBy24eYFmpI1_Q='

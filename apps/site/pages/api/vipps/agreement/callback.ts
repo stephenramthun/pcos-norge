@@ -37,6 +37,7 @@ export default async function callback(
     remoteAgreement.status === "ACTIVE"
   ) {
     await emailService.sendWelcomeMail(
+      session.user.id,
       session.user.email,
       session.user.givenName,
     )

@@ -67,7 +67,17 @@ export class ChargeService {
         const charges = await this.getCharges(agreement.id)
         for (const charge of charges) {
           if (charge.status === "CHARGED") {
-            const chargedDate = new Date(charge.history.slice(-1)[0].occurred)
+            const captureEvent = charge.history.find(
+              ({ event }) => event === "CAPTURE",
+            )
+            const chargedDate = captureEvent
+              ? new Date(captureEvent.occurred)
+              : new Date()
+            console.log(
+              "Found charge with stale db state",
+              chargedDate,
+              charge.id,
+            )
             updatePaidDate(agreement.id, chargedDate)
             continue
           }
