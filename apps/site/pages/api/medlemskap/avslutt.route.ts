@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { unstable_getServerSession } from "next-auth"
+import { getServerSession } from "next-auth"
 
-import { authOptions } from "../auth/[...nextauth]"
+import { authOptions } from "../auth/[...nextauth].route"
 import { AgreementService } from "io/vipps/agreementService"
 import { isUser } from "types/guards"
 import { deleteAgreement } from "db/prisma/dao/agreement"
@@ -15,7 +15,7 @@ export default async function avslutt(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<NextApiResponse> {
-  const session = await unstable_getServerSession(req, res, authOptions)
+  const session = await getServerSession(req, res, authOptions)
 
   if (!session || !isUser(session.user)) {
     return res.status(401).end()

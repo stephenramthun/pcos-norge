@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { validateAuthorization } from "auth/index"
-import { validateMethod } from "../capture"
+import { validateMethod } from "../capture.route"
 import { AgreementService } from "io/vipps/agreementService"
 import { VippsConfig } from "config/vipps"
 
