@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { EmailService } from "io/email/emailService"
 import { getServerSession } from "next-auth"
-import { authOptions } from "../../auth/[...nextauth]"
+import { authOptions } from "../../auth/[...nextauth].route"
 import { isUser } from "types/guards"
 import type { SubscriptionType } from "db"
 

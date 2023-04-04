@@ -8,6 +8,7 @@ module.exports = withAxiom({
     loader: "custom",
     domains: ["cdn.sanity.io"],
   },
+  pageExtensions: ["page.tsx", "route.tsx", "route.ts"],
   productionBrowserSourceMaps: true,
   transpilePackages: ["db", "emails"],
   webpack: (config) => {
