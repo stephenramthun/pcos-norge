@@ -10,9 +10,14 @@ export class EmailDao {
     userId: string,
     ...types: SubscriptionType[]
   ): Promise<void> => {
-    await prisma.emailSubscription.createMany({
-      data: types.map((it) => ({ userId, type: it })),
-    });
+    await prisma.$transaction([
+      prisma.emailSubscription.deleteMany({
+        where: { userId },
+      }),
+      prisma.emailSubscription.createMany({
+        data: types.map((it) => ({ userId, type: it })),
+      }),
+    ]);
   };
 
   getSubscriptions = async (userId: string): Promise<SubscriptionType[]> => {

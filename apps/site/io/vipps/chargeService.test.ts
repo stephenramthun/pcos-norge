@@ -37,13 +37,13 @@ describe("chargeService", () => {
         id: "charge-1",
         amount: 2000,
         status: "RESERVED",
-        history: [{ occurred: "2020-01-01" }],
+        history: [{ occurred: "2020-01-01", event: "RESERVE" }],
       },
       {
         id: "charge-2",
         amount: 4000,
         status: "CHARGED",
-        history: [{ occurred: "2020-01-01" }],
+        history: [{ occurred: "2020-01-01", event: "CAPTURE" }],
       },
     ]
 
@@ -103,19 +103,19 @@ describe("chargeService", () => {
         id: "charge-1",
         amount: 2000,
         status: "RESERVED",
-        history: [{ occurred: "2020-01-01" }],
+        history: [{ occurred: "2020-01-01", event: "RESERVE" }],
       },
       {
         id: "charge-2",
         amount: 4000,
         status: "CHARGED",
-        history: [{ occurred: "2020-01-01" }],
+        history: [{ occurred: "2020-01-01", event: "CAPTURE" }],
       },
       {
         id: "charge-3",
         amount: 4000,
         status: "CANCELLED",
-        history: [{ occurred: "2020-01-01" }],
+        history: [{ occurred: "2020-01-01", event: "CANCEL" }],
       },
     ]
 
@@ -130,21 +130,20 @@ describe("chargeService", () => {
       },
     ])
 
-    const chargeService = new ChargeService(vippsConfig)
-
     mockGetCharges(agreementId, charges)
     mockCaptureCharge(agreementId, "charge-1")
 
+    const chargeService = new ChargeService(vippsConfig)
     await chargeService.chargeUnpaidAgreements()
 
     await waitFor(() => {
       expect(updatePaidDateMock).toHaveBeenCalledTimes(2)
+      expect(updatePaidDateMock).toHaveBeenNthCalledWith(1, agreementId)
       expect(updatePaidDateMock).toHaveBeenNthCalledWith(
-        1,
+        2,
         agreementId,
         new Date("2020-01-01"),
       )
-      expect(updatePaidDateMock).toHaveBeenNthCalledWith(2, agreementId)
     })
   })
 })

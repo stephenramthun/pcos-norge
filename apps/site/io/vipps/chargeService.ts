@@ -73,11 +73,6 @@ export class ChargeService {
             const chargedDate = captureEvent
               ? new Date(captureEvent.occurred)
               : new Date()
-            console.log(
-              "Found charge with stale db state",
-              chargedDate,
-              charge.id,
-            )
             await updatePaidDate(agreement.id, chargedDate)
             continue
           }

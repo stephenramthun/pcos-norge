@@ -42,8 +42,16 @@ export const insertAgreement = async (
   start?: string,
   stop?: string
 ): Promise<Agreement> => {
-  return prisma.agreement.create({
-    data: {
+  return prisma.agreement.upsert({
+    where: { userId },
+    update: {
+      id,
+      status,
+      chargeId,
+      start,
+      stop,
+    },
+    create: {
       id,
       userId,
       status,
