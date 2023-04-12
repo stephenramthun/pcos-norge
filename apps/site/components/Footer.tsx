@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import { FacebookLogo, InstagramLogo } from "phosphor-react"
+import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react"
 
 import { Logo } from "./Logo"
 import { Body } from "./Body"

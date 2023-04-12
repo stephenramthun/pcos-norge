@@ -1,6 +1,6 @@
 import React from "react"
 import classNames from "classnames"
-import { ArrowSquareOut } from "phosphor-react"
+import { ArrowSquareOut } from "@phosphor-icons/react"
 
 import { Link } from "components/Link"
 import { UseReferenceLinksResult } from "hooks/useReferenceLinks"
