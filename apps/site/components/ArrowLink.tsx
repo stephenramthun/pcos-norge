@@ -1,6 +1,6 @@
 import React from "react"
 import classNames from "classnames"
-import { ArrowRight } from "phosphor-react"
+import { ArrowRight } from "@phosphor-icons/react"
 
 import styles from "./ArrowLink.module.css"
 

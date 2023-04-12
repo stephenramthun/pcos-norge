@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, useState } from "react"
 import classNames from "classnames"
-import { List } from "phosphor-react"
+import { List } from "@phosphor-icons/react"
 
 import styles from "./HamburgerMenu.module.css"
 

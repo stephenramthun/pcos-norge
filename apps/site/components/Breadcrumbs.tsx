@@ -1,6 +1,6 @@
 import React from "react"
 import classNames from "classnames"
-import { CaretRight } from "phosphor-react"
+import { CaretRight } from "@phosphor-icons/react"
 
 import { Link } from "components/Header"
 import { Body } from "components/Body"
