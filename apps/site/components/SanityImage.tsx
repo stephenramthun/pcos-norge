@@ -1,6 +1,6 @@
 import { SanityReference } from "@sanity/image-url/lib/types/types"
 import { ImageAsset } from "@sanity/types"
-import NextImage, { ImageProps as NextImageProps } from "next/image"
+import Image, { ImageProps } from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
 import React from "react"
 
@@ -12,10 +12,10 @@ const isImageAsset = (
   return asset._ref === undefined
 }
 
-interface SanityImageProps extends Omit<NextImageProps, "src" | "alt"> {
+interface SanityImageProps extends Omit<ImageProps, "src" | "alt"> {
   asset: ImageAsset | SanityReference
   alt?: string
-  layout?: NextImageProps["layout"]
+  layout?: ImageProps["layout"]
   maxWidth?: number
 }
 
@@ -25,7 +25,7 @@ export const SanityImage: React.FC<SanityImageProps> = ({
   maxWidth,
   ...imgProps
 }) => {
-  const imageProps = useNextSanityImage(
+  const { width, height, ...imageProps } = useNextSanityImage(
     getClient(),
     isImageAsset(asset) ? asset : asset._ref,
     maxWidth
@@ -40,5 +40,13 @@ export const SanityImage: React.FC<SanityImageProps> = ({
       : undefined,
   )
 
-  return <NextImage {...imgProps} {...imageProps} alt={alt} />
+  return (
+    <Image
+      {...imageProps}
+      {...imgProps}
+      alt={alt}
+      width={imgProps.fill ? undefined : width}
+      height={imgProps.fill ? undefined : height}
+    />
+  )
 }

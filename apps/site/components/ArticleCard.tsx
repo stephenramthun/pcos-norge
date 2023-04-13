@@ -38,7 +38,12 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       {...elementProps}
     >
       <div className={styles.imageContainer}>
-        <SanityImage alt={image.alt ?? ""} asset={image.asset} />
+        <SanityImage
+          alt={image.alt ?? ""}
+          asset={image.asset}
+          maxWidth={800}
+          fill
+        />
       </div>
       <Body suppressHydrationWarning className={styles.date}>
         {date}

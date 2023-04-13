@@ -10,14 +10,11 @@
   gap: 64px;
 }
 
-.pitch > * {
-  flex: 1;
-}
-
 .pitch .textContainer {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  height: max-content;
 }
 
 .list {
@@ -39,8 +36,23 @@
   gap: 16px;
 }
 
-@media only screen and (max-width: 750px) {
+.imageContainer {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+.imageContainer img {
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1000px) {
   .pitch {
     flex-direction: column;
+  }
+
+  .imageContainer {
+    width: 100%;
+    flex: unset;
   }
 }

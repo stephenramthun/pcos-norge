@@ -30,7 +30,12 @@ export const usePageComponents = (): Partial<PortableTextReactComponents> => {
       imageAsset: ({ value }: ComponentProps<SanityImageAsset>) => {
         return (
           <Content>
-            <SanityImage asset={value.asset} alt={value.alt} />
+            <SanityImage
+              asset={value.asset}
+              alt={value.alt}
+              maxWidth={2000}
+              fill
+            />
           </Content>
         )
       },

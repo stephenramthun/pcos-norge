@@ -108,12 +108,12 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
                 Medlemskap koster {MembershipPrice.asKroner},- i året.
               </Body>
             </div>
-            <div>
+            <div className={styles.imageContainer}>
               <SanityImage
                 asset={props.image.asset}
                 alt={props.image.alt}
-                layout="intrinsic"
                 maxWidth={1000}
+                fill
               />
             </div>
           </section>

@@ -5,6 +5,7 @@ import React from "react"
 import { Body } from "components/Body"
 import { FactBox } from "components/FactBox"
 import { Heading } from "components/Heading"
+import { ImageContainer } from "components/ImageContainer"
 import { Link } from "components/Link"
 import { SanityImage } from "components/SanityImage"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
@@ -24,16 +25,20 @@ export const usePortableTextComponents = (
     types: {
       imageAsset: ({ value }: ComponentProps<SanityImageAsset>) => {
         return (
-          <span>
-            <SanityImage
-              className={styles.Image}
-              asset={value.asset}
-              alt={value.alt}
-            />
+          <>
+            <ImageContainer>
+              <SanityImage
+                className={styles.Image}
+                asset={value.asset}
+                alt={value.alt}
+                fill
+                maxWidth={2000}
+              />
+            </ImageContainer>
             {value.text && (
               <Body className={styles.imageText}>{value.text}</Body>
             )}
-          </span>
+          </>
         )
       },
       factBox: ({ value }) => {

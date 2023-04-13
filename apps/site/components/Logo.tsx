@@ -29,6 +29,8 @@ export const Logo: React.FC<LogoProps> = ({
           className={styles.image}
           unoptimized
           priority={priority}
+          width={400}
+          height={400}
         />
       </a>
     </Link>
