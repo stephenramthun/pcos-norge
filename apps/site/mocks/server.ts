@@ -118,3 +118,11 @@ export const mockCaptureError = (
     ),
   )
 }
+
+export const mockUpdateInfoError = (): void => {
+  server.use(
+    rest.put(`/api/medlemskap/info`, (req, res, context) => {
+      return res(context.status(400))
+    }),
+  )
+}

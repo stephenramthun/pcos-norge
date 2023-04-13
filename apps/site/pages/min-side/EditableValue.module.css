@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  gap: 8px;
+}
+
+.container p,
+.container input {
+  width: max-content;
+}
+
+.container input {
+  font-family: inherit;
+  height: var(--line-height-body);
+}

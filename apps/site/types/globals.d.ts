@@ -35,18 +35,22 @@ declare type MetadataImage = {
   }
 }
 
-type User = {
-  id: string
-  name: string
+declare type UserInfo = {
   givenName: string
+  familyName: string
   email: string
   streetAddress: string
   postalCode: string
   region: string
-  createdAt: Date
   phoneNumber: string
 }
 
-type VippsSession = Session & {
+declare type User = UserInfo & {
+  id: string
+  name: string
+  createdAt: Date
+}
+
+declare type VippsSession = Session & {
   user: Session["user"] & Partial<AdditionalFields>
 }

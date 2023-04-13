@@ -72,11 +72,13 @@ export const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
         Min side
       </Heading>
       <UserInfo
-        name={user.name}
+        givenName={user.givenName}
+        familyName={user.familyName}
         streetAddress={user.streetAddress}
         postalCode={user.postalCode}
         region={user.region}
         email={user.email}
+        phoneNumber={user.phoneNumber}
       />
       <hr />
       {data && hasAgreement && (
