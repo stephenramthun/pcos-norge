@@ -1,6 +1,6 @@
-import React from "react"
-import classNames from "classnames"
 import { CheckCircle, WarningCircle } from "@phosphor-icons/react"
+import classNames from "classnames"
+import React from "react"
 
 import styles from "./Alert.module.css"
 

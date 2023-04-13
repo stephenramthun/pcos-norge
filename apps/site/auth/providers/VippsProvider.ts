@@ -1,5 +1,6 @@
-import { Provider } from "next-auth/providers"
 import { nanoid } from "nanoid"
+import { Provider } from "next-auth/providers"
+
 import { VippsConfig } from "config/vipps"
 
 type VippsUserInfo = {

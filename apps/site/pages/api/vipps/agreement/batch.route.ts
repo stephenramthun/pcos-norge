@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { validateAuthorization } from "auth/index"
+
 import { validateMethod } from "../capture.route"
-import { AgreementService } from "io/vipps/agreementService"
+import { validateAuthorization } from "auth/index"
 import { VippsConfig } from "config/vipps"
+import { AgreementService } from "io/vipps/agreementService"
 
 const agreementService = new AgreementService(VippsConfig)
 

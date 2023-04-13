@@ -1,10 +1,12 @@
-import { UserInfoForm } from "./UserInfoForm"
+import { expect } from "@jest/globals"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { expect } from "@jest/globals"
 import { act } from "react-dom/test-utils"
-import { mockUpdateInfoError } from "mocks/server"
+
 import { userInfo } from "mocks/data"
+import { mockUpdateInfoError } from "mocks/server"
+
+import { UserInfoForm } from "./UserInfoForm"
 
 describe("UserInfoForm", () => {
   const testData = userInfo()

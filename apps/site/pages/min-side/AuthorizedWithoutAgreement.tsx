@@ -1,8 +1,10 @@
+import { signOut } from "next-auth/react"
 import React from "react"
-import styles from "./min-side.module.css"
+
 import { Body } from "components/Body"
 import { Button } from "components/Button"
-import { signOut } from "next-auth/react"
+
+import styles from "./min-side.module.css"
 
 export const AuthorizedWithoutAgreement: React.FC = () => {
   return (

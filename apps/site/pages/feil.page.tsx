@@ -1,16 +1,16 @@
-import React, { ReactNode } from "react"
 import { NextPage } from "next"
 import { useRouter } from "next/router"
+import React, { ReactNode } from "react"
 
-import { PageContainer } from "components/PageContainer"
+import { Body } from "components/Body"
+import { Breadcrumbs } from "components/Breadcrumbs"
+import { Content } from "components/Content"
+import { Footer } from "components/Footer"
 import { Head } from "components/Head"
 import { Header } from "components/Header"
-import { Main } from "components/Main"
-import { Footer } from "components/Footer"
-import { Content } from "components/Content"
 import { Heading } from "components/Heading"
-import { Breadcrumbs } from "components/Breadcrumbs"
-import { Body } from "components/Body"
+import { Main } from "components/Main"
+import { PageContainer } from "components/PageContainer"
 
 const getHeading = (status: number): string => {
   switch (status) {

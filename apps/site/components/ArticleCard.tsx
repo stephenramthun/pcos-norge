@@ -1,9 +1,9 @@
-import React from "react"
 import classNames from "classnames"
+import React from "react"
 
+import { ArrowLink } from "components/ArrowLink"
 import { Body } from "components/Body"
 import { Heading } from "components/Heading"
-import { ArrowLink } from "components/ArrowLink"
 import { SanityImage } from "components/SanityImage"
 import { useLocaleDateString } from "hooks/useLocaleDateString"
 import { SanityImageAsset } from "types/sanity"

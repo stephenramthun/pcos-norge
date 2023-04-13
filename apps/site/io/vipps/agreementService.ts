@@ -1,17 +1,18 @@
-import { HeadersBuilder } from "io/vipps/headersBuilder"
-import { AccessTokenService } from "io/vipps/accessTokenService"
 import {
   getAgreementForUser,
   getPendingAgreements,
   updateAgreement,
 } from "db/prisma/dao/agreement"
+
+import { MembershipPrice } from "../../model/membershipPrice"
+import { getBaseUrl } from "config/path"
+import { AccessTokenService } from "io/vipps/accessTokenService"
 import {
   FetchingAgreementError,
   PostingAgreementError,
   StoppingAgreementError,
 } from "io/vipps/errors"
-import { getBaseUrl } from "config/path"
-import { MembershipPrice } from "../../model/membershipPrice"
+import { HeadersBuilder } from "io/vipps/headersBuilder"
 
 const createAgreement = (
   config: VippsConfigObject,

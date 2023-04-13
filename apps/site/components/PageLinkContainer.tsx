@@ -1,12 +1,11 @@
 import React from "react"
 
+import { ArrowLink } from "components/ArrowLink"
 import { Body } from "components/Body"
 import { Content } from "components/Content"
 import { Heading } from "components/Heading"
-import { ArrowLink } from "components/ArrowLink"
-import { SanityPageLink } from "types/sanity"
-
 import styles from "hooks/usePortableTextComponents.module.css"
+import { SanityPageLink } from "types/sanity"
 
 interface PageLinkContainerProps {
   links: SanityPageLink[]

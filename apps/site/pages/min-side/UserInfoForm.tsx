@@ -1,5 +1,6 @@
-import React, { useState } from "react"
 import { Check, PencilSlash } from "@phosphor-icons/react"
+import classNames from "classnames"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 
 import { Body } from "components/Body"
@@ -12,7 +13,6 @@ import {
 } from "util/form"
 
 import styles from "./UserInfoForm.module.css"
-import classNames from "classnames"
 
 interface Props {
   givenName: string

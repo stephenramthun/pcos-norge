@@ -1,4 +1,11 @@
+import { expect } from "@jest/globals"
+
 import { AgreementService } from "io/vipps/agreementService"
+import {
+  FetchingAgreementError,
+  PostingAgreementError,
+  StoppingAgreementError,
+} from "io/vipps/errors"
 import { vippsConfig } from "mocks/config"
 import {
   mockGetAgreementError,
@@ -6,12 +13,6 @@ import {
   mockPostAgreementError,
   mockStopAgreementError,
 } from "mocks/server"
-import { expect } from "@jest/globals"
-import {
-  FetchingAgreementError,
-  PostingAgreementError,
-  StoppingAgreementError,
-} from "io/vipps/errors"
 
 describe("agreementService", () => {
   it("posts new agreement", async () => {

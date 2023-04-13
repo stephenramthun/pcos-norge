@@ -1,5 +1,5 @@
-import { ImageAsset } from "@sanity/types"
 import { SanityReference } from "@sanity/image-url/lib/types/types"
+import { ImageAsset } from "@sanity/types"
 
 export type SanityDocument = {
   _id: string

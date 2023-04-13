@@ -1,12 +1,12 @@
-import React from "react"
 import { PortableTextReactComponents } from "@portabletext/react"
+import React from "react"
 
-import { Hero } from "components/Hero"
-import { SanityImage } from "components/SanityImage"
-import { Content } from "components/Content"
-import { PeopleContainer } from "components/PeopleContainer"
-import { PageLinkContainer } from "components/PageLinkContainer"
 import { BlockContentContainer } from "components/BlockContentContainer"
+import { Content } from "components/Content"
+import { Hero } from "components/Hero"
+import { PageLinkContainer } from "components/PageLinkContainer"
+import { PeopleContainer } from "components/PeopleContainer"
+import { SanityImage } from "components/SanityImage"
 import {
   SanityBodyText,
   SanityImageAsset,

@@ -1,13 +1,15 @@
-import React from "react"
-import styles from "./min-side.module.css"
-import { Body } from "components/Body"
 import dayjs from "dayjs"
-import { Loader } from "components/Loader"
-import { Checkbox } from "components/Checkbox"
-import { capitalize } from "../../util/string"
-import { Button } from "components/Button"
-import { signOut } from "next-auth/react"
 import { useRouter } from "next/router"
+import { signOut } from "next-auth/react"
+import React from "react"
+
+import { Body } from "components/Body"
+import { Button } from "components/Button"
+import { Checkbox } from "components/Checkbox"
+import { Loader } from "components/Loader"
+import { capitalize } from "util/string"
+
+import styles from "./min-side.module.css"
 
 interface Props {
   user: User

@@ -1,9 +1,11 @@
-import { render, screen, waitFor } from "@testing-library/react"
-import { UserInfo } from "./UserInfo"
-import { userInfo } from "mocks/data"
 import { expect } from "@jest/globals"
-import { act } from "react-dom/test-utils"
+import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import { act } from "react-dom/test-utils"
+
+import { userInfo } from "mocks/data"
+
+import { UserInfo } from "./UserInfo"
 
 describe("UserInfo", () => {
   const testData = userInfo()

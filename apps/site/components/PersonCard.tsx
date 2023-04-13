@@ -1,13 +1,14 @@
-import React, { HTMLAttributes } from "react"
+import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 import classNames from "classnames"
 import Image from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
-import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import React, { HTMLAttributes } from "react"
 
 import { Link } from "components/Link"
 import { getClient } from "io/sanity/client"
 
 import styles from "./PersonCard.module.css"
+
 import avatar from "public/avatar.svg"
 
 type PersonCardProps = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
@@ -17,7 +18,7 @@ type PersonCardProps = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   email?: string
 }
 
-export const PersonCard: React.VFC<PersonCardProps> = ({
+export const PersonCard: React.FC<PersonCardProps> = ({
   name,
   capacity,
   image,

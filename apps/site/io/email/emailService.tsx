@@ -1,6 +1,6 @@
-import { sendMail, Welcome } from "emails"
-import { EmailDao } from "db/prisma/dao/email"
 import type { EmailSubscription, SubscriptionType } from "db"
+import { EmailDao } from "db/prisma/dao/email"
+import { sendMail, Welcome } from "emails"
 
 const emailDao = new EmailDao()
 

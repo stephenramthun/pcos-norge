@@ -1,11 +1,11 @@
+import { updateAgreement } from "db/prisma/dao/agreement"
 import { NextApiRequest, NextApiResponse } from "next"
 import { unstable_getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth].route"
-import { AgreementService } from "io/vipps/agreementService"
-import { updateAgreement } from "db/prisma/dao/agreement"
-import { isAgreement, isUser } from "types/guards"
 import { VippsConfig } from "config/vipps"
+import { AgreementService } from "io/vipps/agreementService"
+import { isAgreement, isUser } from "types/guards"
 
 const agreementService = new AgreementService(VippsConfig)
 

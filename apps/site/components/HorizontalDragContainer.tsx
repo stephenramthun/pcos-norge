@@ -1,5 +1,5 @@
-import React, { useRef } from "react"
 import classNames from "classnames"
+import React, { useRef } from "react"
 
 import styles from "./HorizontalDragContainer.module.css"
 

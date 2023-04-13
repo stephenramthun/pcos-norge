@@ -1,9 +1,10 @@
-import { NextApiRequest, NextApiResponse } from "next"
-import { EmailService } from "io/email/emailService"
-import { getServerSession } from "next-auth"
-import { authOptions } from "../../auth/[...nextauth].route"
-import { isUser } from "types/guards"
 import type { SubscriptionType } from "db"
+import { NextApiRequest, NextApiResponse } from "next"
+import { getServerSession } from "next-auth"
+
+import { authOptions } from "../../auth/[...nextauth].route"
+import { EmailService } from "io/email/emailService"
+import { isUser } from "types/guards"
 
 const emailService = new EmailService()
 

@@ -1,6 +1,7 @@
-import { renderHook } from "@testing-library/react"
-import { useLocaleDateString } from "hooks/useLocaleDateString"
 import { expect } from "@jest/globals"
+import { renderHook } from "@testing-library/react"
+
+import { useLocaleDateString } from "hooks/useLocaleDateString"
 
 describe("useLocaleDateString", () => {
   it("takes a date object and returns a formatted locale date string", () => {

@@ -1,13 +1,14 @@
+import { getUserInfo, updateUser } from "db/prisma/dao/user"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getServerSession } from "next-auth"
-import { isUser } from "types/guards"
+
 import { authOptions } from "../auth/[...nextauth].route"
+import { isUser } from "types/guards"
 import {
   validateEmail,
   validatePhoneNumber,
   validatePostalCode,
 } from "util/form"
-import { getUserInfo, updateUser } from "db/prisma/dao/user"
 
 const hasValidStringValue = (
   body: Record<string, string>,

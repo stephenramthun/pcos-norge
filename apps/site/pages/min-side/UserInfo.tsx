@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react"
 import { Pencil } from "@phosphor-icons/react"
 import { AnimatePresence, motion } from "framer-motion"
+import React, { useEffect, useState } from "react"
 
-import { Body } from "components/Body"
 import { Alert } from "components/Alert"
+import { Body } from "components/Body"
 import { asPhoneNumber } from "util/string"
+
 import { UserInfoForm } from "./UserInfoForm"
 
 import styles from "./UserInfo.module.css"
@@ -116,7 +117,7 @@ export const UserInfo: React.FC<Props> = (props) => {
                     exit={{ y: 10, opacity: 0 }}
                   >
                     <Alert variant="success">
-                      <Body>Oppdaterte kontaktinfo</Body>
+                      <Body>Endringen var vellykket</Body>
                     </Alert>
                   </motion.div>
                 )}

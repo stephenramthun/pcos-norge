@@ -1,7 +1,8 @@
-import React, { FormEvent, useRef, useState } from "react"
 import { Check, Pencil, PencilSlash } from "@phosphor-icons/react"
+import React, { FormEvent, useRef, useState } from "react"
 
 import { Body } from "components/Body"
+
 import { EditButton } from "./EditButton"
 
 import styles from "./Address.module.css"

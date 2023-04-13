@@ -1,5 +1,5 @@
-import React from "react"
 import { PortableText } from "@portabletext/react"
+import React from "react"
 
 import { Content } from "components/Content"
 import { usePortableTextComponents } from "hooks/usePortableTextComponents"

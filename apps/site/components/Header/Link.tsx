@@ -1,6 +1,6 @@
-import React from "react"
 import classNames from "classnames"
 import { useRouter } from "next/router"
+import React from "react"
 
 import styles from "./Link.module.css"
 

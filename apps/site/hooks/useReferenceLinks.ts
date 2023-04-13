@@ -1,8 +1,8 @@
-import { ReactNode, useMemo } from "react"
 import {
   PortableTextBlock,
   PortableTextMarkDefinition,
 } from "@portabletext/types"
+import { ReactNode, useMemo } from "react"
 
 type ReferenceLinkMarkDef = {
   href: string

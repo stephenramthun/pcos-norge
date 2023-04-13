@@ -1,13 +1,15 @@
-import React from "react"
-import Image from "next/image"
 import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react"
+import Image from "next/image"
+import React from "react"
 
-import { Logo } from "./Logo"
-import { Body } from "./Body"
-import { Content } from "./Content"
 import { Link } from "components/Link"
 
+import { Body } from "./Body"
+import { Content } from "./Content"
+import { Logo } from "./Logo"
+
 import styles from "./Footer.module.css"
+
 import bergesensLogo from "public/logo-bergesenstiftelsen.svg"
 
 export const Footer: React.FC = () => (

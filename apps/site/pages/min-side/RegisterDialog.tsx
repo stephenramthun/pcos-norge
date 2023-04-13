@@ -1,8 +1,9 @@
-import React from "react"
-import { Body } from "components/Body"
-import { MembershipPrice } from "model/membershipPrice"
-import { VippsButton } from "components/VippsButton"
 import { useRouter } from "next/router"
+import React from "react"
+
+import { Body } from "components/Body"
+import { VippsButton } from "components/VippsButton"
+import { MembershipPrice } from "model/membershipPrice"
 
 import styles from "./min-side.module.css"
 

@@ -1,6 +1,6 @@
-import { AgreementService } from "io/vipps/agreementService"
 import { VippsConfig } from "config/vipps"
 import { EmailService } from "io/email/emailService"
+import { AgreementService } from "io/vipps/agreementService"
 
 const mapAgreement = (agreement: Agreement): Agreement => ({
   id: agreement.id,

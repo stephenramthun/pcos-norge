@@ -1,6 +1,7 @@
+import { expect } from "@jest/globals"
+
 import { HeadersBuilder } from "io/vipps/headersBuilder"
 import { vippsConfig } from "mocks/config"
-import { expect } from "@jest/globals"
 
 describe("headerBuilder", () => {
   it("adds common headers", () => {

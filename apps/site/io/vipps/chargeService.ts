@@ -1,7 +1,8 @@
-import { HeadersBuilder } from "io/vipps/headersBuilder"
+import { getUnpaidAgreements, updatePaidDate } from "db/prisma/dao/agreement"
+
 import { AccessTokenService } from "io/vipps/accessTokenService"
 import { CapturingChargeError, FetchingChargesError } from "io/vipps/errors"
-import { getUnpaidAgreements, updatePaidDate } from "db/prisma/dao/agreement"
+import { HeadersBuilder } from "io/vipps/headersBuilder"
 
 export class ChargeService {
   private readonly config: VippsConfigObject

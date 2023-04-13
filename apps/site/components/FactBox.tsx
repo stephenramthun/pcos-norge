@@ -1,5 +1,5 @@
-import React, { VFC } from "react"
 import classNames from "classnames"
+import React from "react"
 
 import { Body } from "./Body"
 
@@ -15,7 +15,7 @@ interface FactBoxProps
   facts: Array<Fact>
 }
 
-export const FactBox: VFC<FactBoxProps> = ({
+export const FactBox: React.FC<FactBoxProps> = ({
   facts,
   className,
   ...ulProps

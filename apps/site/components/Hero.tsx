@@ -1,17 +1,16 @@
-import React from "react"
 import classNames from "classnames"
+import React from "react"
 
-import { Heading } from "components/Heading"
 import { Content } from "components/Content"
-import { LinkButton } from "components/LinkButton"
-
+import { Heading } from "components/Heading"
 import styles from "components/Hero.module.css"
+import { LinkButton } from "components/LinkButton"
 
 interface HeroProps extends React.HTMLAttributes<HTMLElement> {
   text: string
 }
 
-export const Hero: React.VFC<HeroProps> = ({ text, className }) => {
+export const Hero: React.FC<HeroProps> = ({ text, className }) => {
   return (
     <Content className={classNames(styles.container, className)}>
       <div className={styles.text}>

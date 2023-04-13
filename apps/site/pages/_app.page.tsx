@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app"
-import { ReactNode } from "react"
-import { SessionProvider } from "next-auth/react"
 import { Session } from "next-auth"
+import { SessionProvider } from "next-auth/react"
+import { ReactNode } from "react"
 
 import "./globals.css"
 

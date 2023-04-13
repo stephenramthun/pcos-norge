@@ -1,10 +1,11 @@
-import React, { useLayoutEffect, useRef, useState } from "react"
 import { Check, Pencil, PencilSlash } from "@phosphor-icons/react"
+import React, { useLayoutEffect, useRef, useState } from "react"
 
 import { Body } from "components/Body"
 
-import styles from "./EditableValue.module.css"
 import { EditButton } from "./EditButton"
+
+import styles from "./EditableValue.module.css"
 
 interface EditableValueProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "defaultValue"> {

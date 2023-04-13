@@ -1,9 +1,9 @@
-import React from "react"
-import classNames from "classnames"
 import { CaretRight } from "@phosphor-icons/react"
+import classNames from "classnames"
+import React from "react"
 
-import { Link } from "components/Header"
 import { Body } from "components/Body"
+import { Link } from "components/Header"
 
 import styles from "./Breadcrumbs.module.css"
 
@@ -17,7 +17,7 @@ interface BreadcrumbsProps
   links: LinkObject[]
 }
 
-export const Breadcrumbs: React.VFC<BreadcrumbsProps> = ({
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   className,
   links,
   ...divProps

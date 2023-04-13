@@ -1,9 +1,8 @@
 import React from "react"
 
+import styles from "components/PeopleContainer.module.css"
 import { PersonCard } from "components/PersonCard"
 import { SanityPerson } from "types/sanity"
-
-import styles from "components/PeopleContainer.module.css"
 
 interface PeopleProps {
   people: SanityPerson[]

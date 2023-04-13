@@ -1,4 +1,5 @@
 import { rest } from "msw"
+
 import { vippsConfig } from "mocks/config"
 import { accessTokenResponse, agreement, agreementResponse } from "mocks/data"
 

@@ -1,13 +1,13 @@
-import React, { HTMLAttributes, useState } from "react"
-import classNames from "classnames"
 import { List } from "@phosphor-icons/react"
+import classNames from "classnames"
+import React, { HTMLAttributes, useState } from "react"
 
 import styles from "./HamburgerMenu.module.css"
 
 interface HamburgerMenuProps
   extends Childless<HTMLAttributes<HTMLButtonElement>> {}
 
-export const HamburgerMenu: React.VFC<HamburgerMenuProps> = ({
+export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   className,
   onClick,
   ...buttonProps

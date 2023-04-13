@@ -1,5 +1,9 @@
 import { expect } from "@jest/globals"
+import { waitFor } from "@testing-library/react"
+import { getUnpaidAgreements, updatePaidDate } from "db/prisma/dao/agreement"
+
 import { ChargeService } from "io/vipps/chargeService"
+import { CapturingChargeError, FetchingChargesError } from "io/vipps/errors"
 import { vippsConfig } from "mocks/config"
 import {
   mockCaptureCharge,
@@ -7,9 +11,6 @@ import {
   mockGetCharges,
   mockGetChargesError,
 } from "mocks/server"
-import { CapturingChargeError, FetchingChargesError } from "io/vipps/errors"
-import { getUnpaidAgreements, updatePaidDate } from "db/prisma/dao/agreement"
-import { waitFor } from "@testing-library/react"
 
 jest.mock("db/prisma/dao/agreement", () => ({
   getUnpaidAgreements: jest.fn(),

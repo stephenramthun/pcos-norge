@@ -22,6 +22,7 @@
           "version": "detect"
         }
       },
+      "plugins": ["import"],
       "env": {
         "browser": true,
         "node": true,
@@ -55,6 +56,35 @@
           {},
           {
             "usePrettierrc": true
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "pathGroups": [
+              {
+                "pattern": "{auth,components,config,hooks,io,mocks,model,util,types}/**",
+                "group": "parent"
+              },
+              {
+                "pattern": "../**.{ts,tsx}",
+                "group": "sibling"
+              },
+              {
+                "pattern": "./**.{ts,tsx}",
+                "group": "sibling"
+              },
+              {
+                "pattern": "./**.module.css",
+                "group": "index"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["react"],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "newlines-between": "always"
           }
         ]
       }

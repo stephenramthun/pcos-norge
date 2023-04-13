@@ -1,16 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react"
-import { Session } from "next-auth"
 import { useRouter } from "next/router"
-import { useAsyncPolling } from "hooks/useAsyncPolling"
+import { Session } from "next-auth"
+import React, { useCallback, useEffect, useState } from "react"
+
 import { Content } from "components/Content"
 import { Heading } from "components/Heading"
+import { useAsyncPolling } from "hooks/useAsyncPolling"
 import { isUser } from "types/guards"
 
-import { RegisterDialog } from "./RegisterDialog"
-import { WelcomeDialog } from "./WelcomeDialog"
-import { UserInfo } from "./UserInfo"
 import { AuthorizedWithAgreement } from "./AuthorizedWithAgreement"
 import { AuthorizedWithoutAgreement } from "./AuthorizedWithoutAgreement"
+import { RegisterDialog } from "./RegisterDialog"
+import { UserInfo } from "./UserInfo"
+import { WelcomeDialog } from "./WelcomeDialog"
 
 import styles from "./min-side.module.css"
 

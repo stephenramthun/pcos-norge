@@ -1,12 +1,12 @@
+import { deleteAgreement } from "db/prisma/dao/agreement"
 import { NextApiRequest, NextApiResponse } from "next"
 import { getServerSession } from "next-auth"
 
 import { authOptions } from "../auth/[...nextauth].route"
-import { AgreementService } from "io/vipps/agreementService"
-import { isUser } from "types/guards"
-import { deleteAgreement } from "db/prisma/dao/agreement"
 import { VippsConfig } from "config/vipps"
 import { EmailService } from "io/email/emailService"
+import { AgreementService } from "io/vipps/agreementService"
+import { isUser } from "types/guards"
 
 const agreementService = new AgreementService(VippsConfig)
 const emailService = new EmailService()

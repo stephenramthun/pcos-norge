@@ -1,6 +1,6 @@
-import React from "react"
-import classNames from "classnames"
 import { ArrowSquareOut } from "@phosphor-icons/react"
+import classNames from "classnames"
+import React from "react"
 
 import { Link } from "components/Link"
 import { UseReferenceLinksResult } from "hooks/useReferenceLinks"
@@ -22,7 +22,7 @@ interface ReferenceLinkSummaryProps extends React.HTMLAttributes<HTMLElement> {
   links: UseReferenceLinksResult
 }
 
-export const ReferenceLinkSummary: React.VFC<ReferenceLinkSummaryProps> = ({
+export const ReferenceLinkSummary: React.FC<ReferenceLinkSummaryProps> = ({
   links,
   className,
   ...elementProps

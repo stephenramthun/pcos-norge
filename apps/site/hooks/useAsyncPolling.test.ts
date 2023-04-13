@@ -1,6 +1,7 @@
-import { useAsyncPolling } from "hooks/useAsyncPolling"
-import { renderHook } from "@testing-library/react"
 import { expect } from "@jest/globals"
+import { renderHook } from "@testing-library/react"
+
+import { useAsyncPolling } from "hooks/useAsyncPolling"
 
 describe("useAsyncPolling", () => {
   beforeAll(() => {

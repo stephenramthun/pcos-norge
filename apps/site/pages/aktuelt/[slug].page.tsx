@@ -1,5 +1,5 @@
-import groq from "groq"
 import { PortableText } from "@portabletext/react"
+import groq from "groq"
 import type {
   GetStaticPaths,
   GetStaticPathsResult,
@@ -10,19 +10,19 @@ import type {
 import { useRouter } from "next/router"
 
 import { Body } from "components/Body"
-import { Head } from "components/Head"
-import { Footer } from "components/Footer"
-import { Header } from "components/Header"
-import { Content } from "components/Content"
-import { Heading } from "components/Heading"
-import { PageLinks } from "components/PageLinks"
 import { Breadcrumbs } from "components/Breadcrumbs"
+import { Content } from "components/Content"
+import { Footer } from "components/Footer"
+import { Head } from "components/Head"
+import { Header } from "components/Header"
+import { Heading } from "components/Heading"
 import { PageContainer } from "components/PageContainer"
+import { PageLinks } from "components/PageLinks"
 import { useLocaleDateString } from "hooks/useLocaleDateString"
 import { usePortableTextComponents } from "hooks/usePortableTextComponents"
+import { getClient } from "io/sanity/client"
 import { usePreviewSubscription } from "io/sanity/preview"
 import { ArticleObject, SanityDocument } from "types/sanity"
-import { getClient } from "io/sanity/client"
 
 import styles from "./[slug].module.css"
 

@@ -1,10 +1,10 @@
-import React from "react"
+import { SanityReference } from "@sanity/image-url/lib/types/types"
+import { ImageAsset } from "@sanity/types"
 import NextImage, { ImageProps as NextImageProps } from "next/image"
 import { useNextSanityImage } from "next-sanity-image"
-import { ImageAsset } from "@sanity/types"
+import React from "react"
 
 import { getClient } from "io/sanity/client"
-import { SanityReference } from "@sanity/image-url/lib/types/types"
 
 const isImageAsset = (
   asset: ImageAsset | SanityReference,
@@ -22,7 +22,6 @@ interface SanityImageProps extends Omit<NextImageProps, "src" | "alt"> {
 export const SanityImage: React.FC<SanityImageProps> = ({
   asset,
   alt = "",
-  layout = "responsive",
   maxWidth,
   ...imgProps
 }) => {
@@ -41,5 +40,5 @@ export const SanityImage: React.FC<SanityImageProps> = ({
       : undefined,
   )
 
-  return <NextImage {...imgProps} {...imageProps} alt={alt} layout={layout} />
+  return <NextImage {...imgProps} {...imageProps} alt={alt} />
 }

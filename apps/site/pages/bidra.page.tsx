@@ -1,15 +1,15 @@
-import React from "react"
 import { NextPage } from "next"
+import React from "react"
 
-import { PageContainer } from "components/PageContainer"
-import { Header } from "components/Header"
+import { Body } from "components/Body"
+import { Breadcrumbs } from "components/Breadcrumbs"
+import { Content } from "components/Content"
 import { Footer } from "components/Footer"
 import { Head } from "components/Head"
-import { Main } from "components/Main"
-import { Content } from "components/Content"
-import { Breadcrumbs } from "components/Breadcrumbs"
-import { Body } from "components/Body"
+import { Header } from "components/Header"
 import { Heading } from "components/Heading"
+import { Main } from "components/Main"
+import { PageContainer } from "components/PageContainer"
 
 import styles from "./bidra.module.css"
 

@@ -1,12 +1,13 @@
+import { expect } from "@jest/globals"
 import dayjs from "dayjs"
+
 import {
   AccessTokenResponse,
   AccessTokenService,
 } from "io/vipps/accessTokenService"
 import { vippsConfig } from "mocks/config"
-import { mockAccessTokenResponse } from "mocks/server"
 import { accessTokenResponse } from "mocks/data"
-import { expect } from "@jest/globals"
+import { mockAccessTokenResponse } from "mocks/server"
 
 describe("AccessTokenService", () => {
   it("fetches access tokens", async () => {

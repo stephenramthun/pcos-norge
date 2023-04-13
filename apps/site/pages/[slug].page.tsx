@@ -1,3 +1,5 @@
+import { PortableText } from "@portabletext/react"
+import { PortableTextBlock } from "@portabletext/types"
 import {
   GetStaticPaths,
   GetStaticPathsResult,
@@ -5,21 +7,19 @@ import {
   GetStaticPropsResult,
   NextPage,
 } from "next"
-import { PortableText } from "@portabletext/react"
-import { PortableTextBlock } from "@portabletext/types"
 
+import { Breadcrumbs } from "components/Breadcrumbs"
+import { Content } from "components/Content"
+import { Footer } from "components/Footer"
 import { Head } from "components/Head"
 import { Header } from "components/Header"
-import { Footer } from "components/Footer"
-import { Content } from "components/Content"
-import { Breadcrumbs } from "components/Breadcrumbs"
+import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
 import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
 import { usePageComponents } from "hooks/usePageComponents"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
-import { isBodyText } from "types/guards"
 import { getClient } from "io/sanity/client"
-import { Main } from "components/Main"
+import { isBodyText } from "types/guards"
 
 interface PageProps {
   title: string

@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { ChargeService } from "io/vipps/chargeService"
-import { VippsConfig } from "config/vipps"
+
 import { validateAuthorization } from "auth/index"
+import { VippsConfig } from "config/vipps"
+import { ChargeService } from "io/vipps/chargeService"
 
 export const validateMethod = (
   req: NextApiRequest,

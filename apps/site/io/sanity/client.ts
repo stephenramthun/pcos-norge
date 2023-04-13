@@ -1,6 +1,6 @@
+import { SanityClient } from "@sanity/client"
 import groq from "groq"
 import { createClient } from "next-sanity"
-import { SanityClient } from "@sanity/client"
 
 import { ArticleObject } from "types/sanity"
 

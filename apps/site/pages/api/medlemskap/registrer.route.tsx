@@ -1,15 +1,15 @@
-import { NextApiRequest, NextApiResponse } from "next"
-import { getServerSession } from "next-auth"
-
-import { authOptions } from "../auth/[...nextauth].route"
-import { AgreementService } from "io/vipps/agreementService"
 import {
   hasActiveOrPendingAgreement,
   insertAgreement,
 } from "db/prisma/dao/agreement"
-import { isUser } from "types/guards"
+import { NextApiRequest, NextApiResponse } from "next"
+import { getServerSession } from "next-auth"
+
+import { authOptions } from "../auth/[...nextauth].route"
 import { VippsConfig } from "config/vipps"
 import { EmailService } from "io/email/emailService"
+import { AgreementService } from "io/vipps/agreementService"
+import { isUser } from "types/guards"
 
 const agreementService = new AgreementService(VippsConfig)
 const emailService = new EmailService()

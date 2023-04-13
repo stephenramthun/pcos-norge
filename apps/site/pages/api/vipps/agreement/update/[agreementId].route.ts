@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next"
+
 import { validateAuthorization } from "auth/index"
-import { AgreementService } from "io/vipps/agreementService"
 import { VippsConfig } from "config/vipps"
+import { AgreementService } from "io/vipps/agreementService"
 import { ChargeService } from "io/vipps/chargeService"
 
 const WAIT_MS = 5000

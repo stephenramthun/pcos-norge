@@ -1,7 +1,7 @@
 import React from "react"
 
-import { Heading } from "components/Heading"
 import { Body } from "components/Body"
+import { Heading } from "components/Heading"
 
 import styles from "./min-side.module.css"
 
