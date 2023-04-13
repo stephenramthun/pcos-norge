@@ -53,3 +53,14 @@ export const agreement = (overrides?: Partial<Agreement>): Agreement => ({
   stop: "2021-01-01",
   ...overrides,
 })
+
+export const userInfo = (overrides?: Partial<UserInfo>): UserInfo => ({
+  email: "test@test.no",
+  givenName: "Test",
+  familyName: "Testerson",
+  streetAddress: "Fake street 12",
+  postalCode: "1234",
+  region: "Noplace",
+  phoneNumber: "12345678",
+  ...overrides,
+})

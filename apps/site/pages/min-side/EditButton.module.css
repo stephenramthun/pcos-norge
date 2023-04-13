@@ -1,0 +1,29 @@
+.button {
+  width: var(--line-height-body);
+  height: var(--line-height-body);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--font-size-buttons);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-body);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button:hover {
+  text-decoration: none;
+  background: var(--color-brand-pink);
+  color: var(--color-brand-light-teal);
+}
+
+.button:active {
+  background: var(--color-brand-dark-red);
+  text-decoration: underline;
+}

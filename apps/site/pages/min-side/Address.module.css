@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.container input {
+  font-family: inherit;
+  height: var(--line-height-body);
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

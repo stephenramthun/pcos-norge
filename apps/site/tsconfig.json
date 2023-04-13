@@ -21,7 +21,8 @@
       "config/*": ["config/*"],
       "io/*": ["io/*"],
       "auth/*": ["auth/*"],
-      "mocks/*": ["mocks/*"]
+      "mocks/*": ["mocks/*"],
+      "util/*": ["util/*"]
     },
     "incremental": true,
     "types": ["jest"]

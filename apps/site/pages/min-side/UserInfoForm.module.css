@@ -1,0 +1,39 @@
+.grid {
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 32px;
+  row-gap: 8px;
+}
+
+.grid input {
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  min-width: max-content;
+  max-width: 500px;
+}
+
+.errorMessage {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.label {
+  display: contents;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 24px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.allColumns {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}

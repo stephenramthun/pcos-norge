@@ -22,4 +22,7 @@ export const handlers = [
       return res(context.status(204))
     },
   ),
+  rest.put(`/api/medlemskap/info`, (req, res, context) => {
+    return res(context.status(204))
+  }),
 ]

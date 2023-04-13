@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 8px;
+  background: var(--color-brand-dark-teal);
+  border-radius: 10px;
+  color: var(--color-brand-light-teal);
+}
+
+.container p {
+  color: inherit;
+  font-size: var(--font-size-details);
+}

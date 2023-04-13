@@ -6,6 +6,7 @@ import { prisma } from "db"
 type AdditionalFields = {
   id: string
   givenName: string
+  familyName: string
   streetAddress: string
   postalCode: string
   region: string
@@ -22,6 +23,7 @@ const mergeUserInfo = (
   if (session.user) {
     session.user.id = user.id
     session.user.givenName = user.givenName
+    session.user.familyName = user.familyName
     session.user.streetAddress = user.streetAddress
     session.user.postalCode = user.postalCode
     session.user.region = user.region

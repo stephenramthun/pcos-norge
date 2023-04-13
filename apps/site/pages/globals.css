@@ -29,7 +29,7 @@ mark {
   /*Brand colors*/
   --color-brand-dark-teal: #1e505f;
   --color-brand-light-teal: #effcff;
-  --color-brand-pink: #E0006C;
+  --color-brand-pink: #e0006c;
   --color-brand-grey: #121e25;
   --color-brand-dark-red: #6b283e;
 
@@ -44,6 +44,7 @@ mark {
   /*Text*/
   --font-family-primary: "IBM Plex Sans", sans-serif;
   --font-size-buttons: 1rem;
+  --font-size-buttons-small: 0.8rem;
   --font-size-body: 1.125rem;
   --font-size-title-extra-small: 1.2rem;
   --font-size-title-small: 1.5rem;
