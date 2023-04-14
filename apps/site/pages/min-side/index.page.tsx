@@ -1,5 +1,6 @@
-import { NextPage } from "next"
-import { useSession } from "next-auth/react"
+import { GetServerSideProps, NextPage } from "next"
+import { Session } from "next-auth"
+import { getSession } from "next-auth/react"
 import React from "react"
 
 import { Body } from "components/Body"
@@ -33,9 +34,11 @@ const Unauthorized: React.FC = () => {
   )
 }
 
-const MinSide: NextPage = () => {
-  const { data: session } = useSession()
+interface MinSideProps {
+  session: Session
+}
 
+const MinSide: NextPage<MinSideProps> = ({ session }) => {
   return (
     <PageContainer>
       <Head title="Min side | PCOS Norge" />
@@ -58,6 +61,14 @@ const MinSide: NextPage = () => {
       <Footer />
     </PageContainer>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      session: await getSession(),
+    },
+  }
 }
 
 export default MinSide
