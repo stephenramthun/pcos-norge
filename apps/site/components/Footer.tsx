@@ -30,7 +30,7 @@ export const Footer: React.FC = () => (
     <footer className={styles.container}>
       <Content className={styles.content}>
         <div className={styles.logoContainer}>
-          <Logo variant="light" priority={false} />
+          <Logo variant="light" />
           <div className={styles.socials}>
             <Link
               href="https://www.facebook.com/pcosnorge"

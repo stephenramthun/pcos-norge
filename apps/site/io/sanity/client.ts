@@ -15,7 +15,9 @@ export const previewClient = createClient({
 })
 
 export const getClient = (usePreview = false): SanityClient =>
-  usePreview ? previewClient : sanityClient
+  usePreview
+    ? (previewClient as unknown as SanityClient)
+    : (sanityClient as unknown as SanityClient)
 
 type FetchArticlesOptions = {
   from: number
@@ -43,7 +45,11 @@ export const fetchArticles = async ({
         order(published desc)[${start}..${end}] {
           title,
           "slug": slug.current,
-          image,
+          image {
+            _type,
+            alt,
+            asset->
+          },
           published,
           ingress
         },

@@ -35,6 +35,7 @@ export const usePageComponents = (): Partial<PortableTextReactComponents> => {
               alt={value.alt}
               maxWidth={2000}
               fill
+              priority
             />
           </Content>
         )

@@ -33,6 +33,7 @@ export const usePortableTextComponents = (
                 alt={value.alt}
                 fill
                 maxWidth={2000}
+                priority
               />
             </ImageContainer>
             {value.text && (

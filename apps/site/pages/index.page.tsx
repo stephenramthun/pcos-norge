@@ -67,7 +67,11 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       "articles": *[_type == "article" && show == true] | order(published desc)[0..5] {
         title,
         "slug": slug.current,
-        image,
+        image {
+          _type,
+          alt,
+          asset->
+        },
         published,
         ingress
       },

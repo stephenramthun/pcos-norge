@@ -10,12 +10,10 @@ import styles from "./Logo.module.css"
 
 type LogoProps = Omit<React.HTMLAttributes<HTMLAnchorElement>, "children"> & {
   variant?: "light" | "dark"
-  priority?: boolean
 }
 
 export const Logo: React.FC<LogoProps> = ({
   variant = "dark",
-  priority = true,
   className,
   ...anchorProps
 }) => {
@@ -28,7 +26,6 @@ export const Logo: React.FC<LogoProps> = ({
           loader={({ src }) => src}
           className={styles.image}
           unoptimized
-          priority={priority}
           width={400}
           height={400}
         />
