@@ -53,6 +53,7 @@ model User {
   agreement         Agreement?
   EmailSubscription EmailSubscription[]
   EmailDelivery     EmailDelivery[]
+  AdminUser         AdminUser?
 }
 
 model VerificationToken {
@@ -101,4 +102,9 @@ model EmailDelivery {
   emailId String
 
   @@unique([userId, emailId])
+}
+
+model AdminUser {
+  user   User   @relation(references: [id], fields: [userId])
+  userId String @unique
 }

@@ -1,0 +1,9 @@
+.page header {
+  display: flex;
+  padding: 16px;
+}
+
+.table th, .table td {
+  text-align: start;
+  padding: 8px 16px;
+}

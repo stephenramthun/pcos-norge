@@ -1,0 +1,28 @@
+.heading {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--semantic-color-text-primary);
+  padding: 0;
+  margin: 0;
+}
+
+.extra-small {
+  font-size: var(--font-size-title-extra-small);
+}
+
+.small {
+  font-size: var(--font-size-title-small);
+}
+
+.medium {
+  font-size: var(--font-size-title-medium);
+}
+
+.medium-large {
+  font-size: var(--font-size-title-medium-large);
+}
+
+.large {
+  font-size: var(--font-size-title-large);
+  line-height: calc(var(--font-size-title-large) * 1.25);
+}

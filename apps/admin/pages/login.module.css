@@ -1,0 +1,30 @@
+.page {
+  --width: min(500px, calc(100vw - var(--page-margin) * 2));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 32px;
+}
+
+.page header {
+  display: flex;
+  width: var(--width);
+}
+
+.page main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  width: var(--width);
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 10px;
+  filter: drop-shadow(5px 5px 5px #00000050);
+}
+
+.page main button {
+  margin-top: 24px;
+}

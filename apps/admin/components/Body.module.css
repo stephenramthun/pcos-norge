@@ -1,0 +1,9 @@
+.text {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-light);
+    margin: 0;
+    padding: 0;
+    max-width: var(--text-max-width);
+    width: 100%;
+}

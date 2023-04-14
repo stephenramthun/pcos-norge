@@ -63,10 +63,10 @@ const MinSide: NextPage<MinSideProps> = ({ session }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
-      session: await getSession(),
+      session: await getSession(context),
     },
   }
 }
