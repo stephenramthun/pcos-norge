@@ -1,7 +1,7 @@
 import { prisma } from "../client";
 
-export const getNumberOfActiveMembers = () => {
-  return prisma.user.findMany({
+export const getNumberOfActiveMembers = async () => {
+  const members = await prisma.user.findMany({
     where: {
       agreement: {
         status: {
@@ -10,6 +10,8 @@ export const getNumberOfActiveMembers = () => {
       },
     },
   });
+
+  return members.length;
 };
 
 export const isAdmin = async (userId: string): Promise<boolean> => {

@@ -9,7 +9,8 @@
     "lint": "turbo lint",
     "test": "turbo test",
     "deploy": "turbo deploy",
-    "clean": "rm -rf node_modules"
+    "clean": "rm -rf node_modules",
+    "migrate:dev": "npm run migrate:dev -w db"
   },
   "workspaces": [
     "apps/*",

@@ -3,13 +3,12 @@
   "main": "index.ts",
   "types": "index.ts",
   "scripts": {
-    "build": "npx prisma generate",
-    "predev": "npx prisma migrate dev",
+    "prebuild": "npx prisma generate",
+    "build": "npx prisma migrate deploy",
+    "predev": "npx prisma generate",
     "dev": "cockroach start-single-node --insecure --store=type=mem,size=0.25 --cache=0.25 --advertise-addr=localhost",
-    "db:generate": "npx prisma generate",
-    "db:push": "npx prisma db push --skip-generate",
-    "db:migrate": "npx prisma migrate deploy",
-    "db:migrate-dev": "npx prisma migrate deploy",
+    "push": "npx prisma db push --skip-generate",
+    "migrate:dev": "npx prisma migrate dev",
     "clean": "rm -rf node_modules && turbo run clean"
   },
   "dependencies": {

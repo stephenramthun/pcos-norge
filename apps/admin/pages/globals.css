@@ -26,10 +26,18 @@ mark {
 }
 
 :root {
+  /*Colors*/
+  --pink-600: #940046;
+  --pink-400: #e0006c;
+
+  --teal-600: #1e505f;
+  --teal-200: #c7f7ff;
+  --teal-100: #effcff;
+
   /*Brand colors*/
-  --color-brand-dark-teal: #1e505f;
-  --color-brand-light-teal: #effcff;
-  --color-brand-pink: #e0006c;
+  --color-brand-dark-teal: var(--teal-600);
+  --color-brand-light-teal: var(--teal-100);
+  --color-brand-pink: var(--pink-400);
   --color-brand-grey: #121e25;
   --color-brand-dark-red: #6b283e;
 
@@ -38,6 +46,7 @@ mark {
   --semantic-color-text-primary-inverse: var(--color-brand-light-teal);
   --semantic-color-background-primary: var(--color-brand-light-teal);
   --semantic-color-interaction-primary: var(--color-brand-pink);
+  --semantic-color-interaction-active: var(--pink-600);
   --semantic-color-disabled: #878c8c;
   --semantic-color-interaction-outline: 2px solid var(--color-brand-dark-teal);
 

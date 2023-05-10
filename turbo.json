@@ -2,21 +2,11 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build", "db:migrate"],
+      "dependsOn": ["^build"],
       "outputs": [".next/**"]
     },
     "test": {},
-    "cy:test": {
-      "cache": false
-    },
     "dev": {
-      "cache": false,
-      "dependsOn": ["db:generate"]
-    },
-    "db:generate": {
-      "cache": false
-    },
-    "db:migrate": {
       "cache": false
     },
     "clean": {}
