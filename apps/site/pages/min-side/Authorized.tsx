@@ -85,7 +85,7 @@ export const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
       {data && hasAgreement && (
         <AuthorizedWithAgreement user={user} data={data} />
       )}
-      {!hasAgreement && <AuthorizedWithoutAgreement />}
+      {data && !hasAgreement && <AuthorizedWithoutAgreement />}
     </Content>
   )
 }
