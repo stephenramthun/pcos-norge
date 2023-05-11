@@ -5,7 +5,6 @@ import React from "react"
 import { Body } from "components/Body"
 import { Heading } from "components/Heading"
 import { Logo } from "components/Logo"
-import { VippsButton } from "components/VippsButton"
 
 import styles from "./login.module.css"
 
@@ -25,7 +24,7 @@ const Login: NextPage = () => {
           Logg inn
         </Heading>
         <Body>Du må logge inn for å se denne siden</Body>
-        <VippsButton callbackUrl="/" />
+        {/*<VippsButton callbackUrl="/" />*/}
       </main>
     </div>
   )
