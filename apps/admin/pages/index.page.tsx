@@ -1,9 +1,5 @@
 import { HandCoins, Users } from "@phosphor-icons/react"
-import {
-  getNumberOfActiveMembers,
-  getUserAgreements,
-  isAdmin,
-} from "db/prisma/dao/admin"
+import { getUserAgreements, isAdmin } from "db/prisma/dao/admin"
 import type {
   GetServerSideProps,
   GetServerSidePropsResult,
@@ -138,11 +134,9 @@ export const getServerSideProps: GetServerSideProps = async (
     }
   }
 
-  const users = await getUserAgreements()
+  // const users = await getUserAgreements()
 
-  const numberOfUsers = await getNumberOfActiveMembers()
-
-  console.log(numberOfUsers)
+  const users: Awaited<ReturnType<typeof getUserAgreements>> = []
 
   return {
     props: {
