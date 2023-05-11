@@ -1,5 +1,6 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { prisma } from "db"
+import { isAdmin } from "db/prisma/dao/admin"
 import NextAuth, { AuthOptions, User } from "next-auth"
 
 import { VippsProvider } from "auth/providers/VippsProvider"
@@ -25,6 +26,9 @@ export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [VippsProvider],
   callbacks: {
+    async signIn({ user }) {
+      return await isAdmin(user.id)
+    },
     async session({ session, user }) {
       mergeUserInfo(session, user)
       return session
