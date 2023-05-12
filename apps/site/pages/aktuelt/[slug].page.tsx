@@ -18,8 +18,10 @@ import { Header } from "components/Header"
 import { Heading } from "components/Heading"
 import { PageContainer } from "components/PageContainer"
 import { PageLinks } from "components/PageLinks"
+import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
 import { useLocaleDateString } from "hooks/useLocaleDateString"
 import { usePortableTextComponents } from "hooks/usePortableTextComponents"
+import { useReferenceLinks } from "hooks/useReferenceLinks"
 import { getClient } from "io/sanity/client"
 import { usePreviewSubscription } from "io/sanity/preview"
 import { ArticleObject, SanityDocument } from "types/sanity"
@@ -70,6 +72,8 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
 
   const components = usePortableTextComponents(data.body)
   const date = useLocaleDateString(new Date(data.published))
+
+  const referenceLinks = useReferenceLinks(data.body)
 
   return (
     <PageContainer>
@@ -133,6 +137,9 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
         <div className={styles.ArticleContent}>
           {data.ingress && <Body suppressHydrationWarning>{data.ingress}</Body>}
           <PortableText value={data.body} components={components} />
+          {Object.entries(referenceLinks).length > 0 && (
+            <ReferenceLinkSummary links={referenceLinks} />
+          )}
         </div>
         {(data.pageLinks?.leftLink || data.pageLinks?.rightLink) && (
           <PageLinks
