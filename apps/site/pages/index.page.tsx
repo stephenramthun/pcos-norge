@@ -12,7 +12,7 @@ import { Heading } from "components/Heading"
 import { HorizontalDragContainer } from "components/HorizontalDragContainer"
 import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
-import { usePageComponents } from "hooks/usePageComponents"
+import { getPortableTextComponents } from "hooks/getPortableTextComponents"
 import { getClient } from "io/sanity/client"
 import { ArticleObject, SanityPageDocument } from "types/sanity"
 
@@ -29,7 +29,10 @@ const Home: NextPage<HomeProps> = ({ articles, page }) => {
       <Head />
       <Header />
       <Main>
-        <PortableText value={page.elements} components={usePageComponents()} />
+        <PortableText
+          value={page.elements}
+          components={getPortableTextComponents()}
+        />
         <Content className={styles.Section}>
           <article>
             <div className={styles.titleRow}>

@@ -16,7 +16,7 @@ import { Header } from "components/Header"
 import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
 import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
-import { usePageComponents } from "hooks/usePageComponents"
+import { getPortableTextComponents } from "hooks/getPortableTextComponents"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
 import { getClient } from "io/sanity/client"
 import { isBodyText } from "types/guards"
@@ -28,7 +28,7 @@ interface PageProps {
 }
 
 const Page: NextPage<PageProps> = ({ title, elements, id }) => {
-  const components = usePageComponents()
+  const components = getPortableTextComponents()
 
   const bodyTexts = elements
     .filter(isBodyText)

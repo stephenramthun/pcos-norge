@@ -5,7 +5,7 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "dev": "npx mailing --quiet",
+    "dev": "npx mailing",
     "email:build": "npx mailing server build",
     "email:start": "npx mailing server start",
     "clean": "rm -rf node_modules"
