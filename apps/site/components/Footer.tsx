@@ -11,21 +11,34 @@ import { Logo } from "./Logo"
 import styles from "./Footer.module.css"
 
 import bergesensLogo from "public/logo-bergesenstiftelsen.svg"
+import sanitetskvinneneLogo from "public/logo-sanitetskvinnene.svg"
 
 export const Footer: React.FC = () => (
   <>
     <Content className={styles.sponsors}>
       <Body>Våre støttespillere:</Body>
-      <Link href="https://bergesenstiftelsen.no/" target="_blank">
-        <Image
-          alt="Bergesenstiftelsen"
-          src={bergesensLogo.src}
-          height={100}
-          width={200}
-          unoptimized
-          loader={({ src }) => src}
-        />
-      </Link>
+      <div className={styles.logos}>
+        <Link href="https://bergesenstiftelsen.no/" target="_blank">
+          <Image
+            alt="Bergesenstiftelsen"
+            src={bergesensLogo.src}
+            height={100}
+            width={200}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://sanitetskvinnene.no/" target="_blank">
+          <Image
+            alt="Sanitetskvinnene"
+            src={sanitetskvinneneLogo.src}
+            height={100}
+            width={300}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+      </div>
     </Content>
     <footer className={styles.container}>
       <Content className={styles.content}>
