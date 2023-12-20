@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { MjmlColumn, MjmlSection, MjmlWrapper } from "mjml-react";
 import BaseLayout from "./components/BaseLayout";
 import Footer from "./components/Footer";
@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Text from "./components/Text";
 import Link from "./components/Link";
 import { fontSize, fontWeight, screens, spacing } from "./theme";
+import { SubHeader } from "./components/SubHeader";
 
 const welcomeStyle = `
   .p > * {
@@ -19,22 +20,6 @@ const welcomeStyle = `
     }
   }
 `;
-
-type SubHeaderProps = {
-  children: ReactNode;
-};
-
-const SubHeader: React.FC<SubHeaderProps> = ({ children }) => {
-  return (
-    <Heading
-      fontSize={fontSize.lg}
-      fontWeight={fontWeight.bold}
-      paddingBottom={spacing.s4}
-    >
-      {children}
-    </Heading>
-  );
-};
 
 type WelcomeProps = {
   name?: string;

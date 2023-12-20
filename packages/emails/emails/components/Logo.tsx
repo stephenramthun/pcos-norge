@@ -1,5 +1,10 @@
 import React from "react";
 
+const getSourceForLogoVariant = (variant: "light" | "dark"): string =>
+  `https://raw.githubusercontent.com/stephenramthun/pcos-norge/main/apps/site/public/${
+    variant === "light" ? "logo" : "logo-dark"
+  }.svg`;
+
 interface LogoProps {
   variant: "light" | "dark";
 }
@@ -11,7 +16,7 @@ export const Logo: React.FC<LogoProps> = ({ variant }) => {
       <img
         height={20}
         width={136}
-        src={`https://raw.githubusercontent.com/stephenramthun/pcos-norge/main/apps/site/public/logo-${variant}.png`}
+        src={getSourceForLogoVariant(variant)}
         alt=""
         style={{ position: "absolute" }}
         className={`logo-${variant}`}
