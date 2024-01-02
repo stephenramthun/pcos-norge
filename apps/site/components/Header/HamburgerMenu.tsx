@@ -1,4 +1,4 @@
-import { List } from "@phosphor-icons/react"
+import { List, X } from "@phosphor-icons/react"
 import classNames from "classnames"
 import React, { HTMLAttributes, useState } from "react"
 
@@ -26,7 +26,7 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
       onClick={toggleOpen}
       {...buttonProps}
     >
-      <List size={32} />
+      {open ? <X size={32} /> : <List size={32} />}
     </button>
   )
 }

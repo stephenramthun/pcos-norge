@@ -12,29 +12,8 @@
   cursor: pointer;
 }
 
-.button > svg > line {
-  transition: all 0.2s ease;
-  stroke: var(--semantic-color-text-primary);
-}
-
-.button > svg > line:nth-child(3) {
-  transform-origin: 40px 64px;
-}
-
-.button.active > svg > line:nth-child(3) {
-  transform: translateX(var(--translate-x)) rotate(45deg);
-}
-
-.button > svg > line:nth-child(4) {
-  transform-origin: 40px 192px;
-}
-
-.button.active > svg > line:nth-child(4) {
-  transform: translateX(var(--translate-x)) rotate(-45deg);
-}
-
-.button.active > svg > line:nth-child(2) {
-  opacity: 0;
+.button > svg {
+  fill: var(--semantic-color-text-primary);
 }
 
 @media only screen and (max-width: 1000px) {
