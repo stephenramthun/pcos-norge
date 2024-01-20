@@ -25,21 +25,21 @@ const Årsmøte: NextPage = () => {
         <Content>
           <div className={styles.filer}>
             <Link
-              href="/filer/aarsmelding.pdf"
+              href="/filer/aarsmelding-2023.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
               Årsmelding 2023
             </Link>
             <Link
-              href="/filer/protokoll.pdf"
+              href="/filer/protokoll-2024.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
               Protokoll
             </Link>
             <Link
-              href="/filer/vedtekter.pdf"
+              href="/filer/vedtekter-2024.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
