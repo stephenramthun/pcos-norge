@@ -1,0 +1,15 @@
+.container {
+  margin: 0 0 2rem;
+}
+
+.list {
+  color: var(--semantic-color-text-primary);
+  font-size: var(--font-size-body);
+  margin: 0;
+  max-width: var(--text-max-width);
+  width: 100%;
+}
+
+.list > li {
+  line-height: var(--line-height-body);
+}

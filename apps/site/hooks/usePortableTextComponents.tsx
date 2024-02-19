@@ -7,6 +7,7 @@ import { FactBox } from "components/FactBox"
 import { Heading } from "components/Heading"
 import { ImageContainer } from "components/ImageContainer"
 import { Link } from "components/Link"
+import { List } from "components/List"
 import { SanityImage } from "components/SanityImage"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
 import { SanityImageAsset } from "types/sanity"
@@ -74,7 +75,7 @@ export const usePortableTextComponents = (
     },
     list: {
       bullet: ({ children }) => {
-        return <ul className={styles.list}>{children}</ul>
+        return <List>{children}</List>
       },
       number: ({ children }) => {
         return <ol className={styles.list}>{children}</ol>
