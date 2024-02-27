@@ -1,5 +1,4 @@
 .header {
-  --header-horizontal-margin: var(--page-margin);
   position: relative;
   top: 0;
   left: 0;
@@ -8,12 +7,20 @@
   justify-content: center;
   z-index: var(--header-z-index);
   background: var(--semantic-color-background-primary);
-  padding-left: var(--header-horizontal-margin);
-  padding-right: var(--header-horizontal-margin);
+  padding-left: var(--padding-horizontal);
+  padding-right: var(--padding-horizontal);
+}
+
+.header.dark {
+  background: var(--color-brand-teal);
 }
 
 .header .nav > a {
   color: var(--semantic-color-text-primary);
+}
+
+.header.dark .nav > a {
+  color: var(--semantic-color-background-primary);
 }
 
 .logo {

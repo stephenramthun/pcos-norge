@@ -1,45 +1,5 @@
-.Section {
+.section {
   max-width: 100vw;
-}
-
-.Section > article {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  min-width: 300px;
-}
-
-.titleRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.Cards::-webkit-scrollbar {
-  display: none;
-}
-
-.Cards {
-  display: flex;
-  gap: 5rem;
-  width: 100vw;
-  margin-left: calc(var(--padding-horizontal) * -1);
-  padding-left: var(--padding-horizontal);
-  padding-right: var(--padding-horizontal);
-  overflow-x: scroll;
-  padding-bottom: 1rem;
-  -ms-overflow-style: none;
-}
-
-.Card {
-  --width: 400px;
-  width: var(--width);
-  min-width: var(--width);
-}
-
-@media only screen and (max-width: 750px) {
-  .Cards {
-    gap: 2rem;
-  }
+  padding-top: 96px;
+  padding-bottom: 96px;
 }

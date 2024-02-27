@@ -4,19 +4,7 @@ class SiteDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="no">
-        <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
-            rel="stylesheet"
-          />
-          <script
-            src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
-            type="text/javascript"
-            defer
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

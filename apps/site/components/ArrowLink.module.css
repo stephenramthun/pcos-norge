@@ -39,7 +39,23 @@
   outline: var(--semantic-color-interaction-outline);
 }
 
+.link.up {
+  --direction-translation: translateY(-0.25rem);
+}
+
+.link.right {
+  --direction-translation: translateX(0.25rem);
+}
+
+.link.down {
+  --direction-translation: translateY(0.25rem);
+}
+
+.link.left {
+  --direction-translation: translateX(-0.25rem);
+}
+
 .link:hover > svg,
 .link:focus-visible > svg {
-  transform: translateX(0.25rem);
+  transform: var(--direction-translation);
 }

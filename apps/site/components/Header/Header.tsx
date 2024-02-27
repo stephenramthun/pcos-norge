@@ -10,10 +10,13 @@ import { Link } from "./Link"
 
 import styles from "./Header.module.css"
 
-interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: "light" | "dark"
+}
 
 export const Header: React.FC<HeaderProps> = ({
   className,
+  variant = "light",
   ...headerProps
 }) => {
   const [showNav, setShowNav] = useState(false)
@@ -21,11 +24,14 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       id="header"
-      className={classNames(styles.header, className)}
+      className={classNames(styles.header, styles[variant], className)}
       {...headerProps}
     >
       <div className={classNames(styles.content)}>
-        <Logo className={styles.logo} />
+        <Logo
+          variant={variant === "dark" ? "light" : "dark"}
+          className={styles.logo}
+        />
         <nav
           role="navigation"
           aria-label="lenker"

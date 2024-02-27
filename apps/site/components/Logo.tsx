@@ -3,8 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 
-import logoDark from "../public/logo-dark.svg"
-import logoLight from "../public/logo.svg"
+import logoDark from "../public/pcos-norge-logo-dark.svg"
+import logoLight from "../public/pcos-norge-logo-light.svg"
 
 import styles from "./Logo.module.css"
 

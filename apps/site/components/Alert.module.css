@@ -4,7 +4,7 @@
   align-items: center;
   padding: 8px 12px;
   gap: 8px;
-  background: var(--color-brand-dark-teal);
+  background: var(--color-brand-teal);
   border-radius: 10px;
   color: var(--color-brand-light-teal);
 }

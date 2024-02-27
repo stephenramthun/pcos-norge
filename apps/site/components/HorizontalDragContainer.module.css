@@ -1,7 +1,58 @@
 .container:hover {
-    cursor: grab;
+  cursor: grab;
 }
 
 .container:active {
-    cursor: grabbing;
+  cursor: grabbing;
+}
+
+.button {
+  position: absolute;
+  top: 200px;
+  left: -32px;
+  background: var(--color-brand-dark-teal);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.button.right {
+  left: unset;
+  right: -32px;
+}
+
+.button svg {
+  fill: var(--color-brand-light-teal);
+  width: 32px;
+  height: 32px;
+}
+
+@media only screen and (max-width: 1250px) {
+  .button {
+    top: 185px;
+    left: -24px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .button.right {
+    right: -24px;
+  }
+
+  .button svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .button {
+    top: 140px;
+  }
 }
