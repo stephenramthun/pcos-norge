@@ -1,5 +1,5 @@
 .button {
-    background: var(--semantic-color-interaction-primary);
+    background: var(--color-brand-teal);
     color: var(--semantic-color-text-primary-inverse);
     outline: none;
     border: none;
@@ -7,20 +7,41 @@
     border-radius: 10px;
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-primary);
+    font-family: inherit;
     cursor: pointer;
     width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.button svg {
+    transition: transform 0.2s ease;
 }
 
 .button:hover,
 .button:focus-visible {
-    color: var(--semantic-color-interaction-primary);
-    background: var(--semantic-color-background-primary);
-    box-shadow: 0 0 0 3px var(--semantic-color-interaction-primary);
+    transform: translateY(-2px);
+    color: var(--color-brand-dark-teal);
+    background-color: var(--color-brand-light-teal);
+    box-shadow: 0 0 0 3px var(--color-brand-teal);
+}
+
+.button:hover svg,
+.button:focus-visible svg {
+    transform: translateX(8px);
+    fill: var(--color-brand-dark-teal);
 }
 
 .button:active {
     color: var(--semantic-color-text-primary-inverse);
-    background: var(--color-brand-dark-red);
+    background: black;
+    transform: translateY(2px);
     box-shadow: none;
+}
+
+.button:active svg {
+    fill: var(--semantic-color-text-primary-inverse);
 }

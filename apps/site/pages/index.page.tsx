@@ -1,3 +1,4 @@
+import { ImageAsset } from "@sanity/types"
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import React from "react"
 
@@ -9,17 +10,27 @@ import { Hero } from "components/Hero"
 import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
 import { getClient } from "io/sanity/client"
-import { ArticleObject } from "types/sanity"
+import { ArticleObject, SanityImageDocument } from "types/sanity"
 
 import { Articles } from "./Articles"
+import { HvaErPcosCard } from "./HvaErPcosCard"
 
 import styles from "./index.module.css"
 
-interface HomeProps {
-  articles: Array<Omit<ArticleObject, "body">>
+type Image = Omit<SanityImageDocument, "imageAsset"> & {
+  asset: ImageAsset
+  alt: string
 }
 
-const Home: NextPage<HomeProps> = ({ articles }) => {
+interface HomeProps {
+  articles: Array<Omit<ArticleObject, "body">>
+  images: {
+    hvaErPcos: Image
+  }
+}
+
+const Home: NextPage<HomeProps> = ({ articles, images }) => {
+  console.log(images)
   return (
     <PageContainer>
       <Head />
@@ -28,6 +39,9 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
       <Main id="main">
         <Content className={styles.section}>
           <Articles articles={articles} />
+        </Content>
+        <Content className={styles.section}>
+          <HvaErPcosCard image={images.hvaErPcos} />
         </Content>
       </Main>
       <Footer />
@@ -50,6 +64,14 @@ export const getStaticProps: GetStaticProps = async (): Promise<
         },
         published,
         ingress
+      },
+      "images": {
+        "hvaErPcos": *[_type == "imageDocument" && id.current == "hva-er-pcos"][0] {
+          title,
+          "asset": imageAsset.asset->,
+          "alt": imageAsset.alt,
+          id
+        }
       },
     }
   `)
