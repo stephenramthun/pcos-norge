@@ -1,4 +1,5 @@
 .header {
+
   position: relative;
   top: 0;
   left: 0;
@@ -25,6 +26,15 @@
 
 .logo {
   z-index: calc(var(--header-z-index) + 1);
+  width: 200px;
+  height: 75px;
+}
+
+@media only screen and (max-width: 1250px) {
+  .logo {
+    width: 150px;
+    height: 60px;
+  }
 }
 
 .content {
@@ -45,6 +55,7 @@
   align-items: center;
 }
 
+/* Mobile UI */
 @media only screen and (max-width: 1000px) {
   .nav {
     position: absolute;
@@ -62,6 +73,10 @@
     gap: 2rem;
     overflow: hidden;
     transition: all 300ms ease-in-out;
+  }
+
+  .header .nav > a, .header.dark .nav > a {
+    color: var(--color-brand-grey);
   }
 
   .nav > a,

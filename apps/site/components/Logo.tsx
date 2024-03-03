@@ -24,10 +24,8 @@ export const Logo: React.FC<LogoProps> = ({
           alt="Logo PCOS Norge"
           src={variant === "light" ? logoLight.src : logoDark.src}
           loader={({ src }) => src}
-          className={styles.image}
           unoptimized
-          width={400}
-          height={400}
+          fill
         />
       </a>
     </Link>

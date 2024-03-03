@@ -22,9 +22,6 @@ export const getPortableTextComponents =
   (): Partial<PortableTextReactComponents> => {
     return {
       types: {
-        hero: ({ value }) => {
-          return <Hero text={value.text} />
-        },
         pageLinks: ({ value }: ComponentProps<SanityPageLinks>) => {
           return <PageLinkContainer links={value.links} />
         },

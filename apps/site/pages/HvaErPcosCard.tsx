@@ -34,7 +34,7 @@ export const HvaErPcosCard: React.FC<Props> = ({ image }) => (
       </Body>
       <LinkButton href="/hva-er-pcos">
         Les mer om diagnosen
-        <ArrowRight size={24} />
+        <ArrowRight size={32} />
       </LinkButton>
     </section>
     <div className={styles.imageContainer}>

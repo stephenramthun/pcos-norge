@@ -16,6 +16,10 @@
   fill: var(--semantic-color-text-primary);
 }
 
+.button.active > svg {
+  fill: var(--color-brand-grey);
+}
+
 @media only screen and (max-width: 1000px) {
   .button {
     display: flex;

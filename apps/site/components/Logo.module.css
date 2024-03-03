@@ -12,21 +12,3 @@
 .container:focus-visible {
   outline: var(--semantic-color-interaction-outline);
 }
-
-.image {
-  --width: 133px;
-  --height: 25px;
-  width: var(--width) !important;
-  height: var(--height) !important;
-  min-width: var(--width) !important;
-  max-width: var(--width) !important;
-  min-height: var(--height) !important;
-  max-height: var(--height) !important;
-}
-
-@media only screen and (max-width: 750px) {
-  .container img {
-    width: 133px;
-    height: 25px;
-  }
-}

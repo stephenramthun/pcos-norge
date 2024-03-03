@@ -14,6 +14,7 @@ import { ArticleObject, SanityImageDocument } from "types/sanity"
 
 import { Articles } from "./Articles"
 import { HvaErPcosCard } from "./HvaErPcosCard"
+import { OmOss } from "./OmOss"
 
 import styles from "./index.module.css"
 
@@ -26,6 +27,7 @@ interface HomeProps {
   articles: Array<Omit<ArticleObject, "body">>
   images: {
     hvaErPcos: Image
+    omOss: [Image, Image]
   }
 }
 
@@ -34,7 +36,14 @@ const Home: NextPage<HomeProps> = ({ articles, images }) => {
   return (
     <PageContainer>
       <Head />
-      <Header variant="dark" />
+      <Header
+        style={
+          {
+            "--semantic-color-text-primary": "var(--color-brand-light-teal)",
+          } as React.CSSProperties
+        }
+        variant="dark"
+      />
       <Hero />
       <Main id="main">
         <Content className={styles.section}>
@@ -42,6 +51,9 @@ const Home: NextPage<HomeProps> = ({ articles, images }) => {
         </Content>
         <Content className={styles.section}>
           <HvaErPcosCard image={images.hvaErPcos} />
+        </Content>
+        <Content className={styles.section}>
+          <OmOss images={images.omOss} />
         </Content>
       </Main>
       <Footer />
@@ -67,6 +79,12 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       },
       "images": {
         "hvaErPcos": *[_type == "imageDocument" && id.current == "hva-er-pcos"][0] {
+          title,
+          "asset": imageAsset.asset->,
+          "alt": imageAsset.alt,
+          id
+        },
+        "omOss": *[_type == "imageDocument" && id.current match "om-oss*"] {
           title,
           "asset": imageAsset.asset->,
           "alt": imageAsset.alt,

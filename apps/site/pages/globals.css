@@ -93,12 +93,12 @@ mark {
   /*Text*/
   --font-size-buttons: 1rem;
   --font-size-buttons-small: 0.8rem;
-  --font-size-body: 1.125rem;
+  --font-size-body: 1.375rem;
   --font-size-title-extra-small: 1.2rem;
   --font-size-title-small: 1.5rem;
-  --font-size-title-medium: 2.5rem;
+  --font-size-title-medium: 3.75rem;
   --font-size-title-medium-large: 3rem;
-  --font-size-title-large: 4rem;
+  --font-size-title-large: 5.625rem;
   --font-size-details: 1rem;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
@@ -111,7 +111,7 @@ mark {
   /*Layout*/
   --page-margin: 4rem;
   --header-height: 110px;
-  --content-max-width: 1400px;
+  --content-max-width: 2000px;
   --header-z-index: 10000;
   --padding-horizontal: calc(
     max((100vw - var(--content-max-width)) / 2, var(--page-margin))
@@ -123,14 +123,14 @@ mark {
   --block-xs: 8px;
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1500px) {
   :root {
     /*Text*/
     --font-size-buttons: 1rem;
     --font-size-body: 1.125rem;
     --font-size-title-medium: 1.5rem;
     --font-size-title-medium-large: 2.25rem;
-    --font-size-title-large: 3rem;
+    --font-size-title-large: 4rem;
 
     /*Layout*/
     --page-margin: 2rem;
