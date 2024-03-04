@@ -1,4 +1,5 @@
 import { ImageAsset } from "@sanity/types"
+import classNames from "classnames"
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import React from "react"
 
@@ -14,9 +15,11 @@ import { ArticleObject, SanityImageDocument } from "types/sanity"
 
 import { Articles } from "./Articles"
 import { HvaErPcosCard } from "./HvaErPcosCard"
-import { OmOss } from "./OmOss"
+import { OmOssCard } from "./OmOssCard"
 
 import styles from "./index.module.css"
+
+import block from "styles/block.module.css"
 
 type Image = Omit<SanityImageDocument, "imageAsset"> & {
   asset: ImageAsset
@@ -31,35 +34,32 @@ interface HomeProps {
   }
 }
 
-const Home: NextPage<HomeProps> = ({ articles, images }) => {
-  console.log(images)
-  return (
-    <PageContainer>
-      <Head />
-      <Header
-        style={
-          {
-            "--semantic-color-text-primary": "var(--color-brand-light-teal)",
-          } as React.CSSProperties
-        }
-        variant="dark"
-      />
-      <Hero />
-      <Main id="main">
-        <Content className={styles.section}>
-          <Articles articles={articles} />
-        </Content>
-        <Content className={styles.section}>
-          <HvaErPcosCard image={images.hvaErPcos} />
-        </Content>
-        <Content className={styles.section}>
-          <OmOss images={images.omOss} />
-        </Content>
-      </Main>
-      <Footer />
-    </PageContainer>
-  )
-}
+const Home: NextPage<HomeProps> = ({ articles, images }) => (
+  <PageContainer>
+    <Head />
+    <Header
+      style={
+        {
+          "--semantic-color-text-primary": "var(--color-brand-light-teal)",
+        } as React.CSSProperties
+      }
+      variant="dark"
+    />
+    <Hero />
+    <Main id="main">
+      <Content className={classNames(styles.firstContentSection, block.large)}>
+        <Articles articles={articles} />
+      </Content>
+      <Content className={block.large}>
+        <HvaErPcosCard image={images.hvaErPcos} />
+      </Content>
+      <Content className={block.large}>
+        <OmOssCard images={images.omOss} />
+      </Content>
+    </Main>
+    <Footer />
+  </PageContainer>
+)
 
 export const getStaticProps: GetStaticProps = async (): Promise<
   GetStaticPropsResult<HomeProps>

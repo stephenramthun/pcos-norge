@@ -3,7 +3,7 @@
     color: var(--semantic-color-text-primary-inverse);
     outline: none;
     border: none;
-    padding: 1.5rem 2rem;
+    padding: var(--block-xs) var(--block-s);
     border-radius: 10px;
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-semibold);
@@ -18,6 +18,8 @@
 }
 
 .button svg {
+    width: 1.5em;
+    height: 1.5em;
     transition: transform 0.2s ease;
 }
 
@@ -31,7 +33,7 @@
 
 .button:hover svg,
 .button:focus-visible svg {
-    transform: translateX(8px);
+    transform: translateX(0.25em);
     fill: var(--color-brand-dark-teal);
 }
 

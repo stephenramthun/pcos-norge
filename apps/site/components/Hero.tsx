@@ -1,4 +1,5 @@
 import { Person } from "@phosphor-icons/react"
+import classNames from "classnames"
 import React from "react"
 
 import { ArrowLink } from "components/ArrowLink"
@@ -7,8 +8,11 @@ import { Heading } from "components/Heading"
 
 import styles from "./Hero.module.css"
 
-export const Hero: React.FC = () => (
-  <Content className={styles.container}>
+export const Hero: React.FC<React.HTMLAttributes<HTMLElement>> = ({
+  className,
+  ...rest
+}) => (
+  <Content className={classNames(styles.container, className)} {...rest}>
     <div className={styles.text}>
       <Heading tag="h1" size="large">
         PCOS rammer cirka 15 prosent av alle kvinner i verden

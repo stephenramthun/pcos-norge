@@ -2,16 +2,9 @@
   position: relative;
   height: max-content;
   width: 100vw;
-  padding: 3rem var(--padding-horizontal);
+  padding: 0 var(--padding-horizontal);
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
   background: var(--semantic-color-background-primary);
-}
-
-@media only screen and (max-width: 750px) {
-  .content {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
 }

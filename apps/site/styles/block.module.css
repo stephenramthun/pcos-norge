@@ -1,0 +1,11 @@
+.small {
+  margin-bottom: var(--block-s);
+}
+
+.medium {
+  margin-bottom: var(--block-m);
+}
+
+.large {
+  margin-bottom: var(--block-l);
+}

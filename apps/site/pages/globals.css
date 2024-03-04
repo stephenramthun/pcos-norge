@@ -93,56 +93,72 @@ mark {
   /*Text*/
   --font-size-buttons: 1rem;
   --font-size-buttons-small: 0.8rem;
-  --font-size-body: 1.375rem;
+  --font-size-body: 1rem;
   --font-size-title-extra-small: 1.2rem;
-  --font-size-title-small: 1.5rem;
-  --font-size-title-medium: 3.75rem;
-  --font-size-title-medium-large: 3rem;
-  --font-size-title-large: 5.625rem;
+  --font-size-title-small: 1.25rem;
+  --font-size-title-medium: 1.5rem;
+  --font-size-title-medium-large: 1.75rem;
+  --font-size-title-large: 2rem;
   --font-size-details: 1rem;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-black: 900;
   --font-weight-light: 300;
-  --line-height-body: 2rem;
+  --line-height-body: calc(var(--font-size-body) * 1.75);
   --line-height-details: 1.75rem;
 
   /*Layout*/
-  --page-margin: 4rem;
-  --header-height: 110px;
+  --header-height: 75px;
   --content-max-width: 2000px;
   --header-z-index: 10000;
   --padding-horizontal: calc(
     max((100vw - var(--content-max-width)) / 2, var(--page-margin))
   );
   --text-max-width: 750px;
-  --block-l: 32px;
-  --block-m: 24px;
-  --block-s: 16px;
+  --page-margin: 1.5rem;
   --block-xs: 8px;
+  --block-s: 16px;
+  --block-m: 24px;
+  --block-l: 40px;
 }
 
-@media only screen and (max-width: 1500px) {
+@media (min-width: 750px) {
   :root {
     /*Text*/
-    --font-size-buttons: 1rem;
     --font-size-body: 1.125rem;
-    --font-size-title-medium: 1.5rem;
-    --font-size-title-medium-large: 2.25rem;
+    --font-size-title-medium: 2.5rem;
+    --font-size-title-medium-large: 3.25rem;
     --font-size-title-large: 4rem;
 
     /*Layout*/
     --page-margin: 2rem;
+    --block-xs: 16px;
+    --block-s: 24px;
+    --block-m: 40px;
+    --block-l: 64px;
   }
 }
 
-@media only screen and (max-width: 750px) {
+@media (min-width: 1250px) {
+  :root {
+    --header-height: 110px;
+  }
+}
+
+@media (min-width: 1500px) {
   :root {
     /*Text*/
-    --font-size-title-large: 2rem;
+    --font-size-body: 1.375rem;
+    --font-size-title-medium: 3.75rem;
+    --font-size-title-medium-large: 3rem;
+    --font-size-title-large: 5.625rem;
 
     /*Layout*/
-    --header-height: 75px;
+    --page-margin: 4rem;
+    --block-xs: 24px;
+    --block-s: 40px;
+    --block-m: 64px;
+    --block-l: 90px;
   }
 }

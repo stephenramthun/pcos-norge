@@ -1,14 +1,11 @@
 .container {
-  --container-horizontal-padding: calc(var(--padding-horizontal) + 4rem);
+  --container-horizontal-padding: var(--padding-horizontal);
   --hero-text-size: var(--font-size-title-large);
   position: relative;
   background: var(--color-brand-teal);
   padding: 2rem var(--container-horizontal-padding);
-  height: calc(100vh - 110px);
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  height: max-content;
+  flex-direction: column;
   gap: 4rem;
 }
 
@@ -29,11 +26,11 @@
   flex-direction: column;
   gap: 2rem;
   max-width: 900px;
+  padding: 1rem;
 }
 
 .text h1 {
   font-size: var(--hero-text-size);
-  line-height: calc(var(--hero-text-size) * 1.25);
 }
 
 .illustration {
@@ -44,49 +41,29 @@
 .illustration svg {
   width: 64px;
   height: 64px;
-  max-width: 64px;
-  max-height: 64px;
+  max-width: calc((100vw - (var(--container-horizontal-padding) * 2)) / 10);
+  max-height: calc((100vw - (var(--container-horizontal-padding) * 2)) / 10);
 }
 
-@media only screen and (max-width: 1500px) {
+@media (min-width: 1250px) {
   .container {
-    flex-direction: column;
-    align-items: start;
-  }
-
-  .text {
-    flex: unset;
-    padding: 1rem;
-  }
-}
-
-@media only screen and (max-width: 1250px) {
-  .container {
-    --container-horizontal-padding: var(--padding-horizontal);
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .container {
-    height: max-content;
-  }
-
-  .text {
-    position: relative;
-  }
-
-  .illustration {
-    position: relative;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  .container {
-    height: max-content;
+    --container-horizontal-padding: calc(var(--padding-horizontal) + 4rem);
+    height: calc(100vh - var(--header-height));
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
   }
 
   .illustration svg {
-    max-width: calc((100vw - (var(--container-horizontal-padding) * 2)) / 10);
-    max-height: calc((100vw - (var(--container-horizontal-padding) * 2)) / 10);
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .illustration svg {
+    width: 64px;
+    height: 64px;
   }
 }

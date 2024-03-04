@@ -1,0 +1,15 @@
+.medium {
+  padding: 24px;
+}
+
+@media (min-width: 750px) {
+  .medium {
+    padding: 48px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .medium {
+    padding: 74px;
+  }
+}

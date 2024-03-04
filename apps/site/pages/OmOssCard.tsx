@@ -1,5 +1,6 @@
 import { ArrowRight } from "@phosphor-icons/react"
 import { ImageAsset } from "@sanity/types"
+import classNames from "classnames"
 import React from "react"
 
 import { SanityImageDocument } from "../types/sanity"
@@ -8,7 +9,10 @@ import { Heading } from "components/Heading"
 import { LinkButton } from "components/LinkButton"
 import { SanityImage } from "components/SanityImage"
 
-import styles from "./OmOss.module.css"
+import styles from "./OmOssCard.module.css"
+
+import block from "styles/block.module.css"
+import card from "styles/card.module.css"
 
 type Image = Omit<SanityImageDocument, "imageAsset"> & {
   asset: ImageAsset
@@ -19,7 +23,7 @@ type Props = {
   images: [Image, Image]
 }
 
-export const OmOss: React.FC<Props> = ({ images }) => (
+export const OmOssCard: React.FC<Props> = ({ images }) => (
   <article className={styles.omOss}>
     <div className={styles.imageContainer}>
       <div>
@@ -39,11 +43,11 @@ export const OmOss: React.FC<Props> = ({ images }) => (
         />
       </div>
     </div>
-    <section className={styles.textContainer}>
-      <Heading tag="h2" size="medium">
+    <section className={classNames(styles.textContainer)}>
+      <Heading tag="h2" size="medium" className={block.medium}>
         Vi jobber for dine rettigheter
       </Heading>
-      <Body>
+      <Body className={block.small}>
         PCOS Norge er en nyoppstartet landsdekkende forening for alle med PCOS,
         pårørende og helsevesen. Vi vil sette PCOS på dagsorden gjennom å
         formidle kunnskap og informasjon. Vi ønsker å være et forum som

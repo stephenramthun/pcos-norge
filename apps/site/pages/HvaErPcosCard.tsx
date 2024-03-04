@@ -1,5 +1,6 @@
 import { ArrowRight } from "@phosphor-icons/react"
 import { ImageAsset } from "@sanity/types"
+import classNames from "classnames"
 import React from "react"
 
 import { SanityImageDocument } from "../types/sanity"
@@ -9,6 +10,9 @@ import { LinkButton } from "components/LinkButton"
 import { SanityImage } from "components/SanityImage"
 
 import styles from "./HvaErPcosCard.module.css"
+
+import block from "styles/block.module.css"
+import card from "styles/card.module.css"
 
 type Image = Omit<SanityImageDocument, "imageAsset"> & {
   asset: ImageAsset
@@ -21,11 +25,11 @@ type Props = {
 
 export const HvaErPcosCard: React.FC<Props> = ({ image }) => (
   <article className={styles.hvaErPcos}>
-    <section className={styles.textContainer}>
-      <Heading tag="h2" size="medium">
+    <section className={classNames(styles.textContainer, card.medium)}>
+      <Heading tag="h2" size="medium" className={block.medium}>
         Hva er PCOS?
       </Heading>
-      <Body>
+      <Body className={block.small}>
         Polycystisk ovariesyndrom (PCOS) er den vanligste hormonelle (endokrine)
         forstyrrelsen hos kvinner. Tilstanden rammer 10-15% av alle kvinner og
         kan gi mange helseproblemer som følge av den hormonelle ubalansen. Alle

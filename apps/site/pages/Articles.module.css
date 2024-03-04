@@ -36,13 +36,21 @@
   min-width: var(--width);
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1500px) {
+  .articles {
+    gap: 48px;
+  }
+
   .card {
     min-width: 400px;
   }
 }
 
 @media only screen and (max-width: 750px) {
+  .articles {
+    gap: 32px;
+  }
+
   .cards {
     gap: 2rem;
   }

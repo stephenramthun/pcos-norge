@@ -54,7 +54,7 @@ export const HorizontalDragContainer: React.FC<
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <button className={styles.button} onClick={scrollLeft}>
         <ArrowLeft />
       </button>
@@ -67,7 +67,7 @@ export const HorizontalDragContainer: React.FC<
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
         ref={ref}
-        className={classNames(styles.container, className)}
+        className={classNames(styles.dragContainer, className)}
         {...elementProps}
         onMouseDown={(event) => {
           if (event.target === ref.current) {
