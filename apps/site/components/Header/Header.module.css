@@ -117,6 +117,11 @@
     filter: unset;
   }
 
+  .nav {
+    position: relative;
+    width: max-content;
+  }
+
   .nav.hide, .nav.show {
     gap: 2.5rem;
     align-items: center;
