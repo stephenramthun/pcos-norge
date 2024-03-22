@@ -1,5 +1,4 @@
 .header {
-
   position: relative;
   top: 0;
   left: 0;
@@ -10,31 +9,6 @@
   background: var(--semantic-color-background-primary);
   padding-left: var(--padding-horizontal);
   padding-right: var(--padding-horizontal);
-}
-
-.header.dark {
-  background: var(--color-brand-teal);
-}
-
-.header .nav > a {
-  color: var(--semantic-color-text-primary);
-}
-
-.header.dark .nav > a {
-  color: var(--semantic-color-background-primary);
-}
-
-.logo {
-  z-index: calc(var(--header-z-index) + 1);
-  width: 200px;
-  height: 75px;
-}
-
-@media only screen and (max-width: 1250px) {
-  .logo {
-    width: 150px;
-    height: 60px;
-  }
 }
 
 .content {
@@ -49,61 +23,145 @@
   transition: height 100ms;
 }
 
-.nav {
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
+.header.dark {
+  background: var(--color-brand-teal);
 }
 
-/* Mobile UI */
-@media only screen and (max-width: 1000px) {
-  .nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    margin-left: calc(var(--page-margin) * -1);
-    margin-right: calc(var(--page-margin) * -1);
-    background: var(--semantic-color-background-primary);
-    flex-direction: column;
-    align-items: flex-end;
-    padding: var(--page-margin);
-    padding-bottom: 3rem;
-    padding-top: calc(var(--header-height) + 2rem);
-    gap: 2rem;
-    overflow: hidden;
-    transition: all 300ms ease-in-out;
+.link {
+  color: var(--semantic-color-text-primary);
+}
+
+.logo {
+  z-index: calc(var(--header-z-index) + 1);
+  width: 150px;
+  height: 60px;
+  transition: filter 0.3s ease-in-out;
+}
+
+@media (min-width: 1250px) {
+  .logo {
+    width: 200px;
+    height: 75px;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin-left: calc(var(--page-margin) * -1);
+  margin-right: calc(var(--page-margin) * -1);
+  background: var(--semantic-color-background-primary);
+  padding: var(--page-margin);
+  padding-bottom: 3rem;
+  padding-top: calc(var(--header-height) + 2rem);
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+}
+
+.link {
+  color: var(--color-brand-grey);
+}
+
+.nav > a,
+.nav > button {
+  transition: all 300ms ease;
+  font-weight: 600;
+}
+
+.nav.hide > a,
+.nav.hide > button {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.nav.show {
+  box-shadow: 0 0 15px 0 black;
+}
+
+.header.dark .logo.show {
+  filter: invert();
+}
+
+.nav.show > a,
+.nav.show > button {
+  transition-delay: 300ms;
+  opacity: 1;
+}
+
+.nav.hide {
+  padding-top: 0;
+  padding-bottom: 0;
+  transform: translateY(-100%);
+}
+
+.header.dark .nav.hide + .menuButton svg {
+  fill: var(--semantic-color-text-primary-inverse);
+}
+
+.nav.show .memberLink {
+  transition-delay: unset;
+}
+
+@media (min-width: 1000px) {
+  .header.dark .nav {
+    background: var(--color-brand-teal);
   }
 
-  .header .nav > a, .header.dark .nav > a {
-    color: var(--color-brand-grey);
+  .header.dark .logo.show {
+    filter: unset;
   }
 
-  .nav > a,
-  .nav > button {
-    transition: all 300ms ease;
-    font-weight: 600;
+  .nav.hide, .nav.show {
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    height: var(--header-height);
+    transition: height 300ms ease;
+    transform: unset;
+    padding-bottom: 0;
+    padding-top: 0;
+    box-shadow: none;
   }
 
   .nav.hide > a,
-  .nav.hide > button {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  .nav.show {
-    box-shadow: 0 0 15px 0 black;
-  }
-
   .nav.show > a,
-  .nav.show > button{
-    transition-delay: 300ms;
+  .nav.hide > button,
+  .nav.show > button {
     opacity: 1;
+    transition: all 200ms ease;
+    transform: unset;
+    font-weight: var(--font-weight-regular);
   }
 
-  .nav.hide {
-    padding-top: 0;
-    padding-bottom: 0;
-    transform: translateY(-100%);
+  .header.dark .nav > a,
+  .header.dark .nav > button {
+    color: var(--semantic-color-text-primary-inverse);
+  }
+
+  .header.dark .memberLink:not(:focus-visible):not(:hover) {
+    background: var(--color-brand-dark-teal);
+  }
+
+  .header.dark .memberLink:focus-visible,
+  .header.dark .memberLink:hover {
+    background: var(--color-brand-teal);
+    box-shadow: 0 0 0 2px var(--color-brand-light-teal);
+  }
+
+  .header.dark .memberLink:active {
+    background: black;
+    box-shadow: none;
+  }
+
+  .nav.hide .memberLink,
+  .nav.show .memberLink {
+    font-weight: var(--font-weight-semibold);
   }
 }

@@ -1,8 +1,7 @@
 import classNames from "classnames"
-import NextLink from "next/link"
 import React, { useState } from "react"
 
-import { Button } from "components/Button"
+import { LinkButton } from "components/LinkButton"
 import { Logo } from "components/Logo"
 
 import { HamburgerMenu } from "./HamburgerMenu"
@@ -30,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className={classNames(styles.content)}>
         <Logo
           variant={variant === "dark" ? "light" : "dark"}
-          className={styles.logo}
+          className={classNames(styles.logo, showNav && styles.show)}
         />
         <nav
           role="navigation"
@@ -40,16 +39,30 @@ export const Header: React.FC<HeaderProps> = ({
             showNav ? styles.show : styles.hide,
           )}
         >
-          <Link href="/hva-er-pcos">Hva er PCOS</Link>
-          <Link href="/om-oss">Om oss</Link>
-          <Link href="/aktuelt">Aktuelt</Link>
-          <Link href="/bidra">Bidra</Link>
-          <Link href="/min-side">Min side</Link>
-          <NextLink href="/bli-medlem">
-            <Button role="link">Bli medlem</Button>
-          </NextLink>
+          <Link className={styles.link} href="/hva-er-pcos">
+            Hva er PCOS
+          </Link>
+          <Link className={styles.link} href="/om-oss">
+            Om oss
+          </Link>
+          <Link className={styles.link} href="/aktuelt">
+            Aktuelt
+          </Link>
+          <Link className={styles.link} href="/bidra">
+            Bidra
+          </Link>
+          <Link className={styles.link} href="/min-side">
+            Min side
+          </Link>
+          <LinkButton className={styles.memberLink} href="/bli-medlem">
+            Bli medlem
+          </LinkButton>
         </nav>
-        <HamburgerMenu onClick={() => setShowNav((prevState) => !prevState)} />
+        <HamburgerMenu
+          className={styles.menuButton}
+          isOpen={showNav}
+          onClick={() => setShowNav((prevState) => !prevState)}
+        />
       </div>
     </header>
   )

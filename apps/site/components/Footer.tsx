@@ -16,7 +16,6 @@ import sanitetskvinneneLogo from "public/logo-sanitetskvinnene.svg"
 export const Footer: React.FC = () => (
   <>
     <Content className={styles.sponsors}>
-      <Body>Våre støttespillere:</Body>
       <div className={styles.logos}>
         <Link href="https://bergesenstiftelsen.no/" target="_blank">
           <Image

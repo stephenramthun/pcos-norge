@@ -1,32 +1,28 @@
 import { List, X } from "@phosphor-icons/react"
 import classNames from "classnames"
-import React, { HTMLAttributes, useState } from "react"
+import React, { HTMLAttributes } from "react"
 
 import styles from "./HamburgerMenu.module.css"
 
 interface HamburgerMenuProps
-  extends Childless<HTMLAttributes<HTMLButtonElement>> {}
+  extends Childless<HTMLAttributes<HTMLButtonElement>> {
+  isOpen: boolean
+}
 
 export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   className,
   onClick,
+  isOpen,
   ...buttonProps
 }) => {
-  const [open, setOpen] = useState(false)
-
-  const toggleOpen = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    setOpen((prevState) => !prevState)
-    onClick?.(event)
-  }
-
   return (
     <button
-      className={classNames(styles.button, open && styles.active, className)}
+      className={classNames(styles.button, isOpen && styles.active, className)}
       aria-label="Menu"
-      onClick={toggleOpen}
+      onClick={onClick}
       {...buttonProps}
     >
-      {open ? <X size={32} /> : <List size={32} />}
+      {isOpen ? <X size={32} /> : <List size={32} />}
     </button>
   )
 }

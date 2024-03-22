@@ -37,14 +37,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ articles, images }) => (
   <PageContainer>
     <Head />
-    <Header
-      style={
-        {
-          "--semantic-color-text-primary": "var(--color-brand-light-teal)",
-        } as React.CSSProperties
-      }
-      variant="dark"
-    />
+    <Header variant="dark" />
     <Hero />
     <Main id="main">
       <Content className={classNames(styles.firstContentSection, block.large)}>
