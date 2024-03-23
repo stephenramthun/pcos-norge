@@ -1,3 +1,5 @@
+import { Rule } from "sanity";
+
 export const blockContent = {
   name: "blockContent",
   title: "Innhold",
@@ -10,6 +12,9 @@ export const blockContent = {
       type: "factBox",
     },
     {
+      type: "people",
+    },
+    {
       type: "block",
       marks: {
         decorators: [
@@ -17,7 +22,7 @@ export const blockContent = {
             title: "Ingress",
             value: "ingress",
             icon: () => "Ing",
-            component: () => "Ing"
+            component: () => "Ing",
           },
           {
             title: "Strong",
@@ -40,8 +45,8 @@ export const blockContent = {
                 title: "URL",
                 name: "href",
                 type: "url",
-                validation: (Rule) =>
-                  Rule.uri({
+                validation: (rule: Rule) =>
+                  rule.uri({
                     allowRelative: true,
                     scheme: ["https", "http"],
                   }),
@@ -59,8 +64,8 @@ export const blockContent = {
                 title: "URL",
                 name: "href",
                 type: "url",
-                validation: (Rule) =>
-                  Rule.uri({
+                validation: (rule: Rule) =>
+                  rule.uri({
                     allowRelative: true,
                     scheme: ["https", "http"],
                   }),
@@ -71,4 +76,4 @@ export const blockContent = {
       },
     },
   ],
-}
+};

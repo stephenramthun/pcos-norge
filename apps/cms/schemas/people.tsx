@@ -1,4 +1,5 @@
 import { Users } from "phosphor-react";
+import { Rule } from "sanity";
 
 export const people = {
   type: "object",
@@ -10,7 +11,7 @@ export const people = {
       name: "people",
       title: "Personer",
       of: [{ type: "person" }],
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
     },
   ],
   preview: {

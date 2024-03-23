@@ -22,10 +22,8 @@
 .cards {
   display: flex;
   gap: var(--gap-between-cards);
-  width: 100vw;
-  margin-left: calc(var(--padding-horizontal) * -1);
-  padding-left: var(--padding-horizontal);
-  padding-right: var(--padding-horizontal);
+  width: 100cqw;
+  max-width: calc(100cqw - var(--padding-horizontal) * 2);
   overflow-x: scroll;
   -ms-overflow-style: none;
 }

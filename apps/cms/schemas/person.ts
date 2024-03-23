@@ -1,3 +1,5 @@
+import { Rule } from "sanity";
+
 export const person = {
   name: "person",
   title: "Person",
@@ -7,7 +9,7 @@ export const person = {
       name: "name",
       title: "Navn",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: "picture",
@@ -26,7 +28,7 @@ export const person = {
       name: "role",
       title: "Rolle",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
     },
   ],
-}
+};

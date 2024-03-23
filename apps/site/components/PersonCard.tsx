@@ -46,15 +46,13 @@ export const PersonCard: React.FC<PersonCardProps> = ({
         loader={imageProps?.loader || (({ src }) => src)}
         unoptimized
       />
-      <span className={styles.details}>
-        <p className={styles.capacity}>{capacity}</p>
-        <p className={styles.name}>{name}</p>
-        {email && (
-          <Link href={`mailto:${email}`} className={styles.email}>
-            {email}
-          </Link>
-        )}
-      </span>
+      <p className={styles.capacity}>{capacity}</p>
+      <p className={styles.name}>{name}</p>
+      {email && (
+        <Link href={`mailto:${email}`} className={styles.email}>
+          {email}
+        </Link>
+      )}
     </div>
   )
 }

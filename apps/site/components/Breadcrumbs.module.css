@@ -4,6 +4,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: var(--gap);
+  margin-bottom: var(--block-l);
 }
 
 .container a,

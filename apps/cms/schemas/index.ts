@@ -11,9 +11,10 @@ import { pageLinks } from "./pageLinks";
 import { imageAsset } from "./imageAsset";
 import { callToAction } from "./callToAction";
 import { blockContent } from "./blockContent";
+import { imageDocument } from "./imageDocument";
 import { navigationLinks } from "./navigationLinks";
 import { openGraphMetaData } from "./openGraphMetaData";
-import { imageDocument } from "./imageDocument";
+import sideMedInnholdsfortegnelse from "./sideMedInnholdsfortegnelse";
 
 export default [
   page,
@@ -32,4 +33,5 @@ export default [
   imageDocument,
   navigationLinks,
   openGraphMetaData,
+  ...sideMedInnholdsfortegnelse,
 ];

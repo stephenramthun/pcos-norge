@@ -52,6 +52,11 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   background-color: var(--semantic-color-background-primary);
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  container-type: inline-size;
 }
 
 a {
@@ -115,12 +120,13 @@ mark {
   --padding-horizontal: calc(
     max((100vw - var(--content-max-width)) / 2, var(--page-margin))
   );
-  --text-max-width: 750px;
+  --text-max-width: min(750px, 100%);
   --page-margin: 1.5rem;
   --block-xs: 8px;
   --block-s: 16px;
   --block-m: 24px;
   --block-l: 40px;
+  --block-xl: 64px;
 }
 
 @media (min-width: 750px) {
@@ -137,6 +143,7 @@ mark {
     --block-s: 24px;
     --block-m: 40px;
     --block-l: 64px;
+    --block-xl: 90px;
   }
 }
 
@@ -160,5 +167,6 @@ mark {
     --block-s: 40px;
     --block-m: 64px;
     --block-l: 90px;
+    --block-xl: 120px;
   }
 }

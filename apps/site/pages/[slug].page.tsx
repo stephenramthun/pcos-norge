@@ -83,17 +83,17 @@ export const getStaticProps: GetStaticProps = async ({
     },
   }
 }
-
-export const getStaticPaths: GetStaticPaths =
-  async (): Promise<GetStaticPathsResult> => {
-    const paths = await getClient().fetch<Array<string>>(
-      `*[_type == "page" && id != "forsiden"][].id.current`,
-    )
-
-    return {
-      paths: paths.map((slug) => ({ params: { slug } })),
-      fallback: false,
-    }
-  }
+//
+// export const getStaticPaths: GetStaticPaths =
+//   async (): Promise<GetStaticPathsResult> => {
+//     const paths = await getClient().fetch<Array<string>>(
+//       `*[_type == "page" && id != "forsiden"][].id.current`,
+//     )
+//
+//     return {
+//       paths: paths.map((slug) => ({ params: { slug } })),
+//       fallback: false,
+//     }
+//   }
 
 export default Page

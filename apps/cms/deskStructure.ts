@@ -1,10 +1,11 @@
 import Iframe from "sanity-plugin-iframe-pane";
 import resolveProductionUrl from "./resolveProductionUrl";
+import { StructureBuilder } from "sanity/lib/exports/desk";
 
-export const getDefaultDocumentNode = (S) =>
-  S.document().views([
-    S.view.form(),
-    S.view
+export const getDefaultDocumentNode = (builder: StructureBuilder) =>
+  builder.document().views([
+    builder.view.form(),
+    builder.view
       .component(Iframe)
       .options({
         url: (doc) => resolveProductionUrl(doc),
@@ -12,13 +13,15 @@ export const getDefaultDocumentNode = (S) =>
       .title("Preview"),
   ]);
 
-const component = (S) =>
-  S.list()
+const component = (builder: StructureBuilder) =>
+  builder
+    .list()
     .title("Content")
     .items([
-      S.documentTypeListItem("article"),
-      S.documentTypeListItem("page"),
-      S.documentTypeListItem("imageDocument"),
+      builder.documentTypeListItem("article"),
+      builder.documentTypeListItem("page"),
+      builder.documentTypeListItem("imageDocument"),
+      builder.documentTypeListItem("tableOfContentsPage"),
     ]);
 
 export default component;

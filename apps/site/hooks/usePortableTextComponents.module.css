@@ -28,7 +28,7 @@
 }
 
 .section {
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 .section > article {
@@ -42,6 +42,11 @@
 
 .section > article > p {
   margin-bottom: 1rem;
+}
+
+.image {
+  position: relative !important;
+  height: unset !important;
 }
 
 .imageText {

@@ -7,12 +7,8 @@
   gap: 16px;
 }
 
-.card > * {
+.card > p {
   margin: 0;
-}
-
-.card > span:first-of-type {
-  margin-bottom: 1rem !important;
 }
 
 .card img {
@@ -31,13 +27,10 @@
 .name {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-semibold);
-  margin-top: 0;
-  margin-bottom: 8px;
 }
 
 .capacity {
   font-size: var(--font-size-details);
-  margin: 0 0 16px;
 }
 
 .email {

@@ -7,8 +7,8 @@ import deskStructure from "./deskStructure";
 import schemas from "./schemas";
 import resolveProductionUrl from "./resolveProductionUrl";
 
-export const SANITY_PROJECT_ID = "7bmjnb8i"
-export const SANITY_DATASET = "production"
+export const SANITY_PROJECT_ID = "7bmjnb8i";
+export const SANITY_DATASET = "production";
 
 export default defineConfig({
   title: "pcos-norge",
@@ -32,9 +32,9 @@ export default defineConfig({
     },
   },
   document: {
-    productionUrl: async (prev, context) => {
-      const { document } = context
-      return resolveProductionUrl(document)
+    productionUrl: async (_, context) => {
+      const { document } = context;
+      return resolveProductionUrl(document);
     },
     newDocumentOptions: (prev, { creationContext }) => {
       if (creationContext.type === "global") {

@@ -19,35 +19,31 @@ type ComponentProps<T> = {
 }
 
 export const getPortableTextComponents =
-  (): Partial<PortableTextReactComponents> => {
-    return {
-      types: {
-        pageLinks: ({ value }: ComponentProps<SanityPageLinks>) => {
-          return <PageLinkContainer links={value.links} />
-        },
-        imageAsset: ({ value }: ComponentProps<SanityImageAsset>) => {
-          return (
-            <Content>
-              <SanityImage
-                asset={value.asset}
-                alt={value.alt}
-                maxWidth={2000}
-                fill
-                priority
-              />
-            </Content>
-          )
-        },
-        bodyText: ({ value }: ComponentProps<SanityBodyText>) => {
-          return <BlockContentContainer blocks={value.content} />
-        },
-        people: ({ value }: ComponentProps<SanityPeople>) => {
-          return (
-            <Content>
-              <PeopleContainer people={value.people} />
-            </Content>
-          )
-        },
-      },
-    }
-  }
+  (): Partial<PortableTextReactComponents> => ({
+    types: {
+      pageLinks: ({ value }: ComponentProps<SanityPageLinks>) => (
+        <PageLinkContainer links={value.links} />
+      ),
+      imageAsset: ({ value }: ComponentProps<SanityImageAsset>) => (
+        <Content>
+          <SanityImage
+            asset={value.asset}
+            alt={value.alt}
+            maxWidth={2000}
+            fill
+            priority
+          />
+        </Content>
+      ),
+      bodyText: ({ value }: ComponentProps<SanityBodyText>) => (
+        <Content>
+          <BlockContentContainer blocks={value.content} />
+        </Content>
+      ),
+      people: ({ value }: ComponentProps<SanityPeople>) => (
+        <Content>
+          <PeopleContainer people={value.people} />
+        </Content>
+      ),
+    },
+  })
