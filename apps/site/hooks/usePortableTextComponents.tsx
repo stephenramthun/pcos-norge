@@ -2,12 +2,13 @@ import { PortableTextReactComponents } from "@portabletext/react"
 import { PortableTextBlock } from "@portabletext/types"
 import React, { ReactNode } from "react"
 
+import { Accordion } from "components/Accordion"
 import { Body } from "components/Body"
 import { FactBox } from "components/FactBox"
 import { Heading } from "components/Heading"
 import { ImageContainer } from "components/ImageContainer"
 import { Link } from "components/Link"
-import { List } from "components/List"
+import { ExpandableList, List } from "components/list"
 import { PeopleContainer } from "components/PeopleContainer"
 import { SanityImage } from "components/SanityImage"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
@@ -21,6 +22,7 @@ type ComponentProps<T> = {
 
 export const usePortableTextComponents = (
   body: PortableTextBlock[],
+  expandableLists: boolean,
 ): Partial<PortableTextReactComponents> => {
   const referenceLinks = useReferenceLinks(body)
   return {
@@ -42,6 +44,7 @@ export const usePortableTextComponents = (
       ),
       factBox: ({ value }) => <FactBox facts={value.facts} />,
       people: ({ value }) => <PeopleContainer people={value.people} />,
+      accordion: ({ value }) => <Accordion items={value.accordionItems} />,
     },
     block: {
       h1: ({ children }) => (
@@ -62,7 +65,12 @@ export const usePortableTextComponents = (
       normal: ({ children }) => <Body>{children}</Body>,
     },
     list: {
-      bullet: ({ children }) => <List>{children as ReactNode[]}</List>,
+      bullet: ({ children }) =>
+        expandableLists ? (
+          <ExpandableList>{children as ReactNode[]}</ExpandableList>
+        ) : (
+          <List>{children as ReactNode[]}</List>
+        ),
       number: ({ children }) => <ol className={styles.list}>{children}</ol>,
     },
     marks: {

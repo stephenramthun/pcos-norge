@@ -15,6 +15,9 @@ export const blockContent = {
       type: "people",
     },
     {
+      type: "accordion",
+    },
+    {
       type: "block",
       marks: {
         decorators: [

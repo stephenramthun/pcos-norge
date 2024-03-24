@@ -15,6 +15,7 @@ import { imageDocument } from "./imageDocument";
 import { navigationLinks } from "./navigationLinks";
 import { openGraphMetaData } from "./openGraphMetaData";
 import sideMedInnholdsfortegnelse from "./sideMedInnholdsfortegnelse";
+import accordion from "./accordion";
 
 export default [
   page,
@@ -34,4 +35,5 @@ export default [
   navigationLinks,
   openGraphMetaData,
   ...sideMedInnholdsfortegnelse,
+  ...accordion,
 ];

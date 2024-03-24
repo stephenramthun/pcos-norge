@@ -6,23 +6,25 @@ import { Button } from "components/Button"
 
 import styles from "./List.module.css"
 
+const MAX_ELEMENTS = 6
+
 type Props = React.HTMLAttributes<HTMLUListElement> & {
   children: ReactNode[]
 }
 
-export const List: React.FC<Props> = ({
+export const ExpandableList: React.FC<Props> = ({
   children,
   className,
   ...listProps
 }) => {
-  const [isCompact, setIsCompact] = useState(children.length > 5)
+  const [isCompact, setIsCompact] = useState(children.length > MAX_ELEMENTS)
 
-  const childElements = isCompact ? children.slice(0, 6) : children
+  const childElements = isCompact ? children.slice(0, MAX_ELEMENTS) : children
 
   return (
     <ul className={classNames(styles.list, className)} {...listProps}>
       {childElements}
-      {children.length > 5 && (
+      {children.length > MAX_ELEMENTS && (
         <Button
           variant="tertiary"
           onClick={() => setIsCompact((prevState) => !prevState)}
