@@ -53,7 +53,7 @@ const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
   return (
     <PageContainer>
       <Head title="Aktuelt | PCOS Norge" />
-      <Header />
+      <Header className={styles.header} />
       <Content>
         <Breadcrumbs
           links={[
@@ -62,11 +62,11 @@ const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
           ]}
         />
       </Content>
-      <Content>
-        <Heading size="medium-large" tag="h1">
+      <Content className={styles.content}>
+        <Heading size="medium" tag="h1">
           Aktuelt
         </Heading>
-        <div className={styles.CardGrid}>
+        <div className={styles.grid}>
           {state.articles.map((it) => (
             <ArticleCard
               key={it.slug}
@@ -75,13 +75,13 @@ const Aktuelt: NextPage<AktueltProps & PreviewProps> = ({
               image={it.image}
               published={new Date(it.published)}
               headingLevel="h2"
-              className={styles.Card}
+              className={styles.card}
             />
           ))}
         </div>
       </Content>
       {state.remainingArticles > 0 && (
-        <Content className={styles.FetchMoreContainer}>
+        <Content className={styles.fetchMore}>
           <FetchButton onFetch={fetchMoreArticles}>
             Hent {Math.min(state.remainingArticles, articlesPerFetch)} flere
             saker

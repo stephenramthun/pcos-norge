@@ -1,15 +1,25 @@
-.section {
-  background: var(--semantic-color-background-primary);
-  flex-direction: column;
-  align-items: flex-end;
+.header {
+  margin-bottom: var(--block-m);
 }
 
-.CardGrid {
-  --cards-per-row: 3;
+.content {
+  flex-direction: column;
+  flex-wrap: unset;
+  margin-bottom: var(--block-m);
+}
+
+.fetchMore {
+  justify-content: center;
+  margin-bottom: var(--block-l);
+}
+
+.grid {
+  --cards-per-row: 1;
   --gap: 2rem;
   display: grid;
   grid-template-columns: repeat(var(--cards-per-row), 1fr);
-  gap: 5rem;
+  column-gap: var(--block-m);
+  row-gap: var(--block-l);
 }
 
 .card {
@@ -20,23 +30,14 @@
   );
 }
 
-@media only screen and (max-width: 750px) {
-  .CardGrid {
+@media only screen and (min-width: 750px) {
+  .grid {
     --cards-per-row: 2;
   }
 }
 
-@media only screen and (max-width: 500px) {
-  .CardGrid {
-    --cards-per-row: 1;
+@media only screen and (min-width: 1500px) {
+  .grid {
+    --cards-per-row: 3;
   }
-
-  .card {
-    max-width: 100%;
-  }
-}
-
-.FetchMoreContainer {
-  padding-top: 0;
-  justify-content: center;
 }

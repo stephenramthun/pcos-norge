@@ -157,8 +157,8 @@ mark {
   :root {
     /*Text*/
     --font-size-body: 1.375rem;
-    --font-size-title-medium: 3.75rem;
-    --font-size-title-medium-large: 3rem;
+    --font-size-title-medium: 3rem;
+    --font-size-title-medium-large: 4rem;
     --font-size-title-large: 5.625rem;
 
     /*Layout*/

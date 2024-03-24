@@ -5,7 +5,7 @@ import { usePortableTextComponents } from "hooks/usePortableTextComponents"
 
 interface BlockContentContainerProps {
   blocks: PortableTextBlock[]
-  expandableLists: boolean
+  expandableLists?: boolean
 }
 
 export const BlockContentContainer: React.FC<BlockContentContainerProps> = ({
