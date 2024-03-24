@@ -70,7 +70,7 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
 
   const data = filterDataToSingleItem(previewData, preview)
 
-  const components = usePortableTextComponents(data.body)
+  const components = usePortableTextComponents(data.body, true)
   const date = useLocaleDateString(new Date(data.published))
 
   const referenceLinks = useReferenceLinks(data.body)
@@ -114,7 +114,7 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
         <meta property="og:type" content="article" key="type" />
         <meta property="og:url" content={useCanonicalUrl()} key="url" />
       </Head>
-      <Header />
+      <Header className={styles.header} />
       <Content>
         <Breadcrumbs
           links={[
@@ -127,14 +127,14 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
           ]}
         />
       </Content>
-      <Content className={styles.Section}>
-        <Heading className={styles.Heading} tag="h1" size="medium">
+      <Content className={styles.section}>
+        <Heading className={styles.heading} tag="h1" size="medium">
           {data.title}
         </Heading>
-        <Body suppressHydrationWarning className={styles.Published}>
+        <Body suppressHydrationWarning className={styles.published}>
           {date}
         </Body>
-        <div className={styles.ArticleContent}>
+        <div className={styles.content}>
           {data.ingress && <Body suppressHydrationWarning>{data.ingress}</Body>}
           <PortableText value={data.body} components={components} />
           {Object.entries(referenceLinks).length > 0 && (

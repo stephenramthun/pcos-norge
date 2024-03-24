@@ -7,38 +7,47 @@
   gap: 0;
 }
 
-.Heading {
-  margin-bottom: 1.5rem;
+.header {
+  margin-bottom: var(--block-m);
 }
 
-.Published {
+.heading {
+  margin-bottom: var(--block-m);
+}
+
+.published {
   margin-bottom: 4rem;
 }
 
 @media screen and (max-width: 750px) {
-  .Published {
+  .published {
     margin-bottom: 2rem;
   }
 }
 
-.ImageContainer {
-  position: relative;
-  width: 100%;
-  margin-bottom: 4rem;
-}
-
-.ImageContainer > span {
-  position: unset;
-}
-
-.ArticleContent {
+.content {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 2rem;
+  max-width: var(--text-max-width);
 }
 
-.Text {
-  max-width: var(--text-max-width);
-  align-self: center;
+.content p {
+  margin-bottom: var(--block-s);
+}
+
+.content h2 {
+  margin-bottom: var(--block-s);
+}
+
+.content h3 {
+  margin-bottom: var(--block-xs);
+}
+
+.content img {
+  margin-bottom: var(--block-s);
+}
+
+.content ul {
+  margin-bottom: var(--block-s);
 }
