@@ -3,14 +3,14 @@ import { useRouter } from "next/router"
 import React, { ReactNode } from "react"
 
 import { Body } from "components/Body"
-import { Breadcrumbs } from "components/Breadcrumbs"
 import { Content } from "components/Content"
 import { Footer } from "components/Footer"
 import { Head } from "components/Head"
 import { Header } from "components/Header"
 import { Heading } from "components/Heading"
-import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
+
+import styles from "./feil.module.css"
 
 const getHeading = (status: number): string => {
   switch (status) {
@@ -46,27 +46,17 @@ const Feil: NextPage = () => {
   return (
     <PageContainer>
       <Head />
-      <Header />
-
+      <Header className={styles.header} />
       <Content>
-        <Breadcrumbs
-          links={[{ label: "Hjem", href: "/" }, { label: "Feil" }]}
-        />
+        <Heading className={styles.heading} tag="h1" size="medium">
+          {getHeading(Number(router.query.status))}
+        </Heading>
       </Content>
-
-      <Main>
-        <Content>
-          <Heading tag="h1" size="medium-large">
-            {getHeading(Number(router.query.status))}
-          </Heading>
-        </Content>
-        <Content>
-          <Body>
-            {getBody(Number(router.query.status), String(router.query.message))}
-          </Body>
-        </Content>
-      </Main>
-
+      <Content className={styles.content}>
+        <Body>
+          {getBody(Number(router.query.status), String(router.query.message))}
+        </Body>
+      </Content>
       <Footer />
     </PageContainer>
   )

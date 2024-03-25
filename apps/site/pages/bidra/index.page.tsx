@@ -9,6 +9,7 @@ import { Head } from "components/Head"
 import { Header } from "components/Header"
 import { Heading } from "components/Heading"
 import { PageContainer } from "components/PageContainer"
+import { Spacer } from "components/Spacer"
 
 import styles from "./bidra.module.css"
 
@@ -39,6 +40,7 @@ const Bidra: NextPage = () => {
           eller donere direkte til vårt kontonummer <mark>1506 71 25999</mark>
         </Body>
       </Content>
+      <Spacer />
       <Footer />
     </PageContainer>
   )

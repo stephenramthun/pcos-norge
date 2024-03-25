@@ -11,6 +11,7 @@ import { Head } from "components/Head"
 import { Header } from "components/Header"
 import { Heading } from "components/Heading"
 import { PageContainer } from "components/PageContainer"
+import { Spacer } from "components/Spacer"
 import { VippsButton } from "components/VippsButton"
 
 import { Authorized } from "./Authorized"
@@ -50,6 +51,7 @@ const MinSide: NextPage<MinSideProps> = ({ session }) => {
       </Content>
       {session && <Authorized user={session.user} />}
       {!session && <Unauthorized />}
+      <Spacer />
       <Footer />
     </PageContainer>
   )

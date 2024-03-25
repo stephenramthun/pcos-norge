@@ -1,8 +1,13 @@
-.content {
-    flex: 1;
-    justify-content: flex-start;
+.header {
+    margin-bottom: var(--block-l);
 }
 
-.content * {
-    height: max-content;
+.heading {
+    margin-bottom: var(--block-m);
+}
+
+.content {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: var(--block-xl);
 }

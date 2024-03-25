@@ -1,0 +1,11 @@
+.header {
+  margin-bottom: var(--block-l);
+}
+
+.heading {
+  margin-bottom: var(--block-m);
+}
+
+.content {
+  margin-bottom: auto;
+}
