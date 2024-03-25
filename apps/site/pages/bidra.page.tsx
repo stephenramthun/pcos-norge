@@ -17,8 +17,7 @@ const Bidra: NextPage = () => {
   return (
     <PageContainer>
       <Head title="Bidra | PCOS Norge" />
-      <Header />
-
+      <Header className={styles.header} />
       <Content>
         <Breadcrumbs
           links={[
@@ -27,24 +26,20 @@ const Bidra: NextPage = () => {
           ]}
         />
       </Content>
-
-      <Main className={styles.main}>
-        <Content>
-          <Heading tag="h1" size="medium-large">
-            Vi trenger din hjelp
-          </Heading>
-          <Body>
-            Ditt bidrag vil hjelpe oss i vårt arbeid for mer synlighet,
-            normalisering og økt oppmerksomhet rundt diagnosen og bedre kunnskap
-            om PCOS i helsevesenet.
-          </Body>
-          <Body>
-            Du kan bidra ved å vippse et valgfritt beløp til <mark>750223</mark>{" "}
-            eller donere direkte til vårt kontonummer <mark>1506 71 25999</mark>
-          </Body>
-        </Content>
-      </Main>
-
+      <Content className={styles.content}>
+        <Heading tag="h1" size="medium">
+          Vi trenger din hjelp
+        </Heading>
+        <Body>
+          Ditt bidrag vil hjelpe oss i vårt arbeid for mer synlighet,
+          normalisering og økt oppmerksomhet rundt diagnosen og bedre kunnskap
+          om PCOS i helsevesenet.
+        </Body>
+        <Body>
+          Du kan bidra ved å vippse et valgfritt beløp til <mark>750223</mark>{" "}
+          eller donere direkte til vårt kontonummer <mark>1506 71 25999</mark>
+        </Body>
+      </Content>
       <Footer />
     </PageContainer>
   )

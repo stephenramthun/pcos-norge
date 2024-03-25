@@ -51,7 +51,7 @@ const OmOss: NextPage<Props> = ({ elements }) => {
           <Breadcrumbs
             links={[
               { href: "/", label: "Hjem" },
-              { href: `/om-oss`, label: "Hva er PCOS?" },
+              { href: `/om-oss`, label: "Om oss" },
             ]}
           />
         </Content>

@@ -1,3 +1,8 @@
-.main {
-    background-color: var(--semantic-color-background-primary);
+.header {
+    margin-bottom: var(--block-m);
+}
+
+.content {
+    flex-direction: column;
+    margin-bottom: var(--block-l);
 }
