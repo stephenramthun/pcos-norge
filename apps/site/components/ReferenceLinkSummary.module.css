@@ -3,7 +3,7 @@
   color: var(--semantic-color-interaction-primary);
   font-size: var(--font-size-details);
   line-height: var(--line-height-details);
-  max-width: 95cqw;
+  max-width: 85cqw;
 }
 
 .container > ol {
