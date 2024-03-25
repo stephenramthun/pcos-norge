@@ -104,6 +104,23 @@
   fill: var(--semantic-color-text-primary-inverse);
 }
 
+.memberLink {
+  background: var(--color-brand-pink);
+}
+
+.memberLink:hover,
+.memberLink:focus-visible {
+  background: var(--semantic-color-background-primary);
+  box-shadow: 0 0 0 2px var(--color-brand-pink);
+  color: var(--color-brand-pink);
+}
+
+.memberLink:active {
+  background: var(--color-brand-dark-red);
+  box-shadow: none;
+  color: var(--semantic-color-text-primary-inverse);
+}
+
 .nav.show .memberLink {
   transition-delay: unset;
 }
@@ -151,17 +168,17 @@
   }
 
   .header.dark .memberLink:not(:focus-visible):not(:hover) {
-    background: var(--color-brand-dark-teal);
+    background: var(--color-brand-pink);
   }
 
   .header.dark .memberLink:focus-visible,
   .header.dark .memberLink:hover {
     background: var(--color-brand-teal);
-    box-shadow: 0 0 0 2px var(--color-brand-light-teal);
+    box-shadow: 0 0 0 2px var(--color-brand-pink);
   }
 
   .header.dark .memberLink:active {
-    background: black;
+    background: var(--color-brand-dark-teal);
     box-shadow: none;
   }
 
