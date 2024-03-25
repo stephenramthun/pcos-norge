@@ -39,7 +39,7 @@ export const Footer: React.FC = () => (
           />
         </Link>
         <Link
-          href="https://www.facebook.com/profile.php?id=61554324454329&paipv=0&eav=Afbdk1UhRw8uR9-Hkz8NajdYum9Vlc6PAwIiqwR7BW2cGKPmXzIF0mw9OnvN403_9Es/"
+          href="https://sanitetskvinnene.no/nyheter/en-sterkere-stemme-kvinnehelse"
           target="_blank"
         >
           <Image
