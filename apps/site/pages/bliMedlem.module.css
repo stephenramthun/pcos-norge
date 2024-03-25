@@ -1,12 +1,18 @@
+.header {
+  margin-bottom: var(--block-m);
+}
+
 .content {
   display: flex;
   flex-direction: column;
   gap: 48px;
+  margin-bottom: var(--block-l);
 }
 
 .pitch {
   height: max-content;
   display: flex;
+  flex-direction: column;
   gap: 64px;
 }
 
@@ -38,21 +44,24 @@
 
 .imageContainer {
   position: relative;
-  width: 600px;
-  height: 400px;
+  aspect-ratio: 675 / 450;
 }
 
 .imageContainer img {
   object-fit: cover;
 }
 
-@media only screen and (max-width: 1000px) {
+@media screen and (min-width: 1000px) {
   .pitch {
-    flex-direction: column;
+    flex-direction: row;
+  }
+
+  .textContainer {
+    flex: 1;
   }
 
   .imageContainer {
-    width: 100%;
-    flex: unset;
+    flex: 1;
+    height: max-content;
   }
 }
