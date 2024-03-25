@@ -1,6 +1,6 @@
 .sponsors {
   height: max-content;
-  background-color: #c4f1f1;
+  background-color: #a2f2f2;
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -17,7 +17,7 @@
   height: max-content;
   padding: 4rem 0;
   display: flex;
-  background: var(--color-brand-dark-teal);
+  background: var(--color-brand-teal);
 }
 
 @media only screen and (max-width: 750px) {
@@ -35,7 +35,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  background: var(--color-brand-dark-teal) !important;
+  background: var(--color-brand-teal) !important;
   padding-top: 0;
   padding-bottom: 0;
   gap: 32px;
