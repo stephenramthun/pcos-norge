@@ -20,3 +20,6 @@ export const asPhoneNumber = (value: string): string => {
 
   return value
 }
+
+export const slugify = (text: string): string =>
+  text.replaceAll(" ", "-").toLowerCase()

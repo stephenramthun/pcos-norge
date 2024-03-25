@@ -3,7 +3,6 @@ import React from "react"
 
 import { BlockContentContainer } from "components/BlockContentContainer"
 import { Content } from "components/Content"
-import { Hero } from "components/Hero"
 import { PageLinkContainer } from "components/PageLinkContainer"
 import { PeopleContainer } from "components/PeopleContainer"
 import { SanityImage } from "components/SanityImage"

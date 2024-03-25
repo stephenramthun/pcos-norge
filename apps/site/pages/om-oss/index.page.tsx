@@ -15,10 +15,9 @@ import { PageContainer } from "components/PageContainer"
 import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
 import { getClient } from "io/sanity/client"
+import { slugify } from "util/string"
 
 import styles from "./omOss.module.css"
-
-const slugify = (text: string) => text.replaceAll(" ", "-").toLowerCase()
 
 const useUpdateReferenceLinks = () => {
   useLayoutEffect(() => {

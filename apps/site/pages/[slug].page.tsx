@@ -1,12 +1,6 @@
 import { PortableText } from "@portabletext/react"
 import { PortableTextBlock } from "@portabletext/types"
-import {
-  GetStaticPaths,
-  GetStaticPathsResult,
-  GetStaticProps,
-  GetStaticPropsResult,
-  NextPage,
-} from "next"
+import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 
 import { Breadcrumbs } from "components/Breadcrumbs"
 import { Content } from "components/Content"
