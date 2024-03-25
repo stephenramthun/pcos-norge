@@ -10,7 +10,6 @@ import { Footer } from "components/Footer"
 import { Head } from "components/Head"
 import { Header } from "components/Header"
 import { Heading } from "components/Heading"
-import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
 import { VippsButton } from "components/VippsButton"
 
@@ -18,21 +17,19 @@ import { Authorized } from "./Authorized"
 
 import styles from "./min-side.module.css"
 
-const Unauthorized: React.FC = () => {
-  return (
-    <Content className={styles.content}>
-      <Heading tag="h1" size="medium-large">
-        Min side
-      </Heading>
-      <Body>
-        Velkommen tilbake 👋
-        <br />
-        Du må logge inn for å se denne siden
-      </Body>
-      <VippsButton variant="login" />
-    </Content>
-  )
-}
+const Unauthorized: React.FC = () => (
+  <Content className={styles.content}>
+    <Heading tag="h1" size="medium">
+      Min side
+    </Heading>
+    <Body>
+      Velkommen tilbake 👋
+      <br />
+      Du må logge inn for å se denne siden
+    </Body>
+    <VippsButton variant="login" />
+  </Content>
+)
 
 interface MinSideProps {
   session: Session
@@ -42,8 +39,7 @@ const MinSide: NextPage<MinSideProps> = ({ session }) => {
   return (
     <PageContainer>
       <Head title="Min side | PCOS Norge" />
-      <Header />
-
+      <Header className={styles.header} />
       <Content>
         <Breadcrumbs
           links={[
@@ -52,12 +48,8 @@ const MinSide: NextPage<MinSideProps> = ({ session }) => {
           ]}
         />
       </Content>
-
-      <Main>
-        {session && <Authorized user={session.user} />}
-        {!session && <Unauthorized />}
-      </Main>
-
+      {session && <Authorized user={session.user} />}
+      {!session && <Unauthorized />}
       <Footer />
     </PageContainer>
   )

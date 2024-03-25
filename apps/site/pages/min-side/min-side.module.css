@@ -1,6 +1,11 @@
+.header {
+  margin-bottom: var(--block-m);
+}
+
 .content {
   flex-direction: column;
   gap: 48px;
+  margin-bottom: var(--block-l);
 }
 
 .content hr {
@@ -57,4 +62,10 @@
 
 .welcomeDialog p {
   text-align: center;
+}
+
+.loader {
+  font-style: italic;
+  display: flex;
+  gap: 16px;
 }

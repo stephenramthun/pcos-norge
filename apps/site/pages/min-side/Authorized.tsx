@@ -2,8 +2,10 @@ import { useRouter } from "next/router"
 import { Session } from "next-auth"
 import React, { useCallback, useEffect, useState } from "react"
 
+import { Body } from "components/Body"
 import { Content } from "components/Content"
 import { Heading } from "components/Heading"
+import { Loader } from "components/Loader"
 import { useAsyncPolling } from "hooks/useAsyncPolling"
 import { isUser } from "types/guards"
 
@@ -15,10 +17,9 @@ import { WelcomeDialog } from "./WelcomeDialog"
 
 import styles from "./min-side.module.css"
 
-const fetchData = (): Promise<UserData> => {
-  return fetch("/api/min-side/data", { method: "GET" }).then((res) =>
-    res.json(),
-  )
+const fetchData = async (): Promise<UserData> => {
+  const res = await fetch("/api/min-side/data", { method: "GET" })
+  return await res.json()
 }
 
 interface AuthorizedProps {
@@ -69,7 +70,7 @@ export const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
     <Content className={styles.content}>
       {data && !hasAgreement && <RegisterDialog givenName={user.givenName} />}
       {router.query.welcome && <WelcomeDialog givenName={user.givenName} />}
-      <Heading tag="h1" size="medium-large">
+      <Heading tag="h1" size="medium">
         Min side
       </Heading>
       <UserInfo
@@ -82,6 +83,12 @@ export const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
         phoneNumber={user.phoneNumber}
       />
       <hr />
+      {!data && (
+        <span className={styles.loader}>
+          Laster ditt medlemskap
+          <Loader variant="dark" />
+        </span>
+      )}
       {data && hasAgreement && (
         <AuthorizedWithAgreement user={user} data={data} />
       )}
