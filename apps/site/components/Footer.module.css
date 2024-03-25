@@ -62,8 +62,9 @@
 
 .logos {
   display: flex;
-  column-gap: 32px;
+  column-gap: var(--block-m);
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .logoContainer {

@@ -11,6 +11,7 @@ import { Logo } from "./Logo"
 import styles from "./Footer.module.css"
 
 import bergesensLogo from "public/logo-bergesenstiftelsen.svg"
+import kvinnehelsealliansen from "public/logo-kvinnehelsealliansen.svg"
 import sanitetskvinneneLogo from "public/logo-sanitetskvinnene.svg"
 
 export const Footer: React.FC = () => (
@@ -33,6 +34,19 @@ export const Footer: React.FC = () => (
             src={sanitetskvinneneLogo.src}
             height={100}
             width={300}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link
+          href="https://www.facebook.com/profile.php?id=61554324454329&paipv=0&eav=Afbdk1UhRw8uR9-Hkz8NajdYum9Vlc6PAwIiqwR7BW2cGKPmXzIF0mw9OnvN403_9Es/"
+          target="_blank"
+        >
+          <Image
+            alt="Kvinnehelsealliansen"
+            src={kvinnehelsealliansen.src}
+            height={65}
+            width={220}
             unoptimized
             loader={({ src }) => src}
           />
