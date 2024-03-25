@@ -2,7 +2,6 @@ import { useRouter } from "next/router"
 import { Session } from "next-auth"
 import React, { useCallback, useEffect, useState } from "react"
 
-import { Body } from "components/Body"
 import { Content } from "components/Content"
 import { Heading } from "components/Heading"
 import { Loader } from "components/Loader"

@@ -12,7 +12,6 @@ import { SanityImage } from "components/SanityImage"
 import styles from "./OmOssCard.module.css"
 
 import block from "styles/block.module.css"
-import card from "styles/card.module.css"
 
 type Image = Omit<SanityImageDocument, "imageAsset"> & {
   asset: ImageAsset
