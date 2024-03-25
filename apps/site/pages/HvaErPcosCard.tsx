@@ -42,7 +42,12 @@ export const HvaErPcosCard: React.FC<Props> = ({ image }) => (
       </LinkButton>
     </section>
     <div className={styles.imageContainer}>
-      <SanityImage asset={image.asset} alt={image.alt} maxWidth={1000} fill />
+      <SanityImage
+        asset={image.asset}
+        alt={image.alt ?? ""}
+        maxWidth={1000}
+        fill
+      />
     </div>
   </article>
 )

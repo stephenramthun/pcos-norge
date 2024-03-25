@@ -28,7 +28,7 @@ export const OmOssCard: React.FC<Props> = ({ images }) => (
       <div>
         <SanityImage
           asset={images[1].asset}
-          alt={images[1].alt}
+          alt={images[1].alt ?? ""}
           maxWidth={1000}
           fill
         />
@@ -36,7 +36,7 @@ export const OmOssCard: React.FC<Props> = ({ images }) => (
       <div>
         <SanityImage
           asset={images[0].asset}
-          alt={images[0].alt}
+          alt={images[0].alt ?? ""}
           maxWidth={1000}
           fill
         />
