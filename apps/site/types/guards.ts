@@ -1,4 +1,10 @@
-import { SanityBodyText, SanityHero, SanityPageLink } from "./sanity"
+import {
+  ArticleObject,
+  NyhetsartikkelObject,
+  SanityBodyText,
+  SanityHero,
+  SanityPageLink,
+} from "./sanity"
 
 export const isHero = (element: SanityObject): element is SanityHero => {
   return element._type === "hero"
@@ -33,3 +39,16 @@ export const isAgreement = (agreement: any): agreement is Agreement => {
     ["ACTIVE", "PENDING", "EXPIRED", "STOPPED"].includes(agreement.status)
   )
 }
+
+export const isNyhetsartikkel = (
+  artikkel: ArticleObject | NyhetsartikkelObject,
+): artikkel is NyhetsartikkelObject => !!(artikkel as NyhetsartikkelObject).href
+
+export const isAktueltArtikkel = (
+  artikkel: ArticleObject | NyhetsartikkelObject,
+): artikkel is ArticleObject => !!(artikkel as ArticleObject).slug
+
+export const isArtikkelFilter = (
+  value?: string | string[],
+): value is ArtikkelFilter =>
+  value === "alle" || value === "aktuelt" || value === "i-nyhetene"

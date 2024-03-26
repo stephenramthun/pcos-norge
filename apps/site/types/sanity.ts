@@ -107,3 +107,12 @@ export type ArticleObject = SanityDocument & {
   metadata?: OgMetadata
   show: boolean
 }
+
+export type NyhetsartikkelObject = SanityDocument & {
+  href: string
+  title: string
+  published: string
+  kilde: string
+  type: string
+  image?: SanityImageAsset
+}

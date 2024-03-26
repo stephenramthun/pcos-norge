@@ -28,9 +28,25 @@
   text-decoration: underline;
 }
 
-.imageContainer {
+.imageContainer,
+.imagePlaceholder {
   position: relative;
   aspect-ratio: 16 / 9;
+}
+
+.imagePlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.imagePlaceholder svg {
+  width: 60%;
+  height: 60%;
+  transform: rotate(-25deg);
+  opacity: 0.25;
 }
 
 @media screen and (max-width: 500px) {

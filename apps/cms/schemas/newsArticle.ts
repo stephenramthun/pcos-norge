@@ -35,7 +35,7 @@ export const newsArticle = {
       description: "Kilden som har publisert artikkelen, f.eks. VG, NRK e.l.",
     },
     {
-      name: "publisert",
+      name: "published",
       title: "Publisert",
       type: "date",
       description: "Publiseringsdato for artikkelen.",

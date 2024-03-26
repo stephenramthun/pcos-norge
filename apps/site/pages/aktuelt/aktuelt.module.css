@@ -5,7 +5,19 @@
 .content {
   flex-direction: column;
   flex-wrap: unset;
-  margin-bottom: var(--block-m);
+  margin-bottom: var(--block-xl);
+  gap: unset;
+}
+
+.heading {
+  margin-bottom: var(--block-xl);
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: var(--block-xl);
 }
 
 .fetchMore {

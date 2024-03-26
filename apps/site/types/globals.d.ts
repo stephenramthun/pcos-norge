@@ -54,3 +54,5 @@ declare type User = UserInfo & {
 declare type VippsSession = Session & {
   user: Session["user"] & Partial<AdditionalFields>
 }
+
+declare type ArtikkelFilter = "alle" | "aktuelt" | "i-nyhetene"

@@ -5,13 +5,13 @@ import {
   ArrowUp,
 } from "@phosphor-icons/react"
 import classNames from "classnames"
-import React from "react"
+import React, { ReactNode } from "react"
 
 import styles from "./ArrowLink.module.css"
 
 type Direction = "up" | "right" | "down" | "left"
 
-const iconForDirection = (direction: Direction) => {
+const iconForDirection = (direction: Direction): ReactNode => {
   switch (direction) {
     case "up":
       return <ArrowUp weight="bold" size={24} />
@@ -24,7 +24,7 @@ const iconForDirection = (direction: Direction) => {
   }
 }
 
-interface ArrowLinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
+interface ArrowLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
   direction?: Direction
 }

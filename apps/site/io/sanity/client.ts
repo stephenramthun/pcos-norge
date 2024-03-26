@@ -2,7 +2,7 @@ import { SanityClient } from "@sanity/client"
 import groq from "groq"
 import { createClient } from "next-sanity"
 
-import { ArticleObject } from "types/sanity"
+import { ArticleObject, NyhetsartikkelObject } from "types/sanity"
 
 import { config } from "./config"
 
@@ -23,10 +23,11 @@ type FetchArticlesOptions = {
   from: number
   count: number
   preview?: boolean
+  filter: ArtikkelFilter
 }
 
 type FetchArticlesResult = {
-  articles: ArticleObject[]
+  articles: (ArticleObject | NyhetsartikkelObject)[]
   remainingArticles: number
   query: string
 }
@@ -35,14 +36,28 @@ export const fetchArticles = async ({
   from,
   count,
   preview = false,
+  filter = "alle",
 }: FetchArticlesOptions): Promise<FetchArticlesResult> => {
+  const queryFilter = (() => {
+    switch (filter) {
+      case "alle":
+        return `(_type == "article" && show == true) || _type == "newsArticle"`
+      case "aktuelt":
+        return `_type == "article" && show == true`
+      case "i-nyhetene":
+        return `_type == "newsArticle"`
+    }
+  })()
+
   const start = from
   const end = from + count - 1
   const query = groq`
     {
       "articles": 
-        *[_type == "article" && show == true] |
+        *[${queryFilter}] |
         order(published desc)[${start}..${end}] {
+          href,
+          published,
           title,
           "slug": slug.current,
           image {
@@ -50,12 +65,11 @@ export const fetchArticles = async ({
             alt,
             asset->
           },
-          published,
-          ingress
+          ingress,
+          kilde,
+          type
         },
-      "remainingArticles": count(*[_type == "article" && show == true][${
-        end + 1
-      }..-1])
+      "remainingArticles": count(*[${queryFilter}][${end + 1}..-1])
     }
   `
 

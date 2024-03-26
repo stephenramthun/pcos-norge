@@ -133,8 +133,8 @@ mark {
   :root {
     /*Text*/
     --font-size-body: 1.125rem;
-    --font-size-title-extra-small: 1.5rem;
-    --font-size-title-small: 1.75rem;
+    --font-size-title-extra-small: 1.25rem;
+    --font-size-title-small: 1.5rem;
     --font-size-title-medium: 2.5rem;
     --font-size-title-medium-large: 3.25rem;
     --font-size-title-large: 4rem;
@@ -160,7 +160,7 @@ mark {
     /*Text*/
     --font-size-body: 1.375rem;
     --font-size-title-extra-small: 1.75rem;
-    --font-size-title-small: 2.25rem;
+    --font-size-title-small: 2rem;
     --font-size-title-medium: 3rem;
     --font-size-title-medium-large: 4rem;
     --font-size-title-large: 5.625rem;

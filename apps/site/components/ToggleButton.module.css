@@ -1,0 +1,53 @@
+.button {
+  width: max-content;
+  display: flex;
+  height: 48px;
+  align-items: center;
+  outline: none;
+  gap: 8px;
+  font-size: var(--font-size-buttons);
+  letter-spacing: 0.0625rem;
+  border: none;
+  white-space: nowrap;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: var(--font-weight-semibold);
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
+  user-select: none;
+  background: #DAE8EA;
+  color: var(--semantic-color-text-primary);
+}
+
+.button.toggled {
+  background: var(--color-brand-teal);
+  color: var(--semantic-color-text-primary-inverse);
+}
+
+.button.toggled:hover,
+.button.toggled:focus-visible {
+  color: var(--semantic-color-text-primary);
+}
+
+.button.toggled:active {
+  color: var(--semantic-color-text-primary-inverse);
+}
+
+@media only screen and (max-width: 800px) {
+  .button {
+    letter-spacing: 0;
+  }
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--semantic-color-background-primary);
+  box-shadow: 0 0 0 3px var(--semantic-color-text-primary);
+}
+
+.button:active {
+  color: var(--semantic-color-text-primary-inverse);
+  background: var(--color-brand-dark-teal);
+  box-shadow: none;
+}

@@ -1,6 +1,7 @@
 .button {
   --button-background-color: var(--color-brand-dark-teal);
   --button-height: 48px;
+  --button-primary-color: #ffffff;
   height: var(--button-height);
   width: max-content;
   display: flex;
@@ -35,7 +36,7 @@
 .button.secondary:hover,
 .button.secondary:focus-visible {
   background: var(--button-background-color);
-  color: #ffffff;
+  color: var(--button-primary-color);
 }
 
 .button.secondary:hover,
@@ -64,7 +65,7 @@
 .button.primary:active,
 .button.secondary:active,
 .button.tertiary:active {
-  color: #ffffff;
+  color: var(--button-primary-color);
   background: var(--color-brand-teal);
   box-shadow: none;
 }
