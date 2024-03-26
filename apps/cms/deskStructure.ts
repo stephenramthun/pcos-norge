@@ -22,6 +22,7 @@ const component = (builder: StructureBuilder) =>
       builder.documentTypeListItem("page"),
       builder.documentTypeListItem("imageDocument"),
       builder.documentTypeListItem("tableOfContentsPage"),
+      builder.documentTypeListItem("newsArticle"),
     ]);
 
 export default component;

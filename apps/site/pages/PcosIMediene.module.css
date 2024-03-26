@@ -1,0 +1,87 @@
+.pcosIMediene {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+        "heading"
+        "artikler"
+        "alle-artikler-link";
+  gap: var(--block-m);
+}
+
+.heading {
+  grid-area: heading;
+}
+
+.artikler {
+  grid-area: artikler;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.alleArtiklerLink {
+  grid-area: alle-artikler-link;
+}
+
+.artikkel {
+  margin: 0;
+  display: contents;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-brand-teal);
+}
+
+.artikkel:last-child .link {
+  border-bottom: 1px solid var(--color-brand-teal);
+}
+
+.linkDetails {
+  color: var(--color-brand-teal);
+  font-size: var(--font-size-details);
+  margin-bottom: 8px;
+}
+
+.linkTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--block-s);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+.linkTitle svg {
+  flex-shrink: 0;
+  fill: var(--color-brand-teal);
+  transition: transform 200ms ease;
+}
+
+.link:hover .linkTitle,
+.link:focus-visible .linkTitle {
+  text-decoration: underline;
+}
+
+.link:hover svg,
+.link:focus-visible svg {
+  transform: translateX(10px);
+}
+
+@media screen and (min-width: 1000px) {
+  .pcosIMediene {
+    grid-template-areas:
+        "heading artikler"
+        ". artikler"
+        "alle-artikler-link artikler";
+    grid-template-columns: auto 1fr;
+    column-gap: var(--block-l);
+  }
+
+  .link {
+    padding: 24px 18px;
+  }
+}

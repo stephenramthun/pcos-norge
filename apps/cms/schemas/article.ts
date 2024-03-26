@@ -1,3 +1,5 @@
+import { Rule } from "sanity";
+
 export const article = {
   name: "article",
   title: "Artikkel",
@@ -7,21 +9,21 @@ export const article = {
       name: "title",
       title: "Tittel",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
       description: "En kort tittel",
     },
     {
       name: "ingress",
       title: "Ingress",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
       description: "En kort ingress",
     },
     {
       name: "body",
       title: "Innhold",
       type: "blockContent",
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: "slug",
@@ -31,7 +33,7 @@ export const article = {
         source: "title",
       },
       description: "ID som brukes for lenking til artikkelen",
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: "published",
@@ -40,7 +42,7 @@ export const article = {
       initialValue: new Date().toISOString(),
       description:
         "Publiseringstidspunkt for artikkelen som vises på nettsiden. Merk at artikkelen publiseres umiddelbart uavhengig av tidspunktet som oppgis.",
-      validation: (Rule) => Rule.required(),
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: "image",
@@ -71,4 +73,4 @@ export const article = {
       initialValue: true,
     },
   ],
-}
+};

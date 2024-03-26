@@ -16,6 +16,7 @@ import { ArticleObject, SanityImageDocument } from "types/sanity"
 import { Articles } from "./Articles"
 import { HvaErPcosCard } from "./HvaErPcosCard"
 import { OmOssCard } from "./OmOssCard"
+import { PcosIMediene } from "./PcosIMediene"
 
 import styles from "./index.module.css"
 
@@ -32,9 +33,16 @@ interface HomeProps {
     hvaErPcos: Image
     omOss: [Image, Image]
   }
+  nyhetsartikler: {
+    href: string
+    title: string
+    type: string
+    kilde: string
+    publisert: string
+  }[]
 }
 
-const Home: NextPage<HomeProps> = ({ articles, images }) => (
+const Home: NextPage<HomeProps> = ({ articles, images, nyhetsartikler }) => (
   <PageContainer>
     <Head />
     <Header variant="dark" />
@@ -48,6 +56,9 @@ const Home: NextPage<HomeProps> = ({ articles, images }) => (
       </Content>
       <Content className={block.large}>
         <OmOssCard images={images.omOss} />
+      </Content>
+      <Content className={block.large}>
+        <PcosIMediene artikler={nyhetsartikler} />
       </Content>
     </Main>
     <Footer />
@@ -84,6 +95,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
           id
         }
       },
+      "nyhetsartikler": *[_type == "newsArticle"][0...5] | order(publisert desc) 
     }
   `)
 
