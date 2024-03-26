@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import React, { ReactNode } from "react"
+import React from "react"
 
 import styles from "./ToggleButton.module.css"
 

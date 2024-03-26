@@ -1,5 +1,4 @@
 import { GetServerSideProps, GetStaticPropsResult, NextPage } from "next"
-import { useRouter } from "next/router"
 import React, { useState } from "react"
 
 import { isAktueltArtikkel, isArtikkelFilter } from "../../types/guards"
