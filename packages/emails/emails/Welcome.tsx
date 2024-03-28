@@ -112,7 +112,7 @@ export const Welcome: React.FC<WelcomeProps> = ({ name }) => {
               Beste hilsen,
             </Text>
 
-            <Text cssClass="p">Regine Vinnes Wiig Andersen</Text>
+            <Text cssClass="p">Ann Helen Brendehaug</Text>
 
             <Text cssClass="p" paddingBottom={spacing.s8}>
               Styreleder PCOS Norge

@@ -49,14 +49,14 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: var(--semantic-color-background-primary);
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
 }
 
-body {
+#__next {
   container-type: inline-size;
+  scrollbar-gutter: stable;
 }
 
 a {
