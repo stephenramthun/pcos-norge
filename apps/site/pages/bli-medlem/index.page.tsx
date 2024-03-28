@@ -135,7 +135,6 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
               onClick={() => null}
               type="submit"
             />
-            <AvsluttMedlemskapButton agreementId="" />
           </form>
         </section>
       </Content>
