@@ -1,0 +1,45 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(from var(--color-brand-dark-teal) r g b / 0.5);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+  background: var(--semantic-color-background-primary);
+  padding: var(--block-m);
+  border-radius: 4px;
+}
+
+.modal h1 {
+  margin-bottom: var(--block-m);
+}
+
+.modal p {
+  margin-bottom: var(--block-s);
+}
+
+.modal label {
+  margin-bottom: var(--block-s);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--block-s);
+}
+
+.error {
+  margin-top: calc(var(--block-xs) * -1);
+  color: #b90606;
+  font-size: var(--font-size-details);
+  line-height: var(--font-size-details);
+}

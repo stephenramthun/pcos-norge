@@ -69,3 +69,21 @@
   background: var(--color-brand-teal);
   box-shadow: none;
 }
+
+.button.destructive {
+  color: var(--semantic-color-text-primary-inverse);
+  background: #b90606;
+}
+
+.button.destructive:hover,
+.button.destructive:focus-visible {
+  color: #b90606;
+  background: transparent;
+  box-shadow: 0 0 0 3px #b90606;
+}
+
+.button.destructive:active {
+  color: var(--semantic-color-text-primary-inverse);
+  background: black;
+  box-shadow: none;
+}

@@ -9,6 +9,8 @@ import { Checkbox } from "components/Checkbox"
 import { Loader } from "components/Loader"
 import { capitalize } from "util/string"
 
+import { AvsluttMedlemskapButton } from "./AvsluttMedlemskapButton"
+
 import styles from "./min-side.module.css"
 
 interface Props {
@@ -17,8 +19,6 @@ interface Props {
 }
 
 export const AuthorizedWithAgreement: React.FC<Props> = ({ user, data }) => {
-  const router = useRouter()
-
   return (
     <>
       <div className={styles.grid}>
@@ -56,16 +56,7 @@ export const AuthorizedWithAgreement: React.FC<Props> = ({ user, data }) => {
       <span className={styles.buttons}>
         <Button onClick={() => signOut({ callbackUrl: "/" })}>Logg ut</Button>
         {data.agreement?.status === "ACTIVE" && (
-          <Button
-            variant="secondary"
-            onClick={() =>
-              router.push(
-                `/api/medlemskap/avslutt?agreementId=${data.agreement?.id}`,
-              )
-            }
-          >
-            Avslutt medlemskap
-          </Button>
+          <AvsluttMedlemskapButton agreementId={data.agreement.id} />
         )}
       </span>
     </>

@@ -3,6 +3,7 @@ import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import { signIn } from "next-auth/react"
 import React from "react"
 
+import { AvsluttMedlemskapButton } from "../min-side/AvsluttMedlemskapButton"
 import { Body } from "components/Body"
 import { Breadcrumbs } from "components/Breadcrumbs"
 import { Checkbox } from "components/Checkbox"
@@ -134,6 +135,7 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
               onClick={() => null}
               type="submit"
             />
+            <AvsluttMedlemskapButton agreementId="" />
           </form>
         </section>
       </Content>
