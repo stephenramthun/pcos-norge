@@ -1,5 +1,4 @@
 import dayjs from "dayjs"
-import { useRouter } from "next/router"
 import { signOut } from "next-auth/react"
 import React from "react"
 
