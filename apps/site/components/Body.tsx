@@ -9,10 +9,8 @@ export const Body: React.FC<BodyProps> = ({
   className,
   children,
   ...paragraphProps
-}) => {
-  return (
-    <p className={classNames(styles.text, className)} {...paragraphProps}>
-      {children}
-    </p>
-  )
-}
+}) => (
+  <p className={classNames(styles.text, className)} {...paragraphProps}>
+    {children}
+  </p>
+)
