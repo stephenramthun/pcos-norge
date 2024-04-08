@@ -32,8 +32,6 @@ export const NyhetsartikkelCard: React.FC<Props> = ({
 }) => {
   const date = useLocaleDateString(published)
 
-  console.log(type, kilde)
-
   return (
     <article
       className={classNames(styles.article, className)}
