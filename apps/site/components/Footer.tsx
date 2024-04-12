@@ -16,43 +16,6 @@ import sanitetskvinneneLogo from "public/logo-sanitetskvinnene.svg"
 
 export const Footer: React.FC = () => (
   <>
-    <Content className={styles.sponsors}>
-      <div className={styles.logos}>
-        <Link href="https://bergesenstiftelsen.no/" target="_blank">
-          <Image
-            alt="Bergesenstiftelsen"
-            src={bergesensLogo.src}
-            height={100}
-            width={200}
-            unoptimized
-            loader={({ src }) => src}
-          />
-        </Link>
-        <Link href="https://sanitetskvinnene.no/" target="_blank">
-          <Image
-            alt="Sanitetskvinnene"
-            src={sanitetskvinneneLogo.src}
-            height={100}
-            width={300}
-            unoptimized
-            loader={({ src }) => src}
-          />
-        </Link>
-        <Link
-          href="https://sanitetskvinnene.no/nyheter/en-sterkere-stemme-kvinnehelse"
-          target="_blank"
-        >
-          <Image
-            alt="Kvinnehelsealliansen"
-            src={kvinnehelsealliansen.src}
-            height={65}
-            width={220}
-            unoptimized
-            loader={({ src }) => src}
-          />
-        </Link>
-      </div>
-    </Content>
     <footer className={styles.container}>
       <Content className={styles.content}>
         <div className={styles.logoContainer}>
@@ -128,5 +91,42 @@ export const Footer: React.FC = () => (
         </div>
       </Content>
     </footer>
+    <Content className={styles.sponsors}>
+      <div className={styles.logos}>
+        <Link href="https://bergesenstiftelsen.no/" target="_blank">
+          <Image
+            alt="Bergesenstiftelsen"
+            src={bergesensLogo.src}
+            height={100}
+            width={200}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://sanitetskvinnene.no/" target="_blank">
+          <Image
+            alt="Sanitetskvinnene"
+            src={sanitetskvinneneLogo.src}
+            height={100}
+            width={300}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link
+          href="https://sanitetskvinnene.no/nyheter/en-sterkere-stemme-kvinnehelse"
+          target="_blank"
+        >
+          <Image
+            alt="Kvinnehelsealliansen"
+            src={kvinnehelsealliansen.src}
+            height={65}
+            width={220}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+      </div>
+    </Content>
   </>
 )

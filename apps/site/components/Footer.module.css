@@ -1,9 +1,9 @@
 .sponsors {
   height: max-content;
-  background-color: #a2f2f2;
+  background-color: var(--color-brand-light-teal);
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: var(--block-l);
   padding-top: var(--block-m);
   padding-bottom: var(--block-m);
 }
@@ -17,7 +17,7 @@
   height: max-content;
   padding: 4rem 0;
   display: flex;
-  background: var(--color-brand-teal);
+  background: var(--color-brand-dark-teal);
 }
 
 @media only screen and (max-width: 750px) {
@@ -35,7 +35,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  background: var(--color-brand-teal) !important;
+  background: var(--color-brand-dar) !important;
   padding-top: 0;
   padding-bottom: 0;
   gap: 32px;
@@ -63,8 +63,10 @@
 .logos {
   display: flex;
   column-gap: var(--block-m);
+  row-gap: var(--block-s);
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 .logoContainer {
