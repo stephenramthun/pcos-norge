@@ -17,7 +17,7 @@
   height: max-content;
   padding: 4rem 0;
   display: flex;
-  background: var(--color-brand-dark-teal);
+  background: var(--color-brand-teal);
 }
 
 @media only screen and (max-width: 750px) {
