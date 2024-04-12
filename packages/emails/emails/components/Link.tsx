@@ -1,7 +1,7 @@
-import React from "react"
-import { HrefProps, MjmlText } from "mjml-react"
+import React from "react";
+import { HrefProps, MjmlText } from "mjml-react";
 
-type LinkProps = HrefProps & React.ComponentProps<typeof MjmlText>
+type LinkProps = HrefProps & React.ComponentProps<typeof MjmlText>;
 type StyleProps = Pick<
   LinkProps,
   | "color"
@@ -14,8 +14,8 @@ type StyleProps = Pick<
   | "textDecoration"
   | "align"
 > & {
-  textTransform: React.CSSProperties["textTransform"]
-}
+  textTransform: React.CSSProperties["textTransform"];
+};
 
 const getStylePropsFromProps = (props: LinkProps): StyleProps => {
   return {
@@ -29,8 +29,8 @@ const getStylePropsFromProps = (props: LinkProps): StyleProps => {
     textDecoration: props.textDecoration,
     textTransform: props.textTransform as React.CSSProperties["textTransform"],
     align: props.align,
-  }
-}
+  };
+};
 
 const Link: React.FC<LinkProps> = ({
   children,
@@ -42,13 +42,17 @@ const Link: React.FC<LinkProps> = ({
     <a
       rel={rel}
       target={target ?? "_blank"}
-      style={getStylePropsFromProps(props)}
+      style={{
+        ...getStylePropsFromProps(props),
+        cursor: "pointer",
+        textDecoration: "underline",
+      }}
       className="link"
       {...props}
     >
       {children}
     </a>
-  )
-}
+  );
+};
 
-export default Link
+export default Link;
