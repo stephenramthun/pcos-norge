@@ -39,7 +39,10 @@ export const PcosIMediene: React.FC<Props> = ({ artikler }) => (
         </li>
       ))}
     </ul>
-    <ArrowLink className={styles.alleArtiklerLink} href="/pcos-i-mediene">
+    <ArrowLink
+      className={styles.alleArtiklerLink}
+      href="/aktuelt?filter=i-nyhetene"
+    >
       Se alle artikler
     </ArrowLink>
   </article>
