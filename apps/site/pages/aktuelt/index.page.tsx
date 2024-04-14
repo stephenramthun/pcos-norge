@@ -111,8 +111,6 @@ const Aktuelt: NextPage<
                 key={it.href}
                 href={it.href}
                 title={it.title}
-                type={it.type}
-                kilde={it.kilde}
                 image={it.image}
                 published={new Date(it.published)}
               />

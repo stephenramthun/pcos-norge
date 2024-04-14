@@ -14,8 +14,6 @@ import styles from "./ArticleCard.module.css"
 type Props = React.HTMLAttributes<HTMLDivElement> & {
   href: string
   title: string
-  type: string
-  kilde: string
   image?: SanityImageAsset
   published: Date
 }
@@ -23,8 +21,6 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
 export const NyhetsartikkelCard: React.FC<Props> = ({
   href,
   title,
-  type,
-  kilde,
   image,
   published,
   className,
