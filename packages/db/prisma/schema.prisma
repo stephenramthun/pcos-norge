@@ -81,6 +81,7 @@ enum AgreementStatus {
   PENDING
   EXPIRED
   STOPPED
+  UPDATING
 }
 
 model EmailSubscription {
