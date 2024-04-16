@@ -1,6 +1,6 @@
 declare type Agreement = {
   id: string
-  status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED"
+  status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED" | "UPDATING"
   start?: string | null
   stop?: string | null
 }
