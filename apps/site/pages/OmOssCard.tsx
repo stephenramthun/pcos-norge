@@ -53,7 +53,7 @@ export const OmOssCard: React.FC<Props> = ({ images }) => (
         anerkjenner de daglige utfordringene til alle rammede og vi vil bidra
         til økt forståelse for diagnosen.
       </Body>
-      <LinkButton href="/hva-er-pcos">
+      <LinkButton href="/om-oss">
         Les mer om jobben vi gjør
         <ArrowRight size={24} />
       </LinkButton>
