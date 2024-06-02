@@ -3,6 +3,7 @@ declare type Agreement = {
   status: "ACTIVE" | "PENDING" | "EXPIRED" | "STOPPED" | "UPDATING"
   start?: string | null
   stop?: string | null
+  paidDate?: Date | null
 }
 
 declare type AgreementResponseBody = {

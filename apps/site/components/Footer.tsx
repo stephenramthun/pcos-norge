@@ -76,6 +76,9 @@ export const Footer: React.FC = () => (
                 <li>
                   <Link href="/bli-medlem">Bli medlem</Link>
                 </li>
+                <li>
+                  <Link href="/brosjyrer">Brosjyrer</Link>
+                </li>
               </ul>
             </nav>
           </article>

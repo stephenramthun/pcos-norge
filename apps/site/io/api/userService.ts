@@ -7,6 +7,7 @@ const mapAgreement = (agreement: Agreement): Agreement => ({
   status: agreement.status,
   start: agreement.start,
   stop: agreement.stop,
+  paidDate: agreement.paidDate,
 })
 
 const agreementService = new AgreementService(VippsConfig)

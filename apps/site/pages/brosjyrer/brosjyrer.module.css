@@ -1,0 +1,18 @@
+.header {
+  margin-bottom: var(--block-m);
+}
+
+.heading {
+  flex-direction: column;
+  margin-bottom: var(--block-m);
+}
+
+.links {
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: var(--block-l);
+}
+
+.links a {
+  width: max-content;
+}
