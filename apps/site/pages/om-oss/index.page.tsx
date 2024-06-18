@@ -4,12 +4,14 @@ import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import React, { useLayoutEffect } from "react"
 
 import { BlockContentContainer } from "components/BlockContentContainer"
+import { Body } from "components/Body"
 import { Breadcrumbs } from "components/Breadcrumbs"
 import { Content } from "components/Content"
 import { Footer } from "components/Footer"
 import { Head } from "components/Head"
 import { Header } from "components/Header"
 import { Heading } from "components/Heading"
+import { Link } from "components/Link"
 import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
 import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
@@ -65,6 +67,12 @@ const OmOss: NextPage<Props> = ({ elements }) => {
                   </a>
                 </li>
               ))}
+              <li>
+                <a href="#protokoll-og-årsmelding">
+                  Protokoller og årsmeldinger
+                  <ArrowRight size={24} />
+                </a>
+              </li>
             </ul>
           </div>
           <div>
@@ -82,6 +90,23 @@ const OmOss: NextPage<Props> = ({ elements }) => {
                 </div>
               </React.Fragment>
             ))}
+
+            <Heading tag="h2" size="medium" id="protokoll-og-årsmelding">
+              Protokoller og årsmeldinger
+            </Heading>
+            <div className={styles.sectionContent}>
+              <Body>
+                <Link href="/filer/aarsmelding-2023.pdf" target="_blank">
+                  Årsmelding 2023
+                </Link>
+              </Body>
+              <Body>
+                <Link href="/filer/protokoll-2024.pdf" target="_blank">
+                  Protokoll 2024
+                </Link>
+              </Body>
+            </div>
+
             {Object.entries(referenceLinks).length > 0 && (
               <ReferenceLinkSummary links={referenceLinks} />
             )}
