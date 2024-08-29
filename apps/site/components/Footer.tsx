@@ -44,12 +44,16 @@ export const Footer: React.FC = () => (
               <Link href="mailto:post@pcosnorge.no">post@pcosnorge.no</Link>
               <Body>Adresse:</Body>
               <div className={styles.address}>
-                <Body>c/o Regine Vinnes Wiig Andersen</Body>
-                <Body>Mjåtveitstø 32</Body>
-                <Body>5918 FREKHAUG</Body>
+                <Body>c/o Ann Helen Brendehaug</Body>
+                <Body>Gamlelinja 34C</Body>
+                <Body>1254 Oslo</Body>
               </div>
               <Body>Org.nr:</Body>
               <Body>927 818 906</Body>
+              <Body>Revisjon:</Body>
+              <Link href="https://revisjonsor.no/" target="_blank">
+                Revisjon Sør
+              </Link>
             </div>
             <Link className={styles.privacy} href="/personvernerklæring">
               Les personvernserklæringen vår
