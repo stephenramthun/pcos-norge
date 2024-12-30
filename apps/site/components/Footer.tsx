@@ -55,9 +55,20 @@ export const Footer: React.FC = () => (
                 Revisjon Sør
               </Link>
             </div>
-            <Link className={styles.privacy} href="/personvernerklæring">
-              Les personvernserklæringen vår
-            </Link>
+            <div className={styles.privacy}>
+              <Link href="/personvernerklæring">
+                Les personvernserklæringen vår
+              </Link>
+              <Body>
+                Chat-gruppe:{" "}
+                <Link
+                  href="https://www.facebook.com/groups/623959381000578"
+                  target="_blank"
+                >
+                  PCOS Søstre Norge
+                </Link>
+              </Body>
+            </div>
           </article>
           <article>
             <nav className={styles.nav}>

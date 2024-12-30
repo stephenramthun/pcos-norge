@@ -105,6 +105,9 @@
 .privacy {
   justify-self: flex-end;
   width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .description {
