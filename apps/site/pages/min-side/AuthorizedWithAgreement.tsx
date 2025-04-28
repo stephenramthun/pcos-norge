@@ -12,6 +12,10 @@ import { AvsluttMedlemskapButton } from "./AvsluttMedlemskapButton"
 
 import styles from "./min-side.module.css"
 
+const renewalDate = (agreement: Agreement): string => {
+  return dayjs(agreement.paidDate).add(1, "year").format("DD.MM.YYYY")
+}
+
 interface Props {
   user: User
   data: UserData
@@ -23,11 +27,8 @@ export const AuthorizedWithAgreement: React.FC<Props> = ({ user, data }) => {
       <div className={styles.grid}>
         <>
           <Body>Medlemskapsstatus</Body>
-          {data.agreement?.status === "ACTIVE" && (
-            <Body>
-              Aktiv, fornyes{" "}
-              {dayjs(data.agreement.start).add(1, "year").format("DD.MM.YYYY")}
-            </Body>
+          {data.agreement?.status === "ACTIVE" && !!data.agreement.paidDate && (
+            <Body>Aktiv, fornyes {renewalDate(data.agreement)}</Body>
           )}
           {data.agreement?.status === "PENDING" && <Loader variant="dark" />}
         </>
