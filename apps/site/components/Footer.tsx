@@ -11,6 +11,7 @@ import { Logo } from "./Logo"
 import styles from "./Footer.module.css"
 
 import bergesensLogo from "public/logo-bergesenstiftelsen.svg"
+import bufdirLogo from "public/logo-bufdir.svg"
 import kvinnehelsealliansen from "public/logo-kvinnehelsealliansen.svg"
 import sanitetskvinneneLogo from "public/logo-sanitetskvinnene.svg"
 
@@ -140,6 +141,16 @@ export const Footer: React.FC = () => (
             src={kvinnehelsealliansen.src}
             height={65}
             width={220}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://www.bufdir.no/" target="_blank">
+          <Image
+            alt="Bufdir"
+            src={bufdirLogo.src}
+            height={65}
+            width={65}
             unoptimized
             loader={({ src }) => src}
           />
