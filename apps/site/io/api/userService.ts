@@ -1,3 +1,5 @@
+import { getAgreementForUser } from "db/prisma/dao/agreement"
+
 import { VippsConfig } from "config/vipps"
 import { EmailService } from "io/email/emailService"
 import { AgreementService } from "io/vipps/agreementService"
@@ -15,7 +17,10 @@ const emailService = new EmailService()
 
 export const UserService = {
   async getUserData(userId: string): Promise<UserData> {
-    const agreement = await agreementService.updateAgreementForUser(userId)
+    let agreement: Agreement | null = await getAgreementForUser(userId)
+    if (agreement?.status === "PENDING") {
+      agreement = await agreementService.updateAgreementForUser(userId)
+    }
     const subscriptions = await emailService.getSubscriptions(userId)
 
     return {
