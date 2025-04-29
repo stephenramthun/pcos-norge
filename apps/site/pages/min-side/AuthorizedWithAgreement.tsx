@@ -30,6 +30,7 @@ export const AuthorizedWithAgreement: React.FC<Props> = ({ user, data }) => {
           {data.agreement?.status === "ACTIVE" && !!data.agreement.paidDate && (
             <Body>Aktiv, fornyes {renewalDate(data.agreement)}</Body>
           )}
+          {data.agreement?.status === "UPDATING" && <Body>Fornyes</Body>}
           {data.agreement?.status === "PENDING" && <Loader variant="dark" />}
         </>
         <Body>Medlem siden</Body>
@@ -55,9 +56,10 @@ export const AuthorizedWithAgreement: React.FC<Props> = ({ user, data }) => {
       </fieldset>
       <span className={styles.buttons}>
         <Button onClick={() => signOut({ callbackUrl: "/" })}>Logg ut</Button>
-        {data.agreement?.status === "ACTIVE" && (
-          <AvsluttMedlemskapButton agreementId={data.agreement.id} />
-        )}
+        {data.agreement?.status === "ACTIVE" ||
+          (data.agreement?.status === "UPDATING" && (
+            <AvsluttMedlemskapButton agreementId={data.agreement.id} />
+          ))}
       </span>
     </>
   )

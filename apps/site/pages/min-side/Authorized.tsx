@@ -63,7 +63,9 @@ export const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
   const agreement = data?.agreement
 
   const hasAgreement =
-    agreement?.status === "ACTIVE" || agreement?.status === "PENDING"
+    agreement?.status === "ACTIVE" ||
+    agreement?.status === "PENDING" ||
+    agreement?.status === "UPDATING"
 
   return (
     <Content className={styles.content}>
