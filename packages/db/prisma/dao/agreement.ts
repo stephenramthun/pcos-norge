@@ -84,6 +84,11 @@ export const updatePaidDate = async (
   });
 };
 
+// Sletter ikke avtale, men setter den heller til stopped
 export const deleteAgreement = async (id: string): Promise<Agreement> => {
-  return prisma.agreement.delete({ where: { id } });
+  return prisma.agreement.update({
+    where: { id },
+    data: { status: "STOPPED" },
+  });
+  // return prisma.agreement.delete({ where: { id } });
 };
