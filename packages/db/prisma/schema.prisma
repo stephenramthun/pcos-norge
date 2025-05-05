@@ -13,15 +13,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -49,11 +48,12 @@ model User {
   streetAddress     String
   createdAt         DateTime            @default(now())
   accounts          Account[]
-  sessions          Session[]
-  agreement         Agreement?
-  EmailSubscription EmailSubscription[]
-  EmailDelivery     EmailDelivery[]
   AdminUser         AdminUser?
+  agreement         Agreement?
+  EmailDelivery     EmailDelivery[]
+  EmailSubscription EmailSubscription[]
+  PaymentHistory    PaymentHistory[]
+  sessions          Session[]
 }
 
 model VerificationToken {
@@ -66,7 +66,6 @@ model VerificationToken {
 
 model Agreement {
   id        String          @id
-  user      User            @relation(references: [id], fields: [userId], onUpdate: Cascade)
   userId    String          @unique
   status    AgreementStatus @default(PENDING)
   start     String?
@@ -74,6 +73,37 @@ model Agreement {
   createdAt DateTime        @default(now())
   paidDate  DateTime?
   chargeId  String
+  user      User            @relation(fields: [userId], references: [id])
+}
+
+model EmailSubscription {
+  userId String
+  type   SubscriptionType
+  user   User             @relation(fields: [userId], references: [id])
+
+  @@unique([userId, type])
+}
+
+model EmailDelivery {
+  userId  String
+  emailId String
+  user    User   @relation(fields: [userId], references: [id])
+
+  @@unique([userId, emailId])
+}
+
+model AdminUser {
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model PaymentHistory {
+  userId   String
+  chargeId String
+  data     Json
+  user     User   @relation(fields: [userId], references: [id])
+
+  @@unique([userId, chargeId])
 }
 
 enum AgreementStatus {
@@ -84,28 +114,7 @@ enum AgreementStatus {
   UPDATING
 }
 
-model EmailSubscription {
-  user   User             @relation(references: [id], fields: [userId])
-  userId String
-  type   SubscriptionType
-
-  @@unique([userId, type])
-}
-
 enum SubscriptionType {
   MEDLEMSBREV
   NYHETSBREV
-}
-
-model EmailDelivery {
-  user    User   @relation(references: [id], fields: [userId])
-  userId  String
-  emailId String
-
-  @@unique([userId, emailId])
-}
-
-model AdminUser {
-  user   User   @relation(references: [id], fields: [userId])
-  userId String @unique
 }
