@@ -6,6 +6,17 @@ declare type Agreement = {
   paidDate?: Date | null
 }
 
+declare type VippsAgreement = {
+  id: string
+  status: AgreementStatus
+  start: string
+  stop: string
+  pricing: {
+    currency: "NOK"
+    amount: number
+  }
+}
+
 declare type AgreementResponseBody = {
   vippsConfirmationUrl: string
   agreementId: string

@@ -30,7 +30,9 @@ export const hasActiveOrPendingAgreement = async (
   const agreement = await getAgreementForUser(userId);
   return (
     agreement !== null &&
-    (agreement.status === "ACTIVE" || agreement.status === "PENDING")
+    (agreement.status === "ACTIVE" ||
+      agreement.status === "PENDING" ||
+      agreement.status === "UPDATING")
   );
 };
 

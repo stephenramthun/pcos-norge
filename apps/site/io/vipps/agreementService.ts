@@ -1,8 +1,4 @@
-import {
-  getAgreementForUser,
-  getPendingAgreements,
-  updateAgreement,
-} from "db/prisma/dao/agreement"
+import { getPendingAgreements, updateAgreement } from "db/prisma/dao/agreement"
 
 import { MembershipPrice } from "../../model/membershipPrice"
 import { getBaseUrl } from "config/path"
@@ -66,7 +62,7 @@ export class AgreementService {
     return await response.json()
   }
 
-  getAgreement = async (id: string): Promise<Agreement> => {
+  getAgreement = async (id: string): Promise<VippsAgreement> => {
     const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(
       `${this.config.recurringPaymentEndpoint}/${id}`,
@@ -117,22 +113,15 @@ export class AgreementService {
   }
 
   updateAgreementForUser = async (
-    userId: string,
+    agreementId: string,
   ): Promise<Agreement | null> => {
-    return getAgreementForUser(userId)
-      .then((agreement) => {
-        if (!agreement) {
-          throw Error("User is missing agreement")
-        }
-        return this.getAgreement(agreement.id)
-      })
-      .then(({ id, status, stop, start }) =>
-        updateAgreement(id, status, start, stop),
-      )
-      .catch(() => {
-        // Log error?
-        return null
-      })
+    const vippsAgreement = await this.getAgreement(agreementId)
+    return await updateAgreement(
+      vippsAgreement.id,
+      vippsAgreement.status,
+      vippsAgreement.start,
+      vippsAgreement.stop,
+    )
   }
 
   pollAgreementStatus = async (
