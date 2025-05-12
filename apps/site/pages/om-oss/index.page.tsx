@@ -96,6 +96,16 @@ const OmOss: NextPage<Props> = ({ elements }) => {
             </Heading>
             <div className={styles.sectionContent}>
               <Body>
+                <Link href="/filer/aarsmelding-2024.pdf" target="_blank">
+                  Årsmelding 2024
+                </Link>
+              </Body>
+              <Body>
+                <Link href="/filer/protokoll-2025.pdf" target="_blank">
+                  Protokoll 2025
+                </Link>
+              </Body>
+              <Body>
                 <Link href="/filer/aarsmelding-2023.pdf" target="_blank">
                   Årsmelding 2023
                 </Link>
