@@ -32,6 +32,7 @@ const createAgreement = (
   merchantRedirectUrl: config.registerRedirectUri,
   merchantAgreementUrl: config.merchantAgreementUri,
   productName: description,
+  scope: "name address email phoneNumber birthDate",
 })
 
 export class AgreementService {
