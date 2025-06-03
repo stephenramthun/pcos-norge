@@ -28,13 +28,12 @@ export default async function avslutt(
     return res.redirect(`/feil?status=${status}`).end()
   }
 
-  const agreement = await deleteAgreement(id)
-
-  if (!agreement) {
-    return res.redirect("/feil")
+  try {
+    await deleteAgreement(id)
+    await emailService.removeSubscriptions(session.user.id)
+  } catch (e) {
+    console.error(`Failed to soft delete agreement from db: ${e}`)
   }
-
-  await emailService.removeSubscriptions(session.user.id)
 
   return res.status(status).redirect("/min-side")
 }

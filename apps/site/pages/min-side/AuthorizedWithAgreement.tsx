@@ -56,10 +56,10 @@ export const AuthorizedWithAgreement: React.FC<Props> = ({ user, data }) => {
       </fieldset>
       <span className={styles.buttons}>
         <Button onClick={() => signOut({ callbackUrl: "/" })}>Logg ut</Button>
-        {data.agreement?.status === "ACTIVE" ||
-          (data.agreement?.status === "UPDATING" && (
-            <AvsluttMedlemskapButton agreementId={data.agreement.id} />
-          ))}
+        {(data.agreement?.status === "ACTIVE" ||
+          data.agreement?.status === "UPDATING") && (
+          <AvsluttMedlemskapButton agreementId={data.agreement.id} />
+        )}
       </span>
     </>
   )

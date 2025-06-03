@@ -19,7 +19,7 @@ export const UserService = {
   async getUserData(userId: string): Promise<UserData> {
     let agreement: Agreement | null = await getAgreementForUser(userId)
     if (agreement?.status === "PENDING") {
-      agreement = await agreementService.updateAgreementForUser(userId)
+      agreement = await agreementService.updateAgreementForUser(agreement.id)
     }
     const subscriptions = await emailService.getSubscriptions(userId)
 
