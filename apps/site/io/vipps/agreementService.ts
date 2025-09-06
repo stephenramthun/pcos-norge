@@ -98,6 +98,7 @@ export class AgreementService {
     )
 
     if (!response.ok) {
+      console.error(response)
       throw new StoppingAgreementError(id, response.status)
     }
 
