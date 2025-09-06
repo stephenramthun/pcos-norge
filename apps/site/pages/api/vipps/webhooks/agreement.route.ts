@@ -30,6 +30,7 @@ const validateAuthorization = (
   }
   try {
     const secret = requireEnv("RECURRING_AGREEMENT_WEBHOOK_SECRET")
+    console.log(req.body)
     const body = JSON.parse(req.body)
 
     const expectedContentHash = crypto
