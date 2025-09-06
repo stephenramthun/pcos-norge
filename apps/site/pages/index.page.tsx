@@ -38,7 +38,7 @@ interface HomeProps {
     title: string
     type: string
     kilde: string
-    publisert: string
+    published: string
   }[]
 }
 
@@ -95,7 +95,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
           id
         }
       },
-      "nyhetsartikler": *[_type == "newsArticle"][0...5] | order(publisert desc) 
+      "nyhetsartikler": *[_type == "newsArticle"][0...5] | order(published desc) 
     }
   `)
 
