@@ -3,7 +3,7 @@ import React from "react";
 const getSourceForLogoVariant = (variant: "light" | "dark"): string =>
   `https://raw.githubusercontent.com/stephenramthun/pcos-norge/main/apps/site/public/${
     variant === "light" ? "pcos-norge-logo-light" : "pcos-norge-logo-dark"
-  }.svg`;
+  }.png`;
 
 interface LogoProps {
   variant: "light" | "dark";
