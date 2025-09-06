@@ -98,7 +98,7 @@ export class AgreementService {
     )
 
     if (!response.ok) {
-      console.error(response)
+      console.error(await response.json())
       throw new StoppingAgreementError(id, response.status)
     }
 
