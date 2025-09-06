@@ -57,7 +57,7 @@ const validateAuthorization = (
     const expectedSignedString =
       `${req.method}\n` +
       `${pathAndQuery}\n` +
-      `${req.headers["X-Ms-Date"]};${req.headers["Host"]};${req.headers["X-Ms-Content-Sha256"]}`
+      `${req.headers["x-ms-date"]};${req.headers["host"]};${req.headers["x-ms-content-sha256"]}`
 
     const expectedSignature = crypto
       .createHmac("sha256", secret)
