@@ -33,7 +33,7 @@ const validateAuthorization = (
     const body = req.body
 
     console.log("Webhook body:", body)
-    console.log("Webhook req:", req)
+    console.log("Webhook body type:", typeof body)
 
     const expectedContentHash = crypto
       .createHash("sha256")
