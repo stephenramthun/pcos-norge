@@ -33,7 +33,6 @@ const validateAuthorization = (
     const body = req.body
 
     console.log("Webhook body:", body)
-    console.log("Webhook body type:", typeof body)
     console.log("JSON.stringify(body):", JSON.stringify(body))
     console.log("JSON.stringify", JSON.stringify)
 
@@ -42,6 +41,8 @@ const validateAuthorization = (
       .update(JSON.stringify(body))
       .digest("base64")
     const actualContentHash = req.headers["X-Ms-Content-Sha256"]
+
+    console.log("headers:", req.headers)
 
     if (expectedContentHash !== actualContentHash) {
       console.error(
