@@ -34,7 +34,7 @@ const validateAuthorization = (
 
     const expectedContentHash = crypto
       .createHash("sha256")
-      .update(body)
+      .update(JSON.stringify(body))
       .digest("base64")
     const actualContentHash = req.headers["X-Ms-Content-Sha256"]
 
