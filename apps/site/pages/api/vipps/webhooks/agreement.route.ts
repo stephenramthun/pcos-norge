@@ -34,6 +34,8 @@ const validateAuthorization = (
 
     console.log("Webhook body:", body)
     console.log("Webhook body type:", typeof body)
+    console.log("JSON.stringify(body):", JSON.stringify(body))
+    console.log("JSON.stringify", JSON.stringify)
 
     const expectedContentHash = crypto
       .createHash("sha256")
