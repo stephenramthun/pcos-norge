@@ -32,17 +32,11 @@ const validateAuthorization = (
     const secret = requireEnv("RECURRING_AGREEMENT_WEBHOOK_SECRET")
     const body = req.body
 
-    console.log("Webhook body:", body)
-    console.log("JSON.stringify(body):", JSON.stringify(body))
-    console.log("JSON.stringify", JSON.stringify)
-
     const expectedContentHash = crypto
       .createHash("sha256")
       .update(JSON.stringify(body))
       .digest("base64")
-    const actualContentHash = req.headers["X-Ms-Content-Sha256"]
-
-    console.log("headers:", req.headers)
+    const actualContentHash = req.headers["x-ms-content-sha256"]
 
     if (expectedContentHash !== actualContentHash) {
       console.error(
