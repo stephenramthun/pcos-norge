@@ -75,6 +75,7 @@ const validateAuthorization = (
       return false
     }
   } catch (err) {
+    console.error("Unknown error:", err)
     res.status(500).json({ statusCode: 500, message: (err as Error)?.message })
     res.end()
     return false
