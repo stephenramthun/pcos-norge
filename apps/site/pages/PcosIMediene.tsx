@@ -12,7 +12,7 @@ type Artikkel = {
   title: string
   type: string
   kilde: string
-  publisert: string
+  published: string
 }
 
 type Props = {
@@ -25,19 +25,21 @@ export const PcosIMediene: React.FC<Props> = ({ artikler }) => (
       PCOS i mediene
     </Heading>
     <ul className={styles.artikler}>
-      {artikler.map((it, i) => (
-        <li key={i} className={styles.artikkel}>
-          <Link className={styles.link} href={it.href} target="_blank">
-            <span className={styles.linkDetails}>
-              {`${it.publisert} | ${it.type}, ${it.kilde}`}
-            </span>
-            <span className={styles.linkTitle}>
-              {it.title}
-              <ArrowRight size={24} weight="bold" />
-            </span>
-          </Link>
-        </li>
-      ))}
+      {artikler.map((it, i) => {
+        return (
+          <li key={i} className={styles.artikkel}>
+            <Link className={styles.link} href={it.href} target="_blank">
+              <span className={styles.linkDetails}>
+                {`${it.published} | ${it.type}, ${it.kilde}`}
+              </span>
+              <span className={styles.linkTitle}>
+                {it.title}
+                <ArrowRight size={24} weight="bold" />
+              </span>
+            </Link>
+          </li>
+        )
+      })}
     </ul>
     <ArrowLink
       className={styles.alleArtiklerLink}

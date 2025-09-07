@@ -98,7 +98,13 @@ export class AgreementService {
     )
 
     if (!response.ok) {
-      throw new StoppingAgreementError(id, response.status)
+      const body = await response.json()
+      if (body.status === 400 && body.detail === "Illegal update") {
+        // Agreement is already stopped in Vipps
+        return 204
+      } else {
+        throw new StoppingAgreementError(id, response.status)
+      }
     }
 
     return response.status

@@ -30,13 +30,13 @@ const validateAuthorization = (
   }
   try {
     const secret = requireEnv("RECURRING_AGREEMENT_WEBHOOK_SECRET")
-    const body = JSON.parse(req.body)
+    const body = req.body
 
     const expectedContentHash = crypto
       .createHash("sha256")
-      .update(body)
+      .update(JSON.stringify(body))
       .digest("base64")
-    const actualContentHash = req.headers["X-Ms-Content-Sha256"]
+    const actualContentHash = req.headers["x-ms-content-sha256"]
 
     if (expectedContentHash !== actualContentHash) {
       console.error(
@@ -57,7 +57,7 @@ const validateAuthorization = (
     const expectedSignedString =
       `${req.method}\n` +
       `${pathAndQuery}\n` +
-      `${req.headers["X-Ms-Date"]};${req.headers["Host"]};${req.headers["X-Ms-Content-Sha256"]}`
+      `${req.headers["x-ms-date"]};${req.headers["host"]};${req.headers["x-ms-content-sha256"]}`
 
     const expectedSignature = crypto
       .createHmac("sha256", secret)
@@ -75,6 +75,7 @@ const validateAuthorization = (
       return false
     }
   } catch (err) {
+    console.error("Unknown error:", err)
     res.status(500).json({ statusCode: 500, message: (err as Error)?.message })
     res.end()
     return false
