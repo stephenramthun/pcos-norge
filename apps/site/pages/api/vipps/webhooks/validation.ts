@@ -2,7 +2,7 @@ import crypto from "crypto"
 
 import { NextApiRequest, NextApiResponse } from "next"
 
-const requireEnv = (key: string): string => {
+export const requireEnv = (key: string): string => {
   const value = process.env[key]
 
   if (!value) {
@@ -27,12 +27,13 @@ export const validateMethod = (
 export const validateAuthorization = (
   req: NextApiRequest,
   res: NextApiResponse,
+  secret: string,
+  path: "agreement" | "charge",
 ): boolean => {
   if (process.env.NODE_ENV === "development") {
     return true
   }
   try {
-    const secret = requireEnv("RECURRING_AGREEMENT_WEBHOOK_SECRET")
     const body = req.body
 
     const expectedContentHash = crypto
@@ -51,7 +52,7 @@ export const validateAuthorization = (
     }
 
     const pathAndQuery =
-      "/api/vipps/webhooks/agreement" +
+      `/api/vipps/webhooks/${path}` +
       (Object.keys(req.query).length > 0
         ? "?" +
           new URLSearchParams(req.query as Record<string, string>).toString()

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
-import { validateAuthorization, validateMethod } from "./validation"
+import { requireEnv, validateAuthorization, validateMethod } from "./validation"
 
 type AgreementEvent =
   | "recurring.agreement-activated.v1"
@@ -22,7 +22,8 @@ export default async function receiveAgreementWebhook(
     return res.end()
   }
 
-  if (!validateAuthorization(req, res)) {
+  const secret = requireEnv("RECURRING_AGREEMENT_WEBHOOK_SECRET")
+  if (!validateAuthorization(req, res, secret, "agreement")) {
     return res.end()
   }
 

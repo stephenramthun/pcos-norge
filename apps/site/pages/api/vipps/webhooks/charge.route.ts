@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
-import { validateAuthorization, validateMethod } from "./validation"
+import { requireEnv, validateAuthorization, validateMethod } from "./validation"
 
 type ChargeEvent =
   | "recurring.charge-reserved.v1"
@@ -24,7 +24,8 @@ export default async function receiveChargeWebhook(
     return res.end()
   }
 
-  if (!validateAuthorization(req, res)) {
+  const secret = requireEnv("RECURRING_CHARGE_WEBHOOK_SECRET")
+  if (!validateAuthorization(req, res, secret, "charge")) {
     return res.end()
   }
 
