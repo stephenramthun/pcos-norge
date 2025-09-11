@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
 import { VippsConfig } from "config/vipps"
-import { AgreementService } from "io/vipps/agreementService"
+// import { AgreementService } from "io/vipps/agreementService"
 import { ChargeService } from "io/vipps/chargeService"
 
 import { requireEnv, validateAuthorization, validateMethod } from "./validation"
