@@ -23,7 +23,7 @@ type ChargeEventPayload = {
 }
 
 const chargeService = new ChargeService(VippsConfig)
-const agreementService = new AgreementService(VippsConfig)
+// const agreementService = new AgreementService(VippsConfig)
 
 export default async function receiveChargeWebhook(
   req: NextApiRequest,
