@@ -116,3 +116,12 @@ export type NyhetsartikkelObject = SanityDocument & {
   type: string
   image?: SanityImageAsset
 }
+
+export type AktivitetObject = SanityDocument & {
+  title: string
+  description: string
+  start: string
+  end: string
+  registration?: string
+  digital?: boolean
+}

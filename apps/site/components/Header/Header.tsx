@@ -42,6 +42,9 @@ export const Header: React.FC<HeaderProps> = ({
           <Link className={styles.link} href="/hva-er-pcos">
             Hva er PCOS
           </Link>
+          <Link className={styles.link} href="/aktiviteter">
+            Aktiviteter
+          </Link>
           <Link className={styles.link} href="/om-oss">
             Om oss
           </Link>

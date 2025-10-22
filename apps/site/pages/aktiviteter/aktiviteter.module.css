@@ -1,0 +1,128 @@
+.header {
+  margin-bottom: var(--block-m);
+}
+
+.content {
+  position: relative;
+  margin-bottom: var(--block-l);
+  flex-direction: column;
+  gap: var(--block-xl);
+}
+
+.content > * {
+  max-width: var(--text-max-width);
+}
+
+@media screen and (min-width: 1250px) {
+  .content {
+    flex-direction: row;
+  }
+}
+
+.content h1,
+.content h2 {
+  margin-bottom: var(--block-m);
+}
+
+.content .sectionContent > p {
+  margin-bottom: var(--block-s);
+}
+
+.content ul {
+  margin-bottom: var(--block-s);
+}
+
+.content p:has(+ div) {
+  margin-bottom: var(--block-m);
+}
+
+.innholdsfortegnelse {
+  position: relative;
+  flex: 1;
+  max-width: 800px;
+}
+
+.innholdsfortegnelse ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 1250px) {
+  .innholdsfortegnelse ul {
+    position: sticky;
+    top: var(--block-m);
+  }
+}
+
+.innholdsfortegnelse li a {
+  font-size: var(--font-size-body);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-top: 1px solid var(--color-brand-teal);
+}
+
+.innholdsfortegnelse li a:hover,
+.innholdsfortegnelse li a:focus-visible {
+  text-decoration: underline;
+}
+
+.innholdsfortegnelse li a svg {
+  transition: transform 200ms ease;
+}
+
+.innholdsfortegnelse li a:hover svg,
+.innholdsfortegnelse li a:focus-visible svg {
+  transform: translateX(10px);
+}
+
+.innholdsfortegnelse li:last-of-type a {
+  border-bottom: 1px solid var(--color-brand-teal);
+}
+
+.sectionContent {
+  margin-bottom: var(--block-l);
+}
+
+.aktiviteter {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.aktivitet {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-brand-teal);
+}
+
+.aktivitet .time {
+  color: var(--color-brand-teal);
+  font-size: var(--font-size-details);
+  margin-bottom: 8px;
+}
+
+.aktivitet .title {
+  /*font-weight: bold;*/
+}
+
+.aktivitet .registrationLink {
+  margin-top: 8px;
+}
+
+.aktivitet .details {
+  color: var(--color-brand-teal);
+  font-size: var(--font-size-details);
+}
+
+.likepersoner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
