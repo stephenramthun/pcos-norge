@@ -17,6 +17,7 @@ import { Heading } from "components/Heading"
 import { Link } from "components/Link"
 import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
+import { ToggleButton } from "components/ToggleButton"
 import { getClient } from "io/sanity/client"
 import { SanityImageAsset } from "types/sanity"
 import { slugify } from "util/string"
@@ -63,6 +64,7 @@ type Activity = {
   end?: string
   location?: string
   registrationLink?: string
+  digital: boolean
 }
 
 type Likeperson = {
@@ -81,9 +83,15 @@ interface AktiviteterProps {
   likepersoner: Likeperson[]
 }
 
-const Aktiviteter: NextPage<
-  AktiviteterProps & PreviewProps & { filter: ArtikkelFilter }
-> = ({ elements, activities, likepersoner }) => {
+const Aktiviteter: NextPage<AktiviteterProps & PreviewProps> = ({
+  elements,
+  activities,
+  likepersoner,
+}) => {
+  const [filter, setFilter] = React.useState<"alle" | "digitalt" | "fysisk">(
+    "alle",
+  )
+
   return (
     <PageContainer>
       <Head />
@@ -143,6 +151,26 @@ const Aktiviteter: NextPage<
                 medier for påminnelser og informasjon om arrangementer og
                 foredrag.
               </Body>
+              <div className={styles.filterButtons}>
+                <ToggleButton
+                  onClick={() => setFilter("alle")}
+                  toggled={filter === "alle"}
+                >
+                  Alle
+                </ToggleButton>
+                <ToggleButton
+                  onClick={() => setFilter("fysisk")}
+                  toggled={filter === "fysisk"}
+                >
+                  Fysisk
+                </ToggleButton>
+                <ToggleButton
+                  onClick={() => setFilter("digitalt")}
+                  toggled={filter === "digitalt"}
+                >
+                  Digitalt
+                </ToggleButton>
+              </div>
               <ul className={styles.aktiviteter}>
                 {activities
                   .slice(0)
@@ -151,6 +179,12 @@ const Aktiviteter: NextPage<
                       new Date(a.start).getTime() - new Date(b.start).getTime(),
                   )
                   .filter((it) => differenceInDays(it.start, new Date()) >= 0)
+                  .filter(
+                    (it) =>
+                      filter === "alle" ||
+                      (filter === "digitalt" && it.digital) ||
+                      (filter === "fysisk" && !it.digital),
+                  )
                   .map((it) => (
                     <li key={it._id} className={styles.aktivitet}>
                       <Body className={styles.time}>
@@ -241,6 +275,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
         end,
         location,
         registrationLink,
+        digital,
       },
       "likepersoner": *[_type == "likeperson"] {
         _id,

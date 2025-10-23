@@ -44,5 +44,12 @@ export const activity = {
       type: "url",
       description: "En lenke for påmelding dersom påmelding er påkrevd",
     },
+    {
+      name: "digital",
+      title: "Digital",
+      type: "boolean",
+      description: "Hvis aktiviteten skal holdes digitalt",
+      initialValue: false,
+    },
   ],
 };
