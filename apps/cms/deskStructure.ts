@@ -23,6 +23,8 @@ const component = (builder: StructureBuilder) =>
       builder.documentTypeListItem("imageDocument"),
       builder.documentTypeListItem("tableOfContentsPage"),
       builder.documentTypeListItem("newsArticle"),
+      builder.documentTypeListItem("activity"),
+      builder.documentTypeListItem("likeperson"),
     ]);
 
 export default component;

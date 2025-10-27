@@ -1,11 +1,10 @@
 import { useRouter } from "next/router"
 import { Session } from "next-auth"
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { Content } from "components/Content"
 import { Heading } from "components/Heading"
 import { Loader } from "components/Loader"
-import { useAsyncPolling } from "hooks/useAsyncPolling"
 import { isUser } from "types/guards"
 
 import { AuthorizedWithAgreement } from "./AuthorizedWithAgreement"
@@ -32,29 +31,6 @@ export const Authorized: React.FC<AuthorizedProps> = ({ user }) => {
   useEffect(() => {
     fetchData().then(setData)
   }, [])
-
-  const updateData = useCallback(async () => {
-    if (data?.agreement?.status === "PENDING") {
-      await fetch("/api/medlemskap/oppdater", {
-        method: "POST",
-        body: JSON.stringify({ agreementId: data.agreement.id }),
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.updated) {
-            fetchData().then(setData)
-          }
-        })
-    }
-  }, [data])
-
-  useAsyncPolling(updateData, {
-    delay: 3000,
-    interval: 2000,
-    active: data
-      ? data.agreement !== null && data.agreement.status === "PENDING"
-      : undefined,
-  })
 
   if (!isUser(user)) {
     return null

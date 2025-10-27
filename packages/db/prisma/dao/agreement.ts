@@ -68,11 +68,12 @@ export const updateAgreement = async (
   id: string,
   status: AgreementStatus,
   start?: string | null,
-  stop?: string | null
+  stop?: string | null,
+  paidDate?: Date | null
 ): Promise<Agreement> => {
   return prisma.agreement.update({
     where: { id },
-    data: { status, start, stop },
+    data: { status, start, stop, paidDate },
   });
 };
 

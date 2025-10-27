@@ -115,8 +115,9 @@ export class AgreementService {
     status,
     start,
     stop,
+    paidDate,
   }: Agreement): Promise<Agreement> => {
-    return updateAgreement(id, status, start, stop)
+    return updateAgreement(id, status, start, stop, paidDate)
   }
 
   updateAgreementForUser = async (

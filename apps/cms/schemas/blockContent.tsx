@@ -51,7 +51,7 @@ export const blockContent = {
                 validation: (rule: Rule) =>
                   rule.uri({
                     allowRelative: true,
-                    scheme: ["https", "http"],
+                    scheme: ["https", "http", "mailto"],
                   }),
               },
             ],

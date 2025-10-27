@@ -17,6 +17,8 @@ import { navigationLinks } from "./navigationLinks";
 import { openGraphMetaData } from "./openGraphMetaData";
 import sideMedInnholdsfortegnelse from "./sideMedInnholdsfortegnelse";
 import accordion from "./accordion";
+import { activity } from "./activity";
+import { likeperson } from "./likeperson";
 
 export default [
   page,
@@ -36,6 +38,8 @@ export default [
   imageDocument,
   navigationLinks,
   openGraphMetaData,
+  activity,
   ...sideMedInnholdsfortegnelse,
   ...accordion,
+  likeperson,
 ];
