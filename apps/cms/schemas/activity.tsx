@@ -51,5 +51,13 @@ export const activity = {
       description: "Hvis aktiviteten skal holdes digitalt",
       initialValue: false,
     },
+    {
+      name: "foredrag",
+      title: "Foredrag",
+      type: "boolean",
+      description:
+        "Aktiviteten er et foredrag hvor publikum ikke er forventet å delta aktivt, som i f.eks. en samtalegruppe",
+      initialValue: false,
+    },
   ],
 };

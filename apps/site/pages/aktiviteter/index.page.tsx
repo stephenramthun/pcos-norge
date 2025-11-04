@@ -65,6 +65,7 @@ type Activity = {
   location?: string
   registrationLink?: string
   digital: boolean
+  foredrag: boolean
 }
 
 type Likeperson = {
@@ -73,6 +74,8 @@ type Likeperson = {
   picture: SanityImageAsset
   region: string
 }
+
+type Filter = "alle" | "digitalt" | "fysisk" | "foredrag"
 
 interface AktiviteterProps {
   elements: {
@@ -88,9 +91,7 @@ const Aktiviteter: NextPage<AktiviteterProps & PreviewProps> = ({
   activities,
   likepersoner,
 }) => {
-  const [filter, setFilter] = React.useState<"alle" | "digitalt" | "fysisk">(
-    "alle",
-  )
+  const [filter, setFilter] = React.useState<Filter>("alle")
 
   return (
     <PageContainer>
@@ -170,6 +171,12 @@ const Aktiviteter: NextPage<AktiviteterProps & PreviewProps> = ({
                 >
                   Digitalt
                 </ToggleButton>
+                <ToggleButton
+                  onClick={() => setFilter("foredrag")}
+                  toggled={filter === "foredrag"}
+                >
+                  Foredrag
+                </ToggleButton>
               </div>
               <ul className={styles.aktiviteter}>
                 {activities
@@ -183,7 +190,8 @@ const Aktiviteter: NextPage<AktiviteterProps & PreviewProps> = ({
                     (it) =>
                       filter === "alle" ||
                       (filter === "digitalt" && it.digital) ||
-                      (filter === "fysisk" && !it.digital),
+                      (filter === "fysisk" && !it.digital) ||
+                      (filter === "foredrag" && it.foredrag),
                   )
                   .map((it) => (
                     <li key={it._id} className={styles.aktivitet}>
@@ -276,6 +284,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
         location,
         registrationLink,
         digital,
+        foredrag,
       },
       "likepersoner": *[_type == "likeperson"] {
         _id,
