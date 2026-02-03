@@ -12,8 +12,14 @@ import styles from "./Footer.module.css"
 
 import bergesensLogo from "public/logo-bergesenstiftelsen.svg"
 import bufdirLogo from "public/logo-bufdir.svg"
+import damLogo from "public/logo-dam.png"
+import exeltisLogo from "public/logo-exeltis.png"
 import kvinnehelsealliansen from "public/logo-kvinnehelsealliansen.svg"
+import ntnuLogo from "public/logo-ntnu.svg"
+import oslometLogo from "public/logo-oslomet.png"
 import sanitetskvinneneLogo from "public/logo-sanitetskvinnene.svg"
+import sexOgPolitikkLogo from "public/logo-sex-og-politikk.png"
+import stolavsLogo from "public/logo-st-olavs.svg"
 
 export const Footer: React.FC = () => (
   <>
@@ -151,6 +157,66 @@ export const Footer: React.FC = () => (
             src={bufdirLogo.src}
             height={65}
             width={65}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://www.exeltis.no/" target="_blank">
+          <Image
+            alt="Exeltis"
+            src={exeltisLogo.src}
+            height={65}
+            width={150}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://www.ntnu.no/" target="_blank">
+          <Image
+            alt="NTNU"
+            src={ntnuLogo.src}
+            height={40}
+            width={220}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://www.stolav.no/" target="_blank">
+          <Image
+            alt="St. Olavs hospital"
+            src={stolavsLogo.src}
+            height={40}
+            width={350}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://www.dam.no/" target="_blank">
+          <Image
+            alt="Stiftelsen Dam"
+            src={damLogo.src}
+            height={80}
+            width={70}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://www.oslomet.no/" target="_blank">
+          <Image
+            alt="OsloMet"
+            src={oslometLogo.src}
+            height={80}
+            width={136}
+            unoptimized
+            loader={({ src }) => src}
+          />
+        </Link>
+        <Link href="https://www.sexogpolitikk.no/" target="_blank">
+          <Image
+            alt="Sex og politikk"
+            src={sexOgPolitikkLogo.src}
+            height={57}
+            width={350}
             unoptimized
             loader={({ src }) => src}
           />

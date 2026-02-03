@@ -62,8 +62,8 @@
 
 .logos {
   display: flex;
-  column-gap: var(--block-m);
-  row-gap: var(--block-s);
+  column-gap: var(--block-l);
+  row-gap: var(--block-m);
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
