@@ -121,6 +121,10 @@
   font-size: var(--font-size-details);
 }
 
+.avlyst {
+  text-decoration: line-through;
+}
+
 .likepersoner {
   display: flex;
   flex-wrap: wrap;

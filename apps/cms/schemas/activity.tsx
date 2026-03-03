@@ -59,5 +59,12 @@ export const activity = {
         "Aktiviteten er et foredrag hvor publikum ikke er forventet å delta aktivt, som i f.eks. en samtalegruppe",
       initialValue: false,
     },
+    {
+      name: "avlyst",
+      title: "Avlyst",
+      type: "boolean",
+      description: "Aktiviteten er avlyst",
+      initialValue: false,
+    },
   ],
 };

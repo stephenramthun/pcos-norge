@@ -22,6 +22,7 @@ import { getClient } from "io/sanity/client"
 import { SanityImageAsset } from "types/sanity"
 import { slugify } from "util/string"
 
+import { AvlystAktivitet } from "./AvlystAktivitet"
 import { Likeperson } from "./Likeperson"
 
 import styles from "./aktiviteter.module.css"
@@ -34,7 +35,7 @@ const formatTime = (date: Date): string => {
   return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`
 }
 
-const formatActivityDates = (start: string, end?: string): string => {
+export const formatActivityDates = (start: string, end?: string): string => {
   if (!end) {
     const date = new Date(start)
     const formattedDate = formatDate(date)
@@ -56,7 +57,7 @@ const formatActivityDates = (start: string, end?: string): string => {
   )} ${formatTime(endDate)}`
 }
 
-type Activity = {
+export type Activity = {
   _id: string
   title: string
   description?: string
@@ -66,6 +67,7 @@ type Activity = {
   registrationLink?: string
   digital: boolean
   foredrag: boolean
+  avlyst: boolean
 }
 
 type Likeperson = {
@@ -193,29 +195,35 @@ const Aktiviteter: NextPage<AktiviteterProps & PreviewProps> = ({
                       (filter === "fysisk" && !it.digital) ||
                       (filter === "foredrag" && it.foredrag),
                   )
-                  .map((it) => (
-                    <li key={it._id} className={styles.aktivitet}>
-                      <Body className={styles.time}>
-                        {formatActivityDates(it.start, it.end)}
-                      </Body>
-                      <Body className={styles.title}>{it.title}</Body>
-                      {it.description && <Body>{it.description}</Body>}
-                      {it.location && <Body>{it.location}</Body>}
-                      {it.registrationLink ? (
-                        <Link
-                          className={styles.registrationLink}
-                          href={it.registrationLink}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Påmelding
-                        </Link>
-                      ) : (
-                        <Body className={styles.details}>Ingen påmelding</Body>
-                      )}
-                      <Body></Body>
-                    </li>
-                  ))}
+                  .map((it) =>
+                    it.avlyst ? (
+                      <AvlystAktivitet key={it._id} aktivitet={it} />
+                    ) : (
+                      <li key={it._id} className={styles.aktivitet}>
+                        <Body className={styles.time}>
+                          {formatActivityDates(it.start, it.end)}
+                        </Body>
+                        <Body className={styles.title}>{it.title}</Body>
+                        {it.description && <Body>{it.description}</Body>}
+                        {it.location && <Body>{it.location}</Body>}
+                        {it.registrationLink ? (
+                          <Link
+                            className={styles.registrationLink}
+                            href={it.registrationLink}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Påmelding
+                          </Link>
+                        ) : (
+                          <Body className={styles.details}>
+                            Ingen påmelding
+                          </Body>
+                        )}
+                        <Body></Body>
+                      </li>
+                    ),
+                  )}
               </ul>
             </div>
             {elements.slice(0, 2).map((it, i) => (
@@ -285,6 +293,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
         registrationLink,
         digital,
         foredrag,
+        avlyst
       },
       "likepersoner": *[_type == "likeperson"] {
         _id,

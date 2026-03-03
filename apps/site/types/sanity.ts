@@ -124,4 +124,5 @@ export type AktivitetObject = SanityDocument & {
   end: string
   registration?: string
   digital?: boolean
+  avlyst?: boolean
 }
