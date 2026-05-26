@@ -45,7 +45,7 @@ const Arsmote = () => {
             </li>
             <li>
               <Link
-                href="/filer/aarsmelding-2024.pdf"
+                href="/filer/vedtekter-100626.pdf"
                 target="_blank"
                 className={styles.link}
               >
