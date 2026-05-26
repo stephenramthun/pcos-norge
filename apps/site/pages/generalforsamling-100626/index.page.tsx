@@ -22,22 +22,25 @@ const Arsmote = () => {
           <Breadcrumbs
             links={[
               { href: "/", label: "Hjem" },
-              { href: `/arsmote`, label: "Årsmøte 2025" },
+              {
+                href: `/generalforsamling-100626`,
+                label: "Ekstraordinær generalforsamling 10.06.2026",
+              },
             ]}
           />
         </Content>
         <Content className={styles.content}>
           <Heading tag="h1" size="medium">
-            Filer til årsmøtet 2025
+            Filer til ekstraordinær generalforsamling 10.06.2026
           </Heading>
           <ul>
             <li>
               <Link
-                href="/filer/protokoll-2025.pdf"
+                href="/filer/protokoll-ekstraordinar-generalforsamling-100626.pdf"
                 target="_blank"
                 className={styles.link}
               >
-                Protokoll 2025
+                Protokoll
               </Link>
             </li>
             <li>
@@ -46,7 +49,7 @@ const Arsmote = () => {
                 target="_blank"
                 className={styles.link}
               >
-                Årsmelding 2024
+                Vedtekter
               </Link>
             </li>
           </ul>
