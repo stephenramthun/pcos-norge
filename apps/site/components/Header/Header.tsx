@@ -39,8 +39,8 @@ export const Header: React.FC<HeaderProps> = ({
             showNav ? styles.show : styles.hide,
           )}
         >
-          <Link className={styles.link} href="/hva-er-pcos">
-            Hva er PCOS
+          <Link className={styles.link} href="/hva-er-pmos">
+            Hva er PMOS
           </Link>
           <Link className={styles.link} href="/aktiviteter">
             Aktiviteter

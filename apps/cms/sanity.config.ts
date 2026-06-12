@@ -44,13 +44,13 @@ export default defineConfig({
       }
       return prev;
     },
-    actions: (prev, { schemaType }) => {
-      if (schemaType === "settings") {
-        return prev.filter(
-          ({ action }) => !["unpublish", "delete", "duplicate"].includes(action)
-        );
-      }
-      return prev;
-    },
+    // actions: (prev, { schemaType }) => {
+    //   if (schemaType === "settings") {
+    //     return prev.filter(
+    //       ({ action }) => !["unpublish", "delete", "duplicate"].includes(action)
+    //     );
+    //   }
+    //   return prev;
+    // },
   },
 });

@@ -17,7 +17,7 @@ import { useReferenceLinks } from "hooks/useReferenceLinks"
 import { getClient } from "io/sanity/client"
 import { slugify } from "util/string"
 
-import styles from "./hvaErPcos.module.css"
+import styles from "./hvaErPmos.module.css"
 
 const useUpdateReferenceLinks = () => {
   useLayoutEffect(() => {
@@ -34,7 +34,7 @@ type Props = {
   }[]
 }
 
-const HvaErPcos: NextPage<Props> = ({ elements }) => {
+const HvaErPmos: NextPage<Props> = ({ elements }) => {
   const content = elements.flatMap((it) => it.content)
 
   const referenceLinks = useReferenceLinks(content)
@@ -50,7 +50,7 @@ const HvaErPcos: NextPage<Props> = ({ elements }) => {
           <Breadcrumbs
             links={[
               { href: "/", label: "Hjem" },
-              { href: `/hva-er-pcos`, label: "Hva er PCOS?" },
+              { href: `/hva-er-pmos`, label: "Hva er PMOS?" },
             ]}
           />
         </Content>
@@ -102,7 +102,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       elements
     }
     `,
-    { slug: "hva-er-pcos" },
+    { slug: "hva-er-pmos" },
   )
 
   return {
@@ -112,4 +112,4 @@ export const getStaticProps: GetStaticProps = async (): Promise<
   }
 }
 
-export default HvaErPcos
+export default HvaErPmos

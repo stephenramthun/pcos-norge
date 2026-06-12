@@ -22,7 +22,7 @@ type Props = {
 export const PcosIMediene: React.FC<Props> = ({ artikler }) => (
   <article className={styles.pcosIMediene}>
     <Heading className={styles.heading} tag="h2" size="medium">
-      PCOS i mediene
+      PMOS i mediene
     </Heading>
     <ul className={styles.artikler}>
       {artikler.map((it, i) => {

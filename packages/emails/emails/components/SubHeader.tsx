@@ -4,13 +4,17 @@ import { fontSize, fontWeight, spacing } from "../theme";
 
 type SubHeaderProps = {
   children: ReactNode;
+  paddingBottom?: number;
 };
 
-export const SubHeader: React.FC<SubHeaderProps> = ({ children }) => (
+export const SubHeader: React.FC<SubHeaderProps> = ({
+  children,
+  paddingBottom = spacing.s4,
+}) => (
   <Heading
     fontSize={fontSize.lg}
     fontWeight={fontWeight.bold}
-    paddingBottom={spacing.s4}
+    paddingBottom={paddingBottom}
   >
     {children}
   </Heading>

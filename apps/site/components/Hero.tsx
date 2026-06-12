@@ -15,7 +15,7 @@ export const Hero: React.FC<React.HTMLAttributes<HTMLElement>> = ({
   <Content className={classNames(styles.container, className)} {...rest}>
     <div className={styles.text}>
       <Heading tag="h1" size="large">
-        PCOS rammer cirka 15 prosent av alle kvinner i verden
+        PMOS rammer cirka 15 prosent av alle kvinner i verden
       </Heading>
       <ArrowLink href="#main" direction="down">
         Les mer

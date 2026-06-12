@@ -47,8 +47,8 @@ export const OmOssCard: React.FC<Props> = ({ images }) => (
         Vi jobber for dine rettigheter
       </Heading>
       <Body className={block.small}>
-        PCOS Norge er en nyoppstartet landsdekkende forening for alle med PCOS,
-        pårørende og helsevesen. Vi vil sette PCOS på dagsorden gjennom å
+        PMOS Norge er en nyoppstartet landsdekkende forening for alle med PMOS,
+        pårørende og helsevesen. Vi vil sette PMOS på dagsorden gjennom å
         formidle kunnskap og informasjon. Vi ønsker å være et forum som
         anerkjenner de daglige utfordringene til alle rammede og vi vil bidra
         til økt forståelse for diagnosen.
