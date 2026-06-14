@@ -4,8 +4,8 @@
   position: relative;
   background: var(--color-brand-teal);
   padding: 2rem var(--container-horizontal-padding);
-  height: max-content;
-  flex-direction: column;
+  min-height: 75vh;
+  flex-direction: row;
   gap: 4rem;
 }
 
@@ -22,48 +22,36 @@
 }
 
 .text {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 900px;
-  padding: 1rem;
+  max-width: 85%;
+  min-height: 75%;
 }
 
 .text h1 {
   font-size: var(--hero-text-size);
+  font-weight: 600;
 }
 
 .illustration {
-  display: grid;
-  grid-template-columns: repeat(10, min-content);
-}
-
-.illustration svg {
-  width: 64px;
-  height: 64px;
-  max-width: calc((100vw - (var(--container-horizontal-padding) * 2)) / 10);
-  max-height: calc((100vw - (var(--container-horizontal-padding) * 2)) / 10);
+  position: absolute;
+  right: var(--container-horizontal-padding);
+  bottom: calc(var(--container-horizontal-padding) * 2);
+  width: 50%;
 }
 
 @media (min-width: 1250px) {
   .container {
-    --container-horizontal-padding: calc(var(--padding-horizontal) + 4rem);
     height: calc(100vh - var(--header-height));
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
+    align-items: end;
   }
 
-  .illustration svg {
-    width: 48px;
-    height: 48px;
-  }
-}
-
-@media (min-width: 1500px) {
-  .illustration svg {
-    width: 64px;
-    height: 64px;
+  .illustration {
+    position: absolute;
+    right: var(--container-horizontal-padding);
+    bottom: var(--container-horizontal-padding);
+    width: 40%;
   }
 }

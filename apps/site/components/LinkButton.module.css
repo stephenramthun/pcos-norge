@@ -1,5 +1,6 @@
 .button {
-    background: var(--color-brand-teal);
+    --button-background: var(--color-brand-teal);
+    background: var(--button-background);
     color: var(--semantic-color-text-primary-inverse);
     outline: none;
     border: none;

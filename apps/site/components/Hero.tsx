@@ -1,37 +1,37 @@
-import { Person } from "@phosphor-icons/react"
 import classNames from "classnames"
 import React from "react"
 
-import { ArrowLink } from "components/ArrowLink"
 import { Content } from "components/Content"
 import { Heading } from "components/Heading"
 
+import { LinkButton } from "./LinkButton"
+
 import styles from "./Hero.module.css"
+
+import logo from "public/pcos-norge-logo-teal.svg"
 
 export const Hero: React.FC<React.HTMLAttributes<HTMLElement>> = ({
   className,
   ...rest
 }) => (
   <Content className={classNames(styles.container, className)} {...rest}>
+    <div className={styles.illustration}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={logo.src} alt="Logo" />
+    </div>
     <div className={styles.text}>
       <Heading tag="h1" size="large">
-        PMOS rammer cirka 15 prosent av alle kvinner i verden
+        Polycystisk ovariesyndrom (PCOS) er nå Polyendokrint metabolsk
+        ovarialsyndrom (PMOS)
       </Heading>
-      <ArrowLink href="#main" direction="down">
+      <LinkButton
+        href="/aktuelt/pcos-far-nytt-diagnosenavn"
+        style={{
+          ["--button-background" as any]: "var(--color-brand-dark-teal)",
+        }}
+      >
         Les mer
-      </ArrowLink>
-    </div>
-    <div className={styles.illustration}>
-      {Array(15)
-        .fill(null)
-        .map((_, i) => (
-          <Person key={i} weight="fill" color="var(--color-brand-pink)" />
-        ))}
-      {Array(85)
-        .fill(null)
-        .map((_, i) => (
-          <Person key={i} weight="fill" color="var(--color-brand-dark-teal)" />
-        ))}
+      </LinkButton>
     </div>
   </Content>
 )
