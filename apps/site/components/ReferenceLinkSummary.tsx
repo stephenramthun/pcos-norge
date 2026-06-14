@@ -19,7 +19,7 @@ const ReferenceLink: React.FC<
 }
 
 interface ReferenceLinkSummaryProps extends React.HTMLAttributes<HTMLElement> {
-  links: UseReferenceLinksResult
+  links?: UseReferenceLinksResult
 }
 
 export const ReferenceLinkSummary: React.FC<ReferenceLinkSummaryProps> = ({
@@ -27,6 +27,10 @@ export const ReferenceLinkSummary: React.FC<ReferenceLinkSummaryProps> = ({
   className,
   ...elementProps
 }) => {
+  if (!links || Object.entries(links).length === 0) {
+    return null
+  }
+
   return (
     <aside
       className={classNames(styles.container, className)}
@@ -38,7 +42,7 @@ export const ReferenceLinkSummary: React.FC<ReferenceLinkSummaryProps> = ({
           .map(([key, it]) => (
             <li key={key}>
               <ReferenceLink id={key} href={it.value}>
-                {it.children}
+                {it.value}
               </ReferenceLink>
             </li>
           ))}

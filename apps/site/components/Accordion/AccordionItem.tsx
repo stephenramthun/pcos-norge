@@ -37,7 +37,7 @@ export const AccordionItem: React.FC<Props> = ({ title, content }) => {
         ref={contentRef}
         className={classNames(styles.content, isOpen && styles.open)}
       >
-        <BlockContentContainer expandableLists={false} blocks={content} />
+        <BlockContentContainer blocks={content} />
       </div>
     </>
   )

@@ -17,6 +17,8 @@ type ReferenceLink = {
   index: number
 }
 
+export type ReferenceLinks = { [key: string]: ReferenceLink }
+
 export type UseReferenceLinksResult = {
   [key: string]: ReferenceLink
 }
@@ -27,32 +29,36 @@ const isReferenceLink = (
 
 export const useReferenceLinks = (
   elements: PortableTextBlock[],
-): UseReferenceLinksResult => {
-  return useMemo(() => {
-    const data: UseReferenceLinksResult = {}
+): ReferenceLinks => {
+  return useMemo(() => getReferenceLinks(elements), [elements])
+}
 
-    const blocksWithReferenceLinks = (
-      elements as Array<PortableTextBlock>
-    ).filter((it) => it.markDefs?.filter(isReferenceLink).length ?? 0 > 0)
+export const getReferenceLinks = (
+  elements: PortableTextBlock[],
+): ReferenceLinks => {
+  const data: UseReferenceLinksResult = {}
 
-    let linkCount = 0
+  const blocksWithReferenceLinks = (
+    elements as Array<PortableTextBlock>
+  ).filter((it) => it.markDefs?.filter(isReferenceLink).length ?? 0 > 0)
 
-    for (const { children, markDefs } of blocksWithReferenceLinks) {
-      for (const child of children) {
-        for (const mark of child.marks) {
-          const markDef = markDefs?.find((it) => it._key === mark)
-          if (isReferenceLink(markDef)) {
-            linkCount += 1
-            data[markDef._key] = {
-              index: linkCount,
-              children: child.text,
-              value: markDef.href,
-            }
+  let linkCount = 0
+
+  for (const { children, markDefs } of blocksWithReferenceLinks) {
+    for (const child of children) {
+      for (const mark of child.marks) {
+        const markDef = markDefs?.find((it) => it._key === mark)
+        if (isReferenceLink(markDef)) {
+          linkCount += 1
+          data[markDef._key] = {
+            index: linkCount,
+            children: child.text,
+            value: markDef.href,
           }
         }
       }
     }
+  }
 
-    return data
-  }, [elements])
+  return data
 }

@@ -13,7 +13,7 @@ import { Heading } from "components/Heading"
 import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
 import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
-import { useReferenceLinks } from "hooks/useReferenceLinks"
+import { getReferenceLinks, useReferenceLinks } from "hooks/useReferenceLinks"
 import { getClient } from "io/sanity/client"
 import { slugify } from "util/string"
 
@@ -68,23 +68,24 @@ const HvaErPmos: NextPage<Props> = ({ elements }) => {
             </ul>
           </div>
           <div>
-            {elements.map((it, i) => (
-              <React.Fragment key={i}>
-                <Heading
-                  tag={i === 0 ? "h1" : "h2"}
-                  size="medium"
-                  id={slugify(it.title)}
-                >
-                  {it.title}
-                </Heading>
-                <div className={styles.sectionContent}>
-                  <BlockContentContainer blocks={it.content} />
-                </div>
-              </React.Fragment>
-            ))}
-            {Object.entries(referenceLinks).length > 0 && (
-              <ReferenceLinkSummary links={referenceLinks} />
-            )}
+            {elements.map((it, i) => {
+              const referenceLinks = getReferenceLinks(it.content)
+              return (
+                <React.Fragment key={i}>
+                  <Heading
+                    tag={i === 0 ? "h1" : "h2"}
+                    size="medium"
+                    id={slugify(it.title)}
+                  >
+                    {it.title}
+                  </Heading>
+                  <div className={styles.sectionContent}>
+                    <BlockContentContainer blocks={it.content} />
+                    <ReferenceLinkSummary links={referenceLinks} />
+                  </div>
+                </React.Fragment>
+              )
+            })}
           </div>
         </Content>
       </Main>

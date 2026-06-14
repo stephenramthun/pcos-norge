@@ -8,7 +8,7 @@ import { FactBox } from "components/FactBox"
 import { Heading } from "components/Heading"
 import { ImageContainer } from "components/ImageContainer"
 import { Link } from "components/Link"
-import { ExpandableList, List } from "components/list"
+import { List } from "components/list"
 import { PeopleContainer } from "components/PeopleContainer"
 import { SanityImage } from "components/SanityImage"
 import { useReferenceLinks } from "hooks/useReferenceLinks"
@@ -22,7 +22,6 @@ type ComponentProps<T> = {
 
 export const usePortableTextComponents = (
   body: PortableTextBlock[],
-  expandableLists: boolean,
 ): Partial<PortableTextReactComponents> => {
   const referenceLinks = useReferenceLinks(body)
   return {
@@ -65,12 +64,7 @@ export const usePortableTextComponents = (
       normal: ({ children }) => <Body>{children}</Body>,
     },
     list: {
-      bullet: ({ children }) =>
-        expandableLists ? (
-          <ExpandableList>{children as ReactNode[]}</ExpandableList>
-        ) : (
-          <List>{children as ReactNode[]}</List>
-        ),
+      bullet: ({ children }) => <List>{children as ReactNode[]}</List>,
       number: ({ children }) => <ol className={styles.list}>{children}</ol>,
     },
     marks: {
@@ -78,9 +72,9 @@ export const usePortableTextComponents = (
         <span className={styles.ingress}>{children}</span>
       ),
       link: ({ children, value }) => <Link href={value.href}>{children}</Link>,
-      referenceLink: ({ value }) => (
+      referenceLink: ({ children, value }) => (
         <a href={`#${value._key}`} className={styles.link}>
-          <sup>[{referenceLinks[value._key]?.index}]</sup>
+          {children} <sup>[{referenceLinks[value._key]?.index}]</sup>
         </a>
       ),
     },
