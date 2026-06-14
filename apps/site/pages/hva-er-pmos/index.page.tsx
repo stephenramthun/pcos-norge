@@ -1,7 +1,7 @@
 import { ArrowRight } from "@phosphor-icons/react"
 import { PortableTextBlock } from "@portabletext/types"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import React, { useLayoutEffect } from "react"
+import React from "react"
 
 import { BlockContentContainer } from "components/BlockContentContainer"
 import { Breadcrumbs } from "components/Breadcrumbs"
