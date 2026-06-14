@@ -13,19 +13,11 @@ import { Heading } from "components/Heading"
 import { Main } from "components/Main"
 import { PageContainer } from "components/PageContainer"
 import { ReferenceLinkSummary } from "components/ReferenceLinkSummary"
-import { getReferenceLinks, useReferenceLinks } from "hooks/useReferenceLinks"
+import { getReferenceLinks } from "hooks/useReferenceLinks"
 import { getClient } from "io/sanity/client"
 import { slugify } from "util/string"
 
 import styles from "./hvaErPmos.module.css"
-
-const useUpdateReferenceLinks = () => {
-  useLayoutEffect(() => {
-    Array.from(document.getElementsByTagName("sup")).forEach((element, i) => {
-      element.innerText = `[${i + 1}]`
-    })
-  }, [])
-}
 
 type Props = {
   elements: {
