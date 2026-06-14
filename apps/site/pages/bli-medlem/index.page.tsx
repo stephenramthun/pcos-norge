@@ -48,22 +48,23 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
         <section className={styles.pitch}>
           <div className={styles.textContainer}>
             <Body>
-              PCOS Norge er en ideell, landsdekkende forening for alle med
-              diagnosen PCOS, for pårørende og for helsevesen. Sammen står vi
-              sterkere og jo flere vi er i vårt fellesskap, desto mer kan vi få
+              PMOS Norge er en ideell, landsdekkende forening for alle med
+              diagnosen PMOS, pårørende og helsepersonell. Sammen står vi
+              sterkere, og jo flere vi er i vårt fellesskap, desto mer kan vi få
               til.
             </Body>
             <Body>
-              Ditt medlemsskap i PCOS Norge gjør det mulig for oss å kjempe for
+              Ditt medlemsskap i PMOS Norge gjør det mulig for oss å kjempe for
               et bedre behandlingstilbud, politisk innflytelse, økt forståelse
               og kjennskap til diagnosen og å bryte tabu og skam mange som lever
               med diagnosen kjenner på. Her kan du lese mer om våre formål, hvem
               styret er og hva vi jobber med <Link href="/om-oss">her</Link>.
             </Body>
             <Body>
-              Som medlem i PCOS Norge får du tilgang til våre medlemsfordeler.
-              Medlemskontingenten betales kun en gang i året. Du får et
-              automatisk fornyelseskrav i Vipps når året er omme.
+              Et medlemsskap koster {MembershipPrice.asKroner} kroner i året.
+              Uansett når på året du blir medlem i PMOS Norge betaler du for et
+              helt år. Du får et automatisk fornyelseskrav i Vipps når året er
+              omme.
             </Body>
           </div>
           <div className={styles.imageContainer}>
@@ -87,7 +88,7 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
               <Body>økt kunnskap om PCOS</Body>
             </li>
             <li>
-              <Body>kompetanseheving i helseforetakene</Body>
+              <Body>kompetanseheving i helsetjenestene</Body>
             </li>
             <li>
               <Body>
@@ -108,7 +109,6 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
               </Body>
             </li>
           </ul>
-          <Body>Medlemskap koster {MembershipPrice.asKroner},- i året.</Body>
         </section>
         <section className={styles.register}>
           <form
@@ -120,7 +120,7 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
             <Checkbox
               label={
                 <span>
-                  Jeg bekrefter å ha lest og forstått PCOS Norges{" "}
+                  Jeg bekrefter å ha lest og forstått PMOS Norges{" "}
                   <Link href="/personvernerklæring" target="_blank">
                     personvernerklæring
                   </Link>{" "}

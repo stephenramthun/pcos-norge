@@ -32,8 +32,8 @@ const Bidra: NextPage = () => {
         </Heading>
         <Body>
           Ditt bidrag vil hjelpe oss i vårt arbeid for mer synlighet,
-          normalisering og økt oppmerksomhet rundt diagnosen og bedre kunnskap
-          om PCOS i helsevesenet.
+          normalisering og økt oppmerksomhet for diagnosen PMOS, i
+          helsetjenestene og i samfunnet.
         </Body>
         <Body>
           Du kan bidra ved å vippse et valgfritt beløp til <mark>750223</mark>{" "}

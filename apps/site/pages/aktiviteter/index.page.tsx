@@ -147,7 +147,7 @@ const Aktiviteter: NextPage<AktiviteterProps & PreviewProps> = ({
             </Heading>
             <div className={styles.sectionContent}>
               <Body>
-                PCOS Norge tilbyr fysiske og digitale arrangementer og foredrag,
+                PMOS Norge tilbyr fysiske og digitale arrangementer og foredrag,
                 i tillegg til fysiske treff med våre likepersoner flere steder i
                 landet. Vi holder også 2-3 digitale samtalegrupper hver måned
                 som alle i hele landet kan delta på. Følg gjerne med i sosiale
