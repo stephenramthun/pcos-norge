@@ -35,12 +35,6 @@ type Props = {
 }
 
 const HvaErPmos: NextPage<Props> = ({ elements }) => {
-  const content = elements.flatMap((it) => it.content)
-
-  const referenceLinks = useReferenceLinks(content)
-
-  useUpdateReferenceLinks()
-
   return (
     <PageContainer>
       <Head />

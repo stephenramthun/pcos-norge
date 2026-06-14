@@ -21,11 +21,11 @@ export const AvsluttMedlemskapButton: React.FC<Props> = ({ agreementId }) => {
   const [showModal, setShowModal] = useState(false)
   const [showError, setShowError] = useState(false)
 
-  const avsluttMedlemskap = () => {
+  const avsluttMedlemskap = (): void => {
     router.push(`/api/medlemskap/avslutt?agreementId=${agreementId}`)
   }
 
-  const lukkModal = () => {
+  const lukkModal = (): void => {
     setShowModal(false)
     setShowError(false)
   }

@@ -21,7 +21,7 @@ import { slugify } from "util/string"
 
 import styles from "./omOss.module.css"
 
-const useUpdateReferenceLinks = () => {
+const useUpdateReferenceLinks = (): void => {
   useLayoutEffect(() => {
     Array.from(document.getElementsByTagName("sup")).forEach((element, i) => {
       element.innerText = `[${i + 1}]`
