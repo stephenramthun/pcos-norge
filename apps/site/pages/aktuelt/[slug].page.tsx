@@ -70,7 +70,7 @@ const Article: NextPage<ArticleProps & PreviewProps> = ({
 
   const data = filterDataToSingleItem(previewData, preview)
 
-  const components = usePortableTextComponents(data.body, true)
+  const components = usePortableTextComponents(data.body)
   const date = useLocaleDateString(new Date(data.published))
 
   const referenceLinks = useReferenceLinks(data.body)
