@@ -21,7 +21,7 @@ export const Logo: React.FC<LogoProps> = ({
     <Link href="/" legacyBehavior>
       <a className={classNames(styles.container, className)} {...anchorProps}>
         <Image
-          alt="Logo PCOS Norge"
+          alt="Logo PMOS Norge"
           src={variant === "light" ? logoLight.src : logoDark.src}
           loader={({ src }) => src}
           unoptimized

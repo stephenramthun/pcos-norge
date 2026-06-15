@@ -29,14 +29,14 @@ export const Footer: React.FC = () => (
           <Logo variant="light" />
           <div className={styles.socials}>
             <Link
-              href="https://www.facebook.com/pcosnorge"
+              href="https://www.facebook.com/pmosnorge"
               target="_blank"
               aria-label="PCOS Norge på Facebook"
             >
               <FacebookLogo size={32} />
             </Link>
             <Link
-              href="https://www.instagram.com/pcosnorge/"
+              href="https://www.instagram.com/pmosnorge/"
               target="_blank"
               aria-label="PCOS Norge på Instagram"
             >
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => (
           <article className={styles.details}>
             <div className={styles.grid}>
               <Body>Epost:</Body>
-              <Link href="mailto:post@pcosnorge.no">post@pcosnorge.no</Link>
+              <Link href="mailto:post@pmosnorge.no">post@pmosnorge.no</Link>
               <Body>Adresse:</Body>
               <div className={styles.address}>
                 <Body>c/o Ann Helen Brendehaug</Body>
@@ -72,7 +72,7 @@ export const Footer: React.FC = () => (
                   href="https://www.facebook.com/groups/623959381000578"
                   target="_blank"
                 >
-                  PCOS Søstre Norge
+                  PMOS Søstre Norge
                 </Link>
               </Body>
             </div>
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => (
             <nav className={styles.nav}>
               <ul>
                 <li>
-                  <Link href="/hva-er-pcos">Hva er PCOS</Link>
+                  <Link href="/hva-er-pmos">Hva er PMOS</Link>
                 </li>
                 <li>
                   <Link href="/om-oss">Om oss</Link>
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => (
           </article>
           <article>
             <Body className={styles.description}>
-              PCOS Norge skal jobbe for mer synlighet, normalisering og
+              PMOS Norge skal jobbe for mer synlighet, normalisering og
               oppmerksomhet rundt diagnosen blant folk flest og i media. Vi skal
               bidra til å enkelt tilgjengeliggjøre oppdatert og forskningsbasert
               informasjon om syndromet og sørge for bedre kunnskap i

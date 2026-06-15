@@ -36,7 +36,7 @@ export const HvaErPcosCard: React.FC<Props> = ({ image }) => (
         med PMOS opplever diagnosen forskjellig, men det finnes noen fellestrekk
         i symptombildet.
       </Body>
-      <LinkButton href="/hva-er-pMos">
+      <LinkButton href="/hva-er-pmos">
         Les mer om diagnosen
         <ArrowRight size={32} />
       </LinkButton>
