@@ -30,11 +30,11 @@ export const HvaErPcosCard: React.FC<Props> = ({ image }) => (
         Hva er PMOS?
       </Heading>
       <Body className={block.small}>
-        Polyendokrin Metabolsk Ovarialsyndrom (PMOS) er den vanligste hormonelle
-        forstyrrelsen hos kvinner. Tilstanden rammer 10-15% av alle kvinner og
-        kan gi mange helseproblemer som følge av den hormonelle ubalansen. Alle
-        med PMOS opplever diagnosen forskjellig, men det finnes noen fellestrekk
-        i symptombildet.
+        Polyendokrint Metabolsk Ovarialsyndrom (PMOS) er den vanligste
+        hormonelle forstyrrelsen hos kvinner. Tilstanden rammer 10-15% av alle
+        kvinner og kan gi mange helseproblemer som følge av den hormonelle
+        ubalansen. Alle med PMOS opplever diagnosen forskjellig, men det finnes
+        noen fellestrekk i symptombildet.
       </Body>
       <LinkButton href="/hva-er-pmos">
         Les mer om diagnosen
