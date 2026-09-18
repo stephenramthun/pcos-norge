@@ -1,8 +1,8 @@
-import React from "react"
-import { MjmlColumn, MjmlSection, MjmlText, MjmlWrapper } from "mjml-react"
-import Link from "./Link"
-import Text from "./Text"
-import { colors, fontSize, spacing } from "../theme"
+import React from "react";
+import { MjmlColumn, MjmlSection, MjmlText, MjmlWrapper } from "mjml-react";
+import Link from "./Link";
+import Text from "./Text";
+import { colors, fontSize, spacing } from "../theme";
 
 const Footer: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         >
           <MjmlColumn>
             <MjmlText fontSize={fontSize.sm} color={colors.teal100}>
-              PCOS Norge
+              PMOS Norge
             </MjmlText>
           </MjmlColumn>
         </MjmlSection>
@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
           </MjmlColumn>
           <MjmlColumn width="85%">
             <MjmlText fontSize={fontSize.sm} color={colors.teal100}>
-              <Link href="mailto:post@pcosnorge.no" color={colors.teal100}>
-                post@pcosnorge.no
+              <Link href="mailto:post@pmosnorge.no" color={colors.teal100}>
+                post@pmosnorge.no
               </Link>
             </MjmlText>
           </MjmlColumn>
@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
               <Link
                 fontSize={fontSize.sm}
                 color={colors.teal100}
-                href="https://www.pcosnorge.no/personvernerklæring"
+                href="https://www.pmosnorge.no/personvernerklæring"
               >
                 Personvernerklæring
               </Link>
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
             <MjmlText fontSize={fontSize.sm} color={colors.teal100}>
               <Link
                 color={colors.teal100}
-                href="https://www.pcosnorge.no/min-side"
+                href="https://www.pmosnorge.no/min-side"
               >
                 Min side
               </Link>
@@ -89,13 +89,13 @@ const Footer: React.FC = () => {
             <Text fontSize={fontSize.xs}>
               Ønsker du ikke å motta eposter fra oss? Administrer dine
               epost-innstillinger{" "}
-              <Link href="https://www.pcosnorge.no/min-side">her</Link>
+              <Link href="https://www.pmosnorge.no/min-side">her</Link>
             </Text>
           </MjmlColumn>
         </MjmlSection>
       </MjmlWrapper>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

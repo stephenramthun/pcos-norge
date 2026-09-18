@@ -19,7 +19,6 @@ const Header: React.FC = () => {
                 textDecoration="none"
               >
                 <Logo variant="dark" />
-                <Logo variant="light" />
               </Link>
             </Text>
           </MjmlColumn>

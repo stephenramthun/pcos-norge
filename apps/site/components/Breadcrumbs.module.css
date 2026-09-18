@@ -24,3 +24,8 @@
   align-items: center;
   gap: var(--gap);
 }
+
+.link {
+  white-space: wrap;
+  width: unset;
+}

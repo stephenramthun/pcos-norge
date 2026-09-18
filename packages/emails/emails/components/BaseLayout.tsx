@@ -43,26 +43,6 @@ const BaseLayout: React.FC<BaseLayoutProps> = ({ width, children, style }) => {
             padding-left: ${spacing.s7}px;
             padding-right: ${spacing.s7}px;
           }
-          .logo-light {
-            display: none;
-          }
-          @media (prefers-color-scheme: dark) {
-            body {
-              color: ${colors.teal100};
-              background-color: ${colors.teal800};
-            }
-            .text > *,
-            .heading > *,
-            a {
-              color: ${colors.teal100} !important;
-            }
-            .logo-dark {
-              opacity: 0;
-            }
-            .logo-light {
-              display: unset;
-            }
-          }
           @media (min-width:${screens.xs}) {
             .gutter {
               padding-left: ${spacing.s9}px;
@@ -73,7 +53,9 @@ const BaseLayout: React.FC<BaseLayoutProps> = ({ width, children, style }) => {
       `}</MjmlStyle>
       </MjmlHead>
 
-      <MjmlBody width={width}>{children}</MjmlBody>
+      <MjmlBody backgroundColor={colors.teal100} width={width}>
+        {children}
+      </MjmlBody>
     </Mjml>
   )
 }
