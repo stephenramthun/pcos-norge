@@ -8,11 +8,11 @@ interface HeadProps {
 
 export const Head: React.FC<HeadProps> = ({
   children,
-  title = "PCOS Norge | Den norske PCOS-foreningen",
+  title = "PMOS Norge | Den norske PMOS-foreningen",
 }) => (
   <NextHead>
     <title>{title}</title>
-    <meta name="description" content="Den norske PCOS-foreningen" />
+    <meta name="description" content="Den norske PMOS-foreningen" />
     <link rel="shortcut icon" href="/favicon.ico" />
     {children}
   </NextHead>
