@@ -35,6 +35,7 @@ export const agreementRequest = (
   merchantAgreementUrl: vippsConfig.registerRedirectUri,
   productName: "Medlemskap PCOS Norge, 1 år",
   scope: "name address email phoneNumber birthDate",
+  externalId: null,
   ...overrides,
 })
 
