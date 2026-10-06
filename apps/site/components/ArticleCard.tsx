@@ -31,7 +31,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
   return (
     <article
-      key={slug}
       className={classNames(styles.article, className)}
       {...elementProps}
     >

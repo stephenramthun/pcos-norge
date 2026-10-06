@@ -42,6 +42,7 @@ declare type AgreementRequestBody = {
   merchantAgreementUrl: string
   productName: string
   scope: string
+  externalId: string | null
 }
 
 declare type ChargeStatus =

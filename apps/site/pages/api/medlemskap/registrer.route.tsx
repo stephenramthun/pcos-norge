@@ -29,7 +29,7 @@ export default async function registrer(
   }
 
   const { vippsConfirmationUrl, agreementId, chargeId } =
-    await agreementService.newAgreement()
+    await agreementService.newAgreement(session.user.id)
 
   const agreement = await insertAgreement(
     agreementId,

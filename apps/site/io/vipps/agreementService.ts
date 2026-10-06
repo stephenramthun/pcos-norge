@@ -14,6 +14,7 @@ const createAgreement = (
   config: VippsConfigObject,
   amount = MembershipPrice.asØre,
   description = "Medlemskap PCOS Norge, 1 år",
+  externalId: string | null = null,
 ): AgreementRequestBody => ({
   interval: {
     unit: "YEAR",
@@ -33,6 +34,7 @@ const createAgreement = (
   merchantAgreementUrl: config.merchantAgreementUri,
   productName: description,
   scope: "name address email phoneNumber birthDate",
+  externalId,
 })
 
 export class AgreementService {
@@ -44,7 +46,9 @@ export class AgreementService {
     this.accessTokenService = new AccessTokenService(config)
   }
 
-  newAgreement = async (): Promise<AgreementResponseBody> => {
+  newAgreement = async (
+    externalId: string | null = null,
+  ): Promise<AgreementResponseBody> => {
     const { access_token } = await this.accessTokenService.fetchAccessToken()
     const response = await fetch(this.config.recurringPaymentEndpoint, {
       method: "POST",
@@ -52,7 +56,7 @@ export class AgreementService {
         .commonHeaders(access_token)
         .idempotency()
         .build(),
-      body: JSON.stringify(createAgreement(this.config)),
+      body: JSON.stringify({ ...createAgreement(this.config), externalId }),
     })
 
     if (!response.ok) {
