@@ -1,11 +1,9 @@
 import { ImageAsset } from "@sanity/types"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import { signIn } from "next-auth/react"
 import React from "react"
 
 import { Body } from "components/Body"
 import { Breadcrumbs } from "components/Breadcrumbs"
-import { Checkbox } from "components/Checkbox"
 import { Content } from "components/Content"
 import { Footer } from "components/Footer"
 import { Head } from "components/Head"
@@ -14,7 +12,6 @@ import { Heading } from "components/Heading"
 import { Link } from "components/Link"
 import { PageContainer } from "components/PageContainer"
 import { SanityImage } from "components/SanityImage"
-import { VippsButton } from "components/VippsButton"
 import { getClient } from "io/sanity/client"
 import { MembershipPrice } from "model/membershipPrice"
 import { SanityImageDocument } from "types/sanity"
@@ -110,32 +107,32 @@ const BliMedlem: NextPage<BliMedlemProps> = (props) => {
             </li>
           </ul>
         </section>
-        <section className={styles.register}>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault()
-              signIn("vipps", { callbackUrl: "/api/medlemskap/registrer" })
-            }}
-          >
-            <Checkbox
-              label={
-                <span>
-                  Jeg bekrefter å ha lest og forstått PMOS Norges{" "}
-                  <Link href="/personvernerklæring" target="_blank">
-                    personvernerklæring
-                  </Link>{" "}
-                  og godkjenner innholdet i den.
-                </span>
-              }
-              required
-            />
-            <VippsButton
-              variant="register"
-              onClick={() => null}
-              type="submit"
-            />
-          </form>
-        </section>
+        {/*<section className={styles.register}>*/}
+        {/*  <form*/}
+        {/*    onSubmit={(event) => {*/}
+        {/*      event.preventDefault()*/}
+        {/*      signIn("vipps", { callbackUrl: "/api/medlemskap/registrer" })*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    <Checkbox*/}
+        {/*      label={*/}
+        {/*        <span>*/}
+        {/*          Jeg bekrefter å ha lest og forstått PMOS Norges{" "}*/}
+        {/*          <Link href="/personvernerklæring" target="_blank">*/}
+        {/*            personvernerklæring*/}
+        {/*          </Link>{" "}*/}
+        {/*          og godkjenner innholdet i den.*/}
+        {/*        </span>*/}
+        {/*      }*/}
+        {/*      required*/}
+        {/*    />*/}
+        {/*    <VippsButton*/}
+        {/*      variant="register"*/}
+        {/*      onClick={() => null}*/}
+        {/*      type="submit"*/}
+        {/*    />*/}
+        {/*  </form>*/}
+        {/*</section>*/}
       </Content>
       <Footer />
     </PageContainer>
